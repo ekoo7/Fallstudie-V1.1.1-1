@@ -9,7 +9,7 @@
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>edd1e308-4172-4199-aeed-fd546e55591b</PackageIdentityName>
-    <IntermediateOutputPath>C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\</IntermediateOutputPath>
     <RegisteredManifestChecksum>E350FC6BB31C83E99F632E1E25219FF8F8F16D3246E9212E00D37A3A78772358</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>edd1e308-4172-4199-aeed-fd546e55591b_1.0.0.0_x86__7cz6n1n3sb2rm</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>edd1e308-4172-4199-aeed-fd546e55591b_7cz6n1n3sb2rm!App</RegisteredUserModeAppID>
@@ -19,16 +19,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-04-14T14:22:11.144</Modified>
+      <Modified>2016-05-07T09:16:11.914</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.exe">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.exe">
       <PackagePath>entrypoint\Fallstudie.exe</PackagePath>
-      <Modified>2016-04-14T14:22:08.988</Modified>
+      <Modified>2016-05-07T09:16:10.034</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.dll">
       <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
@@ -478,73 +478,73 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-07-22T21:11:12.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\ApplicationInsights.config">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
       <Modified>2016-04-10T09:05:12.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Bilder\Grundstuecke\Grundstueck1.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Bilder\Grundstuecke\Grundstueck1.png">
       <PackagePath>Bilder\Grundstuecke\Grundstueck1.png</PackagePath>
       <Modified>2016-04-13T14:46:59.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Bilder\Grundstuecke\Grundstueck2.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Bilder\Grundstuecke\Grundstueck2.png">
       <PackagePath>Bilder\Grundstuecke\Grundstueck2.png</PackagePath>
       <Modified>2016-04-13T14:49:05.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Bilder\Grundstuecke\Grundstueck3.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Bilder\Grundstuecke\Grundstueck3.png">
       <PackagePath>Bilder\Grundstuecke\Grundstueck3.png</PackagePath>
       <Modified>2016-04-13T14:49:15.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Bilder\Haeuser\Haus1.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Bilder\Haeuser\Haus1.png">
       <PackagePath>Bilder\Haeuser\Haus1.png</PackagePath>
       <Modified>2016-04-13T14:50:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Bilder\Haeuser\Haus2.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Bilder\Haeuser\Haus2.png">
       <PackagePath>Bilder\Haeuser\Haus2.png</PackagePath>
       <Modified>2016-04-13T14:50:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Bilder\Haeuser\Haus3.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Bilder\Haeuser\Haus3.png">
       <PackagePath>Bilder\Haeuser\Haus3.png</PackagePath>
       <Modified>2016-04-13T14:50:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2015-09-20T15:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T15:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T15:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T15:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T15:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T15:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T15:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2016-04-10T09:04:45.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.xr.xml">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.xr.xml">
       <PackagePath>Fallstudie.xr.xml</PackagePath>
       <Modified>2016-04-13T15:12:19.000</Modified>
     </AppxPackagedFile>
@@ -552,13 +552,13 @@
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2016-04-09T19:40:56.605</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-04-14T14:22:10.706</Modified>
+      <Modified>2016-05-07T09:16:11.569</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\FALLSTUDIE 4\C#\ConsultantApp\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Core\Fallstudie.exe">
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Core\Fallstudie.exe">
       <PackagePath>Fallstudie.exe</PackagePath>
-      <Modified>2016-04-14T14:22:11.144</Modified>
+      <Modified>2016-05-07T09:16:11.911</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
