@@ -758,3 +758,9 @@ C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\De
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\GalaSoft.MvvmLight.Platform.pri.xml
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\ProjectArchitectures.txt
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Microsoft.Practices.ServiceLocation\en-US\Microsoft.Practices.ServiceLocation.Properties.Resources.resw
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Pages\HKPages\Schritt5Wand.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt5Wand.g.i.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt5Wand.g.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt5Wand.xaml
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt5Wand.xbf

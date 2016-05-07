@@ -39,13 +39,14 @@
         
         <StackPanel Grid.Row="2">
             <StackPanel  >
-                <TextBlock Text="{Binding SelectedHouse.Preis}"/>
+                <TextBlock Text="{Binding SelectedHouse.Price}"/>
+                <TextBlock Text="{Binding TotalPrice}"/>
                 <Button Margin="20" Command="{Binding ButtonForwardChooseHouse}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
             </StackPanel>
 
 
             <StackPanel >
-                <ProgressBar Height="26" Margin="10 0 10 10" Value="10"/>
+                <ProgressBar Name="pbStatus" Height="26" Margin="10 0 10 10" Value="10"/>
             </StackPanel>
         </StackPanel>
 

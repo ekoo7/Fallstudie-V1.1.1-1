@@ -118,6 +118,9 @@
     <Compile Include="Pages\HKPages\Schritt4Grundriss.xaml.cs">
       <DependentUpon>Schritt4Grundriss.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HKPages\Schritt5Wand.xaml.cs">
+      <DependentUpon>Schritt5Wand.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\KundenPage.xaml.cs">
       <DependentUpon>KundenPage.xaml</DependentUpon>
     </Compile>
@@ -183,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\HKPages\Schritt4Grundriss.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HKPages\Schritt5Wand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

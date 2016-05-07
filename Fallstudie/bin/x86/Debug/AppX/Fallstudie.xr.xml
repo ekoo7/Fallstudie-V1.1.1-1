@@ -13,13 +13,21 @@
     <RootPropertyPathName Name="Firstname" />
     <RootPropertyPathName Name="MSG" />
     <RootPropertyPathName Name="ButtonForwardChooseHouse" />
+    <RootPropertyPathName Name="TotalPrice" />
     <RootPropertyPathName Name="SelectedHouse" />
-    <RootPropertyPathName Name="Preis" />
+    <RootPropertyPathName Name="Price" />
     <RootPropertyPathName Name="ImagesHouse" />
     <RootPropertyPathName Name="SourceImage" />
     <RootPropertyPathName Name="ButtonForwardChoosePlot" />
     <RootPropertyPathName Name="SelectedPlot" />
     <RootPropertyPathName Name="ImagesPlot" />
+    <RootPropertyPathName Name="ButtonForwardChooseWall" />
+    <RootPropertyPathName Name="SelectedFloor" />
+    <RootPropertyPathName Name="FloorsGroundPlot" />
+    <RootPropertyPathName Name="ButtonDrawSketch" />
+    <RootPropertyPathName Name="Description" />
+    <RootPropertyPathName Name="NumberFloors" />
+    <RootPropertyPathName Name="SelectedItemFloor" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -123,7 +131,12 @@
     </RootType>
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt2HausAuswahl" />
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="SelectedItem" />
+    </RootType>
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt4Grundriss" />
+    <RootType FullName="Fallstudie.Pages.HKPages.Schritt5Wand" />
     <RootType FullName="Fallstudie.Pages.KundenPage" />
     <RootType FullName="Fallstudie.Pages.KundenPages.CreateCustomerPage" />
     <RootType FullName="Fallstudie.Pages.pdfErstellenPage" />
