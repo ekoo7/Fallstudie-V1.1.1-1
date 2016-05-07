@@ -14,6 +14,10 @@ namespace Fallstudie.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        ///This is a GITHUB Test
+
+
+
         /// <summary>
         /// PROPERTIES
         /// </summary>

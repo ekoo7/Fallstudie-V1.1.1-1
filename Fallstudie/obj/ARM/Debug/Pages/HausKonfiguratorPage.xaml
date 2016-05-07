@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="Fallstudie.Pages.HausKonfiguratorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Fallstudie.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Main, Source={StaticResource Locator}}"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    >
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <TextBlock Text="{Binding MSG}"></TextBlock>
+            
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="100" Margin="10 0 0 0" Text="Vorname"/>
+                            <TextBlock Width="100" Margin="10 0 0 0" Text="Nachname"/>
+                            <TextBlock Width="60" Margin="10 0 0 0" Text="Projekte"/>
+                            <TextBlock Width="60" Margin="10 0 0 0" Text="Häuser"/>
+                        </StackPanel>
+
+            <ListView x:ConnectionId='1' Name="CustomerList" ItemsSource="{Binding Customers}" 
+                      SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
+                      IsItemClickEnabled="False" SelectionMode="Single"
+                      
+                      IsSynchronizedWithCurrentItem="False">
+                
+                <!-- Wenn man eine Liste Clickbarmachen will muss man das einfügen -> siehe Link TestSachen
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="SelectionChanged">
+                        <core:InvokeCommandAction Command="{Binding SomeComboBoxCommand}" CommandParameter="{Binding ElementName=CustomerList, Path=SelectedItem}"/>
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>-->
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="100" Margin="0 0 0 0" Text="{Binding Firstname}"/>
+                            <TextBlock Width="100" Margin="10 0 0 0" Text="{Binding Lastname}"/>
+                            <TextBlock Width="60" Margin="10 0 0 0" Text="{Binding NumbProjects}"/>
+                            <TextBlock Width="60" Margin="10 0 0 0" Text="{Binding NumbConfHouses}"/>
+                    </StackPanel>
+                </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <Button Margin="20" Command="{Binding NewCustomerButton}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE8FA;" />
+            <Button Margin="20" Command="{Binding ButtonForwardChooseCustomer}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
+            
+        </StackPanel>
+        
+    </Grid>
+</Page>
+

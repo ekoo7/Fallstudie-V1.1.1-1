@@ -1,0 +1,6 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.language-zh-hant"
+"ResourceDimensions"		"language-zh-tw"
+
+[Files]
+"C:\Users\User\Dropbox\visual studio\Fallstudie\Fallstudie V1.0\Fallstudie\obj\ARM\Debug\split.language-zh-hant.pri"			"resources.pri"

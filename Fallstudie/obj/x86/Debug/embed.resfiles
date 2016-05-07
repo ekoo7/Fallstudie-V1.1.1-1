@@ -1,0 +1,11 @@
+App.xbf
+MainPage.xbf
+Pages\HausKonfiguratorPage.xbf
+Pages\HKPages\Schritt2HausAuswahl.xbf
+Pages\HKPages\Schritt3Grundstueck.xbf
+Pages\HKPages\Schritt4Grundriss.xbf
+Pages\KundenPage.xbf
+Pages\KundenPages\CreateCustomerPage.xbf
+Pages\pdfErstellenPage.xbf
+Pages\ProjektePage.xbf
+Pages\TerminePage.xbf

@@ -1,0 +1,2 @@
+MainPackage=C:\Users\User\Dropbox\visual studio\Fallstudie\Fallstudie V1.0\Fallstudie\bin\x86\Debug\Fallstudie_1.0.0.0_x86_Debug.appx
+SymbolPackage=C:\Users\User\Desktop\Neuer Ordner (3)\Fallstudie_1.0.0.0_Debug_Test\Fallstudie_1.0.0.0_x86_Debug.appxsym
