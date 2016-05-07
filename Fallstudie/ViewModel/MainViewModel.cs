@@ -16,7 +16,7 @@ namespace Fallstudie.ViewModel
     {
         ///This is a GITHUB Test
         ///This is the GitHub Browser Change
-
+        ///This is another VS Test
 
         /// <summary>
         /// PROPERTIES
