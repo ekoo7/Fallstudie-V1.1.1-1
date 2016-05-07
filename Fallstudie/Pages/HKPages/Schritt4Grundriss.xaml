@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="Fallstudie.Pages.HKPages.Schritt4Grundriss"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Fallstudie.Pages.HKPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="49*" />
+            <RowDefinition Height="311*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="{Binding SelectedCustomerr.Lastname}"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Name="StackSchritt4" Orientation="Horizontal">
+            <ListView ItemsSource="{Binding }" 
+                          SelectedItem="{Binding SelectedHouse, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False"
+                          Height="Auto"
+                          >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding }"/>
+                            <TextBlock Text="{Binding }"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <StackPanel  >
+                <TextBlock Text="{Binding SelectedHouse.Preis}"/>
+                <Button Margin="20" Command="{Binding }" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
+            </StackPanel>
+
+
+            <StackPanel >
+                <ProgressBar Height="26" Margin="10 0 10 10" Value="30"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
