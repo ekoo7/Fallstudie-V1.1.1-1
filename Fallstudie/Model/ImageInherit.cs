@@ -29,13 +29,14 @@ namespace Fallstudie.Model
             Uri1 = new Uri(source, UriKind.Absolute);
             BitmapImage1.UriSource = Uri1;
             Image1.Source = BitmapImage1;
-
+            SourceImage = source;
 
             Image1.Name = id.ToString();
-            SourceImage = source;
+            
             Price = price;
         }
 
+        //Konstruktor für Grundriss
         public ImageInherit(string source, int id, string description, RelayCommand btn, int floors, int floorsDB)
         {
             Image1 = new Image();
@@ -57,8 +58,21 @@ namespace Fallstudie.Model
             Description = description;
 
             ButtonDrawSketch = btn;
+        }
 
+        //Konstruktor für Wand
+        public ImageInherit(string source, int id, string description, double price)
+        {
+            Image1 = new Image();
+            BitmapImage1 = new BitmapImage();
+            Uri1 = new Uri(source, UriKind.Absolute);
+            BitmapImage1.UriSource = Uri1;
+            Image1.Source = BitmapImage1;
+            SourceImage = source;
 
+            Image1.Name = id.ToString();
+            Description = description;
+            Price = price;
         }
     }
 }

@@ -6,8 +6,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
 namespace Fallstudie.ViewModel
@@ -46,6 +48,13 @@ namespace Fallstudie.ViewModel
             get { return msg; }
             set { msg = value; }
         }
+
+
+        /// <summary>
+        /// List Items
+        /// Hier werden die Properties für die Listen festgelegt
+        /// </summary>
+        
 
         //Customer die in der Liste gespeichert sind
         private ObservableCollection<Customer> customers = new ObservableCollection<Customer>();
@@ -104,7 +113,103 @@ namespace Fallstudie.ViewModel
             set { floorsGroundPlot = value; }
         }
 
+        //Liste Außenwände
+        private ObservableCollection<ImageInherit> listOutsideWall = new ObservableCollection<ImageInherit>();
 
+        public ObservableCollection<ImageInherit> ListOutsideWall
+        {
+            get { return listOutsideWall; }
+            set { listOutsideWall = value; }
+        }
+
+        //Liste für Farben der Außenwände
+        private ObservableCollection<ColorPalette> listColorOutsideWall = new ObservableCollection<ColorPalette>();
+
+        public ObservableCollection<ColorPalette> ListColorOutsideWall
+        {
+            get { return listColorOutsideWall; }
+            set { listColorOutsideWall = value; }
+        }
+
+
+        //Liste für die Innenwände
+        private ObservableCollection<ImageInherit> listInsideWall = new ObservableCollection<ImageInherit>();
+
+        public ObservableCollection<ImageInherit> ListInsideWall
+        {
+            get { return listInsideWall; }
+            set { listInsideWall = value; }
+        }
+        //Liste für die Farben der Innenwände
+        private ObservableCollection<ColorPalette> listColorInsideWall = new ObservableCollection<ColorPalette>();
+
+        public ObservableCollection<ColorPalette> ListColorInsideWall
+        {
+            get { return listColorInsideWall; }
+            set { listColorInsideWall = value; }
+        }
+
+        //Liste für die Dachtypen
+        private ObservableCollection<ImageInherit> listRoofType = new ObservableCollection<ImageInherit>();
+
+        public ObservableCollection<ImageInherit> ListRoofType
+        {
+            get { return listRoofType; }
+            set { listRoofType = value; }
+        }
+
+        //Liste fpr das Dachmaterial
+        private ObservableCollection<ImageInherit> listRoofMaterial = new ObservableCollection<ImageInherit>();
+
+        public ObservableCollection<ImageInherit> ListRoofMaterial
+        {
+            get { return listRoofMaterial; }
+            set { listRoofMaterial = value; }
+        }
+
+        //Liste für die Fenster
+        private ObservableCollection<ImageInherit> listWindows = new ObservableCollection<ImageInherit>();
+
+        public ObservableCollection<ImageInherit> ListWindows
+        {
+            get { return listWindows; }
+            set { listWindows = value; }
+        }
+
+        //Liste für die Farben der Fenster
+        private ObservableCollection<ColorPalette> listColorWindows = new ObservableCollection<ColorPalette>();
+
+        public ObservableCollection<ColorPalette> ListColorWindows
+        {
+            get { return listColorWindows; }
+            set { listColorWindows = value; OnChange("ListColorWindows"); }
+        }
+
+
+        //Liste für die Türen
+        private ObservableCollection<ImageInherit> listDoors = new ObservableCollection<ImageInherit>();
+
+        public ObservableCollection<ImageInherit> ListDoors
+        {
+            get { return listDoors; }
+            set { listDoors = value; }
+        }
+
+        //Liste für Farben der Türen
+        private ObservableCollection<ColorPalette> listColorDoors = new ObservableCollection<ColorPalette>();
+
+        public ObservableCollection<ColorPalette> ListColorDoors
+        {
+            get { return listColorDoors; }
+            set { listColorDoors = value; OnChange("ListColorDoors"); }
+        }
+
+
+
+        /// <summary>
+        /// Selected Items
+        /// Hier werden die Properties für die Selected Items festgelegt
+        /// </summary>
 
         //selected Anzahl der Stockwerk
         private int selectedItemFloor;
@@ -144,6 +249,97 @@ namespace Fallstudie.ViewModel
             set { selectedFloor = value; OnChange("SelectedFloor"); }
         }
 
+        //selected Außenwand
+        private ImageInherit selectedOutsideWall;
+
+        public ImageInherit SelectedOutsideWall
+        {
+            get { return selectedOutsideWall; }
+            set { selectedOutsideWall = value; OnChange("SelectedOutsideWall"); }
+        }
+            
+        //selected Farben Außenwände
+        private ColorPalette selectedColorOutsideWall;
+
+        public ColorPalette SelectedColorOutsideWall
+        {
+            get { return selectedColorOutsideWall; }
+            set { selectedColorOutsideWall = value; OnChange("SelectedColorOutsideWall"); }
+        }
+
+        //selected Innside
+        private ImageInherit selectedInsideWall;
+
+        public ImageInherit SelectedInsideWall
+        {
+            get { return selectedInsideWall; }
+            set { selectedInsideWall = value; OnChange("SelectedInsideWall"); }
+        }
+
+        //selected Farbe Innenwände
+        private ColorPalette selectedColorInsideWall;
+
+        public ColorPalette SelectedColorInsideWall
+        {
+            get { return selectedColorInsideWall; }
+            set { selectedColorInsideWall = value; OnChange("SelectedColorInsideWall"); }
+        }
+
+        //selected Dach Typ
+        private ImageInherit selectedRoofType;
+
+        public ImageInherit SelectedRoofType
+        {
+            get { return selectedRoofType; }
+            set { selectedRoofType = value; OnChange("SelectedRoofType"); }
+        }
+
+        //selected Dach Typ
+        private ImageInherit selectedRoofMaterial;
+
+        public ImageInherit SelectedRoofMaterial
+        {
+            get { return selectedRoofMaterial; }
+            set { selectedRoofMaterial = value; OnChange("SelectedRoofMaterial"); }
+        }
+
+        //Selected Fenster
+        private ImageInherit selectedWindow;
+
+        public ImageInherit SelectedWindow
+        {
+            get { return selectedWindow; }
+            set { selectedWindow = value; OnChange("SelectedWindow"); }
+        }
+
+        //selected Farbe für Fenster
+        private ColorPalette selectedColorWindow;
+
+        public ColorPalette SelectedColorWindow
+        {
+            get { return selectedColorWindow; }
+            set { selectedColorWindow = value; OnChange("SelectedColorWindow"); }
+        }
+
+
+        //Selected Tür
+        private ImageInherit selectedDoor;
+
+        public ImageInherit SelectedDoor
+        {
+            get { return selectedDoor; }
+            set { selectedDoor = value; OnChange("SelectedDoor"); }
+        }
+
+        //selected Farbe für Türen
+        private ColorPalette selectedColorDoor;
+
+        public ColorPalette SelectedColorDoor
+        {
+            get { return selectedColorDoor; }
+            set { selectedColorDoor = value; OnChange("SelectedColorDoor"); }
+        }
+
 
         /// <summary>
         /// COMMANDS
@@ -157,8 +353,12 @@ namespace Fallstudie.ViewModel
         public RelayCommand ButtonForwardChooseHouse { get; set; }
         //Leitet den User zu Schritt 4
         public RelayCommand ButtonForwardChoosePlot { get; set; }
-
+        //Leitet den User zu Schritt 5 -> Wand
         public RelayCommand ButtonForwardChooseWall { get; set; }
+        //Leitet den User zu Schritt 6 -> Dach
+        public RelayCommand ButtonForwardChooseRoof { get; set; }
+        //Leitet den User zu Schritt 7 -> Fenster und Türen
+        public RelayCommand ButtonForwardChooseWindowsDoors { get; set; }
 
         public MainViewModel()
         {
@@ -180,6 +380,8 @@ namespace Fallstudie.ViewModel
             NumberFloors.Add(1);
             NumberFloors.Add(2);
 
+            
+
         }
 
         //Hier werden alle Buttons initialisiert
@@ -190,9 +392,11 @@ namespace Fallstudie.ViewModel
             ButtonForwardChooseHouse = new RelayCommand(ButtonForwardChooseHouseMethod);
             ButtonForwardChoosePlot = new RelayCommand(ButtonForwardChoosePlotMethod);
             ButtonForwardChooseWall = new RelayCommand(ButtonForwardChooseWallMethod);
+            ButtonForwardChooseRoof = new RelayCommand(ButtonForwardChooseRoofMethod);
+            ButtonForwardChooseWindowsDoors = new RelayCommand(ButtonForwardChooseWindowsDoorsMethod);
+
+
         }
-
-
 
         //Hier wird im Schritt 2 das Haus ausgewählt und auf Weiter geklickt
         private async void ButtonForwardChooseHouseMethod()
@@ -231,8 +435,7 @@ namespace Fallstudie.ViewModel
             }
         }
 
-        //Hier wird im Schritt 4 wird die Anzahl der Stockwerke und die Grundrisse
-        //ausgewählt und auf Weiter geklickt
+        //Hier wird weitergeleitet auf Schritt 5
         private void ButtonForwardChooseWallMethod()
         {
                 //var dialog = new MessageDialog("Id Grundstück: " + SelectedPlot.Image1.Name);
@@ -240,8 +443,115 @@ namespace Fallstudie.ViewModel
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt5Wand));
             if (selectedItemFloor != NumberOfFloorDB) TotalPrice += SelectedFloor.Price;
-            
+
+            //außenwände befüllen
+            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Holzwand", 1000));
+            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 1234, "Ziegel", 2000));
+            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus1.png", 1234, "Beton", 3000));
+
+            //farben der außenwände festlegen
+            ListColorOutsideWall.Add(new ColorPalette(Colors.Red));
+            ListColorOutsideWall.Add(new ColorPalette(Colors.Blue));
+            ListColorOutsideWall.Add(new ColorPalette(Colors.Yellow));
+            ListColorOutsideWall.Add(new ColorPalette(Colors.GreenYellow));
+            ListColorOutsideWall.Add(new ColorPalette(Colors.Khaki));
+
+
+            //innenwände wrden befüllt
+            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck1.png", 1234, "Holzwand", 1000));
+            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck2.png", 1234, "Rigipswand", 2000));
+            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck3.png", 1234, "Schallschutzsteinwand", 3000));
+
+            //farben für die Innenwände festlegen
+            ListColorInsideWall.Add(new ColorPalette(Colors.Green));
+            ListColorInsideWall.Add(new ColorPalette(Colors.White));
+            ListColorInsideWall.Add(new ColorPalette(Colors.Red));
+            ListColorInsideWall.Add(new ColorPalette(Colors.Yellow));
+            ListColorInsideWall.Add(new ColorPalette(Colors.Blue));
         }
+
+        //Hier wird weitergeleitet auf Schritt 6 
+        private async void ButtonForwardChooseRoofMethod()
+        {
+            
+            if (SelectedInsideWall != null && selectedOutsideWall != null)
+            {
+                TotalPrice += selectedOutsideWall.Price + selectedInsideWall.Price;
+                GetFrame();
+                a.Navigate(typeof(Pages.HKPages.Schritt6Dach));
+
+                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Pultdach", 2500));
+                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1111, "Satteldach", 3000));
+                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 121234, "Flachdach", 1000));
+
+
+                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Ziegel", 50));
+                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus1.png", 1111, "Beton", 18));
+                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 121234, "Aluminium", 90));
+                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus1.png", 121234, "Faserzementplatten", 30));
+
+            }
+            else
+            {
+                var dialog = new MessageDialog("Bitte wählen Sie den Typen der Außen- und Innenwand aus.");
+                await dialog.ShowAsync();
+            }
+
+        }
+
+        //Hier wird weitergeleitet auf Schritt 7
+        private async void ButtonForwardChooseWindowsDoorsMethod()
+        {
+            if(selectedRoofType != null && SelectedRoofMaterial != null)
+            {
+                TotalPrice += selectedRoofType.Price + SelectedRoofMaterial.Price;
+                GetFrame();
+                a.Navigate(typeof(Pages.HKPages.Schritt7FensterTueren));
+
+                //Fenster befüllen
+                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Rund", 100));
+                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 1234, "Trapez", 200));
+                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus1.png", 1234, "Einteilig", 300));
+                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Schwing", 100));
+                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 1234, "Zweiteilig", 200));
+
+                //farben der Fenster festlegen
+                ListColorWindows.Add(new ColorPalette(Colors.Blue));
+                ListColorWindows.Add(new ColorPalette(Colors.White));
+                ListColorWindows.Add(new ColorPalette(Colors.Black));
+                ListColorWindows.Add(new ColorPalette(Colors.Gray));
+                ListColorWindows.Add(new ColorPalette(Colors.Brown));
+
+
+                //https://www.google.at/search?q=t%C3%BCrtypen&espv=2&biw=1234&bih=697&site=webhp&tbm=isch&imgil=4tESwMuVZodcAM%253A%253BYQbax1ae5UEJHM%253Bhttp%25253A%25252F%25252Fschoener-bauen24.de%25252Fzimmertueren%25252Fweisslack-tueren%25252Fcomo%25252Fweisslack-profiltueren-como-ckl1-3.html&source=iu&pf=m&fir=4tESwMuVZodcAM%253A%252CYQbax1ae5UEJHM%252C_&usg=__kky6-adiiiEX9ZKiLXa76VjB9OY%3D&ved=0ahUKEwiqgdySwMrMAhVBXRQKHRsnAOsQyjcIJg&ei=8TMvV-rEG8G6UZvOgNgO#imgdii=meTtrzgnHqxTwM%3A%3BmeTtrzgnHqxTwM%3A%3BW6PTc72DPJYIxM%3A&imgrc=meTtrzgnHqxTwM%3A
+
+
+                //Türen befüllen
+                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Schiebetür", 100));
+                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 1234, "Villa", 200));
+                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus1.png", 1234, "Funktionstür", 300));
+                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Glas", 100));
+                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 1234, "Holz", 200));
+
+                //Türen ben der Fenster festlegen
+                ListColorDoors.Add(new ColorPalette(Colors.Brown));
+                ListColorDoors.Add(new ColorPalette(Colors.RosyBrown));
+                ListColorDoors.Add(new ColorPalette(Colors.SaddleBrown));
+                ListColorDoors.Add(new ColorPalette(Colors.SandyBrown));
+                ListColorDoors.Add(new ColorPalette(Colors.White));
+                ListColorDoors.Add(new ColorPalette(Colors.Gray));
+
+
+
+
+            }
+            else
+            {
+                var dialog = new MessageDialog("Bitte wählen Sie Fenster und Türen aus.");
+                await dialog.ShowAsync();
+            }
+        }
+
 
         //Hier wird die Frame die in MainPage angezeigt wird geladen
         private void GetFrame()

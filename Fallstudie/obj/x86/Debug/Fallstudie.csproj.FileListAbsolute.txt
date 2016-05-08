@@ -388,7 +388,6 @@ C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Syste
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\System.Xml.XDocument.dll
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\System.Xml.XmlDocument.dll
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\System.Xml.XmlSerializer.dll
-C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Fallstudie.csprojResolveAssemblyReference.cache
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\App.g.i.cs
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\App.g.cs
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\MainPage.g.i.cs
@@ -764,3 +763,14 @@ C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt5Wand.g.cs
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt5Wand.xaml
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt5Wand.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Fallstudie.csprojResolveAssemblyReference.cache
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Pages\HKPages\Schritt6Dach.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt6Dach.g.i.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt6Dach.g.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt6Dach.xaml
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt6Dach.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\bin\x86\Debug\Pages\HKPages\Schritt7FensterTueren.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt7FensterTueren.g.i.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt7FensterTueren.g.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt7FensterTueren.xaml
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt7FensterTueren.xbf
