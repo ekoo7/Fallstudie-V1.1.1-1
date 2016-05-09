@@ -111,7 +111,7 @@
 
                     <TextBlock Text="{Binding TotalPrice}"/>
 
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseRoof}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
+                    <Button Margin="20" Command="{Binding ButtonForwardChooseEnergie}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
                 </StackPanel>
 
                 <StackPanel >

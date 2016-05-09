@@ -1,12 +1,15 @@
 App.xbf
 MainPage.xbf
 Pages\HausKonfiguratorPage.xbf
+Pages\HKPages\Schritt10Aussenbereiche.xbf
 Pages\HKPages\Schritt2HausAuswahl.xbf
 Pages\HKPages\Schritt3Grundstueck.xbf
 Pages\HKPages\Schritt4Grundriss.xbf
 Pages\HKPages\Schritt5Wand.xbf
 Pages\HKPages\Schritt6Dach.xbf
 Pages\HKPages\Schritt7FensterTueren.xbf
+Pages\HKPages\Schritt8EnergyHeizung.xbf
+Pages\HKPages\Schritt9Zusatz.xbf
 Pages\KundenPage.xbf
 Pages\KundenPages\CreateCustomerPage.xbf
 Pages\pdfErstellenPage.xbf

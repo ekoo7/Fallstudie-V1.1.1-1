@@ -12,12 +12,24 @@
     <RootPropertyPathName Name="Lastname" />
     <RootPropertyPathName Name="Firstname" />
     <RootPropertyPathName Name="MSG" />
-    <RootPropertyPathName Name="ButtonForwardChooseHouse" />
+    <RootPropertyPathName Name="ButtonForwardChooseRoof" />
     <RootPropertyPathName Name="TotalPrice" />
-    <RootPropertyPathName Name="SelectedHouse" />
+    <RootPropertyPathName Name="SelectedFence" />
     <RootPropertyPathName Name="Price" />
-    <RootPropertyPathName Name="ImagesHouse" />
+    <RootPropertyPathName Name="SelectedColorFence" />
+    <RootPropertyPathName Name="Value" />
+    <RootPropertyPathName Name="Description" />
+    <RootPropertyPathName Name="SelectedPool" />
+    <RootPropertyPathName Name="ListColorFence" />
+    <RootPropertyPathName Name="Color" />
+    <RootPropertyPathName Name="ListFence" />
     <RootPropertyPathName Name="SourceImage" />
+    <RootPropertyPathName Name="ListPools" />
+    <RootPropertyPathName Name="NumberPoolSizes" />
+    <RootPropertyPathName Name="SelectedPoolSize" />
+    <RootPropertyPathName Name="ButtonForwardChooseHouse" />
+    <RootPropertyPathName Name="SelectedHouse" />
+    <RootPropertyPathName Name="ImagesHouse" />
     <RootPropertyPathName Name="ButtonForwardChoosePlot" />
     <RootPropertyPathName Name="SelectedPlot" />
     <RootPropertyPathName Name="ImagesPlot" />
@@ -25,17 +37,13 @@
     <RootPropertyPathName Name="SelectedFloor" />
     <RootPropertyPathName Name="FloorsGroundPlot" />
     <RootPropertyPathName Name="ButtonDrawSketch" />
-    <RootPropertyPathName Name="Description" />
     <RootPropertyPathName Name="NumberFloors" />
     <RootPropertyPathName Name="SelectedItemFloor" />
-    <RootPropertyPathName Name="ButtonForwardChooseRoof" />
     <RootPropertyPathName Name="SelectedInsideWall" />
     <RootPropertyPathName Name="SelectedColorInsideWall" />
-    <RootPropertyPathName Name="Value" />
     <RootPropertyPathName Name="SelectedOutsideWall" />
     <RootPropertyPathName Name="SelectedColorOutsideWall" />
     <RootPropertyPathName Name="ListColorInsideWall" />
-    <RootPropertyPathName Name="Color" />
     <RootPropertyPathName Name="ListInsideWall" />
     <RootPropertyPathName Name="ListColorOutsideWall" />
     <RootPropertyPathName Name="ListOutsideWall" />
@@ -44,6 +52,7 @@
     <RootPropertyPathName Name="SelectedRoofType" />
     <RootPropertyPathName Name="ListRoofMaterial" />
     <RootPropertyPathName Name="ListRoofType" />
+    <RootPropertyPathName Name="ButtonForwardChooseEnergie" />
     <RootPropertyPathName Name="SelectedDoor" />
     <RootPropertyPathName Name="SelectedColorDoor" />
     <RootPropertyPathName Name="SelectedWindow" />
@@ -52,6 +61,17 @@
     <RootPropertyPathName Name="ListDoors" />
     <RootPropertyPathName Name="ListColorWindows" />
     <RootPropertyPathName Name="ListWindows" />
+    <RootPropertyPathName Name="ButtonForwardChooseAddition" />
+    <RootPropertyPathName Name="SelectedHeatingSystem" />
+    <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="SelectedEnergySystem" />
+    <RootPropertyPathName Name="ListHeatingSystem" />
+    <RootPropertyPathName Name="ListEnergySystem" />
+    <RootPropertyPathName Name="ButtonForwardChooseOutsideArea" />
+    <RootPropertyPathName Name="SelectedChimney" />
+    <RootPropertyPathName Name="ListChimneys" />
+    <RootPropertyPathName Name="NumberSockets" />
+    <RootPropertyPathName Name="SelectedSocket" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -154,23 +174,11 @@
       <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
-      <RootProperty Name="Name" />
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Value" />
+      <RootProperty Name="Name" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Image">
-      <RootProperty Name="Source" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
-    </RootType>
-    <RootType FullName="Fallstudie.Pages.HKPages.Schritt2HausAuswahl" />
-    <RootType FullName="Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="SelectedItem" />
-    </RootType>
-    <RootType FullName="Fallstudie.Pages.HKPages.Schritt4Grundriss" />
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
       <RootProperty Name="Background" />
       <RootProperty Name="Child" />
@@ -180,9 +188,25 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Fill" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Image">
+      <RootProperty Name="Source" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="SelectedItem" />
+      <RootProperty Name="ItemTemplate" />
+    </RootType>
+    <RootType FullName="Fallstudie.Pages.HKPages.Schritt10Aussenbereiche" />
+    <RootType FullName="Fallstudie.Pages.HKPages.Schritt2HausAuswahl" />
+    <RootType FullName="Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl" />
+    <RootType FullName="Fallstudie.Pages.HKPages.Schritt4Grundriss" />
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt5Wand" />
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt6Dach" />
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt7FensterTueren" />
+    <RootType FullName="Fallstudie.Pages.HKPages.Schritt8EnergyHeizung" />
+    <RootType FullName="Fallstudie.Pages.HKPages.Schritt9Zusatz" />
     <RootType FullName="Fallstudie.Pages.KundenPage" />
     <RootType FullName="Fallstudie.Pages.KundenPages.CreateCustomerPage" />
     <RootType FullName="Fallstudie.Pages.pdfErstellenPage" />

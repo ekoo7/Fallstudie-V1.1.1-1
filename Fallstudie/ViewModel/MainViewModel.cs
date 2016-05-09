@@ -192,6 +192,79 @@ namespace Fallstudie.ViewModel
             get { return listColorDoors; }
             set { listColorDoors = value; OnChange("ListColorDoors"); }
         }
+
+        //Liste für die Energiesysteme
+        private ObservableCollection<EHSystem> listEnergySystem = new ObservableCollection<EHSystem>();
+
+        public ObservableCollection<EHSystem> ListEnergySystem
+        {
+            get { return listEnergySystem; }
+            set { listEnergySystem = value; }
+        }
+
+        //Liste für die Heizungssysteme
+        private ObservableCollection<EHSystem> listHeatingSystem = new ObservableCollection<EHSystem>();
+
+        public ObservableCollection<EHSystem> ListHeatingSystem
+        {
+            get { return listHeatingSystem; }
+            set { listHeatingSystem = value; }
+        }
+
+        //Liste für Anzahl der Steckdosen
+        private ObservableCollection<int> numberSockets = new ObservableCollection<int>();
+
+        public ObservableCollection<int> NumberSockets
+        {
+            get { return numberSockets; }
+            set { numberSockets = value; }
+        }
+
+        //Liste für die Kamine
+        private ObservableCollection<ImageInherit> listChimneys = new ObservableCollection<ImageInherit>();
+
+        public ObservableCollection<ImageInherit> ListChimneys
+        {
+            get { return listChimneys; }
+            set { listChimneys = value; }
+        }
+
+        //Liste für die Quadratmeter der Pools
+        private ObservableCollection<int> numberPoolSizes = new ObservableCollection<int>();
+
+        public ObservableCollection<int> NumberPoolSizes
+        {
+            get { return numberPoolSizes; }
+            set { numberPoolSizes = value; }
+        }
+
+        //Liste der SwimmingPools
+        private ObservableCollection<ImageInherit> listPools = new ObservableCollection<ImageInherit>();
+
+        public ObservableCollection<ImageInherit> ListPools
+        {
+            get { return listPools; }
+            set { listPools = value; }
+        }
+
+        //Liste der Zäune
+        private ObservableCollection<ImageInherit> listFence = new ObservableCollection<ImageInherit>();
+
+        public ObservableCollection<ImageInherit> ListFence
+        {
+            get { return listFence; }
+            set { listFence = value; }
+        }
+
+        //Liste für die Farben der Zäune
+        private ObservableCollection<ColorPalette> listColorFence = new ObservableCollection<ColorPalette>();
+
+        public ObservableCollection<ColorPalette> ListColorFence
+        {
+            get { return listColorFence; }
+            set { listColorFence = value; }
+        }
+
         #endregion
 
         #region Selected Items
@@ -326,6 +399,80 @@ namespace Fallstudie.ViewModel
             get { return selectedColorDoor; }
             set { selectedColorDoor = value; OnChange("SelectedColorDoor"); }
         }
+
+        //selected Energiesystem
+        private EHSystem selectedEnergySystem;
+
+        public EHSystem SelectedEnergySystem
+        {
+            get { return selectedEnergySystem; }
+            set { selectedEnergySystem = value; OnChange("SelectedEnergySystem"); }
+        }
+
+        //selected Heizungssystem
+        private EHSystem selectedHeatingSystem;
+
+        public EHSystem SelectedHeatingSystem
+        {
+            get { return selectedHeatingSystem; }
+            set { selectedHeatingSystem = value; OnChange("SelectedHeatingSystem"); }
+        }
+
+        //selected Anzahl der Steckdosen
+        private int selectedSocket;
+
+        public int SelectedSocket
+        {
+            get { return selectedSocket; }
+            set { selectedSocket = value; OnChange("SelectedSocket"); }
+        }
+
+        //selected Kamin
+        private ImageInherit selectedChimney;
+
+        public ImageInherit SelectedChimney
+        {
+            get { return selectedChimney; }
+            set { selectedChimney = value; OnChange("SelectedChimney"); }
+        }
+
+        //selected Größen für die Pools
+        private int selectedPoolSize;
+
+        public int SelectedPoolSize
+        {
+            get { return selectedPoolSize; }
+            set { selectedPoolSize = value; OnChange("SelectedPoolSize"); }
+        }
+
+        //selected Pool
+        private ImageInherit selectedPool;
+
+        public ImageInherit SelectedPool
+        {
+            get { return selectedPool; }
+            set { selectedPool = value; OnChange("SelectedPool"); }
+        }
+
+        //selected Zaun
+        private ImageInherit selectedFence;
+
+        public ImageInherit SelectedFence
+        {
+            get { return selectedFence; }
+            set { selectedFence = value; OnChange("SelectedFence"); }
+        }
+
+        //selected Farbe Zaun
+        private ColorPalette selectedColorFence;
+
+        public ColorPalette SelectedColorFence
+        {
+            get { return selectedColorFence; }
+            set { selectedColorFence = value; OnChange("SelectedColorFence"); }
+        }
+
+
         #endregion
 
         #region Commands
@@ -343,6 +490,13 @@ namespace Fallstudie.ViewModel
         public RelayCommand ButtonForwardChooseRoof { get; set; }
         //Leitet den User zu Schritt 7 -> Fenster und Türen
         public RelayCommand ButtonForwardChooseWindowsDoors { get; set; }
+        //Leitet den User zu Schritt 8 -> Energy und Heizung
+        public RelayCommand ButtonForwardChooseEnergie { get; set; }
+        //Leitet den User zu Schritt 9 -> ElektroInstallaiton und Kamin
+        public RelayCommand ButtonForwardChooseAddition { get; set; }
+        //Leitet den User zu Schritt 10 -> Außenbereich definieren
+        public RelayCommand ButtonForwardChooseOutsideArea { get; set; }
+
         #endregion
 
         #endregion
@@ -366,7 +520,11 @@ namespace Fallstudie.ViewModel
             ButtonForwardChooseWall = new RelayCommand(ButtonForwardChooseWallMethod);
             ButtonForwardChooseRoof = new RelayCommand(ButtonForwardChooseRoofMethod);
             ButtonForwardChooseWindowsDoors = new RelayCommand(ButtonForwardChooseWindowsDoorsMethod);
+            ButtonForwardChooseEnergie = new RelayCommand(ButtonForwardChooseEnergieMethod);
+            ButtonForwardChooseAddition = new RelayCommand(ButtonForwardChooseAdditionMethod);
+            ButtonForwardChooseOutsideArea = new RelayCommand(ButtonForwardChooseOutsideAreaMethod);
         }
+
 
         #region ForwardButtons
         //Hier wird weitergeleitet auf Schritt 2
@@ -508,6 +666,11 @@ namespace Fallstudie.ViewModel
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt7FensterTueren));
 
+                listWindows.Clear();
+                ListColorWindows.Clear();
+                ListDoors.Clear();
+                listColorDoors.Clear();
+
                 //Fenster befüllen
                 ListWindows.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Rundfenster.png", 1234, "Rund", 100));
                 ListWindows.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Trapezfenster.png", 1234, "Trapez", 200));
@@ -536,10 +699,124 @@ namespace Fallstudie.ViewModel
             }
             else
             {
+                var dialog = new MessageDialog("Bitte wählen Sie ein Dachtyp und ein Dachmaterial aus.");
+                await dialog.ShowAsync();
+            }
+        }
+
+        //Hier wird zum Schritt 8 weitergeleitet
+        private async void ButtonForwardChooseEnergieMethod()
+        {
+
+            if (SelectedWindow != null && SelectedDoor != null)
+            {
+                ListEnergySystem.Clear();
+                listHeatingSystem.Clear();
+
+                GetFrame();
+                a.Navigate(typeof(Pages.HKPages.Schritt8EnergyHeizung));
+
+                ListEnergySystem.Add(new EHSystem("Solar", 1200));
+                ListEnergySystem.Add(new EHSystem("Stromnetz", 0));
+
+                ListHeatingSystem.Add(new EHSystem("Gasheizung", 400));
+                ListHeatingSystem.Add(new EHSystem("Ölheizung", 200));
+                ListHeatingSystem.Add(new EHSystem("Pellet", 100));
+
+                totalPrice += SelectedWindow.Price + SelectedDoor.Price;
+            }
+            else
+            {
                 var dialog = new MessageDialog("Bitte wählen Sie Fenster und Türen aus.");
                 await dialog.ShowAsync();
             }
         }
+
+        //Hier wird zu Schritt 9 weiterleitet
+        private async void ButtonForwardChooseAdditionMethod()
+        {
+            if (SelectedEnergySystem != null && selectedHeatingSystem != null)
+            {
+                NumberSockets.Clear();
+                ListChimneys.Clear();
+
+                GetFrame();
+                a.Navigate(typeof(Pages.HKPages.Schritt9Zusatz));
+
+                totalPrice += SelectedEnergySystem.Price + selectedHeatingSystem.Price;
+
+                NumberSockets.Add(1);
+                NumberSockets.Add(2);
+                NumberSockets.Add(3);
+                NumberSockets.Add(4);
+                NumberSockets.Add(5);
+                NumberSockets.Add(6);
+                NumberSockets.Add(7);
+                NumberSockets.Add(8);
+                NumberSockets.Add(9);
+                NumberSockets.Add(10);
+
+                ListChimneys.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Schiebetür", 100));
+                ListChimneys.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Schiebetür", 200));
+                ListChimneys.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Schiebetür", 300));
+                ListChimneys.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Schiebetür", 400));
+
+
+
+            }
+            else
+            {
+                var dialog = new MessageDialog("Bitte wählen Sie ein Energie und ein Heizungssystem aus.");
+                await dialog.ShowAsync();
+            }
+        }
+
+
+        //Hier wird zu Schritt 10 weitergeleitet
+        private  void ButtonForwardChooseOutsideAreaMethod()
+        {
+            GetFrame();
+            a.Navigate(typeof(Pages.HKPages.Schritt10Aussenbereiche));
+
+            NumberPoolSizes.Clear();
+            ListPools.Clear();
+            ListFence.Clear();
+            ListColorFence.Clear();
+
+            NumberPoolSizes.Add(10);
+            NumberPoolSizes.Add(15);
+            NumberPoolSizes.Add(20);
+            NumberPoolSizes.Add(25);
+            NumberPoolSizes.Add(30);
+            NumberPoolSizes.Add(35);
+            NumberPoolSizes.Add(50);
+
+            ListPools.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Rund", 100));
+            ListPools.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Zwei Rundpoole", 200));
+            ListPools.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Eckig", 100));
+
+            ListFence.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Zaun 1", 100));
+            ListFence.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Zaun 2", 100));
+            ListFence.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Zaun 3", 300));
+
+            ListColorFence.Add(new ColorPalette(Colors.IndianRed));
+            ListColorFence.Add(new ColorPalette(Colors.Beige));
+            ListColorFence.Add(new ColorPalette(Colors.Black));
+
+            try
+            {
+                if (selectedChimney != null)
+                    TotalPrice += selectedChimney.Price;
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            
+        }
+
+
         #endregion
 
 
