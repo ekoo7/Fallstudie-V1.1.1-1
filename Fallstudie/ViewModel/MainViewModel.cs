@@ -16,12 +16,10 @@ namespace Fallstudie.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        #region PROPERTIES
 
-        /// <summary>
-        /// PROPERTIES
-        /// </summary>
-
-        //Preis für den gesammten
+        #region Variablen
+        //Der gesammte Preis
         private double totalPrice = 0;
 
         public double TotalPrice
@@ -39,8 +37,6 @@ namespace Fallstudie.ViewModel
             set { numberOfFloorDB = value; }
         }
 
-
-
         //Test Variable
         private string msg = "HausKonfigurator";
         public string MSG
@@ -49,13 +45,14 @@ namespace Fallstudie.ViewModel
             set { msg = value; }
         }
 
+        //Frame wird initialisiert - damit wir die Frame, wo alle Pages angezeigt werden haben
+        Frame a = new Frame();
 
-        /// <summary>
-        /// List Items
-        /// Hier werden die Properties für die Listen festgelegt
-        /// </summary>
-        
+        //StackPanel von Schritt2
+        StackPanel stackPanelS2 = new StackPanel();
+        #endregion
 
+        #region Listen
         //Customer die in der Liste gespeichert sind
         private ObservableCollection<Customer> customers = new ObservableCollection<Customer>();
         public ObservableCollection<Customer> Customers
@@ -71,12 +68,6 @@ namespace Fallstudie.ViewModel
             get { return selectedCustomerr; }
             set { selectedCustomerr = value; OnChange("SelectedCustomerr"); }
         }
-
-        //Frame wird initialisiert - damit wir die Frame, wo alle Pages angezeigt werden haben
-        Frame a = new Frame();
-
-        //StackPanel von Schritt2
-        StackPanel stackPanelS2 = new StackPanel();
 
         //Liste für Häuse aus der DB
         private ObservableCollection<ImageInherit> imagesHouse = new ObservableCollection<ImageInherit>();
@@ -99,9 +90,7 @@ namespace Fallstudie.ViewModel
         public ObservableCollection<int> NumberFloors
         {
             get { return numberFloors; }
-            set {
-                numberFloors = value;
-            }
+            set { numberFloors = value; }
         }
 
         //Die Liste für die Grundrisse der Stockwerke
@@ -203,38 +192,35 @@ namespace Fallstudie.ViewModel
             get { return listColorDoors; }
             set { listColorDoors = value; OnChange("ListColorDoors"); }
         }
+        #endregion
 
-
-
-        /// <summary>
-        /// Selected Items
-        /// Hier werden die Properties für die Selected Items festgelegt
-        /// </summary>
-
+        #region Selected Items
         //selected Anzahl der Stockwerk
         private int selectedItemFloor;
 
         public int SelectedItemFloor
         {
             get { return selectedItemFloor; }
-            set {
+            set
+            {
                 selectedItemFloor = value;
-                
                 ChooseGroundPlots();
                 selectedFloor = FloorsGroundPlot[0];
             }
         }
 
-
         //selected Haus
         private ImageInherit selectedHouse;
+
         public ImageInherit SelectedHouse
         {
             get { return selectedHouse; }
             set { selectedHouse = value; OnChange("SelectedHouse"); }
         }
+
         //selected Grundstück
         private ImageInherit selectedPlot;
+
         public ImageInherit SelectedPlot
         {
             get { return selectedPlot; }
@@ -243,6 +229,7 @@ namespace Fallstudie.ViewModel
 
         //selected Grundriss der Stockwerke
         private ImageInherit selectedFloor;
+
         public ImageInherit SelectedFloor
         {
             get { return selectedFloor; }
@@ -257,7 +244,7 @@ namespace Fallstudie.ViewModel
             get { return selectedOutsideWall; }
             set { selectedOutsideWall = value; OnChange("SelectedOutsideWall"); }
         }
-            
+
         //selected Farben Außenwände
         private ColorPalette selectedColorOutsideWall;
 
@@ -339,12 +326,9 @@ namespace Fallstudie.ViewModel
             get { return selectedColorDoor; }
             set { selectedColorDoor = value; OnChange("SelectedColorDoor"); }
         }
+        #endregion
 
-
-        /// <summary>
-        /// COMMANDS
-        /// </summary>
-
+        #region Commands
         //Leitet den User zu Schritt 2
         public RelayCommand ButtonForwardChooseCustomer { get; set; }
         //Leitet den User zu CreateCustomerPage
@@ -359,6 +343,9 @@ namespace Fallstudie.ViewModel
         public RelayCommand ButtonForwardChooseRoof { get; set; }
         //Leitet den User zu Schritt 7 -> Fenster und Türen
         public RelayCommand ButtonForwardChooseWindowsDoors { get; set; }
+        #endregion
+
+        #endregion
 
         public MainViewModel()
         {
@@ -367,38 +354,44 @@ namespace Fallstudie.ViewModel
             customers.Add(new Customer("Max", "Mustermann", 0, 0));
             customers.Add(new Customer("Danielo", "Pizzamento", 1, 2));
             customers.Add(new Customer("Fritz", "Immertoll", 1, 4));
-
-            ImagesHouse.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus1.png", 1111, 107000));
-            ImagesHouse.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 1222, 150000));
-            ImagesHouse.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1333, 210000));
-
-            ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck1.png", 2111, 80000));
-            ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck2.png", 2222, 90000));
-            ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck3.png", 2333, 99000));
-
-            NumberFloors.Add(0);
-            NumberFloors.Add(1);
-            NumberFloors.Add(2);
-
-            
-
         }
 
         //Hier werden alle Buttons initialisiert
         private void InitializeButtons()
         {
-            ButtonForwardChooseCustomer = new RelayCommand(ButtonForwardChooseCustomerClicked);
+            ButtonForwardChooseCustomer = new RelayCommand(ButtonForwardChooseCustomerMethod);
             NewCustomerButton = new RelayCommand(NewCustomerButtonMethod);
             ButtonForwardChooseHouse = new RelayCommand(ButtonForwardChooseHouseMethod);
             ButtonForwardChoosePlot = new RelayCommand(ButtonForwardChoosePlotMethod);
             ButtonForwardChooseWall = new RelayCommand(ButtonForwardChooseWallMethod);
             ButtonForwardChooseRoof = new RelayCommand(ButtonForwardChooseRoofMethod);
             ButtonForwardChooseWindowsDoors = new RelayCommand(ButtonForwardChooseWindowsDoorsMethod);
-
-
         }
 
-        //Hier wird im Schritt 2 das Haus ausgewählt und auf Weiter geklickt
+        #region ForwardButtons
+        //Hier wird weitergeleitet auf Schritt 2
+        private async void ButtonForwardChooseCustomerMethod()
+        {
+            if (selectedCustomerr != null)
+            {
+                //var dialog = new MessageDialog(SelectedCustomerr.Firstname);
+                //await dialog.ShowAsync();
+                GetFrame();
+                a.Navigate(typeof(Pages.HKPages.Schritt2HausAuswahl));
+                GetStackPanels();
+
+                ImagesHouse.Add(new ImageInherit("ms-appx:///Bilder/2Haeuser/Haus1.png", 1111, 107000));
+                ImagesHouse.Add(new ImageInherit("ms-appx:///Bilder/2Haeuser/Haus2.png", 1222, 150000));
+                ImagesHouse.Add(new ImageInherit("ms-appx:///Bilder/2Haeuser/Haus3.png", 1333, 210000));
+            }
+            else
+            {
+                var dialog = new MessageDialog("Bitte wählen Sie einen Kunden aus.");
+                await dialog.ShowAsync();
+            }
+        }
+
+        //Hier wird weitergeleitet auf Schritt 3
         private async void ButtonForwardChooseHouseMethod()
         {
             if (SelectedHouse != null)
@@ -408,6 +401,11 @@ namespace Fallstudie.ViewModel
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt3GrundstückAuswahl));
                 TotalPrice = SelectedHouse.Price;
+                
+                //Grundstückbilder werden angezeigt
+                ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/3Grundstuecke/Grundstueck1.png", 2111, 80000));
+                ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/3Grundstuecke/Grundstueck2.png", 2222, 90000));
+                ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/3Grundstuecke/Grundstueck3.png", 2333, 99000));
             }
             else
             {
@@ -416,7 +414,7 @@ namespace Fallstudie.ViewModel
             }
         }
 
-        //Hier wird im Schritt 3 das Grundstück ausgewählt und auf Weiter geklickt
+        //Hier wird weitergeleitet auf Schritt 4
         private async void ButtonForwardChoosePlotMethod()
         {
             if (SelectedHouse != null)
@@ -427,6 +425,11 @@ namespace Fallstudie.ViewModel
                 a.Navigate(typeof(Pages.HKPages.Schritt4Grundriss));
                 if(SelectedPlot != null)
                 TotalPrice += SelectedPlot.Price;
+
+                //Dropdown Stockwerke befüllen
+                NumberFloors.Add(0);
+                NumberFloors.Add(1);
+                NumberFloors.Add(2);
             }
             else
             {
@@ -438,16 +441,16 @@ namespace Fallstudie.ViewModel
         //Hier wird weitergeleitet auf Schritt 5
         private void ButtonForwardChooseWallMethod()
         {
-                //var dialog = new MessageDialog("Id Grundstück: " + SelectedPlot.Image1.Name);
-                //await dialog.ShowAsync();
-                GetFrame();
-                a.Navigate(typeof(Pages.HKPages.Schritt5Wand));
+            //var dialog = new MessageDialog("Id Grundstück: " + SelectedPlot.Image1.Name);
+            //await dialog.ShowAsync();
+            GetFrame();
+            a.Navigate(typeof(Pages.HKPages.Schritt5Wand));
             if (selectedItemFloor != NumberOfFloorDB) TotalPrice += SelectedFloor.Price;
 
             //außenwände befüllen
-            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Holzwand", 1000));
-            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 1234, "Ziegel", 2000));
-            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus1.png", 1234, "Beton", 3000));
+            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/AußenHolz.png", 1234, "Holzwand", 1000));
+            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/AußenZiegel.png", 1234, "Ziegel", 2000));
+            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/AußenBeton.png", 1234, "Beton", 3000));
 
             //farben der außenwände festlegen
             ListColorOutsideWall.Add(new ColorPalette(Colors.Red));
@@ -457,10 +460,10 @@ namespace Fallstudie.ViewModel
             ListColorOutsideWall.Add(new ColorPalette(Colors.Khaki));
 
 
-            //innenwände wrden befüllt
-            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck1.png", 1234, "Holzwand", 1000));
-            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck2.png", 1234, "Rigipswand", 2000));
-            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck3.png", 1234, "Schallschutzsteinwand", 3000));
+            //innenwände werden befüllt
+            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/InnenHolz.png", 1234, "Holzwand", 1000));
+            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/InnenRigips.png", 1234, "Rigipswand", 2000));
+            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/InnenZiegel.png", 1234, "Ziegelwand", 3000));
 
             //farben für die Innenwände festlegen
             ListColorInsideWall.Add(new ColorPalette(Colors.Green));
@@ -473,47 +476,43 @@ namespace Fallstudie.ViewModel
         //Hier wird weitergeleitet auf Schritt 6 
         private async void ButtonForwardChooseRoofMethod()
         {
-            
             if (SelectedInsideWall != null && selectedOutsideWall != null)
             {
                 TotalPrice += selectedOutsideWall.Price + selectedInsideWall.Price;
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt6Dach));
 
-                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Pultdach", 2500));
-                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1111, "Satteldach", 3000));
-                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 121234, "Flachdach", 1000));
+                //Dachtypen werden befüllt
+                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Pultdach.png", 1234, "Pultdach", 2500));
+                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Satteldach.png", 1111, "Satteldach", 3000));
+                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Flachdach.png", 121234, "Flachdach", 1000));
 
-
-                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Ziegel", 50));
-                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus1.png", 1111, "Beton", 18));
-                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 121234, "Aluminium", 90));
-                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus1.png", 121234, "Faserzementplatten", 30));
-
+                //Dachtmaterialien werden befüllt
+                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Ziegeldach.png", 1234, "Ziegel", 50));
+                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Aluminiumdach.png", 121234, "Aluminium", 90));
+                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Faserzementplattendach.png", 121234, "Faserzementplatten", 30));
             }
             else
             {
                 var dialog = new MessageDialog("Bitte wählen Sie den Typen der Außen- und Innenwand aus.");
                 await dialog.ShowAsync();
             }
-
         }
 
         //Hier wird weitergeleitet auf Schritt 7
         private async void ButtonForwardChooseWindowsDoorsMethod()
         {
-            if(selectedRoofType != null && SelectedRoofMaterial != null)
+            if (selectedRoofType != null && SelectedRoofMaterial != null)
             {
                 TotalPrice += selectedRoofType.Price + SelectedRoofMaterial.Price;
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt7FensterTueren));
 
                 //Fenster befüllen
-                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Rund", 100));
-                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 1234, "Trapez", 200));
-                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus1.png", 1234, "Einteilig", 300));
-                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Schwing", 100));
-                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 1234, "Zweiteilig", 200));
+                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Rundfenster.png", 1234, "Rund", 100));
+                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Trapezfenster.png", 1234, "Trapez", 200));
+                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Einteilig.png", 1234, "Einteilig", 300));
+                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Zweiteilig.png", 1234, "Zweiteilig", 200));
 
                 //farben der Fenster festlegen
                 ListColorWindows.Add(new ColorPalette(Colors.Blue));
@@ -522,16 +521,10 @@ namespace Fallstudie.ViewModel
                 ListColorWindows.Add(new ColorPalette(Colors.Gray));
                 ListColorWindows.Add(new ColorPalette(Colors.Brown));
 
-
-                //https://www.google.at/search?q=t%C3%BCrtypen&espv=2&biw=1234&bih=697&site=webhp&tbm=isch&imgil=4tESwMuVZodcAM%253A%253BYQbax1ae5UEJHM%253Bhttp%25253A%25252F%25252Fschoener-bauen24.de%25252Fzimmertueren%25252Fweisslack-tueren%25252Fcomo%25252Fweisslack-profiltueren-como-ckl1-3.html&source=iu&pf=m&fir=4tESwMuVZodcAM%253A%252CYQbax1ae5UEJHM%252C_&usg=__kky6-adiiiEX9ZKiLXa76VjB9OY%3D&ved=0ahUKEwiqgdySwMrMAhVBXRQKHRsnAOsQyjcIJg&ei=8TMvV-rEG8G6UZvOgNgO#imgdii=meTtrzgnHqxTwM%3A%3BmeTtrzgnHqxTwM%3A%3BW6PTc72DPJYIxM%3A&imgrc=meTtrzgnHqxTwM%3A
-
-
                 //Türen befüllen
-                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Schiebetür", 100));
-                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 1234, "Villa", 200));
-                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus1.png", 1234, "Funktionstür", 300));
-                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus3.png", 1234, "Glas", 100));
-                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/Haeuser/Haus2.png", 1234, "Holz", 200));
+                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Schiebetür", 100));
+                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Glastür.png", 1234, "Glas", 100));
+                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Holztür.png", 1234, "Holz", 200));
 
                 //Türen ben der Fenster festlegen
                 ListColorDoors.Add(new ColorPalette(Colors.Brown));
@@ -540,10 +533,6 @@ namespace Fallstudie.ViewModel
                 ListColorDoors.Add(new ColorPalette(Colors.SandyBrown));
                 ListColorDoors.Add(new ColorPalette(Colors.White));
                 ListColorDoors.Add(new ColorPalette(Colors.Gray));
-
-
-
-
             }
             else
             {
@@ -551,6 +540,7 @@ namespace Fallstudie.ViewModel
                 await dialog.ShowAsync();
             }
         }
+        #endregion
 
 
         //Hier wird die Frame die in MainPage angezeigt wird geladen
@@ -572,45 +562,6 @@ namespace Fallstudie.ViewModel
             a.Navigate(typeof(Pages.KundenPages.CreateCustomerPage));
         }
 
-        //Hier wird angezegt, ob der User einen Customer selected hat oder nicht
-        private async void ButtonForwardChooseCustomerClicked()
-        {
-            if (selectedCustomerr != null)
-            {
-                //var dialog = new MessageDialog(SelectedCustomerr.Firstname);
-                //await dialog.ShowAsync();
-                GetFrame();
-                a.Navigate(typeof(Pages.HKPages.Schritt2HausAuswahl));
-                GetStackPanels();
-
-                /*
-                Image image1 = new Image();
-                image1.MaxWidth = 100;
-                BitmapImage bitmapImage = new BitmapImage();
-                Uri uri = new Uri("ms-appx:///Assets/StoreLogo.png");
-                bitmapImage.UriSource = uri;
-                image1.Source = bitmapImage;
-
-                Image image2 = new Image();
-                image2.MaxWidth = 100;
-                BitmapImage bitmapImage2 = new BitmapImage();
-                Uri uri2 = new Uri("ms-appx:///Assets/StoreLogo.png");
-                bitmapImage2.UriSource = uri2;
-                image2.Source = bitmapImage2;
-                image2.Name = "id1234223";
-                */
-
-                //var uriSource = new Uri(@"/FallstudieMenu;Fallstudie/Assets/StoreLogo.png", UriKind.Relative);
-                //stackPanelS2.Children.Add(image1);
-                //stackPanelS2.Children.Add(image2);
-            }
-            else
-            {
-                var dialog = new MessageDialog("Bitte wählen Sie einen Kunden aus.");
-                await dialog.ShowAsync();
-            }
-        }
-
         //wenn anzahl von stockwerken angeklickt wird -> anzeigen der Grundrisse
         public void ChooseGroundPlots()
         {
@@ -618,18 +569,15 @@ namespace Fallstudie.ViewModel
             //Anzahl der Stockwerke vom ausgewähltem haus aus der DB
             numberOfFloorDB = 1;
 
-            FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck1.png", 1111, "Erdgeschoss", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
+            FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/4Grundirss/GrundrissErdgeschoss.png", 1111, "Erdgeschoss", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
             if (SelectedItemFloor == 1 || SelectedItemFloor == 2)
             {
-                FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck2.png", 1122,  "Stockwerk 1", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
+                FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/4Grundirss/GrundrissStock1.png", 1122,  "Stockwerk 1", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
             }
             if(SelectedItemFloor == 2)
             {
-                FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/Grundstuecke/Grundstueck3.png", 1131, "Stockwerk 2", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
+                FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/4Grundirss/GrundrissStock2.png", 1131, "Stockwerk 2", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
             }
-
-            
-
             OnChange("FloorsGroundPlot");
         }
         private void ButtonDrawSketchMethod()
@@ -639,10 +587,7 @@ namespace Fallstudie.ViewModel
 
 
 
-        /// <summary>
-        /// Test Sachen
-        /// </summary>
-        /// 
+        #region Test Methoden
 
         //MessageBox wird angezeigt -> zum Testen
         private async void AsynchMethod()
@@ -673,5 +618,6 @@ namespace Fallstudie.ViewModel
             a.Navigate(typeof(Pages.KundenPage));
         }
         */
+        #endregion
     }
 }

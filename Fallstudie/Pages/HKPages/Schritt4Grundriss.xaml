@@ -7,56 +7,57 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding Main, Source={StaticResource Locator}}">
+    <ScrollViewer>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="49*" />
+                <RowDefinition Height="311*"/>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="49*" />
-            <RowDefinition Height="311*"/>
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0">
-            <TextBlock Text="{Binding SelectedCustomerr.Lastname}"></TextBlock>
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="{Binding SelectedCustomerr.Lastname}"></TextBlock>
             
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Name="StackSchritt4" Orientation="Horizontal">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Anzahl der Stockwerke"></TextBlock>
-            
-            
-                <ComboBox ItemsSource="{Binding NumberFloors}" SelectedItem="{Binding SelectedItemFloor, Mode=TwoWay}" />
-            </StackPanel>
-            <ListView ItemsSource="{Binding FloorsGroundPlot}" 
-                          SelectedItem="{Binding SelectedFloor, Mode=TwoWay}"
-                          IsItemClickEnabled="False" SelectionMode="Single"
-                          IsSynchronizedWithCurrentItem="False"
-                          Height="Auto"
-                          >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{Binding Description}"></TextBlock>
-                            <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
-                            <Button Content="Umriss zeichnen" Command="{Binding ButtonDrawSketch}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackPanel>
-
-        <StackPanel Grid.Row="2">
-            <StackPanel  >
-                <TextBlock Text="{Binding SelectedFloor.Price, Mode=TwoWay}"/>
-                <TextBlock Text="{Binding TotalPrice}"/>
-
-                <Button Margin="20" Command="{Binding ButtonForwardChooseWall}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
             </StackPanel>
 
-
-            <StackPanel >
-                <ProgressBar Height="26" Margin="10 0 10 10" Value="30"/>
+            <StackPanel Grid.Row="1" Name="StackSchritt4" Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Anzahl der Stockwerke"></TextBlock>
+            
+            
+                    <ComboBox ItemsSource="{Binding NumberFloors}" SelectedItem="{Binding SelectedItemFloor, Mode=TwoWay}" />
+                </StackPanel>
+                <ListView ItemsSource="{Binding FloorsGroundPlot}" 
+                              SelectedItem="{Binding SelectedFloor, Mode=TwoWay}"
+                              IsItemClickEnabled="False" SelectionMode="Single"
+                              IsSynchronizedWithCurrentItem="False"
+                              Height="Auto"
+                              >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Description}"></TextBlock>
+                                <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
+                                <Button Content="Umriss zeichnen" Command="{Binding ButtonDrawSketch}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackPanel>
-        </StackPanel>
-    </Grid>
+
+            <StackPanel Grid.Row="2">
+                <StackPanel  >
+                    <TextBlock Text="{Binding SelectedFloor.Price, Mode=TwoWay}"/>
+                    <TextBlock Text="{Binding TotalPrice}"/>
+
+                    <Button Margin="20" Command="{Binding ButtonForwardChooseWall}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
+                </StackPanel>
+
+
+                <StackPanel >
+                    <ProgressBar Height="26" Margin="10 0 10 10" Value="30"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

@@ -10,7 +10,6 @@
 
     <ScrollViewer>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="49*" />
                 <RowDefinition Height="622*"/>
@@ -19,9 +18,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0">
-
                 <TextBlock Text="{Binding SelectedCustomerr.Lastname}"></TextBlock>
-
             </StackPanel>
 
             <!--Fenster-->
@@ -36,7 +33,6 @@
                           IsSynchronizedWithCurrentItem="False"
                           Height="Auto"
                           >
-
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
@@ -48,14 +44,12 @@
                     </ListView>
 
                     <!--Fenster Farben-->
-
                     <ListView ItemsSource="{Binding ListColorWindows}" 
                           SelectedItem="{Binding SelectedColorWindow, Mode=TwoWay}"
                           IsItemClickEnabled="False" SelectionMode="Single"
                           IsSynchronizedWithCurrentItem="False"
                           Height="Auto"
                           >
-
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Rectangle Height="45" Width="45" Fill="{Binding Color}"/>
@@ -64,8 +58,6 @@
                     </ListView>
                 </StackPanel>
             </StackPanel>
-
-
 
             <!--Türen-->
             <StackPanel Grid.Row="2" Name="StackSchritt5_Innenwand" Orientation="Vertical">
@@ -79,7 +71,6 @@
                           IsSynchronizedWithCurrentItem="False"
                           Height="Auto"
                           >
-
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
@@ -91,14 +82,12 @@
                     </ListView>
 
                     <!--Farben-->
-
                     <ListView ItemsSource="{Binding ListColorDoors}" 
                           SelectedItem="{Binding SelectedColorDoor, Mode=TwoWay}"
                           IsItemClickEnabled="False" SelectionMode="Single"
                           IsSynchronizedWithCurrentItem="False"
                           Height="Auto"
                           >
-
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Rectangle Height="45" Width="45" Fill="{Binding Color}"/>
@@ -109,7 +98,7 @@
             </StackPanel>
 
             <StackPanel Grid.Row="3">
-                <StackPanel  >
+                <StackPanel>
                     <TextBlock Text="Fenster"/>
                     <TextBlock Text="{Binding SelectedWindow.Description, Mode=TwoWay}"/>
                     <TextBlock Text="{Binding SelectedColorWindow.Value, Mode=TwoWay}"/>
@@ -125,14 +114,11 @@
                     <Button Margin="20" Command="{Binding ButtonForwardChooseRoof}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
                 </StackPanel>
 
-
                 <StackPanel >
                     <ProgressBar Height="26" Margin="10 0 10 10" Value="60"/>
                 </StackPanel>
             </StackPanel>
             <ScrollViewer HorizontalAlignment="Left" Height="100" Margin="667,125,-127,-41" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
-
-
 
         </Grid>
     </ScrollViewer>

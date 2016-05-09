@@ -10,7 +10,6 @@
 
     <ScrollViewer>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="49*" />
                 <RowDefinition Height="622*"/>
@@ -19,9 +18,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0">
-
                 <TextBlock Text="{Binding SelectedCustomerr.Lastname}"></TextBlock>
-
             </StackPanel>
 
             <!--Dachtyp-->
@@ -36,7 +33,6 @@
                           IsSynchronizedWithCurrentItem="False"
                           Height="Auto"
                           >
-
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
@@ -48,8 +44,6 @@
                     </ListView>
                 </StackPanel>
             </StackPanel>
-
-
 
             <!--Material-->
             <StackPanel Grid.Row="2" Name="StackSchritt6_Material" Orientation="Vertical">
@@ -63,7 +57,6 @@
                           IsSynchronizedWithCurrentItem="False"
                           Height="Auto"
                           >
-
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
@@ -89,14 +82,11 @@
                     <Button Margin="20" Command="{Binding ButtonForwardChooseWindowsDoors}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
                 </StackPanel>
 
-
                 <StackPanel >
                     <ProgressBar Height="26" Margin="10 0 10 10" Value="50"/>
                 </StackPanel>
             </StackPanel>
             <ScrollViewer HorizontalAlignment="Left" Height="100" Margin="667,125,-127,-41" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
-
-
 
         </Grid>
     </ScrollViewer>

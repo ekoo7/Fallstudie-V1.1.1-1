@@ -7,48 +7,49 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding Main, Source={StaticResource Locator}}">
+    <ScrollViewer>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="49*" />
+                <RowDefinition Height="311*"/>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="49*" />
-            <RowDefinition Height="311*"/>
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0">
-            <TextBlock Text="{Binding SelectedCustomerr.Lastname}"></TextBlock>
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Name="StackSchritt3" Orientation="Horizontal">
-            <ListView ItemsSource="{Binding ImagesPlot}" 
-                          SelectedItem="{Binding SelectedPlot, Mode=TwoWay}"
-                          IsItemClickEnabled="False" SelectionMode="Single"
-                          IsSynchronizedWithCurrentItem="False"
-                          Height="Auto"
-                          >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
-                            <TextBlock Text="{Binding SourceImage}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button FontSize="36" Content="Upload"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="2">
-            <StackPanel  >
-                <TextBlock Text="{Binding SelectedPlot.Price}"/>
-                <TextBlock Text="{Binding TotalPrice}"/>
-                <Button Margin="20" Command="{Binding ButtonForwardChoosePlot}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="{Binding SelectedCustomerr.Lastname}"></TextBlock>
             </StackPanel>
 
-
-            <StackPanel >
-                <ProgressBar Height="26" Margin="10 0 10 10" Value="20"/>
+            <StackPanel Grid.Row="1" Name="StackSchritt3" Orientation="Horizontal" HorizontalAlignment="Center">
+                <ListView ItemsSource="{Binding ImagesPlot}" 
+                              SelectedItem="{Binding SelectedPlot, Mode=TwoWay}"
+                              IsItemClickEnabled="False" SelectionMode="Single"
+                              IsSynchronizedWithCurrentItem="False"
+                              Height="Auto"
+                              >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
+                                <TextBlock Text="{Binding SourceImage}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button FontSize="36" Content="Upload"/>
             </StackPanel>
-        </StackPanel>
-    </Grid>
+
+            <StackPanel Grid.Row="2">
+                <StackPanel  >
+                    <TextBlock Text="{Binding SelectedPlot.Price}"/>
+                    <TextBlock Text="{Binding TotalPrice}"/>
+                    <Button Margin="20" Command="{Binding ButtonForwardChoosePlot}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
+                </StackPanel>
+
+
+                <StackPanel >
+                    <ProgressBar Height="26" Margin="10 0 10 10" Value="20"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>
