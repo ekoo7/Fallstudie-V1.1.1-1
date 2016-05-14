@@ -23,7 +23,7 @@
 
             </StackPanel>
 
-            <StackPanel Grid.Row="1" Name="StackSchritt9Steckdosen" Orientation="Vertical" HorizontalAlignment="Center">
+            <StackPanel x:ConnectionId='1' Grid.Row="1" Name="StackSchritt9Steckdosen" Orientation="Vertical" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Elektrische Installation"></TextBlock>
 
@@ -33,7 +33,7 @@
             </StackPanel>
 
             <!--Kamin-->
-            <StackPanel Grid.Row="2" Name="StackSchritt9_Kamin" Orientation="Vertical">
+            <StackPanel x:ConnectionId='2' Grid.Row="2" Name="StackSchritt9_Kamin" Orientation="Vertical">
                 <Border Background="#50BFB4">
                     <TextBlock Width="100" FontWeight="Bold" Text="Typ"></TextBlock>
                 </Border>
@@ -73,3 +73,4 @@
         </Grid>
     </ScrollViewer>
 </Page>
+

@@ -132,7 +132,7 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[22];
+            _typeNameTable = new string[23];
             _typeNameTable[0] = "Fallstudie.ViewModel.ViewModelLocator";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "Fallstudie.ViewModel.MainViewModel";
@@ -150,13 +150,14 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
             _typeNameTable[14] = "Fallstudie.Pages.HKPages.Schritt7FensterTueren";
             _typeNameTable[15] = "Fallstudie.Pages.HKPages.Schritt8EnergyHeizung";
             _typeNameTable[16] = "Fallstudie.Pages.HKPages.Schritt9Zusatz";
-            _typeNameTable[17] = "Fallstudie.Pages.KundenPage";
-            _typeNameTable[18] = "Fallstudie.Pages.KundenPages.CreateCustomerPage";
-            _typeNameTable[19] = "Fallstudie.Pages.pdfErstellenPage";
-            _typeNameTable[20] = "Fallstudie.Pages.ProjektePage";
-            _typeNameTable[21] = "Fallstudie.Pages.TerminePage";
+            _typeNameTable[17] = "Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung";
+            _typeNameTable[18] = "Fallstudie.Pages.KundenPage";
+            _typeNameTable[19] = "Fallstudie.Pages.KundenPages.CreateCustomerPage";
+            _typeNameTable[20] = "Fallstudie.Pages.pdfErstellenPage";
+            _typeNameTable[21] = "Fallstudie.Pages.ProjektePage";
+            _typeNameTable[22] = "Fallstudie.Pages.TerminePage";
 
-            _typeTable = new global::System.Type[22];
+            _typeTable = new global::System.Type[23];
             _typeTable[0] = typeof(global::Fallstudie.ViewModel.ViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::Fallstudie.ViewModel.MainViewModel);
@@ -174,11 +175,12 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
             _typeTable[14] = typeof(global::Fallstudie.Pages.HKPages.Schritt7FensterTueren);
             _typeTable[15] = typeof(global::Fallstudie.Pages.HKPages.Schritt8EnergyHeizung);
             _typeTable[16] = typeof(global::Fallstudie.Pages.HKPages.Schritt9Zusatz);
-            _typeTable[17] = typeof(global::Fallstudie.Pages.KundenPage);
-            _typeTable[18] = typeof(global::Fallstudie.Pages.KundenPages.CreateCustomerPage);
-            _typeTable[19] = typeof(global::Fallstudie.Pages.pdfErstellenPage);
-            _typeTable[20] = typeof(global::Fallstudie.Pages.ProjektePage);
-            _typeTable[21] = typeof(global::Fallstudie.Pages.TerminePage);
+            _typeTable[17] = typeof(global::Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung);
+            _typeTable[18] = typeof(global::Fallstudie.Pages.KundenPage);
+            _typeTable[19] = typeof(global::Fallstudie.Pages.KundenPages.CreateCustomerPage);
+            _typeTable[20] = typeof(global::Fallstudie.Pages.pdfErstellenPage);
+            _typeTable[21] = typeof(global::Fallstudie.Pages.ProjektePage);
+            _typeTable[22] = typeof(global::Fallstudie.Pages.TerminePage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -227,11 +229,12 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
         private object Activate_14_Schritt7FensterTueren() { return new global::Fallstudie.Pages.HKPages.Schritt7FensterTueren(); }
         private object Activate_15_Schritt8EnergyHeizung() { return new global::Fallstudie.Pages.HKPages.Schritt8EnergyHeizung(); }
         private object Activate_16_Schritt9Zusatz() { return new global::Fallstudie.Pages.HKPages.Schritt9Zusatz(); }
-        private object Activate_17_KundenPage() { return new global::Fallstudie.Pages.KundenPage(); }
-        private object Activate_18_CreateCustomerPage() { return new global::Fallstudie.Pages.KundenPages.CreateCustomerPage(); }
-        private object Activate_19_pdfErstellenPage() { return new global::Fallstudie.Pages.pdfErstellenPage(); }
-        private object Activate_20_ProjektePage() { return new global::Fallstudie.Pages.ProjektePage(); }
-        private object Activate_21_TerminePage() { return new global::Fallstudie.Pages.TerminePage(); }
+        private object Activate_17_Schrtitt11Zusammenfassung() { return new global::Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung(); }
+        private object Activate_18_KundenPage() { return new global::Fallstudie.Pages.KundenPage(); }
+        private object Activate_19_CreateCustomerPage() { return new global::Fallstudie.Pages.KundenPages.CreateCustomerPage(); }
+        private object Activate_20_pdfErstellenPage() { return new global::Fallstudie.Pages.pdfErstellenPage(); }
+        private object Activate_21_ProjektePage() { return new global::Fallstudie.Pages.ProjektePage(); }
+        private object Activate_22_TerminePage() { return new global::Fallstudie.Pages.TerminePage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -354,37 +357,44 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 17:   //  Fallstudie.Pages.KundenPage
+            case 17:   //  Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_17_KundenPage;
+                userType.Activator = Activate_17_Schrtitt11Zusammenfassung;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 18:   //  Fallstudie.Pages.KundenPages.CreateCustomerPage
+            case 18:   //  Fallstudie.Pages.KundenPage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_18_CreateCustomerPage;
+                userType.Activator = Activate_18_KundenPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 19:   //  Fallstudie.Pages.pdfErstellenPage
+            case 19:   //  Fallstudie.Pages.KundenPages.CreateCustomerPage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_19_pdfErstellenPage;
+                userType.Activator = Activate_19_CreateCustomerPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 20:   //  Fallstudie.Pages.ProjektePage
+            case 20:   //  Fallstudie.Pages.pdfErstellenPage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_20_ProjektePage;
+                userType.Activator = Activate_20_pdfErstellenPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 21:   //  Fallstudie.Pages.TerminePage
+            case 21:   //  Fallstudie.Pages.ProjektePage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_21_TerminePage;
+                userType.Activator = Activate_21_ProjektePage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 22:   //  Fallstudie.Pages.TerminePage
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_22_TerminePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

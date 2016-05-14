@@ -19,6 +19,17 @@ namespace Fallstudie.ViewModel
         #region PROPERTIES
 
         #region Variablen
+
+        //Zusammenfassung des konfigurierten Hauses
+        private HouseSummary house;
+
+        public HouseSummary House
+        {
+            get { return house; }
+            set { house = value; OnChange("House"); }
+        }
+
+
         //Der gesammte Preis
         private double totalPrice = 0;
 
@@ -265,6 +276,8 @@ namespace Fallstudie.ViewModel
             set { listColorFence = value; }
         }
 
+        
+
         #endregion
 
         #region Selected Items
@@ -496,8 +509,83 @@ namespace Fallstudie.ViewModel
         public RelayCommand ButtonForwardChooseAddition { get; set; }
         //Leitet den User zu Schritt 10 -> Außenbereich definieren
         public RelayCommand ButtonForwardChooseOutsideArea { get; set; }
-
+        //Leitet den User zu Schritt 11 -> Zusammenfassung
+        public RelayCommand ButtonForwardSummary { get; set; }
         #endregion
+
+        #region Notizen
+        private string noteStep2;
+
+        public string NoteStep2
+        {
+            get { return noteStep2; }
+            set { noteStep2 = value; OnChange("NoteStep2"); }
+        }
+        private string noteStep3;
+
+        public string NoteStep3
+        {
+            get { return noteStep3; }
+            set { noteStep3 = value; OnChange("NoteStep3"); }
+        }
+
+        private string noteStep4;
+
+        public string NoteStep4
+        {
+            get { return noteStep4; }
+            set { noteStep4 = value; OnChange("NoteStep4"); }
+        }
+
+        private string noteStep5;
+
+        public string NoteStep5
+        {
+            get { return noteStep5; }
+            set { noteStep5 = value; OnChange("NoteStep5"); }
+        }
+
+        private string noteStep6;
+
+        public string NoteStep6
+        {
+            get { return noteStep6; }
+            set { noteStep6 = value; OnChange("NoteStep6"); }
+        }
+
+        private string noteStep7;
+
+        public string NoteStep7
+        {
+            get { return noteStep7; }
+            set { noteStep7 = value; OnChange("NoteStep7"); }
+        }
+
+        private string noteStep8;
+
+        public string NoteStep8
+        {
+            get { return noteStep8; }
+            set { noteStep8 = value; OnChange("NoteStep8"); }
+        }
+
+        private string noteStep9;
+
+        public string NoteStep9
+        {
+            get { return noteStep9; }
+            set { noteStep9 = value; OnChange("NoteStep9"); }
+        }
+
+        private string noteStep10;
+
+        public string NoteStep10
+        {
+            get { return noteStep10; }
+            set { noteStep10 = value; OnChange("NoteStep10"); }
+        }
+        #endregion
+
 
         #endregion
 
@@ -523,7 +611,9 @@ namespace Fallstudie.ViewModel
             ButtonForwardChooseEnergie = new RelayCommand(ButtonForwardChooseEnergieMethod);
             ButtonForwardChooseAddition = new RelayCommand(ButtonForwardChooseAdditionMethod);
             ButtonForwardChooseOutsideArea = new RelayCommand(ButtonForwardChooseOutsideAreaMethod);
+            ButtonForwardSummary = new RelayCommand(ButtonForwardSummaryMethod);
         }
+
 
 
         #region ForwardButtons
@@ -816,7 +906,37 @@ namespace Fallstudie.ViewModel
             
         }
 
+        //Hier wird zu Schritt 11 weitergeleitet
+        private void ButtonForwardSummaryMethod()
+        {
+            GetFrame();
+            a.Navigate(typeof(Pages.HKPages.Schrtitt11Zusammenfassung));
 
+            House = new HouseSummary()
+            {
+                Customer = selectedCustomerr,
+                Package = SelectedHouse,
+                Plot = SelectedPlot,
+                numberOfFloors = SelectedItemFloor,
+                GroundPlots = FloorsGroundPlot.ToList(),
+                OutsideWall = selectedOutsideWall,
+                OutsideWallColor = SelectedColorOutsideWall,
+                InsideWall = SelectedInsideWall,
+                InsideWallColor = selectedColorInsideWall,
+                Window = SelectedWindow,
+                WindowColor = SelectedColorWindow,
+                Door = SelectedDoor,
+                DoorColor = selectedColorDoor,
+                EnergySystem = SelectedEnergySystem.Name,
+                HeatingSystem = selectedHeatingSystem.Name,
+                NumberOfSocket = SelectedSocket,
+                Chimney = SelectedChimney,
+                Pool = selectedPool,
+                Fence = selectedFence,
+                FenceColor = selectedColorFence
+            };
+
+        }
         #endregion
 
 

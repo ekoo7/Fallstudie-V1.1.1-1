@@ -110,7 +110,7 @@
                     <TextBlock Text="{Binding SelectedDoor.Price, Mode=TwoWay}"/>
 
                     <TextBlock Text="{Binding TotalPrice}"/>
-
+                    <TextBox Text="{Binding NoteStep7}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
                     <Button Margin="20" Command="{Binding ButtonForwardChooseEnergie}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
                 </StackPanel>
 

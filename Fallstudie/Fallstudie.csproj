@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Model\ColorPalette.cs" />
     <Compile Include="Model\EHSystem.cs" />
+    <Compile Include="Model\HouseSummary.cs" />
     <Compile Include="Model\ImageInherit.cs" />
     <Compile Include="Pages\HausKonfiguratorPage.xaml.cs">
       <DependentUpon>HausKonfiguratorPage.xaml</DependentUpon>
@@ -137,6 +138,9 @@
     </Compile>
     <Compile Include="Pages\HKPages\Schritt9Zusatz.xaml.cs">
       <DependentUpon>Schritt9Zusatz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HKPages\Schrtitt11Zusammenfassung.xaml.cs">
+      <DependentUpon>Schrtitt11Zusammenfassung.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\KundenPage.xaml.cs">
       <DependentUpon>KundenPage.xaml</DependentUpon>
@@ -249,6 +253,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\HKPages\Schritt9Zusatz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HKPages\Schrtitt11Zusammenfassung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

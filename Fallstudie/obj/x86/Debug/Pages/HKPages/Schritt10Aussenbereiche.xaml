@@ -22,7 +22,7 @@
             </StackPanel>
 
             <!--Swimmingpool-->
-            <StackPanel Grid.Row="1" Name="Schritt10_Swimmingpool" Orientation="Vertical">
+            <StackPanel x:ConnectionId='1' Grid.Row="1" Name="Schritt10_Swimmingpool" Orientation="Vertical">
                 
                 <Border Background="#50BFB4">
                     <TextBlock Width="100" FontWeight="Bold" Text="Swimmingpool"></TextBlock>
@@ -51,7 +51,7 @@
             </StackPanel>
                 
                 <!--Zaun-->
-            <StackPanel Grid.Row="2" Name="StackSchritt10_Zaun">
+            <StackPanel x:ConnectionId='2' Grid.Row="2" Name="StackSchritt10_Zaun">
                 <Border Background="#50BFB4">
                     <TextBlock Width="100" FontWeight="Bold" Text="Zaun"></TextBlock>
                 </Border>
@@ -112,3 +112,4 @@
     </ScrollViewer>
 
 </Page>
+
