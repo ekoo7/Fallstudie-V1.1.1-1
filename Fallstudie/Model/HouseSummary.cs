@@ -53,6 +53,7 @@ namespace Fallstudie.Model
 
         //Pool und Zaun und ZaunFarbe
         public ImageInherit Pool { get; set; }
+        public string Poolsize { get; set; }
         public ImageInherit Fence { get; set; }
         public ColorPalette FenceColor { get; set; }
 

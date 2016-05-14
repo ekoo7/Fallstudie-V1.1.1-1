@@ -111,15 +111,25 @@
                         <TextBlock Text="{Binding SelectedInsideWall.Price, Mode=TwoWay}"/>
 
                         <TextBlock Text="{Binding TotalPrice}"/>
-                        <TextBox Text="{Binding NoteStep5}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseRoof}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
+                    <TextBox Text="{Binding NoteStep5, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
                 </StackPanel>
-
+                <StackPanel Orientation="Horizontal">
+                    <Button Margin="20" Command="{Binding ButtonForwardChooseRoof}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
+                    <Button Margin="20" Command="{Binding ButtonForwardChooseCustomer}" FontFamily="Arial" FontSize="36" Content="2" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
+                    <Button Margin="20" Command="{Binding ButtonForwardChooseHouse}" FontFamily="Arial" FontSize="36" Content="3" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
+                    <Button Margin="20" Command="{Binding ButtonForwardChoosePlot}" FontFamily="Arial" FontSize="36" Content="4" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
+                    <Button Margin="20" Command="{Binding ButtonForwardChooseRoof}" FontFamily="Arial" FontSize="36" Content="6" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
+                    <Button Margin="20" Command="{Binding ButtonForwardChooseWindowsDoors}" FontFamily="Arial" FontSize="36" Content="7" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
+                    <Button Margin="20" Command="{Binding ButtonForwardChooseEnergie}" FontFamily="Arial" FontSize="36" Content="8" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
+                    <Button Margin="20" Command="{Binding ButtonForwardChooseAddition}" FontFamily="Arial" FontSize="36" Content="9" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
+                    <Button Margin="20" Command="{Binding ButtonForwardChooseOutsideArea}" FontFamily="Arial" FontSize="36" Content="10" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
+                    <Button Margin="20" Command="{Binding ButtonForwardSummary}" FontFamily="Arial" FontSize="36" Content="11" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
+                </StackPanel>
                 <StackPanel >
                     <ProgressBar Height="26" Margin="10 0 10 10" Value="40"/>
                 </StackPanel>
             </StackPanel>
-            <ScrollViewer HorizontalAlignment="Left" Height="100" Margin="667,125,-127,-41" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
+           
         </Grid>
     </ScrollViewer>
 </Page>

@@ -198,6 +198,15 @@
     <Content Include="Bilder\7FensterTueren\Schiebetür.PNG" />
     <Content Include="Bilder\7FensterTueren\Trapezfenster.png" />
     <Content Include="Bilder\7FensterTueren\Zweiteilig.png" />
+    <Content Include="Bilder\8Kamin\Kamin1.PNG" />
+    <Content Include="Bilder\8Kamin\Kamin2.PNG" />
+    <Content Include="Bilder\8Kamin\Kamin3.PNG" />
+    <Content Include="Bilder\9Aussenbereiche\Pool1.png" />
+    <Content Include="Bilder\9Aussenbereiche\Pool2.png" />
+    <Content Include="Bilder\9Aussenbereiche\Pool3.png" />
+    <Content Include="Bilder\9Aussenbereiche\Zaun1.png" />
+    <Content Include="Bilder\9Aussenbereiche\Zaun2.png" />
+    <Content Include="Bilder\9Aussenbereiche\Zaun3.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

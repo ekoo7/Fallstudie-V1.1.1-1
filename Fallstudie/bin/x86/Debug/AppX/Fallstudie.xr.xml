@@ -13,6 +13,14 @@
     <RootPropertyPathName Name="Firstname" />
     <RootPropertyPathName Name="MSG" />
     <RootPropertyPathName Name="ButtonForwardSummary" />
+    <RootPropertyPathName Name="ButtonIsVisible" />
+    <RootPropertyPathName Name="ButtonForwardChooseAddition" />
+    <RootPropertyPathName Name="ButtonForwardChooseEnergie" />
+    <RootPropertyPathName Name="ButtonForwardChooseWindowsDoors" />
+    <RootPropertyPathName Name="ButtonForwardChooseRoof" />
+    <RootPropertyPathName Name="ButtonForwardChooseWall" />
+    <RootPropertyPathName Name="ButtonForwardChoosePlot" />
+    <RootPropertyPathName Name="ButtonForwardChooseHouse" />
     <RootPropertyPathName Name="NoteStep10" />
     <RootPropertyPathName Name="TotalPrice" />
     <RootPropertyPathName Name="SelectedFence" />
@@ -28,22 +36,19 @@
     <RootPropertyPathName Name="ListPools" />
     <RootPropertyPathName Name="NumberPoolSizes" />
     <RootPropertyPathName Name="SelectedPoolSize" />
-    <RootPropertyPathName Name="ButtonForwardChooseHouse" />
+    <RootPropertyPathName Name="ButtonForwardChooseOutsideArea" />
     <RootPropertyPathName Name="NoteStep2" />
     <RootPropertyPathName Name="SelectedHouse" />
     <RootPropertyPathName Name="ImagesHouse" />
-    <RootPropertyPathName Name="ButtonForwardChoosePlot" />
     <RootPropertyPathName Name="NoteStep3" />
     <RootPropertyPathName Name="SelectedPlot" />
     <RootPropertyPathName Name="ImagesPlot" />
-    <RootPropertyPathName Name="ButtonForwardChooseWall" />
     <RootPropertyPathName Name="NoteStep4" />
     <RootPropertyPathName Name="SelectedFloor" />
     <RootPropertyPathName Name="FloorsGroundPlot" />
     <RootPropertyPathName Name="ButtonDrawSketch" />
     <RootPropertyPathName Name="NumberFloors" />
     <RootPropertyPathName Name="SelectedItemFloor" />
-    <RootPropertyPathName Name="ButtonForwardChooseRoof" />
     <RootPropertyPathName Name="NoteStep5" />
     <RootPropertyPathName Name="SelectedInsideWall" />
     <RootPropertyPathName Name="SelectedColorInsideWall" />
@@ -53,14 +58,11 @@
     <RootPropertyPathName Name="ListInsideWall" />
     <RootPropertyPathName Name="ListColorOutsideWall" />
     <RootPropertyPathName Name="ListOutsideWall" />
-    <RootPropertyPathName Name="ButtonForwardChooseWindowsDoors" />
     <RootPropertyPathName Name="NoteStep6" />
     <RootPropertyPathName Name="SelectedRoofMaterial" />
     <RootPropertyPathName Name="SelectedRoofType" />
     <RootPropertyPathName Name="ListRoofMaterial" />
     <RootPropertyPathName Name="ListRoofType" />
-    <RootPropertyPathName Name="ButtonForwardChooseEnergie" />
-    <RootPropertyPathName Name="NoteStep7" />
     <RootPropertyPathName Name="SelectedDoor" />
     <RootPropertyPathName Name="SelectedColorDoor" />
     <RootPropertyPathName Name="SelectedWindow" />
@@ -69,21 +71,41 @@
     <RootPropertyPathName Name="ListDoors" />
     <RootPropertyPathName Name="ListColorWindows" />
     <RootPropertyPathName Name="ListWindows" />
-    <RootPropertyPathName Name="ButtonForwardChooseAddition" />
     <RootPropertyPathName Name="NoteStep8" />
     <RootPropertyPathName Name="SelectedHeatingSystem" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="SelectedEnergySystem" />
     <RootPropertyPathName Name="ListHeatingSystem" />
     <RootPropertyPathName Name="ListEnergySystem" />
-    <RootPropertyPathName Name="ButtonForwardChooseOutsideArea" />
     <RootPropertyPathName Name="NoteStep9" />
     <RootPropertyPathName Name="SelectedChimney" />
     <RootPropertyPathName Name="ListChimneys" />
     <RootPropertyPathName Name="NumberSockets" />
     <RootPropertyPathName Name="SelectedSocket" />
+    <RootPropertyPathName Name="ButtonCreateProject" />
+    <RootPropertyPathName Name="ButtonEditConfiguration" />
+    <RootPropertyPathName Name="NoteStep7" />
     <RootPropertyPathName Name="House" />
+    <RootPropertyPathName Name="Fence" />
+    <RootPropertyPathName Name="Pool" />
+    <RootPropertyPathName Name="Chimney" />
+    <RootPropertyPathName Name="Door" />
+    <RootPropertyPathName Name="Window" />
+    <RootPropertyPathName Name="RoofMaterial" />
+    <RootPropertyPathName Name="RoofType" />
+    <RootPropertyPathName Name="InsideWall" />
     <RootPropertyPathName Name="OutsideWall" />
+    <RootPropertyPathName Name="Plot" />
+    <RootPropertyPathName Name="FenceColor" />
+    <RootPropertyPathName Name="Poolsize" />
+    <RootPropertyPathName Name="NumberOfSocket" />
+    <RootPropertyPathName Name="HeatingSystem" />
+    <RootPropertyPathName Name="EnergySystem" />
+    <RootPropertyPathName Name="DoorColor" />
+    <RootPropertyPathName Name="WindowColor" />
+    <RootPropertyPathName Name="InsideWallColor" />
+    <RootPropertyPathName Name="OutsideWallColor" />
+    <RootPropertyPathName Name="numberOfFloors" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -109,6 +131,8 @@
       <RootMethod Name="SetRow" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
+      <RootMethod Name="GetRowSpan" />
+      <RootMethod Name="SetRowSpan" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
@@ -152,6 +176,8 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Width" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="TextWrapping" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootProperty Name="Name" />
@@ -163,6 +189,7 @@
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Visibility" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Fallstudie.MainPage" />
