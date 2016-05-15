@@ -622,7 +622,7 @@ namespace Fallstudie.ViewModel
             Customers.Add(new Customer("Fritz", "Immertoll", 1, 4));
 
             //Datenbank erstellen
-            DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db2.sqlite; foreign keys=true;");
+            DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db2.sqlite");
             if (!File.Exists(DbPath))
             {
                 Conn = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath);
@@ -631,7 +631,7 @@ namespace Fallstudie.ViewModel
             }
         }
 
-        #region SQL Befehler
+        #region SQL Befehle
         #region Erstellen der Tabellen
         public void SQLCreateTable()
         {
