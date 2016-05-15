@@ -1,11 +1,17 @@
-﻿using Fallstudie.Model;
+﻿using Fallstudie.DBModel;
+using Fallstudie.Model;
 using GalaSoft.MvvmLight.Command;
+using SQLite.Net;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
@@ -19,6 +25,10 @@ namespace Fallstudie.ViewModel
         #region PROPERTIES
 
         #region Variablen
+        //SQLite pfad variable
+        public string DbPath { get; set; }
+        //SQLite verbindung
+        public SQLiteConnection Conn { get; set; }
         //Button 1-11 wird sichtbar
         private string buttonIsVisible = "Collapsed";
 
@@ -610,7 +620,129 @@ namespace Fallstudie.ViewModel
             Customers.Add(new Customer("Max", "Mustermann", 0, 0));
             Customers.Add(new Customer("Danielo", "Pizzamento", 1, 2));
             Customers.Add(new Customer("Fritz", "Immertoll", 1, 4));
+
+            //Datenbank erstellen
+            DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db2.sqlite; foreign keys=true;");
+            if (!File.Exists(DbPath))
+            {
+                Conn = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath);
+                SQLCreateTable();
+                SQLInsertAttributeGroup();
+            }
         }
+
+        #region SQL Befehler
+        #region Erstellen der Tabellen
+        public void SQLCreateTable()
+        {
+            Conn.CreateTable<DBModel.Attribute>();
+            Conn.CreateTable<Attribute_Group>();
+            Conn.CreateTable<Houseconfig>();
+            Conn.CreateTable<Houseconfig_Has_Attribute>();
+            Conn.CreateTable<Housefloor>();
+            Conn.CreateTable<Package_Not_Attribute>();
+            Conn.CreateTable<Project>();
+            Conn.CreateTable<Ymdh_House_Package>();
+            Conn.CreateTable<Ymdh_House_Package_Status>();
+        }
+
+        //Attribut Gruppen werden erstellt        
+        public void SQLInsertAttributeGroup()
+        {
+            //Attribut Grundstück
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 3,
+                description = "Grundstück",
+                modifieddate = DateTime.Now
+            });
+            //Attribut Wände
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 5,
+                description = "Wand",
+                modifieddate = DateTime.Now
+            });
+            //Attribut Dach
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 6,
+                description = "Dach",
+                modifieddate = DateTime.Now
+            });
+            //Attribut Fenster & Türen
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 7,
+                description = "Fenster und Türen",
+                modifieddate = DateTime.Now
+            });
+            //Attribut Energie- und Heizungsysteme
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 8,
+                description = "Fenster und Türen",
+                modifieddate = DateTime.Now
+            });
+            //Attribut Zusatz (Steckdosen/Raum & Kamin)
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 9,
+                description = "Steckdosen/Raum und Kamin",
+                modifieddate = DateTime.Now
+            });
+            //Attribut Außenbereiche (Pool & Zaun)
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 10,
+                description = "Pool und Zaun",
+                modifieddate = DateTime.Now
+            });
+        }
+ 
+        //Projekt wird erstellt
+        public void SQLCreateProject()
+        {
+            Conn.Insert(new Houseconfig
+            {
+                price = int.Parse(TotalPrice.ToString()),
+                status = "1",
+                price_floor = int.Parse(SelectedFloor.Price.ToString()),
+                modifieddate = DateTime.Now,
+                house_package_id = SelectedHouse.Id
+
+            });
+            Conn.Insert(new Housefloor
+            {
+                price = int.Parse(SelectedFloor.Price.ToString()),
+                sketch = "sketch",
+                modifieddate = DateTime.Now,
+                houseconfig_id = 123,
+                area = 1
+            });
+            Conn.Insert(new Project
+            {
+                startdate = DateTime.Now,
+                enddate = DateTime.Now,
+                invoice = "Rechnung 1",
+                status = "Fertig",
+                description = "",
+                modifieddate = DateTime.Now,
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = 123,
+                attribute_id = 1,
+                amount = 1,
+                special = "",
+                modifieddate = DateTime.Now
+            });
+        }
+        #endregion
+
+        #endregion
+
+        #region Alle Methoden
 
         //Hier werden alle Buttons initialisiert
         private void InitializeButtons()
@@ -634,6 +766,7 @@ namespace Fallstudie.ViewModel
 
 
         #region ForwardButtons
+
         //Hier wird weitergeleitet auf Schritt 2
         private async void ButtonForwardChooseCustomerMethod()
         {
@@ -675,6 +808,27 @@ namespace Fallstudie.ViewModel
                 ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/3Grundstuecke/Grundstueck1.png", 2111, 80000));
                 ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/3Grundstuecke/Grundstueck2.png", 2222, 90000));
                 ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/3Grundstuecke/Grundstueck3.png", 2333, 99000));
+
+                
+                //Conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
+                //SQLiteCommand command = new SQLiteCommand();
+
+                
+                
+                SQLiteConnection sqConnection = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath);;
+                string abc="";
+                var mySelectQuery = "Select image from Attribute where attribute_id=1";
+                //sqConnection.CreateCommand(mySelectQuery, abc);
+                //var abc = new DBModel.Attribute(){};
+                SQLiteCommand command = sqConnection.CreateCommand(mySelectQuery, "");
+
+                //var ImageDb = sqConnection.Get<DBModel.Attribute>(abc);
+                var dialog = new MessageDialog(command.ToString());
+                await dialog.ShowAsync();
+
+                //Base64StringToBitmap(ImageDb.ToString());
+                
+
             }
             else
             {
@@ -682,6 +836,24 @@ namespace Fallstudie.ViewModel
                 await dialog.ShowAsync();
             }
         }
+        public async void Base64StringToBitmap(string base64String)
+        {
+            byte[] byteBuffer = Convert.FromBase64String(base64String);
+            MemoryStream memoryStream = new MemoryStream(byteBuffer);
+            memoryStream.Position = 0;
+
+            var dialog = new MessageDialog(memoryStream.ToString());
+            await dialog.ShowAsync();
+            BitmapImage bitmapImage = new BitmapImage();
+            //bitmapImage.SetSource(memoryStream);
+
+            memoryStream = null;
+            byteBuffer = null;
+
+            //return bitmapImage;
+        }
+
+
 
         //Hier wird weitergeleitet auf Schritt 4
         private async void ButtonForwardChoosePlotMethod()
@@ -707,6 +879,25 @@ namespace Fallstudie.ViewModel
                 var dialog = new MessageDialog("Bitte wählen Sie ein Grundstück aus.");
                 await dialog.ShowAsync();
             }
+        }
+
+        //wenn anzahl von stockwerken angeklickt wird -> anzeigen der Grundrisse
+        public void ChooseGroundPlots()
+        {
+            FloorsGroundPlot.Clear();
+            //Anzahl der Stockwerke vom ausgewähltem haus aus der DB
+            numberOfFloorDB = 1;
+
+            FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/4Grundriss/GrundrissErdgeschoss.png", 1111, "Erdgeschoss", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
+            if (SelectedItemFloor == 1 || SelectedItemFloor == 2)
+            {
+                FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/4Grundriss/GrundrissStock1.png", 1122, "Stockwerk 1", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
+            }
+            if (SelectedItemFloor == 2)
+            {
+                FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/4Grundriss/GrundrissStock2.png", 1131, "Stockwerk 2", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
+            }
+            OnChange("FloorsGroundPlot");
         }
 
         //Hier wird weitergeleitet auf Schritt 5
@@ -971,6 +1162,7 @@ namespace Fallstudie.ViewModel
         //Hier wird das Haus in die Datenbank gespeichert -> Projekt erstellen
         private async void ButtonCreateProjectMethod()
         {
+            //SQLCreateProject();
             var dialog = new MessageDialog("Haus wurde als Projekt erstellt");
             await dialog.ShowAsync();
         }
@@ -1004,30 +1196,13 @@ namespace Fallstudie.ViewModel
             a.Navigate(typeof(Pages.KundenPages.CreateCustomerPage));
         }
 
-        //wenn anzahl von stockwerken angeklickt wird -> anzeigen der Grundrisse
-        public void ChooseGroundPlots()
-        {
-            FloorsGroundPlot.Clear();
-            //Anzahl der Stockwerke vom ausgewähltem haus aus der DB
-            numberOfFloorDB = 1;
-
-            FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/4Grundriss/GrundrissErdgeschoss.png", 1111, "Erdgeschoss", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
-            if (SelectedItemFloor == 1 || SelectedItemFloor == 2)
-            {
-                FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/4Grundriss/GrundrissStock1.png", 1122,  "Stockwerk 1", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
-            }
-            if(SelectedItemFloor == 2)
-            {
-                FloorsGroundPlot.Add(new ImageInherit("ms-appx:///Bilder/4Grundriss/GrundrissStock2.png", 1131, "Stockwerk 2", new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, numberOfFloorDB));
-            }
-            OnChange("FloorsGroundPlot");
-        }
+        
         private void ButtonDrawSketchMethod()
         {
             AsynchMethod();
         }
 
-
+        #endregion
 
         #region Test Methoden
 

@@ -1098,4 +1098,16 @@ C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\De
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt8EnergyHeizung.xbf
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schritt9Zusatz.xbf
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schrtitt11Zusammenfassung.xbf
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Cirrious.CrossCore.WindowsStore.dll
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Cirrious.CrossCore.dll
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Cirrious.MvvmCross.Localization.dll
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Newtonsoft.Json.dll
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\SQLite.Net.Platform.WinRT.dll
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\SQLite.Net.Async.dll
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\SQLite.Net.dll
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\SQLiteNetExtensions-MvvmCross.dll
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Cirrious.MvvmCross.Community.Plugins.Sqlite\en\Cirrious.MvvmCross.Community.Plugins.Sqlite.Properties.Resources.resw
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\resources.en.resfiles
+C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\resources.en.resfiles.intermediate
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Fallstudie.csprojResolveAssemblyReference.cache

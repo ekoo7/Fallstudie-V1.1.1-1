@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>edd1e308-4172-4199-aeed-fd546e55591b</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>A547482B6141D7422267932DB677B6CF8D8B9C637F7C3FD49EF5223101A6FE96</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>C60BBF07DF81F601CB17D21A789255EBDAA9498B834165777BAA78E290DFDC2D</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>edd1e308-4172-4199-aeed-fd546e55591b_1.0.0.0_x86__7cz6n1n3sb2rm</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>edd1e308-4172-4199-aeed-fd546e55591b_7cz6n1n3sb2rm!App</RegisteredUserModeAppID>
     <RegisteredPackageID>edd1e308-4172-4199-aeed-fd546e55591b</RegisteredPackageID>
@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-05-14T15:15:40.633</Modified>
+      <Modified>2016-05-15T08:40:14.483</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.exe">
       <PackagePath>entrypoint\Fallstudie.exe</PackagePath>
-      <Modified>2016-05-14T15:15:39.821</Modified>
+      <Modified>2016-05-15T08:40:13.831</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.dll">
       <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
@@ -114,6 +114,22 @@
       <PackagePath>Microsoft.Win32.Primitives.dll</PackagePath>
       <Modified>2015-07-22T21:07:10.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\.nuget\packages\MvvmCross.Community.Plugin.Sqlite\3.1.1\lib\netcore45\Cirrious.MvvmCross.Community.Plugins.Sqlite.dll">
+      <PackagePath>Cirrious.MvvmCross.Community.Plugins.Sqlite.dll</PackagePath>
+      <Modified>2014-02-09T19:01:20.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\.nuget\packages\MvvmCross.HotTuna.CrossCore\3.1.1\lib\netcore45\Cirrious.CrossCore.WindowsStore.dll">
+      <PackagePath>Cirrious.CrossCore.WindowsStore.dll</PackagePath>
+      <Modified>2014-02-09T18:38:58.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\.nuget\packages\MvvmCross.HotTuna.CrossCore\3.1.1\lib\netcore45\Cirrious.CrossCore.dll">
+      <PackagePath>Cirrious.CrossCore.dll</PackagePath>
+      <Modified>2014-02-09T18:38:58.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\.nuget\packages\MvvmCross.HotTuna.CrossCore\3.1.1\lib\netcore45\Cirrious.MvvmCross.Localization.dll">
+      <PackagePath>Cirrious.MvvmCross.Localization.dll</PackagePath>
+      <Modified>2014-02-09T18:38:58.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\.nuget\packages\MvvmLightLibs\5.2.0\lib\windows81\GalaSoft.MvvmLight.Extras.dll">
       <PackagePath>GalaSoft.MvvmLight.Extras.dll</PackagePath>
       <Modified>2016-04-09T15:04:14.307</Modified>
@@ -125,6 +141,26 @@
     <AppxPackagedFile Include="C:\Users\User\.nuget\packages\MvvmLightLibs\5.2.0\lib\windows81\GalaSoft.MvvmLight.dll">
       <PackagePath>GalaSoft.MvvmLight.dll</PackagePath>
       <Modified>2016-04-09T15:04:14.306</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\.nuget\packages\Newtonsoft.Json\6.0.5\lib\netcore45\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+      <Modified>2014-09-07T08:39:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\.nuget\packages\SQLite.Net-PCL\3.1.1\lib\Windows8\SQLite.Net.Platform.WinRT.dll">
+      <PackagePath>SQLite.Net.Platform.WinRT.dll</PackagePath>
+      <Modified>2015-11-06T16:18:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\.nuget\packages\SQLite.Net.Async-PCL\3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.Async.dll">
+      <PackagePath>SQLite.Net.Async.dll</PackagePath>
+      <Modified>2015-11-06T16:18:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\.nuget\packages\SQLite.Net.Core-PCL\3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll">
+      <PackagePath>SQLite.Net.dll</PackagePath>
+      <Modified>2015-11-06T16:18:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\.nuget\packages\SQLiteNetExtensions-MvvmCross\1.2.5\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\SQLiteNetExtensions-MvvmCross.dll">
+      <PackagePath>SQLiteNetExtensions-MvvmCross.dll</PackagePath>
+      <Modified>1979-12-31T23:00:00.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\.nuget\packages\System.AppContext\4.0.0\lib\netcore50\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
@@ -478,6 +514,10 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-07-22T21:11:12.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UAP\v0.8.0.0\ExtensionSDKs\SQLite.UWP.2015\3.12.2\Redist\Debug\x86\sqlite3.dll">
+      <PackagePath>sqlite3.dll</PackagePath>
+      <Modified>2016-05-08T08:13:12.508</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
       <Modified>2016-05-14T13:10:22.129</Modified>
@@ -596,39 +636,39 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\8Kamin\Kamin1.PNG">
       <PackagePath>Bilder\8Kamin\Kamin1.PNG</PackagePath>
-      <Modified>2016-05-14T14:06:03.815</Modified>
+      <Modified>2016-05-14T14:06:03.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\8Kamin\Kamin2.PNG">
       <PackagePath>Bilder\8Kamin\Kamin2.PNG</PackagePath>
-      <Modified>2016-05-14T14:06:05.584</Modified>
+      <Modified>2016-05-14T14:06:05.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\8Kamin\Kamin3.PNG">
       <PackagePath>Bilder\8Kamin\Kamin3.PNG</PackagePath>
-      <Modified>2016-05-14T14:06:06.165</Modified>
+      <Modified>2016-05-14T14:06:06.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Pool1.png">
       <PackagePath>Bilder\9Aussenbereiche\Pool1.png</PackagePath>
-      <Modified>2016-05-14T14:06:16.027</Modified>
+      <Modified>2016-05-14T14:06:16.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Pool2.png">
       <PackagePath>Bilder\9Aussenbereiche\Pool2.png</PackagePath>
-      <Modified>2016-05-14T14:06:16.001</Modified>
+      <Modified>2016-05-14T14:06:16.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Pool3.png">
       <PackagePath>Bilder\9Aussenbereiche\Pool3.png</PackagePath>
-      <Modified>2016-05-14T14:06:16.005</Modified>
+      <Modified>2016-05-14T14:06:16.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Zaun1.png">
       <PackagePath>Bilder\9Aussenbereiche\Zaun1.png</PackagePath>
-      <Modified>2016-05-14T14:06:16.010</Modified>
+      <Modified>2016-05-14T14:06:16.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Zaun2.png">
       <PackagePath>Bilder\9Aussenbereiche\Zaun2.png</PackagePath>
-      <Modified>2016-05-14T14:06:16.013</Modified>
+      <Modified>2016-05-14T14:06:16.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Zaun3.png">
       <PackagePath>Bilder\9Aussenbereiche\Zaun3.png</PackagePath>
-      <Modified>2016-05-14T14:06:16.019</Modified>
+      <Modified>2016-05-14T14:06:16.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -670,7 +710,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.xr.xml">
       <PackagePath>Fallstudie.xr.xml</PackagePath>
-      <Modified>2016-05-14T15:06:40.444</Modified>
+      <Modified>2016-05-14T19:57:27.972</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -678,11 +718,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-05-14T15:15:40.321</Modified>
+      <Modified>2016-05-14T21:25:06.423</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\Fallstudie.exe">
       <PackagePath>Fallstudie.exe</PackagePath>
-      <Modified>2016-05-14T15:15:40.617</Modified>
+      <Modified>2016-05-15T08:40:14.471</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

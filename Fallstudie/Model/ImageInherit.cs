@@ -1,16 +1,19 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 namespace Fallstudie.Model
 {
     public class ImageInherit
     {
-        //
+        public int Id { get; set; }
         public Image Image1 { get; set; }
         public BitmapImage BitmapImage1 { get; set; }
         public Uri Uri1 { get; set; }
@@ -29,13 +32,13 @@ namespace Fallstudie.Model
             Uri1 = new Uri(source, UriKind.Absolute);
             BitmapImage1.UriSource = Uri1;
             Image1.Source = BitmapImage1;
-            SourceImage = source;
-
+            //SourceImage = source;
+            Id = id;
             Image1.Name = id.ToString();
             
             Price = price;
         }
-
+        
         //Konstruktor für Grundriss
         public ImageInherit(string source, int id, string description, RelayCommand btn, int floors, int floorsDB)
         {
@@ -45,7 +48,7 @@ namespace Fallstudie.Model
             BitmapImage1.UriSource = Uri1;
             Image1.Source = BitmapImage1;
             SourceImage = source;
-
+            Id = id;
             Image1.Name = id.ToString();
    
             if (floors > floorsDB && floors - 1 == floorsDB) Price = 1000;
@@ -69,7 +72,7 @@ namespace Fallstudie.Model
             BitmapImage1.UriSource = Uri1;
             Image1.Source = BitmapImage1;
             SourceImage = source;
-
+            Id = id;
             Image1.Name = id.ToString();
             Description = description;
             Price = price;

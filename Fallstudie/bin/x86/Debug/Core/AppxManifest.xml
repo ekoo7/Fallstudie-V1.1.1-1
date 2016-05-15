@@ -44,6 +44,7 @@
     <build:Item Name="TargetRuntime" Value="Managed" />
     <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="14.0.25208.0" />
     <build:Item Name="BehaviorsXamlSDKManaged" Version="12.0" />
+    <build:Item Name="SQLite.UWP.2015" Version="3.12.2" />
     <build:Item Name="MakePri.exe" Version="10.0.10586.212 (th2_release_sec.160328-1908)" />
   </build:Metadata>
 </Package>

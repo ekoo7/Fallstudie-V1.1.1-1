@@ -102,6 +102,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DBModel\Attribute.cs" />
+    <Compile Include="DBModel\Attribute_Group.cs" />
+    <Compile Include="DBModel\Houseconfig.cs" />
+    <Compile Include="DBModel\Houseconfig_Has_Attribute.cs" />
+    <Compile Include="DBModel\Housefloor.cs" />
+    <Compile Include="DBModel\Package_Not_Attribute.cs" />
+    <Compile Include="DBModel\Project.cs" />
+    <Compile Include="DBModel\Ymdh_House_Package.cs" />
+    <Compile Include="DBModel\Ymdh_House_Package_Status.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -293,6 +302,9 @@
   <ItemGroup>
     <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
       <Name>Behaviors SDK %28XAML%29</Name>
+    </SDKReference>
+    <SDKReference Include="SQLite.UWP.2015, Version=3.12.2">
+      <Name>SQLite for Universal Windows Platform</Name>
     </SDKReference>
   </ItemGroup>
   <ItemGroup />
