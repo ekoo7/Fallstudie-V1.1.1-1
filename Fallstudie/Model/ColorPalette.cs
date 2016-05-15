@@ -23,5 +23,15 @@ namespace Fallstudie.Model
             Color = new SolidColorBrush(c);
             Value = String.Format("{0} {1} {2}", c.R.ToString(), c.G.ToString(), c.B.ToString());
         }
+
+        public ColorPalette(byte r, byte g, byte b)
+        {
+            Color c = new Windows.UI.Color();
+            c.R = r;
+            c.G = g;
+            c.B = b;
+            Color = new SolidColorBrush(c);
+            Value = String.Format("{0} {1} {2}", c.R.ToString(), c.G.ToString(), c.B.ToString());
+        }
     }
 }

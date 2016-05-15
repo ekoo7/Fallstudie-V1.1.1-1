@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
@@ -622,12 +623,12 @@ namespace Fallstudie.ViewModel
             Customers.Add(new Customer("Fritz", "Immertoll", 1, 4));
 
             //Datenbank erstellen
-            DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db2.sqlite");
+            DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.sqlite");
             if (!File.Exists(DbPath))
             {
                 Conn = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath);
                 SQLCreateTable();
-                SQLInsertAttributeGroup();
+                SQLInsertAttributeGroup();    
             }
         }
 
@@ -656,6 +657,13 @@ namespace Fallstudie.ViewModel
                 description = "Grundstück",
                 modifieddate = DateTime.Now
             });
+            //Attribut Grundriss
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 4,
+                description = "Grundriss",
+                modifieddate = DateTime.Now
+            });
             //Attribut Wände
             Conn.Insert(new Attribute_Group
             {
@@ -681,7 +689,7 @@ namespace Fallstudie.ViewModel
             Conn.Insert(new Attribute_Group
             {
                 attribute_group_id = 8,
-                description = "Fenster und Türen",
+                description = "Energie- und Heizungsysteme",
                 modifieddate = DateTime.Now
             });
             //Attribut Zusatz (Steckdosen/Raum & Kamin)
@@ -738,6 +746,24 @@ namespace Fallstudie.ViewModel
                 modifieddate = DateTime.Now
             });
         }
+
+        //Get Attribute aus der Joomla/Frontend Datenbank
+        public List<DBModel.Attribute> SQLGetAttribute(int t)
+        {
+            List<DBModel.Attribute> models;
+
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                models = (from c in con.Table<DBModel.Attribute>()
+                          where c.attribute_group_id.Equals(t)
+                          select c).ToList();
+
+                con.Close();
+            }
+            return models;
+        }
+
+        
         #endregion
 
         #endregion
@@ -804,31 +830,15 @@ namespace Fallstudie.ViewModel
 
                 ImagesPlot.Clear();
 
+                //Grundstücke aus der Datenbank selecten
+                List<DBModel.Attribute> models = SQLGetAttribute(3);
+
                 //Grundstückbilder werden angezeigt
-                ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/3Grundstuecke/Grundstueck1.png", 2111, 80000));
-                ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/3Grundstuecke/Grundstueck2.png", 2222, 90000));
-                ImagesPlot.Add(new ImageInherit("ms-appx:///Bilder/3Grundstuecke/Grundstueck3.png", 2333, 99000));
-
+                foreach (var item in models)
+                {
+                    ImagesPlot.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
+                }
                 
-                //Conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
-                //SQLiteCommand command = new SQLiteCommand();
-
-                
-                
-                SQLiteConnection sqConnection = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath);;
-                string abc="";
-                var mySelectQuery = "Select image from Attribute where attribute_id=1";
-                //sqConnection.CreateCommand(mySelectQuery, abc);
-                //var abc = new DBModel.Attribute(){};
-                SQLiteCommand command = sqConnection.CreateCommand(mySelectQuery, "");
-
-                //var ImageDb = sqConnection.Get<DBModel.Attribute>(abc);
-                var dialog = new MessageDialog(command.ToString());
-                await dialog.ShowAsync();
-
-                //Base64StringToBitmap(ImageDb.ToString());
-                
-
             }
             else
             {
@@ -836,24 +846,6 @@ namespace Fallstudie.ViewModel
                 await dialog.ShowAsync();
             }
         }
-        public async void Base64StringToBitmap(string base64String)
-        {
-            byte[] byteBuffer = Convert.FromBase64String(base64String);
-            MemoryStream memoryStream = new MemoryStream(byteBuffer);
-            memoryStream.Position = 0;
-
-            var dialog = new MessageDialog(memoryStream.ToString());
-            await dialog.ShowAsync();
-            BitmapImage bitmapImage = new BitmapImage();
-            //bitmapImage.SetSource(memoryStream);
-
-            memoryStream = null;
-            byteBuffer = null;
-
-            //return bitmapImage;
-        }
-
-
 
         //Hier wird weitergeleitet auf Schritt 4
         private async void ButtonForwardChoosePlotMethod()
@@ -909,15 +901,19 @@ namespace Fallstudie.ViewModel
             a.Navigate(typeof(Pages.HKPages.Schritt5Wand));
             if (selectedItemFloor != NumberOfFloorDB) TotalPrice += SelectedFloor.Price;
 
-            ListOutsideWall.Clear();
+            //ListOutsideWall.Clear();
             ListColorOutsideWall.Clear();
             ListInsideWall.Clear();
             ListColorInsideWall.Clear();
 
-            //außenwände befüllen
-            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/AußenHolz.png", 1234, "Holzwand", 1000));
-            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/AußenZiegel.png", 1234, "Ziegel", 2000));
-            ListOutsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/AußenBeton.png", 1234, "Beton", 3000));
+            //Außenwände aus der Datenbank selecten
+            List<DBModel.Attribute> models = SQLGetAttribute(5);
+
+            //Außenwände werden angezeigt
+            foreach (var item in models)
+            {
+                ListOutsideWall.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
+            }
 
             //farben der außenwände festlegen
             ListColorOutsideWall.Add(new ColorPalette(Colors.Red));
@@ -927,10 +923,14 @@ namespace Fallstudie.ViewModel
             ListColorOutsideWall.Add(new ColorPalette(Colors.Khaki));
 
 
-            //innenwände werden befüllt
-            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/InnenHolz.png", 1234, "Holzwand", 1000));
-            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/InnenRigips.png", 1234, "Rigipswand", 2000));
-            ListInsideWall.Add(new ImageInherit("ms-appx:///Bilder/5Wand/InnenZiegel.png", 1234, "Ziegelwand", 3000));
+            //Innenwände aus der Datenbank selecten
+            List<DBModel.Attribute> models2 = SQLGetAttribute(51);
+
+            //Innenwönde werden angezeigt
+            foreach (var item in models2)
+            {
+                ListInsideWall.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
+            }
 
             //farben für die Innenwände festlegen
             ListColorInsideWall.Add(new ColorPalette(Colors.Green));
@@ -952,15 +952,23 @@ namespace Fallstudie.ViewModel
                 ListRoofType.Clear();
                 ListRoofMaterial.Clear();
 
-                //Dachtypen werden befüllt
-                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Pultdach.png", 1234, "Pultdach", 2500));
-                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Satteldach.png", 1111, "Satteldach", 3000));
-                ListRoofType.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Flachdach.png", 121234, "Flachdach", 1000));
+                //Dachtypen aus der Datenbank selecten
+                List<DBModel.Attribute> models = SQLGetAttribute(6);
 
-                //Dachtmaterialien werden befüllt
-                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Ziegeldach.png", 1234, "Ziegel", 50));
-                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Aluminiumdach.png", 121234, "Aluminium", 90));
-                ListRoofMaterial.Add(new ImageInherit("ms-appx:///Bilder/6Dach/Faserzementplattendach.png", 121234, "Faserzementplatten", 30));
+                //Dachtypen werden angezeigt
+                foreach (var item in models)
+                {
+                    ListRoofType.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
+                }
+
+                //Dachmaterial aus der Datenbank selecten
+                List<DBModel.Attribute> models2 = SQLGetAttribute(61);
+
+                //Dachmaterial werden angezeigt
+                foreach (var item in models2)
+                {
+                    ListRoofMaterial.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
+                }
             }
             else
             {
@@ -983,11 +991,14 @@ namespace Fallstudie.ViewModel
                 ListDoors.Clear();
                 ListColorDoors.Clear();
 
-                //Fenster befüllen
-                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Rundfenster.png", 1234, "Rund", 100));
-                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Trapezfenster.png", 1234, "Trapez", 200));
-                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Einteilig.png", 1234, "Einteilig", 300));
-                ListWindows.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Zweiteilig.png", 1234, "Zweiteilig", 200));
+                //Fenster aus der Datenbank selecten
+                List<DBModel.Attribute> models = SQLGetAttribute(7);
+
+                //Fenster werden angezeigt
+                foreach (var item in models)
+                {
+                    ListWindows.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
+                }
 
                 //farben der Fenster festlegen
                 ListColorWindows.Add(new ColorPalette(Colors.Blue));
@@ -996,10 +1007,14 @@ namespace Fallstudie.ViewModel
                 ListColorWindows.Add(new ColorPalette(Colors.Gray));
                 ListColorWindows.Add(new ColorPalette(Colors.Brown));
 
-                //Türen befüllen
-                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Schiebetür.png", 1234, "Schiebetür", 100));
-                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Glastür.png", 1234, "Glas", 100));
-                ListDoors.Add(new ImageInherit("ms-appx:///Bilder/7FensterTueren/Holztür.png", 1234, "Holz", 200));
+                //Türen aus der Datenbank selecten
+                List<DBModel.Attribute> models2 = SQLGetAttribute(71);
+
+                //Türen werden angezeigt
+                foreach (var item in models2)
+                {
+                    ListDoors.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
+                }
 
                 //Türen ben der Fenster festlegen
                 ListColorDoors.Add(new ColorPalette(Colors.Brown));
@@ -1028,12 +1043,23 @@ namespace Fallstudie.ViewModel
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt8EnergyHeizung));
 
-                ListEnergySystem.Add(new EHSystem("Solar", 1200));
-                ListEnergySystem.Add(new EHSystem("Stromnetz", 0));
+                //Energiesystem aus der Datenbank selecten
+                List<DBModel.Attribute> models = SQLGetAttribute(8);
 
-                ListHeatingSystem.Add(new EHSystem("Gasheizung", 400));
-                ListHeatingSystem.Add(new EHSystem("Ölheizung", 200));
-                ListHeatingSystem.Add(new EHSystem("Pellet", 100));
+                //Energiesystem werden angezeigt
+                foreach (var item in models)
+                {
+                    ListEnergySystem.Add(new EHSystem(item.description, item.price));
+                }
+
+                //Heizungsystem aus der Datenbank selecten
+                List<DBModel.Attribute> models2 = SQLGetAttribute(81);
+
+                //Heizungsystem werden angezeigt
+                foreach (var item in models2)
+                {
+                    ListHeatingSystem.Add(new EHSystem(item.description, item.price));
+                }
 
                 totalPrice += SelectedWindow.Price + SelectedDoor.Price;
             }
@@ -1067,10 +1093,14 @@ namespace Fallstudie.ViewModel
                 NumberSockets.Add(9);
                 NumberSockets.Add(10);
 
-                ListChimneys.Add(new ImageInherit("ms-appx:///Bilder/8Kamin/Kamin1.png", 1234, "Kamin1", 100));
-                ListChimneys.Add(new ImageInherit("ms-appx:///Bilder/8Kamin/Kamin2.png", 1234, "Kamin2", 200));
-                ListChimneys.Add(new ImageInherit("ms-appx:///Bilder/8Kamin/Kamin3.png", 1234, "Kamin3", 300));
+                //Kamin aus der Datenbank selecten
+                List<DBModel.Attribute> models = SQLGetAttribute(9);
 
+                //Kamin werden angezeigt
+                foreach (var item in models)
+                {
+                    ListChimneys.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
+                }
             }
             else
             {
@@ -1099,13 +1129,23 @@ namespace Fallstudie.ViewModel
             NumberPoolSizes.Add(35);
             NumberPoolSizes.Add(50);
 
-            ListPools.Add(new ImageInherit("ms-appx:///Bilder/9Aussenbereiche/Pool1.png", 1234, "Rund", 100));
-            ListPools.Add(new ImageInherit("ms-appx:///Bilder/9Aussenbereiche/Pool2.png", 1234, "Zwei Rundpoole", 200));
-            ListPools.Add(new ImageInherit("ms-appx:///Bilder/9Aussenbereiche/Pool3.png", 1234, "Eckig", 100));
+            //Pools aus der Datenbank selecten
+            List<DBModel.Attribute> models = SQLGetAttribute(10);
 
-            ListFence.Add(new ImageInherit("ms-appx:///Bilder/9Aussenbereiche/Zaun1.png", 1234, "Zaun 1", 100));
-            ListFence.Add(new ImageInherit("ms-appx:///Bilder/9Aussenbereiche/Zaun2.png", 1234, "Zaun 2", 100));
-            ListFence.Add(new ImageInherit("ms-appx:///Bilder/9Aussenbereiche/Zaun3.png", 1234, "Zaun 3", 300));
+            //Pools werden angezeigt
+            foreach (var item in models)
+            {
+                ListPools.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
+            }
+
+            //Zaun aus der Datenbank selecten
+            List<DBModel.Attribute> models2 = SQLGetAttribute(101);
+
+            //Zaun werden angezeigt
+            foreach (var item in models2)
+            {
+                ListFence.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
+            }
 
             ListColorFence.Add(new ColorPalette(Colors.IndianRed));
             ListColorFence.Add(new ColorPalette(Colors.Beige));

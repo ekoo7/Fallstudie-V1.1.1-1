@@ -24,6 +24,9 @@ namespace Fallstudie.Model
 
         public RelayCommand ButtonDrawSketch { get; set; }
 
+
+        
+
         //konstruktor für Gründstück
         public ImageInherit(string source, int id, double price)
         {
@@ -32,7 +35,7 @@ namespace Fallstudie.Model
             Uri1 = new Uri(source, UriKind.Absolute);
             BitmapImage1.UriSource = Uri1;
             Image1.Source = BitmapImage1;
-            //SourceImage = source;
+            SourceImage = source;
             Id = id;
             Image1.Name = id.ToString();
             
