@@ -106,6 +106,13 @@
     <RootPropertyPathName Name="InsideWallColor" />
     <RootPropertyPathName Name="OutsideWallColor" />
     <RootPropertyPathName Name="numberOfFloors" />
+    <RootPropertyPathName Name="Appointments" />
+    <RootPropertyPathName Name="Consultant" />
+    <RootPropertyPathName Name="Customer" />
+    <RootPropertyPathName Name="Time" />
+    <RootPropertyPathName Name="Date" />
+    <RootPropertyPathName Name="DateAppointment" />
+    <RootPropertyPathName Name="AddNewAppointmentButton" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -116,6 +123,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="DataContext" />
       <RootProperty Name="Content" />
+      <RootProperty Name="BottomAppBar" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Source" />
@@ -260,6 +268,23 @@
     <RootType FullName="Fallstudie.Pages.KundenPages.CreateCustomerPage" />
     <RootType FullName="Fallstudie.Pages.pdfErstellenPage" />
     <RootType FullName="Fallstudie.Pages.ProjektePage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
+      <RootProperty Name="Date" />
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TimePicker">
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="PrimaryCommands" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Command" />
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+    </RootType>
     <RootType FullName="Fallstudie.Pages.TerminePage" />
   </Roots.RootTypes>
 </Roots>

@@ -630,6 +630,8 @@ namespace Fallstudie.ViewModel
                 SQLCreateTable();
                 SQLInsertAttributeGroup();    
             }
+
+            ManageAppointments();
         }
 
         #region SQL Befehle
@@ -1241,6 +1243,59 @@ namespace Fallstudie.ViewModel
         {
             AsynchMethod();
         }
+
+        #endregion
+
+        #region UseCase ManageAppointment
+
+        private DateTime dateAppointment;
+
+        public DateTime DateAppointment
+        {
+            get { return dateAppointment; }
+            set { dateAppointment = value; OnChange("DateAppointment"); }
+        }
+
+
+        private ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>();
+
+        public ObservableCollection<Appointment> Appointments
+        {
+            get { return appointments; }
+            set { appointments = value; }
+        }
+
+
+        public RelayCommand AddNewAppointmentButton { get; set; }
+
+        public void ManageAppointments()
+        {
+            AddNewAppointmentButton = new RelayCommand(AddNewAppointmentButtonMethod);
+
+            LoadAppointments();
+        }
+
+        public void LoadAppointments()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                Appointments.Add(new Appointment()
+                {
+                    Date = new DateTime(),
+                    Time = new TimeSpan(),
+                    Customer = new Customer("Max "+i.ToString(), "Mayer", 2, 2),
+                    Consultant = "Consultant Ricky" + i.ToString()
+                });
+            }
+
+        }
+
+        public async void AddNewAppointmentButtonMethod()
+        {
+            var dialog = new MessageDialog(DateAppointment.ToString());
+            await dialog.ShowAsync();
+        }
+
 
         #endregion
 

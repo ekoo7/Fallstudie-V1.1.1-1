@@ -5,9 +5,46 @@
     xmlns:local="using:Fallstudie.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding Main, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
+    <ScrollViewer>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Termine"></TextBlock>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Termine verwalten"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <DatePicker Date="{Binding DateAppointment, Mode=TwoWay}" VerticalAlignment="Top"/>
+                <TimePicker  VerticalAlignment="Top"/>
+
+            </StackPanel>
+            <ListView Name="CustomerList" ItemsSource="{Binding Appointments}" 
+                      SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
+                      IsItemClickEnabled="False" SelectionMode="Single"
+                      IsSynchronizedWithCurrentItem="False">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock  Margin="0 0 0 0" Text="{Binding Date}"/>
+                            <TextBlock Margin="10 0 0 0" Text="{Binding Time}"/>
+                            <TextBlock  Margin="10 0 0 0" Text="{Binding Customer.Firstname}"/>
+                            <TextBlock  Margin="10 0 0 0" Text="{Binding Consultant}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
+    </ScrollViewer>
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Command="{Binding AddNewAppointmentButton}" Icon="Add" Label="Termin erstellen"/>
+            <AppBarButton Icon="Edit" Label="Termin bearbeiten"/>
+            <AppBarButton Icon="Delete" Label="Termin Löschen" />
+        </CommandBar>
+    </Page.BottomAppBar>
+
 </Page>
