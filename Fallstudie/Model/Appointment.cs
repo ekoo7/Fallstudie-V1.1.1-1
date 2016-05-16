@@ -11,7 +11,16 @@ namespace Fallstudie.Model
     {
         public DateTime Date { get; set; }
         public TimeSpan Time { get; set; }
-        public string Consultant { get; set; }
+        public Consultant Consultant { get; set; }
         public Customer Customer { get; set; }
+
+        private string dateFormat;
+
+        public string DateFormat
+        {
+            get { return Date.ToString("dd.MMM.yyyy"); }
+
+        }
+
     }
 }

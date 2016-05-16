@@ -5,30 +5,36 @@
     xmlns:local="using:Fallstudie.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Converter="using:Fallstudie.Converter"
     DataContext="{Binding Main, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Converter:DateTimeConverter x:Key="DateConverter"/>
+        <Converter:TimeSpanConverter x:Key="TimeConverter"/>
+        <Converter:StringFormatter x:Key="StringFormatter"/>
+    </Page.Resources>
     <ScrollViewer>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Termine verwalten"></TextBlock>
             <StackPanel Orientation="Horizontal">
-                <DatePicker Date="{Binding DateAppointment, Mode=TwoWay}" VerticalAlignment="Top"/>
-                <TimePicker  VerticalAlignment="Top"/>
+                    <DatePicker Date="{Binding DateAppointment, Mode=TwoWay, Converter={StaticResource DateConverter}}" VerticalAlignment="Top"/>
+                    <TimePicker Time="{Binding TimeAppoitment, Mode=TwoWay}" VerticalAlignment="Top"/>
 
             </StackPanel>
             <ListView Name="CustomerList" ItemsSource="{Binding Appointments}" 
-                      SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
+                      SelectedItem="{Binding SelectedAppointment, Mode=TwoWay}"
                       IsItemClickEnabled="False" SelectionMode="Single"
                       IsSynchronizedWithCurrentItem="False">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock  Margin="0 0 0 0" Text="{Binding Date}"/>
-                            <TextBlock Margin="10 0 0 0" Text="{Binding Time}"/>
+                            <TextBlock  Margin="0 0 0 0" Text="{Binding DateFormat}" FontWeight="Bold" />
+                            <TextBlock  Margin="10 0 0 0" Text="{Binding Time}" FontWeight="Bold"/>
                             <TextBlock  Margin="10 0 0 0" Text="{Binding Customer.Firstname}"/>
-                            <TextBlock  Margin="10 0 0 0" Text="{Binding Consultant}"/>
+                            <TextBlock  Margin="10 0 0 0" Text="{Binding Consultant.Firstname}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -42,8 +48,8 @@
                 <Grid/>
             </CommandBar.Content>
             <AppBarButton Command="{Binding AddNewAppointmentButton}" Icon="Add" Label="Termin erstellen"/>
-            <AppBarButton Icon="Edit" Label="Termin bearbeiten"/>
-            <AppBarButton Icon="Delete" Label="Termin Löschen" />
+            <AppBarButton Command="{Binding EditAppointmentButton}" Icon="Edit" Label="Termin bearbeiten"/>
+            <AppBarButton Command="{Binding DeleteAppointmentButton}" Icon="Delete" Label="Termin Löschen" />
         </CommandBar>
     </Page.BottomAppBar>
 

@@ -28,7 +28,7 @@
                     RelativePanel.RightOf="MenueButton"
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="36"
-                    Content="&#xE0C4;"/>
+                    Content="&#xE0C4;" Click="BackButton_Click"/>
         </RelativePanel>
 
         <SplitView Grid.Row="1" Name= "MySplitView"  DisplayMode="CompactOverlay" OpenPaneLength="300" CompactPaneLength="56">

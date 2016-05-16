@@ -30,6 +30,7 @@ namespace Fallstudie
             this.InitializeComponent();
             //damit man auf die Frame von MainPage zugreifen kann
             frame1 = MyFrame;
+            
 
         }
 
@@ -88,6 +89,12 @@ namespace Fallstudie
         private void closeSplitView()
         {
             MySplitView.IsPaneOpen = false;
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(frame1.CanGoBack)
+            frame1.GoBack();
         }
     }
 }

@@ -1,0 +1,61 @@
+﻿<Page
+    x:Class="Fallstudie.Pages.TerminePages.NeuTermin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Fallstudie.Pages.TerminePages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Converter="using:Fallstudie.Converter"
+    DataContext="{Binding Main, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    
+    <Page.Resources>
+        <Converter:DateTimeConverter x:Key="DateConverter"/>
+        <Converter:TimeSpanConverter x:Key="TimeConverter"/>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Neuen Termin erstellen"></TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Kunde" Margin="10"/>
+                    
+                    <ComboBox ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Lastname}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <!--Consultant-->
+                    <TextBlock Text="Mitarbeiter" Margin="10"/>
+                    <ComboBox ItemsSource="{Binding Consultants}" SelectedItem="{Binding SelectedConsultant, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Lastname}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    
+
+                    
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                <DatePicker MinYear="{Binding DateTimeNow, Mode=TwoWay, Converter={StaticResource DateConverter}}" Date="{Binding DateAppointment, Mode=TwoWay, Converter={StaticResource DateConverter}}" VerticalAlignment="Top"/>
+                <TimePicker Time="{Binding TimeAppoitment, Mode=TwoWay}" VerticalAlignment="Top"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Back" Command="{Binding ButtonBackToAppointmentPage}" Label="Zurück" />
+            <AppBarButton Icon="Save" Command="{Binding ButtonSaveAppointment}" Label="Speichern" />
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

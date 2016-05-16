@@ -102,6 +102,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\DateTimeConverter.cs" />
+    <Compile Include="Converter\StringFormatter.cs" />
+    <Compile Include="Converter\TimeSpanConverter.cs" />
     <Compile Include="DBModel\Attribute.cs" />
     <Compile Include="DBModel\Attribute_Group.cs" />
     <Compile Include="DBModel\Houseconfig.cs" />
@@ -116,6 +119,7 @@
     </Compile>
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\ColorPalette.cs" />
+    <Compile Include="Model\Consultant.cs" />
     <Compile Include="Model\EHSystem.cs" />
     <Compile Include="Model\HouseSummary.cs" />
     <Compile Include="Model\ImageInherit.cs" />
@@ -166,6 +170,12 @@
     </Compile>
     <Compile Include="Pages\TerminePage.xaml.cs">
       <DependentUpon>TerminePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TerminePages\NeuTermin.xaml.cs">
+      <DependentUpon>NeuTermin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TerminePages\TerminBearbeiten.xaml.cs">
+      <DependentUpon>TerminBearbeiten.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
@@ -296,6 +306,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TerminePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TerminePages\NeuTermin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TerminePages\TerminBearbeiten.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

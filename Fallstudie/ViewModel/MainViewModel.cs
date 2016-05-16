@@ -5,6 +5,7 @@ using SQLite.Net;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -1248,12 +1249,31 @@ namespace Fallstudie.ViewModel
 
         #region UseCase ManageAppointment
 
+        //Datum auswählen 
         private DateTime dateAppointment;
 
         public DateTime DateAppointment
         {
             get { return dateAppointment; }
             set { dateAppointment = value; OnChange("DateAppointment"); }
+        }
+
+        //Zeit auswählen
+        private TimeSpan timeAppoitment;
+
+        public TimeSpan TimeAppoitment
+        {
+            get { return timeAppoitment; }
+            set { timeAppoitment = value; OnChange("TimeAppoitment"); }
+        }
+
+        //MinYear
+        private DateTime dateTimeNow = DateTime.Now;
+
+        public DateTime DateTimeNow
+        {
+            get { return dateTimeNow; }
+            set { dateTimeNow = value; OnChange("DateTimeNow"); }
         }
 
 
@@ -1265,16 +1285,68 @@ namespace Fallstudie.ViewModel
             set { appointments = value; }
         }
 
+        private ObservableCollection<Consultant> consultants = new ObservableCollection<Consultant>();
+
+        public ObservableCollection<Consultant> Consultants
+        {
+            get { return consultants; }
+            set { consultants = value; }
+        }
+
+
+        //Selected
+        private Appointment selectedAppointment;
+
+        public Appointment SelectedAppointment
+        {
+            get { return selectedAppointment; }
+            set { selectedAppointment = value; OnChange("SelectedAppointment"); }
+        }
+
+
+        private Consultant selectedConsultant;
+
+        public Consultant SelectedConsultant
+        {
+            get { return selectedConsultant; }
+            set { selectedConsultant = value; OnChange("SelectedConsultant"); }
+        }
+
 
         public RelayCommand AddNewAppointmentButton { get; set; }
+        public RelayCommand ButtonBackToAppointmentPage { get; set; }
+        public RelayCommand ButtonSaveAppointment { get; set; }
+        public RelayCommand EditAppointmentButton { get; set; }
+        public RelayCommand ButtonSaveEditedAppointment { get; set; }
+        public RelayCommand DeleteAppointmentButton { get; set; }
 
+        //In dieser Methode werden alle Buttons die für den ManageAppointment UseCase gebraucht werden
+        //initialisiert
         public void ManageAppointments()
         {
             AddNewAppointmentButton = new RelayCommand(AddNewAppointmentButtonMethod);
+            ButtonBackToAppointmentPage = new RelayCommand(ButtonBackToAppointmentPageMethod);
+            ButtonSaveAppointment = new RelayCommand(ButtonSaveAppointmentMethod);
+            EditAppointmentButton = new RelayCommand(EditAppointmentButtonMethod);
+            ButtonSaveEditedAppointment = new RelayCommand(ButtonSaveEditedAppointmentMethod);
+            DeleteAppointmentButton = new RelayCommand(DeleteAppointmentButtonMethod);
+
 
             LoadAppointments();
         }
 
+        private void DeleteAppointmentButtonMethod()
+        {
+            if(selectedAppointment != null)
+            {
+                Appointments.Remove(SelectedAppointment);
+            }
+            
+        }
+
+
+
+        //Hier werden alle bereits festgelegten Termine angezeigtz
         public void LoadAppointments()
         {
             for (int i = 0; i < 20; i++)
@@ -1283,19 +1355,123 @@ namespace Fallstudie.ViewModel
                 {
                     Date = new DateTime(),
                     Time = new TimeSpan(),
-                    Customer = new Customer("Max "+i.ToString(), "Mayer", 2, 2),
-                    Consultant = "Consultant Ricky" + i.ToString()
+                    Customer = new Customer("Max " + i.ToString(), "Mayer", 2, 2),
+                    Consultant = new Consultant() { Id = i, Firstname = "ConsultantFN" + i, Lastname = "Consultant" + i }
                 });
             }
 
         }
 
-        public async void AddNewAppointmentButtonMethod()
+        private async void EditAppointmentButtonMethod()
         {
-            var dialog = new MessageDialog(DateAppointment.ToString());
-            await dialog.ShowAsync();
+            if(selectedAppointment!= null)
+            {
+
+                GetFrame();
+                a.Navigate(typeof(Pages.TerminePages.TerminBearbeiten));
+
+
+                for (int i = 0; i < 10; i++)
+                {
+                    Consultants.Add(new Consultant()
+                    {
+                        Id = i,
+                        Firstname = "ConsultantFN"+1,
+                        Lastname = "Consultant" + i
+                    });
+
+                }
+               
+                SelectedCustomerr = SelectedAppointment.Customer;
+                SelectedConsultant = SelectedAppointment.Consultant;
+                DateAppointment = SelectedAppointment.Date;
+                TimeAppoitment = SelectedAppointment.Time;
+
+            }
+            else
+            {
+                var dialog = new MessageDialog("Wählen Sie ein Termin aus.");
+                await dialog.ShowAsync();
+            }
+            
         }
 
+        private async void ButtonSaveEditedAppointmentMethod()
+        {
+            TimeSpan twelve = new TimeSpan(12, 0, 0);
+            string pattern = "yyyy-MM-dd HH:mm:ss";
+            DateTime choosenAppointment = DateAppointment - twelve + TimeAppoitment;
+
+            //1. checken ob der termin belegt ist
+
+            //2. in die DB speichern
+
+
+            if (DateAppointment.DayOfWeek.ToString() == "Sunday")
+            {
+
+            }
+            //var dialog = new MessageDialog(twelve.ToString());
+            var dialog = new MessageDialog(choosenAppointment.ToString(pattern, CultureInfo.CurrentUICulture));
+            await dialog.ShowAsync();
+
+            ButtonBackToAppointmentPageMethod();
+        }
+
+        private async void ButtonSaveAppointmentMethod()
+        {
+            TimeSpan twelve = new TimeSpan(12, 0, 0);
+            string pattern = "yyyy-MM-dd HH:mm:ss";
+            DateTime choosenAppointment = DateAppointment - twelve + TimeAppoitment;
+            
+            //1. checken ob der termin belegt ist
+
+            //2. in die DB speichern
+
+
+            if (DateAppointment.DayOfWeek.ToString() == "Sunday")
+            {
+               
+            }
+            
+
+
+            //var dialog = new MessageDialog(twelve.ToString());
+            var dialog = new MessageDialog(choosenAppointment.ToString(pattern, CultureInfo.CurrentUICulture));
+            await dialog.ShowAsync();
+
+            ButtonBackToAppointmentPageMethod();
+        }
+
+        private void ButtonBackToAppointmentPageMethod()
+        {
+            GetFrame();
+            a.Navigate(typeof(Pages.TerminePage));
+        }
+
+
+
+        //Neuen Termin erstellen
+        public void AddNewAppointmentButtonMethod()
+        {
+            SQLGetConsultants();
+            GetFrame();
+            a.Navigate(typeof(Pages.TerminePages.NeuTermin));
+        }
+
+        public void SQLGetConsultants()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Consultants.Add(new Consultant()
+                {
+                    Id = i,
+                    Firstname = "Homer"+i,
+                    Lastname = "Simpson"+i,
+                });
+            }
+            
+        }
 
         #endregion
 

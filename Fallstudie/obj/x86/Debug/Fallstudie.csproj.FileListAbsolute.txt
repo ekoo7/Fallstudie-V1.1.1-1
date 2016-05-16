@@ -1077,7 +1077,6 @@ C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schrtitt11Zusammenfassung.g.cs
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schrtitt11Zusammenfassung.xaml
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\Schrtitt11Zusammenfassung.xbf
-C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Fallstudie.csprojResolveAssemblyReference.cache
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Pages\HKPages\Schritt10Aussenbereiche.xbf
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Pages\HKPages\Schritt8EnergyHeizung.xbf
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Pages\HKPages\Schritt9Zusatz.xbf
@@ -1123,3 +1122,14 @@ C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\SQLit
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Cirrious.MvvmCross.Community.Plugins.Sqlite\en\Cirrious.MvvmCross.Community.Plugins.Sqlite.Properties.Resources.resw
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\resources.en.resfiles
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\resources.en.resfiles.intermediate
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Pages\TerminePages\NeuTermin.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\TerminePages\NeuTermin.g.i.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\TerminePages\NeuTermin.g.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\TerminePages\NeuTermin.xaml
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\TerminePages\NeuTermin.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Pages\TerminePages\TerminBearbeiten.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\TerminePages\TerminBearbeiten.g.i.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\TerminePages\TerminBearbeiten.g.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\TerminePages\TerminBearbeiten.xaml
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\TerminePages\TerminBearbeiten.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Fallstudie.csprojResolveAssemblyReference.cache
