@@ -9,5 +9,14 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="pdfErstellen"></TextBlock>
+        
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Command="{Binding ButtonCreatePdf}" Icon="Document" Label="Termin erstellen"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

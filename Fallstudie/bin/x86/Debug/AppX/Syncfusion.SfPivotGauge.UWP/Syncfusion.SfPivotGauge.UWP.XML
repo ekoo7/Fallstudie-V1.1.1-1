@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Syncfusion.SfPivotGauge.UWP</name>
+    </assembly>
+    <members>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.Radius">
+            <summary>
+            Gets or sets the radius
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.RadiusProperty">
+            <summary>
+            Radius Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.ShowMarkersTooltipProperty">
+            <summary>
+            ShowMarkersTooltip Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.ShowPointersTooltipProperty">
+            <summary>
+            ShowPointersTooltip Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.ShowGaugeLabelsProperty">
+            <summary>
+            ShowGaugeLabels Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.ShowGaugeFactorsProperty">
+            <summary>
+            ShowGaugeFactors Dependency Property
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.#ctor">
+            <summary>
+            Initializes a new instance for <see cref="T:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge"/> class.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.KpiInfo">
+            <summary>
+            Gets or sets the KPI info which contains the information to render the OlapGauge.
+            </summary>
+            <value>The KPI info.</value>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.MaxValue">
+            <summary>
+            Gets or sets MaxValue of the Gauge to which all the values should be converted
+            to.
+            </summary>
+            <remarks>
+            If you need to render the gauge to 2 digit values then set this property
+            MaxValue to 99.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.ShowMarkersTooltip">
+            <summary>
+            Gets or sets a value indicating whether [show markers tooltip].
+            </summary>
+            <value><c>true</c> if [show markers tooltip]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.ShowPointersTooltip">
+            <summary>
+            Gets or sets a value indicating whether [show pointers tooltip].
+            </summary>
+            <value><c>true</c> if [show pointers tooltip]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.ShowGaugeLabels">
+            <summary>
+            Gets or sets a value indicating whether [show gauge labels].
+            </summary>
+            <value><c>true</c> if [show gauge labels]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.ShowGaugeFactors">
+            <summary>
+            Gets or sets a value indicating whether [show gauge factors].
+            </summary>
+            <value><c>true</c> if [show gauge factors]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.AddDangerRange(System.Double,System.Double)">
+            <summary>
+            Adds the danger range according to the Goal Value (ie., Lesser than Goal Value is considered to be in danger).
+            </summary>
+            <param name="startValue">The starting value of the Danger range</param>
+            <param name="mark">The mark is the Goal value(ie., The end value of Danger Range)</param>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.AddSaferRange(System.Double)">
+            <summary>
+            Adds the safer range according to the Goal Value (ie., Greater than Goal Value is considered to be safer).
+            </summary>
+            <param name="mark">The mark is the Goal value</param>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.AddFactorLabel(System.Int32)">
+            <summary>
+            Adds the factor label.
+            </summary>      
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.AddMemberLabel">
+            <summary>
+            Adds the member label which displays the Member information.
+            </summary>     
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.AddTrendImage(System.String)">
+            <summary>
+            Adds the trend image.
+            </summary>
+            <param name="uriPath">The URI path.</param>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.AddStatusImage(System.String)">
+            <summary>
+            Adds the status image.
+            </summary>
+            <param name="uriPath">The URI path.</param>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.AddStatusIndicator">
+            <summary>
+            Adds the status indicator.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.FindNearestUpperLimit(System.Double,System.Int32)">
+            <summary>
+            Finds the nearest upper limit.
+            </summary>
+            <returns>integer value to the nearest factor</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.GetCalculatedValue(System.String)">
+            <summary>
+            Gets the calculated Factor value.
+            </summary>
+            <param name="s">The string s contains double value in form of string</param>
+            <returns>the factor by which the scales should be rendered</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.OnApplyTemplate">
+            <summary>
+            Overring templates for applying styles in gauge
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.SetMaxScaleValue(System.Double,System.Double)">
+            <summary>
+            Sets the max scale value based on either the goal or the measure value.
+            </summary>
+            <param name="goal">The goal value</param>
+            <param name="value">The measure value</param>
+            <returns>The factorized value of Goal and Value</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotCircularGauge.DataBind">
+            <summary>
+            Binds the Values in KpiInfo to the OlapGauge
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ColumnsCountProperty">
+            <summary>
+            ColumnsCount Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.StatusIndicatorProperty">
+            <summary>
+            StatusIndicator Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.PivotDataManagerProperty">
+            <summary>
+            FrameType Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.RadiusProperty">
+            <summary>
+            Radius Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.RowsCountProperty">
+            <summary>
+            RowsCount Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ShowMarkersTooltipProperty">
+            <summary>
+            ShowMarkersTooltip Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ShowGaugeTooltipProperty">
+            <summary>
+            ShowPointersTooltip Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ShowGaugeHeadersProperty">
+            <summary>
+            ShowGaugeHeaders Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ShowGaugeLabelsProperty">
+            <summary>
+            ShowGaugeLabels Dependency Property
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ShowGaugeFactorsProperty">
+            <summary>
+            ShowGaugeFactors Dependency Property
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.#ctor">
+            <summary>
+            Initializes the gauge content and properties.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ColumnsCount">
+            <summary>
+            Gets or sets the columns count.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.StatusIndicator">
+            <summary>
+            Gets or sets the Status Indicator
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.KpiInfoCollection">
+            <summary>
+            Gets the kpi info collection.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.PivotDataManager">
+            <summary>
+            Gets or sets the olap data manager.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.PivotEngine">
+            <summary>
+            Gets or sets the pivot engine.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.Radius">
+            <summary>
+            Gets or sets the radius and default radius value is 100.0
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.RowsCount">
+            <summary>
+            Gets or sets the rows count.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ShowGaugeTooltip">
+            <summary>
+            Gets or sets a value indicating whether [show pointers tooltip].
+            </summary>
+            <value><c>true</c> if [show pointers tooltip]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ShowGaugeHeaders">
+            <summary>
+            Gets or sets a value indicating whether to [show Gauge Headers].
+            </summary>
+            <value><c>true</c> if [show Gauge Headers]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ShowGaugeLabels">
+            <summary>
+            Gets or sets a value indicating whether to [show Gauge Labels].
+            </summary>
+            <value><c>true</c> if [show Gauge Labels]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ShowGaugeFactors">
+            <summary>
+            Gets or sets a value indicating whether to [show Gauge Factors].
+            </summary>
+            <value><c>true</c> if [show Gauge Factors]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.DefaultGauge">
+            <summary>
+            Renders the default Gauge when OlapDataManager is not associated
+            </summary>
+            <returns>A default OlapGauge Control will be returned</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ShowEmptyKpi">
+            <summary>
+            Shows the Information if Kpi elements are empty.
+            </summary>
+            <returns>Returns a grid with Alert Message</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.AddGridLayout">
+            <summary>
+            Adds the Grid with Layout specified in RowsCount and ColumnsCount Property
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.AddWrapPanel">
+            <summary>
+            Adds the WrapPanel with the available Gauges in KpiInfoCollection
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.PositionScrollBars(System.Boolean)">
+            <summary>
+            Positions Inbuilt ScrollBar based on the Type of Panel
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.AddOlapGaugeControltoGrid(System.Int32@,System.Int32,System.Int32)">
+            <summary>
+            Creates a Grid control with the OlapGauge and OlapGauge Header Texts for Grid Control
+            </summary>
+            <returns>The Grid with both the above Controls</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.AddOlapGaugeControltoWrapPanel(System.Int32,Windows.UI.Xaml.Controls.Grid)">
+            <summary>
+            Creates a WrapPanel with the OlapGauge and OlapGauge Header Texts for Grid Control
+            </summary>
+            <returns>The Grid with both the above Controls</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.AddGridCell">
+            <summary>
+            Creates a blank Grid with all the grid properties and definitions
+            </summary>
+            <returns>The Grid control with default grid properties nad definitions</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.ClearData">
+            <summary>
+            Clears the OlapGrid data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.DataBind">
+            <summary>
+            Binds the OlapGauge with the information available in KpiInfoCollection
+            </summary>
+            <returns>The OlapGauge's embedded with Information on Above</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.SfPivotGauge.OnPivotDataManagerChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Called when [cube model changed].
+            </summary>
+            <param name="dependencyObject">The dependency object.</param>
+            <param name="e">The <see cref="!:System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.Syncfusion_SfPivotGauge_UWP_2015_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.Syncfusion_SfPivotGauge_UWP_2015_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotGauge.Syncfusion_SfPivotGauge_UWP_2015_XamlTypeInfo.XamlMetaDataProvider.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+    </members>
+</doc>

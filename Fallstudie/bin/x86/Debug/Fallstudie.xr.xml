@@ -109,6 +109,7 @@
     <RootPropertyPathName Name="InsideWallColor" />
     <RootPropertyPathName Name="OutsideWallColor" />
     <RootPropertyPathName Name="numberOfFloors" />
+    <RootPropertyPathName Name="ButtonCreatePdf" />
     <RootPropertyPathName Name="Appointments" />
     <RootPropertyPathName Name="SelectedAppointment" />
     <RootPropertyPathName Name="Consultant" />
@@ -136,8 +137,8 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="DataContext" />
       <RootProperty Name="Content" />
-      <RootProperty Name="Resources" />
       <RootProperty Name="BottomAppBar" />
+      <RootProperty Name="Resources" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Source" />
@@ -283,6 +284,16 @@
     <RootType FullName="Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung" />
     <RootType FullName="Fallstudie.Pages.KundenPage" />
     <RootType FullName="Fallstudie.Pages.KundenPages.CreateCustomerPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="PrimaryCommands" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Command" />
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+    </RootType>
     <RootType FullName="Fallstudie.Pages.pdfErstellenPage" />
     <RootType FullName="Fallstudie.Pages.ProjektePage" />
     <RootType FullName="Fallstudie.Converter.DateTimeConverter" />
@@ -297,16 +308,6 @@
       <RootProperty Name="Time" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="ClockIdentifier" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="PrimaryCommands" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Command" />
-      <RootProperty Name="Icon" />
-      <RootProperty Name="Label" />
     </RootType>
     <RootType FullName="Fallstudie.Pages.TerminePage" />
     <RootType FullName="Fallstudie.Pages.TerminePages.NeuTermin" />

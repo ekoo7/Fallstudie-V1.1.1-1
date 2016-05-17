@@ -1,0 +1,867 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Syncfusion.SfPivotChart.UWP</name>
+    </assembly>
+    <members>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis">
+            <summary>
+            Represents the axis of SfPivotChart control.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis"/> class.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.GroupLineStroke">
+            <summary>
+            Gets or sets the stroke for group line shown in primary axis.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.GroupLineStrokeProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.GroupLineStroke" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.GroupLineStrokeThickness">
+            <summary>
+            Gets or sets the stroke thickness for group line shown in primary axis.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.GroupLineStrokeThicknessProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.GroupLineStrokeThickness" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.PivotEngine">
+            <summary>
+            Gets or sets the pivot engine to populate labels.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.PivotEngineProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.PivotEngine" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.Orientation">
+            <summary>
+            Gets or sets the orientation.
+            </summary>
+            <value>The orientation.</value>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.ProcessingLabelsState">
+            <summary>
+            Gets or sets a value indicating whether axis is processing labels state.
+            </summary>
+            <value>
+            	<c>true</c> if axis is processing labels state; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="E:Syncfusion.UI.Xaml.PivotChart.PivotChartAxis.LabelClick">
+            <summary>
+            Occurs when a label has been clicked to do drill-down or drill-up 
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartZoomPanBehavior">
+            <summary>
+            Represents the operations of zooming and panning over SfPivotChart control.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.KpiTemplateConverter">
+            <summary>
+            Represents the converter to convert the pivot cell member to kpi information 
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.KpiTemplateConverter.Convert(System.Object,System.Type,System.Object,System.String)">
+            <summary>
+            Modifies the source data before passing it to the target for display in the UI.
+            </summary>
+            <param name="value">The source data being passed to the target.</param>
+            <param name="targetType">The type of the target property, as a type reference.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The language of the conversion.</param>
+            <returns>The KPI information to be passed to the target dependency property.</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.KpiTemplateConverter.ConvertBack(System.Object,System.Type,System.Object,System.String)">
+            <summary>
+            Modifies the target data before passing it to the source object. This method is called only in TwoWay bindings.
+            </summary>
+            <param name="value">The target data being passed to the source.</param>
+            <param name="targetType">The type of the target property, as a type reference.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The language of the conversion.</param>
+            <returns>The value to be passed to the source object.</returns>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.KpiGraphics">
+            <summary>
+            Represents the sign of KPIs used to differentiate status and trend
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.SeriesToolTipConverter">
+            <summary>
+            Represents the converter to convert a pivot cell data to formatted tooltip.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.SeriesToolTipConverter.Convert(System.Object,System.Type,System.Object,System.String)">
+            <summary>
+            Modifies the source data before passing it to the target for display in the UI.
+            </summary>
+            <param name="value">The source data being passed to the target.</param>
+            <param name="targetType">The type of the target property, as a type reference.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The language of the conversion.</param>
+            <returns>The formatted tooltip content to be passed to the target dependency property.</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.SeriesToolTipConverter.ConvertBack(System.Object,System.Type,System.Object,System.String)">
+            <summary>
+            Modifies the target data before passing it to the source object. This method is called only in TwoWay bindings.
+            </summary>
+            <param name="value">The target data being passed to the source.</param>
+            <param name="targetType">The type of the target property, as a type reference.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The language of the conversion.</param>
+            <returns>The value to be passed to the source object.</returns>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartCommand">
+            <summary>
+            Defines a command that implements ICommand and is routed through the element tree.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotChartCommand.#ctor(System.Action)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.UI.Xaml.PivotChart.PivotChartCommand">PivotChartCommand</see> class. 
+            </summary>
+            <param name="execute">The execution logic.</param>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotChartCommand.#ctor(System.Action,System.Predicate{System.Object})">
+            <summary>
+            Creates a new command.
+            </summary>
+            <param name="execute">The execution logic.</param>
+            <param name="canExecute">The execution status logic.</param>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotChartCommand.CanExecute(System.Object)">
+            <summary>
+            Defines the method that determines whether the command can execute in its current state.
+            </summary>
+            <param name="parameter">Data used by the command. If the command does not require data to be passed, this object can be set to null.</param>
+            <returns>true if this command can be executed; otherwise, false.</returns>
+        </member>
+        <member name="E:Syncfusion.UI.Xaml.PivotChart.PivotChartCommand.CanExecuteChanged">
+            <summary>
+            Occurs when changes occur that affect whether or not the command should execute.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotChartCommand.RaiseCanExecuteChanged">
+            <summary>
+            Raises the CanExecuteChanged event.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotChartCommand.Execute(System.Object)">
+            <summary>
+            Defines the method to be called when the command is invoked.
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.DependencyObjectExtensions">
+            <summary>
+            Represents an extension to find parent or child of an element.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.DependencyObjectExtensions.FindParentElementOfType``1(Windows.UI.Xaml.FrameworkElement)">
+            <summary>
+            Gets the parent element of the specified framework element in the visual tree.
+            </summary>
+            <typeparam name="T">The type of parent element.</typeparam>
+            <param name="element">The child element.</param>
+            <returns>The parent element.</returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.DependencyObjectExtensions.FindElementOfType``1(Windows.UI.Xaml.FrameworkElement)">
+            <summary>
+            Searches the sub tree of an element (including that element) for an element of a particular type.
+            </summary>
+            <param name="element">The element used to search.</param>
+            <returns>The searched element.</returns>
+            <typeparam name="T">The type of searched element.</typeparam>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.DependencyObjectExtensions.FindElementOfTypeWithName``1(Windows.UI.Xaml.FrameworkElement,System.String)">
+            <summary>
+            Searches the sub tree of an element (including that element) for an element with specific name and particular type.
+            </summary>
+            <param name="element">The element used to search.</param>
+            <param name="name">The name of element searched for.</param>
+            <returns>The searched element.</returns>
+            <typeparam name="T">The type of searched element.</typeparam>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartLegend">
+            <summary>
+            Represents the legend for SfPivotChart control.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelClickEventHandler">
+            <summary>
+            Represents the method that handles the event raised when a label is clicked on.
+            </summary>
+            <param name="sender">The object where the event handler is attached.</param>
+            <param name="e">The event data.</param>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotDataRefreshEventHandler">
+            <summary>
+            Represents the method that handles the event raised data for SfPivotChart control is refreshed on.
+            </summary>
+            <param name="sender">The object where the event handler is attached.</param>
+            <param name="e">The event data.</param>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelClickEventArgs">
+            <summary>
+            Provides data for label click event.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelClickEventArgs.#ctor(Syncfusion.Olap.UWP.Engine.PivotCellDescriptor)">
+            <summary>
+            Initializes the new instance of the <see cref="T:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelClickEventArgs">PivotChartLabelClickEventArgs</see> class.
+            </summary>
+            <param name="targetPivotMember">The target pivot member that has been clicked.</param>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelClickEventArgs.CellDescriptor">
+            <summary>
+            Gets the target pivot member for label click event.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotDataRefreshEventArgs">
+            <summary>
+            Provides data for data refresh event
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotDataRefreshEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.UI.Xaml.PivotDataRefreshEventArgs">PivotDataRefreshEventArgs</see> class. 
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotDataRefreshEventArgs.#ctor(Syncfusion.UI.Xaml.PivotChart.RefreshType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.UI.Xaml.PivotChart.PivotDataRefreshEventArgs">PivotDataRefreshEventArgs</see> class. 
+            </summary>
+            <param name="refreshType"></param>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotDataRefreshEventArgs.RefreshType">
+            <summary>
+            Gets the mode of refresh type.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotDataRefreshEventArgs.CellDescriptor">
+            <summary>
+            Gets or sets the target pivot member.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotDataRefreshEventArgs.Handled">
+            <summary>
+            Gets or sets a value indicating whether the event should be handled.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartWatermark">
+            <summary>
+            Represents the watermark for SfPivotChart control.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel">
+            <summary>
+            Represents the label in pivot chart axis.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.ExpandCommand">
+            <summary>
+            Gets or sets the command to execute while expanding label.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.Caption">
+            <summary>
+            Gets or sets the caption for pivot chart axis label.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.CaptionProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.Caption" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.Orientation">
+            <summary>
+            Gets or sets the dimension to arrange label element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.OrientationProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.Orientation" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.GroupLineStroke">
+            <summary>
+            Gets or sets the stroke for group line around pivot chart axis label.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.GroupLineStrokeProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.GroupLineStroke" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.GroupLineStrokeThickness">
+            <summary>
+            Gets or sets the stroke thickness for group line around pivot chart axis label.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.GroupLineStrokeThicknessProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.GroupLineStrokeThickness" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.LabelStyle">
+            <summary>
+            Gets or sets the style for pivot chart axis label.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.LabelStyleProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.LabelStyle" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.LabelRotationAngle">
+            <summary>
+            Gets or sets the rotation angle for pivot chart axis label.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.LabelRotationAngleProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.LabelRotationAngle" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.IsChecked">
+            <summary>
+            Gets or sets a value indicating whether the label expander should be expanded.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.IsCheckedProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.IsChecked" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.Visibility">
+            <summary>
+            Gets or sets the visibility of pivot chart axis label.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.VisibilityProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabel.Visibility" /> dependency property.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter">
+            <summary>
+            Represents the presenter to present a pivot chart label.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.#ctor(Syncfusion.Olap.UWP.Engine.PivotCellDescriptor,Syncfusion.UI.Xaml.PivotChart.PivotChartAxis)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter">PivotChartLabelPresenter</see> class. 
+            </summary>
+            <param name="representedMember">The represented member.</param>
+            <param name="axis">Parent axis.</param>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.Row">
+            <summary>
+            Gets or sets a value that indicates which row the element within a Grid should appear in.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.RowProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.Row" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.Column">
+            <summary>
+            Gets or sets a value that indicates which column the element within a Grid should appear in.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.ColumnProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.Column" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.RowSpan">
+            <summary>
+            Gets or sets a value that indicates the total number of rows that the element spans within a Grid.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.RowSpanProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.RowSpan" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.ColumnSpan">
+            <summary>
+            Gets or sets a value that indicates the total number of columns that the element spans within a Grid.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.ColumnSpanProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartLabelPresenter.ColumnSpan" /> dependency property.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel">
+            <summary>
+            Represents the scrolling panel for holding pivot chart axis labels.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel.Orientation" -->
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel.OrientationProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel.Orientation" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel.ZoomFactor">
+            <summary>
+            Gets a value that indicates the factor engaged for content scaling.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel.ZoomFactorProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel.ZoomFactor" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel.ZoomPosition">
+            <summary>
+            Gets or sets the distance through which the content has been scrolled
+            </summary>
+            <value>The ZoomPosition.</value>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel.ZoomPositionProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel.ZoomPosition" /> dependency property.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel.MeasureOverride(Windows.Foundation.Size)">
+            <summary>
+            When overridden in a derived class, measures the size in layout required for child elements and determines a size for the <see cref="T:System.Windows.FrameworkElement"/>-derived class.
+            </summary>
+            <param name="availableSize">The available size that this element can give to child elements. Infinity can be specified as a value to indicate that the element will size to whatever content is available.</param>
+            <returns>
+            The size that this element determines it needs during layout, based on its calculations of child element sizes.
+            </returns>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotChartScrollingPanel.ArrangeOverride(Windows.Foundation.Size)">
+            <summary>
+            When overridden in a derived class, positions child elements and determines a size for a <see cref="T:System.Windows.FrameworkElement"/> derived class.
+            </summary>
+            <param name="finalSize">The final chart within the parent that this element should use to arrange itself and its children.</param>
+            <returns>The actual size used.</returns>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle">
+            <summary>
+            Represents the style for pivot chart axis in SfPivotChart control.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelRotationAngle">
+            <summary>
+            Gets or sets the rotation angle for axis labels.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelRotationAngleProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelRotationAngle" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelFormat">
+            <summary>
+            Gets or sets the format for formatting axis labels.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelFormatProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelFormat" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelFontSize">
+            <summary>
+            Gets or sets the font size of axis labels.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelFontSizeProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelFontSize" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelFontFamily">
+            <summary>
+            Gets or sets the font family for axis labels.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelFontFamilyProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelFontFamily" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelForeground">
+            <summary>
+            Gets or sets the foreground for axis labels.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelForegroundProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.LabelForeground" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.GroupLineStroke">
+            <summary>
+            Gets or sets the stroke for group line around axis label.
+            </summary>
+            <remarks>This is applicable only for primary axis</remarks>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.GroupLineStrokeProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.GroupLineStroke" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.GroupLineStrokeThickness">
+            <summary>
+            Gets or sets the stroke thickness for group line around axis label.
+            </summary>
+            <remarks>This is applicable only for primary axis</remarks>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.GroupLineStrokeThicknessProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.PivotChartAxisStyle.GroupLineStrokeThickness" /> dependency property.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.RefreshType">
+            <summary>
+            Defines the different modes of data refresh.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.RefreshType.DataBind">
+            <summary>
+            Data refresh is happened while binding data.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.RefreshType.Drilldown">
+            <summary>
+            Data refresh is happened while performing drill operations.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartType">
+            <summary>
+            Defines different charts that SfPivotChart control supports.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.Column">
+            <summary>
+            Default.
+            Compares values across categories. The series values are displayed 
+            as individual columns, grouped by category. The height of each column 
+            is determined by the series value.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.StackingColumn">
+            <summary>
+            A stacked column chart displays the relationship of individual items to the whole, 
+            comparing the contributions of each value to a total across categories.
+            The series values are stacked in a single column for each category. 
+            The height of each column is determined by the total of all series values for the category.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.Line">
+            <summary>
+            A style of chart that is created by connecting a series of data points 
+            together with a line. This is the most basic type of chart used in finance and 
+            it is generally created by connecting a series of past prices together with a line.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.Spline">
+            <summary>
+            A spline chart is simply a line chart that plots a fitted curve through 
+            each data point in a series.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.StepLine">
+            <summary>
+            Step Line charts are line charts, with values drawn continuously, step by step without any gaps between them.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.Area">
+            <summary>
+            A type of presentation graphic that emphasizes 
+            a change in values by filling in the portion of the graph beneath 
+            the line connecting various data points.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.StackingArea">
+            <summary>
+            StackingArea is an chart chart with Y values stacked over one another, in series order.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.SplineArea">
+            <summary>
+            Spline Chart is an Area chart in which each chart is given a color to 
+            emphasize the relationships between the pieces of charted information.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.StepArea">
+            <summary>
+            The StepArea chart consists of pairs of values (plotted as points) on a line 
+            for each series in the given dataset. Each pair of values consists of one date (value) and one numeric value. 
+            This chart will have one date\time (value) based axis (the domain axis) and one numeric axis (the range axis).  
+            Each line is drawn at a 90 degree angle from point to point. 
+            Each line will fill from the line to the bottom of the plot with its series color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.Scatter">
+            <summary>
+            A scatter type contains one or more scatter plots each of which use Cartesian 
+            co-ordinates to display values for two series values for a set of data. 
+            The data is displayed as a collection of points, each having the value 
+            of one variable determining the position on the horizontal axis and 
+            the value of the other variable determining the position on the vertical axis.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.Bar">
+            <summary>
+            A bar chart, also known as a bar graph, is a chart with rectangular bars 
+            of lengths proportional to that value that they represent. 
+            Bar charts are used for comparing two or more values.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.StackingBar">
+            <summary>
+            A stacked bar chart displays the relationship of individual items to the whole, 
+            comparing the contributions of each value to a total across categories.
+            The series values are stacked in a single column for each category. 
+            The height of each column is determined by the total of all series values for the category.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.StackingBar100">
+            <summary>
+            A bar chart where multiple series are stacked horizontally to fit 100% 
+            of the chart chart. If there is only one series in chart, 
+            all the bars will fit to 100% of chart.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.StackingColumn100">
+            <summary>
+            A column chart where multiple series are stacked vertically to fit 100% 
+            of the chart chart. If there is only one series in your chart, 
+            all the column bars will fit to 100% of the chart chart.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.PivotChartType.Pie">
+            <summary>
+            A pie chart (or a circle graph) is a circular chart divided into sectors, 
+            illustrating relative magnitudes or frequencies or percent. 
+            In a pie chart, the arc length of each sector (and consequently its central angle and chart), 
+            is proportional to the quantity it represents. Together, the sectors create a full disk.
+            It is named for its resemblance to a pie which has been sliced.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartPoint">
+            <summary>
+            Represents data object for defining chart points.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.PivotChartPoint.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.UI.Xaml.PivotChart.PivotChartPoint">PivotChartPoint</see> class. 
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartPoint.BindingX">
+            <summary>
+            Gets or sets the binding path of X value.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartPoint.BindingY">
+            <summary>
+            Gets or sets the binding path of Y value.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.PivotChartPoint.Tag">
+            <summary>
+            Gets or sets the tag for chart point.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.PivotChartPointCollection">
+            <summary>
+            Repreesents the collection of chart points to render series.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.UI.Xaml.PivotChart.SfPivotChart">
+            <summary>
+            Represents the control that visualizes multidimensional data from OLAP data source.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.UI.Xaml.PivotChart.SfPivotChart">SfPivotChart</see> class. 
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.OlapDataManager">
+            <summary>
+            Gets or sets the OlapDataManager which manages OLAP data source.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.OlapDataManagerProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.OlapDataManager" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.Legend">
+            <summary>
+            Gets or sets the legend that identifies chart series elements.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.LegendProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.Legend" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.AdornmentTemplate">
+            <summary>
+            Gets or sets the adornment template for series in SfPivotChart control.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.AdornmentTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.AdornmentTemplate" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ChartType">
+            <summary>
+            Gets or sets the chart type to plot data.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ChartTypeProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ChartType" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ColorPalette">
+            <summary>
+            Gets or sets the pivot  chart color palette.
+            </summary>
+            <value>The pivot  chart color palette.</value>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ColorPaletteProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ColorPalette" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.CustomBrushes">
+            <summary>
+            Gets or sets the list of custom palette brushes.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.CustomBrushesProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.CustomBrushes" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.PrimaryAxisStyle">
+            <summary>
+            Gets or sets the style for primary axis.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.PrimaryAxisStyleProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.PrimaryAxisStyle" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.SecondaryAxisStyle">
+            <summary>
+            Gets or sets the style for secondary axis.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.SecondaryAxisStyleProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.SecondaryAxisStyle" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ShowProcessingBar">
+            <summary>
+            Gets or sets a value indicating whether the progressing bar should be shown.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.Watermark">
+            <summary>
+            Gets or sets the watermark content for SfPivotChart control.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.WatermarkProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.Watermark" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ShowToolTip">
+            <summary>
+            Gets or sets a value indicating whether the tooltip should be shown on series.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ShowToolTipProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ShowToolTip" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ToolTipTemplate">
+            <summary>
+            Gets or sets the template for series tooltip.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ToolTipTemplateProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ToolTipTemplate" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ZoomPanBehavior">
+            <summary>
+            Gets or sets the operations of zomming and panning over SfPivotChart control.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ZoomPanBehaviorProperty">
+            <summary>
+            Identifies the <see cref="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.ZoomPanBehavior" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.PrimaryAxis">
+            <summary>
+            Gets the primary axis.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.SecondaryAxis">
+            <summary>
+            Gets the secondary axis.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.CurrentReport">
+            <summary>
+            Gets the current report.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.SfPivotChart.DataBind">
+            <summary>
+            Binds the data to the SfPivotChart control.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.Syncfusion_SfPivotChart_UWP_2015_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.Syncfusion_SfPivotChart_UWP_2015_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:Syncfusion.UI.Xaml.PivotChart.Syncfusion_SfPivotChart_UWP_2015_XamlTypeInfo.XamlMetaDataProvider.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+    </members>
+</doc>

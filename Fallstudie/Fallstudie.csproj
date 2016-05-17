@@ -132,6 +132,7 @@
     <Compile Include="Model\EHSystem.cs" />
     <Compile Include="Model\HouseSummary.cs" />
     <Compile Include="Model\ImageInherit.cs" />
+    <Compile Include="Model\Project.cs" />
     <Compile Include="Pages\HausKonfiguratorPage.xaml.cs">
       <DependentUpon>HausKonfiguratorPage.xaml</DependentUpon>
     </Compile>
@@ -333,6 +334,9 @@
     </SDKReference>
     <SDKReference Include="SQLite.UWP.2015, Version=3.12.2">
       <Name>SQLite for Universal Windows Platform</Name>
+    </SDKReference>
+    <SDKReference Include="Syncfusion Controls for UWP XAML, Version=14.1.0.41">
+      <Name>Syncfusion Controls for UWP XAML</Name>
     </SDKReference>
   </ItemGroup>
   <ItemGroup />

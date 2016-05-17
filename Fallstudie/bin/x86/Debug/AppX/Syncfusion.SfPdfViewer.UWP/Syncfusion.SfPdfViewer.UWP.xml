@@ -1,0 +1,841 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Syncfusion.SfPdfViewer.UWP</name>
+    </assembly>
+    <members>
+        <member name="M:Syncfusion.PdfViewer.Base.TextElement.Render(System.Drawing.PointF,System.Double,System.Collections.Generic.Dictionary{System.Int32,System.Int32},System.Double,System.Collections.Generic.Dictionary{System.Int32,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.Int32,System.String},Syncfusion.PdfViewer.Base.Matrix@)">
+            <summary>
+            Renders the Text to the panel
+            </summary>
+            <param name="g">graphics element</param>
+            <param name="currentLocation">location in which the graphics is to be drawn</param>
+        </member>
+        <member name="M:Syncfusion.PdfViewer.Syncfusion_SfPdfViewer_UWP_2015_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:Syncfusion.PdfViewer.Syncfusion_SfPdfViewer_UWP_2015_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:Syncfusion.PdfViewer.Syncfusion_SfPdfViewer_UWP_2015_XamlTypeInfo.XamlMetaDataProvider.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Windows.PdfViewer.WinRTRenderer.m_changeInHeight">
+            <summary>
+            Internal variable to hold the initialized pdf document page.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Windows.PdfViewer.WinRTRenderer.m_pixelHeight">
+            <summary>
+            Internal variable to hold the initialized pdf document page.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.WinRTRenderer.#ctor(System.Double,System.Boolean,Syncfusion.Windows.PdfViewer.PdfDocumentView)">
+            <summary>
+            Retrieves an object by its reference.
+            </summary>
+            <param name="pointer">The reference of the object.</param>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.WinRTRenderer.#ctor(System.Double,System.Boolean,Syncfusion.Windows.PdfViewer.PdfDocumentView,System.Int32,System.String)">
+            <summary>
+            Retrieves an object by its reference.
+            </summary>
+            <param name="pointer">The reference of the object.</param>
+        </member>
+        <member name="F:Syncfusion.Windows.PdfViewer.PdfDocumentView.m_initializedDocumentPages">
+            <summary>
+            Internal variable to hold the initialized pdf document page.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.PdfDocumentView.Print">
+            <summary>
+            Print the pages in viewer.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.PdfDocumentView.PrepareForPrint(System.Int32,System.Int32)">
+            <summary>
+            Prepare images for print.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.PdfDocumentView.PrepareForPrint(System.Int32,System.Int32,Windows.Storage.StorageFolder)">
+            <summary>
+            Prepare images for print.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.PdfDocumentView.RegisterForPrint">
+            <summary>
+            Registers and triggers print events.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.PdfDocumentView.CreatePrintPreviewPages(System.Object,Windows.UI.Xaml.Printing.PaginateEventArgs)">
+            <summary>
+            Pages are prepared for preview.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.PdfDocumentView.AddOnePrintPreviewPage">
+            <summary>
+            Addes the pages for preview.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.PdfDocumentView.GetPrintPreviewPage(System.Object,Windows.UI.Xaml.Printing.GetPreviewPageEventArgs)">
+            <summary>
+            Sets the specific page as preview.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.PdfDocumentView.AddPrintPages(System.Object,Windows.UI.Xaml.Printing.AddPagesEventArgs)">
+            <summary>
+            Adds the pages to the print document and notifies the print list.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.PdfDocumentView.UnregisterForPrint">
+            <summary>
+            Unregisters print events.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Syncfusion.Windows.PdfViewer.UIDispatcher" -->
+        <member name="M:Syncfusion.Windows.PdfViewer.UIDispatcher.Execute(System.Action)">
+            <summary>
+            Executes the action using UIElement.
+            </summary>
+            <param name="action">An Action.</param>
+        </member>
+        <member name="T:Syncfusion.Windows.PdfViewer.PdfFlipView">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.PdfFlipView.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.PdfFlipView.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Windows.PdfViewer.NamespaceDoc">
+            <summary>
+            Provides classes to create PDF viewer control and various operations in Universal Windows/Windows Run Time application
+            </summary>
+        </member>
+        <member name="E:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.TextSearchInitiated">
+            <summary>
+            Occurs when the text search is initiated
+            </summary> 
+        </member>
+        <member name="E:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.TextFound">
+            <summary>
+            Occurs when an instance of the target text is found
+            </summary>
+        </member>
+        <member name="E:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.TextSearchCompleted">
+            <summary>
+            Occurs when the document is completely scanned for the target text
+            </summary>
+        </member>
+        <member name="E:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.SemanitcZoomChanged">
+            <summary>
+            Occurs when the semantic zoom is changed
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.PrinterSettings">
+            <summary>
+            Get or Sets the printer settings of the printer
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.VerticalOffset">
+            <summary>
+            Gets the Vertical Offset of the PDF Viewer
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.IsDisposeCompletely">
+            <summary>
+            Disposes the document completely
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.IsTextSearchEnabled">
+            <summary>
+            Enables or Disables the Textsearch feature
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.HorizontalOffset">
+            <summary>
+            Gets the Horizontal offset of the PDF Viewer
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.PageOffsetCollection">
+            <summary>
+            Gets the collection of the page numbers along with the offset where the page ends.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.PageGap">
+            <summary>
+            Gets the gap between two pages in Integer.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.PageCount">
+            <summary>
+            Gets the total page count
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.VerticalScrollBarVisibility">
+            <summary>
+            Gets or sets a value that indicates whether a vertical ScrollBar should be displayed.       
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.HorizontalScrollBarVisibility">
+            <summary>
+            Gets or sets a value that indicates whether a horizontal ScrollBar should be displayed.        
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.SinglePageViewCommand">
+            <summary>
+            Defines Command for SinglePageFlipView
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.Print">
+            <summary>
+            Prints all pages in the viewer.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.GetTextCoordinates(System.String,System.Int32,System.Collections.Generic.List{Syncfusion.Windows.PdfViewer.PdfTextCoordinates}@)">
+            <summary>
+            Search for the existence of a text and returns the text positions in a PDF page 
+            </summary>
+            <param name="targetText">The text to be searched</param>
+            <param name="pageIndex">The targeted page index in which search to be performed</param>
+            <param name="coordinatesList">Returns the text coordinates available in the PDF page</param>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.SearchNextText(System.String)">
+            <summary>
+            Search the next occurance of the text
+            </summary>
+            <param name="targetString">The text to be searched</param>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.SearchPrevText(System.String)">
+            <summary>
+            Search the previous occurance of the text
+            </summary>
+            <param name="targetString">The text to be searched</param>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.OnSearchNextCommand(System.Object)">
+            <summary>
+            Search the next occurance of the text
+            </summary>
+            <param name="targetString">The text to be searched</param>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.OnSearchPreviousCommand(System.Object)">
+            <summary>
+            Search the previous occurance of the text
+            </summary>
+            <param name="targetString">The text to be searched</param>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.OnClearTextSelectionCommand(System.Object)">
+            <summary>
+            Clears the text highlightings
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.LoadDocument(Syncfusion.Pdf.Parsing.PdfLoadedDocument)">
+            <summary>
+            Loads the PdfLoadedDocument into the PDF Viewer
+            </summary>
+            <param name="loadedDocument">PdfLoadedDocument to be loaded</param>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.LoadDocument(System.IO.Stream)">
+            <summary>
+            Loads the PDF document created with the stream into the PDF Viewer
+            </summary>
+            <param name="stream">Document stream</param>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.LoadDocument(System.IO.Stream,System.String)">
+            <summary>
+            Loads the encrypted PDF document created from the stream into the PdfViewer control
+            </summary>
+            <param name="stream">Document Stream</param>
+            <param name="password">Password</param>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.LoadDocumentAsync(Syncfusion.Pdf.Parsing.PdfLoadedDocument)">
+            <summary>
+            Load the PDF document into the PdfViewer control
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.ExportAsImage(System.Int32,System.Single)">
+            <summary>
+            Exports the specified page as MemoryStream with respect to zoomfactor specified.
+            </summary>
+            <param name="pageIndex">The page index to be converted into Stream.</param>
+            <param name="zoomFactor">Zoom Factor in which the page is to be exported.</param>
+            <returns>Returns the specified page as Stream with respect to zoom factor.</returns>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.ExportAsImage(System.Int32)">
+            <summary>
+            Exports the specified page as MemoryStream
+            </summary>
+            <param name="pageIndex">The page index to be converted into MemoryStream.</param>       
+            <returns>Returns the specified page as MemoryStream.</returns>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.ExportAsImage(System.Int32,System.Int32,System.Single)">
+            <summary>
+            Exports the specified pages as MemoryStreams with respect to zoomFactor specified.
+            </summary>
+            <param name="startIndex">The starting page index.</param>
+            <param name="endIndex">The ending page index.</param>
+            <param name="zoomFactor">Zoom Factor in which the page is to be exported.</param>
+            <returns>Returns the specified pages as MemoryStreams with respect to zoom factor.</returns>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.ExportAsImage(System.Int32,System.Int32)">
+            <summary>
+            Exports the specified pages as MemoryStreams.
+            </summary>
+            <param name="startIndex">The starting page index</param>
+            <param name="endIndex">The ending page index</param>       
+            <returns>Returns the specified pages as MemoryStreams</returns>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.GetPage(System.Int32)">
+            <summary>
+            Outputs an Image, which represents a Portable Document Format (PDF) page's contents
+            </summary>
+            <param name="pageIndex">Index of the page to be extracted as image</param>
+            <returns>Content of the page as Image</returns>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.GetPage(System.Int32,System.Int32)">
+            <summary>
+            Outputs an Image, which represents a Portable Document Format (PDF)
+                page's contents with custom magnification
+            </summary>
+            <param name="pageIndex">Index of the page to be extracted as image</param>
+            <param name="zoomFactor">The magnification factor</param>
+            <returns>Content of the page with custom magnification as Image</returns>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.GetPages(System.Int32,System.Int32)">
+            <summary>
+            Outputs an array of Image, which represents a Portable Document Format (PDF)
+                page's contents
+            </summary>
+            <param name="startIndex">Index of the starting page</param>
+            <param name="endIndex">Index of the ending page</param>
+            <returns>Content of the page as Image array</returns>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.GetPages(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Outputs an array of Image, which represents a Portable Document Format (PDF)
+                page's contents with custom magnification
+            </summary>
+            <param name="startIndex">Index of the starting page</param>
+            <param name="endIndex">Content of the page as Image array</param>
+            <param name="zoomFactor">The magnification factor</param>
+            <returns>Content of the page with custom magnification as Image array</returns>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.Unload(System.Boolean)">
+            <summary>
+            Unloads the PDF Viewer
+            </summary>
+            <param name="disposeDocumentStream">Setting this parameter to true will dispose the loaded document completely. By default this parameter is set to true</param> 
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.SfPdfViewerControl.ZoomTo(System.Int32)">
+            <summary>
+            Zooms the document to the specified percentage
+            </summary>
+            <param name="percentage">The percentage between 100 to 300</param>
+        </member>
+        <member name="E:Syncfusion.Windows.PdfViewer.DelegateCommand.CanExecuteChanged">
+            <summary>
+            Occurs when changes occur that affect whether the command should execute.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.DelegateCommand.#ctor(System.Action{System.Object},System.Func{System.Object,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.Windows.PdfViewer.DelegateCommand"/> class.
+            </summary>
+            <param name="executeAction">The execute action.</param>
+            <param name="canExecute">The can execute.</param>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.DelegateCommand.CanExecute(System.Object)">
+            <summary>
+            Defines the method that determines whether the command 
+            can execute in its current state.
+            </summary>
+            <param name="parameter">
+            Data used by the command. 
+            If the command does not require data to be passed,
+            this object can be set to null.
+            </param>
+            <returns>
+            true if this command can be executed; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.DelegateCommand.Execute(System.Object)">
+            <summary>
+            Defines the method to be called when the command is invoked.
+            </summary>
+            <param name="parameter">
+            Data used by the command. 
+            If the command does not require data to be passed, 
+            this object can be set to null.
+            </param>
+        </member>
+        <member name="P:Syncfusion.Windows.PdfViewer.PrinterSettings.DocumentName">
+            <summary>
+            Get or Sets the name of the printed document
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Windows.PdfViewer.TextSelectionCopyButton">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.TextSelectionCopyButton.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.TextSelectionCopyButton.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.ThumbnailView.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Windows.PdfViewer.ThumbnailView.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Pdf.CMap.WriteShort(System.Int16)">
+            <summary>
+            Writes short value into the font stream
+            </summary>
+            <param name="value">Short value to be written</param>
+        </member>
+        <member name="M:Syncfusion.Pdf.CMap.WriteInt(System.Int32)">
+            <summary>
+            Writes integer value into the font stream
+            </summary>
+            <param name="value">Integer value to be written</param>
+        </member>
+        <member name="M:Syncfusion.Pdf.CMap.WriteString(System.String)">
+            <summary>
+            Writes string value into the font stream
+            </summary>
+            <param name="value">String value to be written</param>
+        </member>
+        <member name="M:Syncfusion.Pdf.CMap.WriteBytes(System.Byte[])">
+            <summary>
+            Write the bytes into the font stream
+            </summary>
+            <param name="buffer">byte array to be written</param>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontDecode.CreateFontStream(System.Collections.Generic.List{Syncfusion.Pdf.TableEntry})">
+            <summary>
+            Generate the font stream with respect to the font tables present in the entries
+            </summary>
+            <param name="entries">list of font tables in the font</param>
+            <returns>stream of the font</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontDecode.WriteHeader(Syncfusion.Pdf.FontHeader)">
+            <summary>
+            Writes the header into the font stream
+            </summary>
+            <param name="head">Header information of the font</param>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontDecode.WriteEntry(Syncfusion.Pdf.TableEntry)">
+            <summary>
+            Writes table entry into the font stream
+            </summary>
+            <param name="entry">Table entry</param>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontDecode.WriteShort(System.Int16)">
+            <summary>
+            Writes short value into the font stream
+            </summary>
+            <param name="value">Short value to be written</param>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontDecode.WriteInt(System.Int32)">
+            <summary>
+            Writes integer value into the font stream
+            </summary>
+            <param name="value">Integer value to be written</param>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontDecode.WriteString(System.String)">
+            <summary>
+            Writes string value into the font stream
+            </summary>
+            <param name="value">String value to be written</param>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontDecode.WriteBytes(System.Byte[])">
+            <summary>
+            Write the bytes into the font stream
+            </summary>
+            <param name="buffer">byte array to be written</param>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontDecode.GetSearchRange(System.Int32)">
+            <summary>
+            Calculates the search range of the font
+            </summary>
+            <param name="noOfTables">Number of tables in the font</param>
+            <returns>Value of the search range</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontDecode.GetEntrySelector(System.Int32)">
+            <summary>
+            Calculates the entry selector of the font
+            </summary>
+            <param name="noOfTables">Number of tables in the font</param>
+            <returns>Value of the entry selector</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontDecode.GetRangeShift(System.Int32,System.Int32)">
+            <summary>
+            Calculates the range shift of the font
+            </summary>
+            <param name="noOfTables">Number of tables in the font</param>
+            <param name="searchRange">Search range of the font</param>
+            <returns>Value of the range shift</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontFile2.readHeader">
+            <summary>
+            Reads the header of the font
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontFile2.readTablesForFont">
+            <summary>
+            Reads the table part to get the details about the tables in the font
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontFile2.getTableID(System.String)">
+            <summary>
+            Returns the id of the font table corresponding to the tag
+            </summary>
+            <param name="tag">Font tag</param>
+            <returns>Corresponding table ID</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontFile2.getnextUint32">
+            <summary>
+            Reads 4 bytes from the byte array
+            </summary>
+            <returns>Corresponding value</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontFile2.getnextUint64">
+            <summary>
+            Reads 8 bytes from the byte array
+            </summary>
+            <returns>Corresponding value</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontFile2.getnextUint32AsTag">
+            <summary>
+            Read 4 bytes from the byte array
+            </summary>
+            <returns>Corresponding string value</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontFile2.getnextUint16">
+            <summary>
+            Read 2 bytes from the byte array
+            </summary>
+            <returns>Corresponding integer value</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontFile2.getTableBytes(System.Int32)">
+            <summary>
+            Separated the byte array corresponding to the table entry from the font stream
+            </summary>
+            <param name="tableID">Table ID</param>
+            <returns>Byte array of the table</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.PageResourceLoader.GetPageResources(Syncfusion.Pdf.PdfPageBase)">
+            <summary>
+            Extracts the pageResource from the page
+            </summary>
+            <param name="page">Page whose resouce is needed</param>
+            <returns>pageResource of the given page</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.PageResourceLoader.GetPageResources(Syncfusion.Pdf.PdfPageBase,System.Boolean)">
+            <summary>
+            Extracts the pageResource from the page
+            </summary>
+            <param name="page">Page whose resouce is needed</param>
+            <param name="isSkipImage">To Skip imageResources</param>
+            <returns>pageResource of the given page</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.PageResourceLoader.GetExtendedGraphicResources(Syncfusion.Pdf.Primitives.PdfDictionary)">
+            <summary>
+            Collects all the ExtendedGraphicsSatate elements in the pdf document
+            </summary>
+            <param name="resourceDictionary">containing all the resources of the document</param>
+            <returns>dictionary of ExtGState elements</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.PageResourceLoader.GetFontResources(Syncfusion.Pdf.Primitives.PdfDictionary)">
+            <summary>
+            Collects all the fonts in the page in a dictionary
+            </summary>
+            <param name="resourceDictionary">dictionary containing all the resources in the Xobjects</param>
+            <returns>dictionary containing font name and the font</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.PageResourceLoader.DecodeTest(Syncfusion.Pdf.PdfPageBase,System.String,System.String)">
+            <summary>
+            Extracts the text from the page given
+            </summary>
+            <param name="page">page from which text is extracted</param>
+            <param name="fontName">font used in the text</param>
+            <param name="textToDecode">text in the page to be decoded</param>
+            <returns>decoded text</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.PageResourceLoader.GetFontResources(Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.PdfPageBase)">
+            <summary>
+            Collects all the fonts in the page in a dictionary
+            </summary>
+            <param name="resourceDictionary">dictionary containing all the resources in the page</param>
+            <param name="page">page in which text is to be extracted</param>
+            <returns>dictionary containing font name and the font</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.PageResourceLoader.GetImageResources(Syncfusion.Pdf.Primitives.PdfDictionary,Syncfusion.Pdf.PdfPageBase,System.Collections.Generic.Dictionary{System.String,Syncfusion.Pdf.IO.PdfMatrix}@)">
+            <summary>
+            Collects all the images in the pdf document
+            </summary>
+            <param name="resourceDictionary">containing all the resources of the document</param>
+            <returns>dictionary of images</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.PageResourceLoader.UpdatePageResources(Syncfusion.Pdf.PdfPageResources,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Updates the resources in the page
+            </summary>
+            <param name="pageResources">Existing page resources</param>
+            <param name="objects">Dictionary items to the updated</param>
+            <returns>Updated page resource</returns>
+        </member>
+        <member name="F:Syncfusion.Pdf.FontStructure.differenceTable">
+            <summary>
+            Internal variable that holds the character code and character.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Pdf.FontStructure.fontReference">
+            <summary>
+            Internal variable that stores token.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Pdf.FontStructure.FontName">
+            <summary>
+            Holds the font name associated with the text element
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Pdf.FontStructure.FontStyle">
+            <summary>
+            Holds the font style of the text to be decoded.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Pdf.FontStructure.FontWeight">
+            <summary>
+            Holds the font weight of the text to be decoded.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Pdf.FontStructure.IsSameFont">
+            <summary>
+            Gets and sets whether same font is denoted in more than one XObject.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Pdf.FontStructure.CharacterMapTable">
+            <summary>
+            Represents the mapping table which contains the mapping value to the encoded text in the PDF document
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Pdf.FontStructure.FontEncoding">
+            <summary>
+            Holds the font encoding associated with the text element
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.Decode(System.String,System.Boolean)">
+            <summary>
+            Takes in the encoded text, identifies the type of encoding used, decodes the encoded text, returns the decoded text.
+            </summary>
+            <param name="textToDecode">
+            Encoded string from the PDF document.
+            </param>
+            <returns>
+            Decoded string, human readable.
+            </returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.GetLiteralString(System.String)">
+            <summary>
+            Decodes the octal text in the encoded text.
+            </summary>
+            <param name="encodedText">The text encoded from the PDF document</param>
+            <returns>Decoded text with replaced octal texts</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.GetHexaDecimalString(System.String)">
+            <summary>
+            Decodes the HEX encoded string.
+            </summary>
+            <param name="hexEncodedText">
+            HEX encoded string.
+            </param>
+            <returns>
+            Decoded string.
+            </returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.GetFontName">
+            <summary>
+            Extracts the font name associated with the string.
+            </summary>
+            <returns>
+            Font name.
+            </returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.GetFontEncoding">
+            <summary>
+            Extracts the font encoding associated with the text string
+            </summary>
+            <returns>
+            Font style.
+            </returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.DecodeASCII85Stream(System.IO.MemoryStream)">
+            <summary>
+            Decodes the ASCII85 encoded stream
+            </summary>
+            <param name="encodedStream">Encoded stream</param>
+            <returns>Decoded Stream</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.DecodeFlateStream(System.IO.MemoryStream)">
+            <summary>
+            Decodes the Flate encoded stream
+            </summary>
+            <param name="encodedStream">Encoded stream</param>
+            <returns>Decoded Stream</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.GetCharacterMapTable">
+            <summary>
+            Builds the mapping table that is used to map the decoded text to get the expected text.
+            </summary>
+            <returns>
+            A dictionary with key as the encoded element and value as the value to be mapped to.
+            </returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.GetDifferencesDictionary">
+            <summary>
+            Builds the mapping table that is used to map the decoded text to get the expected text.
+            </summary>		
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.GetLatinCharacter(System.String)">
+            <summary>
+             Gets Latin Character
+            </summary>
+            <param name="decodedCharacter">The decodedCharacter.</param>        
+            <returns>decodedCharacter</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.IsNonPrintableCharacter(System.Char)">
+            <summary>
+            Checks whether the specified character is Non-Printable character or not.
+            </summary>
+            <param name="character">The character to be verified as either Non-Printable or not</param>
+            <returns>Returns true, if the specified character is Non-Printable character. Otherwise it returns false</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.MapCharactersFromTable(System.String)">
+            <summary>
+            Takes in the decoded text and maps it with its corresponding entry in the CharacterMapTable
+            </summary>
+            <param name="decodedText">decoded text </param>
+            <returns>Expected text string</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.MapDifferences(System.String)">
+            <summary>
+            Takes in the decoded text and maps it with its corresponding entry in the CharacterMapTable
+            </summary>
+            <param name="encodedText">encoded text </param>
+            <returns>Expected text string</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.GetSpecialCharacter(System.String)">
+            <summary>
+             Gets Latin Character
+            </summary>
+            <param name="decodedCharacter">The decodedCharacter.</param>        
+            <returns>decodedCharacter</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.UnEscapeString(System.String)">
+            <summary>
+            Method to remove the unrecoganized escape sequences
+            </summary>
+            <param name="text">Text with unrecoganized escape sequences</param>
+            <returns>Text without unrecoganized escape sequences</returns>
+        </member>
+        <member name="M:Syncfusion.Pdf.FontStructure.EscapeSymbols(System.String)">
+            <summary>
+            Method to remove the new line character
+            </summary>
+            <param name="text">Text with new line character</param>
+            <returns>Text without new line character</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Syncfusion.Pdf.FontStructure.GetHexCode(System.String)" -->
+        <member name="M:Syncfusion.Pdf.FontStructure.ResolveHTMLCharToASCII(System.Int32)">
+            <summary>
+            Method to map the HTML character to equivalent unicode character
+            </summary>
+            <param name="text">The HTML character to decode</param>
+            <returns>The equivalent unicode character</returns>
+        </member>
+        <member name="F:Syncfusion.Pdf.CffGlyphs.m_glyphs">
+            <summary>
+             Variable to hold the glyph string and its glyph shapes 
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Pdf.CffGlyphs.m_fontMatrix">
+            <summary>
+             Variable to hold the font matrix
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Pdf.CffGlyphs.m_differenceEncoding">
+            <summary>
+             Variable to hold the character code and character
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Pdf.CffGlyphs.m_renderedPath">
+            <summary>
+             Variable to hold the already cached path
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Pdf.CffGlyphs.m_globalBias">
+            <summary>
+             Variable to hold the globalBias value for glyphs 
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Pdf.CffGlyphs.Glyphs">
+            <summary>
+            Gets or sets the glyph string and its shapes 
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Pdf.CffGlyphs.GlobalBias">
+            <summary>
+            Gets or sets the globalbias
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Pdf.CffGlyphs.FontMatrix">
+            <summary>
+            Gets or sets the font matrix
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Pdf.CffGlyphs.DifferenceEncoding">
+            <summary>
+            Gets or sets the character code and character
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Pdf.CffGlyphs.RenderedPath">
+            <summary>
+            Gets or sets the already cached path
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Pdf.ASCII85.decode(System.Byte[])">
+            <summary>
+            Decodes the ASCII85 encoded byte[]
+            </summary>
+            <param name="encodedData">encoded byte[]</param>
+            <returns>decoded byte[]</returns>
+        </member>
+    </members>
+</doc>

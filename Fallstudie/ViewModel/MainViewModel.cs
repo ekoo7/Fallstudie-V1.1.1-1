@@ -19,6 +19,12 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Parsing;
+using Syncfusion.Pdf.Graphics;
+using Syncfusion.Pdf.Grid;
+using Syncfusion.DocIO.DLS;
+using Windows.Storage.Pickers;
 
 namespace Fallstudie.ViewModel
 {
@@ -616,7 +622,7 @@ namespace Fallstudie.ViewModel
         public MainViewModel()
         {
             InitializeButtons();
-
+            
             //Datenbank erstellen
             DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.sqlite");
             if (!File.Exists(DbPath))
@@ -628,8 +634,10 @@ namespace Fallstudie.ViewModel
 
             Customers.Clear();
             SQLGetCustomers();
-
+            
             ManageAppointments();
+            
+            CreatePdf();
 
         }
 
@@ -656,7 +664,7 @@ namespace Fallstudie.ViewModel
             Conn.CreateTable<Ymdh_Person>();
             Conn.CreateTable<Ymdh_Producer>();
         }
-
+        
         public void SQLGetCustomers()
         {
             Customers.Clear();
@@ -678,7 +686,7 @@ namespace Fallstudie.ViewModel
                 Customers.Add(new Customer(model[i].id, "", model[i].name, 0, 0));
             }
         }
-
+        
         //Attribut Gruppen werden erstellt        
         public void SQLInsertAttributeGroup()
         {
@@ -1705,9 +1713,91 @@ namespace Fallstudie.ViewModel
 
         #endregion
 
-        #region Test Methoden
+        #region UseCase CreatePdf
 
-        //MessageBox wird angezeigt -> zum Testen
+        public RelayCommand ButtonCreatePdf { get; set; }
+
+        public void CreatePdf()
+        {
+            ButtonCreatePdf = new RelayCommand(ButtonCreatePdfMethod);
+        }
+
+        private async void ButtonCreatePdfMethod()
+        {
+
+            //Create a new document.
+            PdfDocument doc = new PdfDocument();
+
+            //Add a page
+            PdfPage page = doc.Pages.Add();
+
+            //Create Pdf graphics for the page
+            PdfGraphics g = page.Graphics;
+
+            //Create a solid brush
+            PdfBrush brush = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
+
+            //Set the font
+            PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 36);
+
+            //Draw the text
+            g.DrawString("Hello world!", font, brush, new System.Drawing.PointF(20, 20));
+
+            MemoryStream stream = new MemoryStream();
+            await doc.SaveAsync(stream);
+            doc.Close(true);
+            Save(stream, "GettingStarted.pdf");
+
+
+
+        }
+        async void Save(Stream stream, string filename)
+        {
+
+            stream.Position = 0;
+
+            StorageFile stFile;
+            if (!(Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons")))
+            {
+                FileSavePicker savePicker = new FileSavePicker();
+                savePicker.DefaultFileExtension = ".pdf";
+                savePicker.SuggestedFileName = "Sample";
+                savePicker.FileTypeChoices.Add("Adobe PDF Document", new List<string>() { ".pdf" });
+                stFile = await savePicker.PickSaveFileAsync();
+            }
+            else
+            {
+                StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
+                stFile = await local.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
+            }
+            if (stFile != null)
+            {
+                Windows.Storage.Streams.IRandomAccessStream fileStream = await stFile.OpenAsync(FileAccessMode.ReadWrite);
+                Stream st = fileStream.AsStreamForWrite();
+                st.SetLength(0);
+                st.Write((stream as MemoryStream).ToArray(), 0, (int)stream.Length);
+                st.Flush();
+                st.Dispose();
+                fileStream.Dispose();
+                MessageDialog msgDialog = new MessageDialog("Do you want to view the Document?", "File has been created successfully.");
+                UICommand yesCmd = new UICommand("Yes");
+                msgDialog.Commands.Add(yesCmd);
+                UICommand noCmd = new UICommand("No");
+                msgDialog.Commands.Add(noCmd);
+                IUICommand cmd = await msgDialog.ShowAsync();
+                if (cmd == yesCmd)
+                {
+                    // Launch the retrieved file
+                    bool success = await Windows.System.Launcher.LaunchFileAsync(stFile);
+                }
+            }
+        }
+
+        #endregion
+
+            #region Test Methoden
+
+            //MessageBox wird angezeigt -> zum Testen
         private async void AsynchMethod()
         {
             var dialog = new MessageDialog("TestMethode wurde aufgerufen");

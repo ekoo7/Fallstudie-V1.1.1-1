@@ -1,3 +1,50 @@
 C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\Redist\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.pri
 C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\Redist\CommonConfiguration\Neutral\Microsoft.Xaml.Interactivity.pri
-C:\Users\User\.nuget\packages\MvvmLightLibs\5.2.0\lib\windows81\GalaSoft.MvvmLight.Platform.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.Calculate.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.Data.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.DocIO.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.ExcelChartToImageConverter.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.Olap.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.Pdf.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.PMML.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfAccordion.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfBarcode.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfBulletGraph.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfBusyIndicator.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfCarousel.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfCellGrid.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfChart.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfColorPickers.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfDiagram.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfGauge.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfGrid.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfGridCommon.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfGridConverter.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfGroupBar.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfHeatMap.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfHubTile.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfInput.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfMaps.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfMenu.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfNavigationDrawer.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfPdfViewer.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfPivotChart.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfPivotGauge.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfPivotGrid.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfProgressBar.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfPullToRefresh.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfRadialMenu.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfReportViewer.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfRibbon.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfRichTextBoxAdv.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfRotator.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfSchedule.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfShared.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfSpreadsheet.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfSpreadsheetHelper.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfTabControl.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfTileView.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfTreeMap.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfTreeNavigator.UWP.pri
+C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.XlsIO.UWP.pri
+C:\Users\Ermin\.nuget\packages\MvvmLightLibs\5.2.0\lib\windows81\GalaSoft.MvvmLight.Platform.pri
