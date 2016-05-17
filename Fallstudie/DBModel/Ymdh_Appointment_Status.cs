@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace Fallstudie.DBModel
 {
-    [Table("attribute_group")]
-    public class Attribute_Group
+    [Table("ymdh_appointment_status")]
+    public class Ymdh_Appointment_Status
     {
-        [PrimaryKey]
-        public int attribute_group_id { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int appointment_status_id { get; set; }
         public string description { get; set; }
-        public string modifieddate { get; set; }
     }
 }

@@ -296,6 +296,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.TimePicker">
       <RootProperty Name="Time" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="ClockIdentifier" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="HorizontalContentAlignment" />

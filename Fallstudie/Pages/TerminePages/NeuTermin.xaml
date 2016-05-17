@@ -44,7 +44,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                 <DatePicker MinYear="{Binding DateTimeNow, Mode=TwoWay, Converter={StaticResource DateConverter}}" Date="{Binding DateAppointment, Mode=TwoWay, Converter={StaticResource DateConverter}}" VerticalAlignment="Top"/>
-                <TimePicker Time="{Binding TimeAppoitment, Mode=TwoWay}" VerticalAlignment="Top"/>
+                <TimePicker Time="{Binding TimeAppoitment, Mode=TwoWay}" VerticalAlignment="Top" ClockIdentifier="24HourClock"/>
                 </StackPanel>
             </StackPanel>
         </Grid>

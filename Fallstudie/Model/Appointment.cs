@@ -9,18 +9,15 @@ namespace Fallstudie.Model
 {
     public class Appointment
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan Time { get; set; }
         public Consultant Consultant { get; set; }
         public Customer Customer { get; set; }
 
-        private string dateFormat;
-
         public string DateFormat
         {
-            get { return Date.ToString("dd.MMM.yyyy"); }
-
+            get { return Date.ToString("dd.MM.yyyy"); }
         }
-
     }
 }

@@ -15,7 +15,7 @@ namespace Fallstudie.DBModel
         public int housefloor_id { get; set; }
         public int price { get; set; }
         public string sketch { get; set; }
-        public DateTime modifieddate { get; set; }
+        public string modifieddate { get; set; }
 
         [ForeignKey(typeof(Houseconfig)), ManyToOne]
         public int houseconfig_id { get; set; }

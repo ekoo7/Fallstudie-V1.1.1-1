@@ -17,7 +17,7 @@ namespace Fallstudie.DBModel
         public int price { get; set; }
         public string image { get; set; }
         public int deleted { get; set; }
-        public DateTime modifieddate { get; set; }
+        public string modifieddate { get; set; }
 
         [ForeignKey(typeof(Attribute_Group)), ManyToOne]
         public int attribute_group_id { get; set; }

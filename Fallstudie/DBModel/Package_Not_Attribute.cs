@@ -13,6 +13,7 @@ namespace Fallstudie.DBModel
     {
         [ForeignKey(typeof(Ymdh_House_Package)), ManyToOne]
         public int house_package_id { get; set; }
+
         [ForeignKey(typeof(Attribute)), ManyToOne]
         public int attribute_id { get; set; }
     }

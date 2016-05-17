@@ -20,7 +20,7 @@
             <TextBlock Text="Termine verwalten"></TextBlock>
             <StackPanel Orientation="Horizontal">
                     <DatePicker Date="{Binding DateAppointment, Mode=TwoWay, Converter={StaticResource DateConverter}}" VerticalAlignment="Top"/>
-                    <TimePicker Time="{Binding TimeAppoitment, Mode=TwoWay}" VerticalAlignment="Top"/>
+                    <TimePicker Time="{Binding TimeAppoitment, Mode=TwoWay}" VerticalAlignment="Top" ClockIdentifier="24HourClock"/>
 
             </StackPanel>
             <ListView Name="CustomerList" ItemsSource="{Binding Appointments}" 
@@ -32,9 +32,9 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock  Margin="0 0 0 0" Text="{Binding DateFormat}" FontWeight="Bold" />
-                            <TextBlock  Margin="10 0 0 0" Text="{Binding Time}" FontWeight="Bold"/>
-                            <TextBlock  Margin="10 0 0 0" Text="{Binding Customer.Firstname}"/>
-                            <TextBlock  Margin="10 0 0 0" Text="{Binding Consultant.Firstname}"/>
+                                <TextBlock  Margin="10 0 0 0" Text="{Binding Time}" FontWeight="Bold"/>
+                                <TextBlock  Margin="10 0 0 0" Text="{Binding Customer.Lastname}"/>
+                            <TextBlock  Margin="10 0 0 0" Text="{Binding Consultant.Lastname}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

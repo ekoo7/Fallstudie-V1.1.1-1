@@ -13,11 +13,12 @@ namespace Fallstudie.DBModel
     {
         [ForeignKey(typeof(Houseconfig)), ManyToOne]
         public int houseconfig_id { get; set; }
+
         [ForeignKey(typeof(Attribute)), ManyToOne]
         public int attribute_id { get; set; }
 
         public int amount { get; set; }
         public string special { get; set; }
-        public DateTime modifieddate { get; set; }
+        public string modifieddate { get; set; }
     }
 }

@@ -16,8 +16,9 @@ namespace Fallstudie.ViewModel
 
         public int NumbConfHouses { get; set; }
 
-        public Customer(string fn, string ln, int nP, int nCH)
+        public Customer(int id, string fn, string ln, int nP, int nCH)
         {
+            this.Id = id;
             this.Firstname = fn;
             this.Lastname = ln;
             this.NumbProjects = nP;

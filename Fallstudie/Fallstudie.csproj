@@ -110,10 +110,19 @@
     <Compile Include="DBModel\Houseconfig.cs" />
     <Compile Include="DBModel\Houseconfig_Has_Attribute.cs" />
     <Compile Include="DBModel\Housefloor.cs" />
+    <Compile Include="DBModel\Mdh_Usergroups.cs" />
+    <Compile Include="DBModel\Mdh_Users.cs" />
+    <Compile Include="DBModel\Mdh_User_Usergroup_Map.cs" />
     <Compile Include="DBModel\Package_Not_Attribute.cs" />
     <Compile Include="DBModel\Project.cs" />
+    <Compile Include="DBModel\Ymdh_Address.cs" />
+    <Compile Include="DBModel\Ymdh_Appointment.cs" />
+    <Compile Include="DBModel\Ymdh_Appointment_Status.cs" />
     <Compile Include="DBModel\Ymdh_House_Package.cs" />
     <Compile Include="DBModel\Ymdh_House_Package_Status.cs" />
+    <Compile Include="DBModel\Ymdh_Message.cs" />
+    <Compile Include="DBModel\Ymdh_Person.cs" />
+    <Compile Include="DBModel\Ymdh_Producer.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

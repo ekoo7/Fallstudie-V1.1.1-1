@@ -13,12 +13,12 @@ namespace Fallstudie.DBModel
     {
         [PrimaryKey, AutoIncrement]
         public int project_id { get; set; }
-        public DateTime startdate { get; set; }
-        public DateTime enddate { get; set; }
+        public string startdate { get; set; }
+        public string enddate { get; set; }
         public string invoice { get; set; }
         public string status { get; set; }
         public string description { get; set; }
-        public DateTime modifieddate { get; set; }
+        public string modifieddate { get; set; }
 
         [ForeignKey(typeof(Houseconfig)), ManyToOne]
         public int houseconfig_id { get; set; }
