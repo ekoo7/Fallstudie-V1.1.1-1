@@ -9,18 +9,19 @@ namespace Fallstudie.ViewModel
     public class Customer
     {
         public int Id { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public string Name { get; set; }
 
         public int NumbProjects { get; set; }
 
         public int NumbConfHouses { get; set; }
 
-        public Customer(int id, string fn, string ln, int nP, int nCH)
+
+        public Customer(){ }
+
+        public Customer(int id, string name, int nP, int nCH)
         {
             this.Id = id;
-            this.Firstname = fn;
-            this.Lastname = ln;
+            this.Name = name;
             this.NumbProjects = nP;
             this.NumbConfHouses = nCH;
         }

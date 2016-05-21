@@ -7,8 +7,396 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Projekte"></TextBlock>
-    </Grid>
+    <ScrollViewer>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Projekte" TextAlignment="Center" FontWeight="Bold" Margin="0 0 0 20"/>
+                
+                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                    
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="ProjektId" TextAlignment="Center" FontSize="20"/>
+                        <ListView x:ConnectionId='6' Name="CustomerList" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="0 0 0 0" Text="{Binding Id}" FontWeight="Bold" FontSize="20" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    
+                    <StackPanel Margin="10 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Start Datum" TextAlignment="Center" FontSize="20"/>
+                        <ListView x:ConnectionId='5' Name="CustomerList2" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding StartDate}" FontWeight="Bold" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                    <StackPanel  Margin="10 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="End Datum" TextAlignment="Center" FontSize="20"/>
+                        <ListView x:ConnectionId='4' Name="EndDate" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding EndDate}" FontWeight="Bold" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                    <StackPanel  Margin="10 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Kunde" TextAlignment="Center" FontSize="20"/>
+                        <ListView x:ConnectionId='3' Name="CustomerList3" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Customer.Name}" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                    <StackPanel  Margin="10 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Mitarbeiter" TextAlignment="Center" FontSize="20"/>
+                        <ListView x:ConnectionId='2' Name="CustomerList4" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Consultant.Name}" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel  Margin="10 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Status" TextAlignment="Center" FontSize="20"/>
+                        <ListView x:ConnectionId='1' Name="State" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <ProgressBar Value="25"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    
+                </StackPanel>
+            </StackPanel>
+
+            <!-- ANZEIGEN DER SPEZIFIKATIONEN DES PROJEKTES-->
+            <StackPanel Margin="20 0 0 0">
+                <StackPanel>
+                    <Image Source="{Binding SelectedHouse.SourceImage}" Width="500" Height="350"/>
+                </StackPanel>
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- 1. Spalte -->
+                        <Border Grid.Column="0" Grid.Row="0">
+                            <TextBlock Text="Spezifikation" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="1">
+                            <TextBlock Text="Grundstück" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="2">
+                            <TextBlock Text="Anzahl der Stockwerke" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="3">
+                            <TextBlock Text="Außenwand " />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="4">
+                            <TextBlock Text="Außenwandfarbe" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="5">
+                            <TextBlock Text="Innenwand " />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="6">
+                            <TextBlock Text="Innenwandfarbe" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="7">
+                            <TextBlock Text="Dachtyp" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="8">
+                            <TextBlock Text="Dachmaterial" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="9">
+                            <TextBlock Text="Fenster" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="10">
+                            <TextBlock Text="Fensterfarbe" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="11">
+                            <TextBlock Text="Tür" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="12">
+                            <TextBlock Text="Türfarbe" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="13">
+                            <TextBlock Text="Energiesystem" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="14">
+                            <TextBlock Text="Heizungsystem" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="15">
+                            <TextBlock Text="Steckdose pro Raum" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="16">
+                            <TextBlock Text="Kamin" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="17">
+                            <TextBlock Text="Swimmingpool" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="18">
+                            <TextBlock Text="Swimmingpool Größe" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="19">
+                            <TextBlock Text="Zaun" />
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="20">
+                            <TextBlock Text="Zaunfarbe" />
+                        </Border>
+
+
+                        <!-- 2. Spalte -->
+                        <Border Grid.Column="1">
+                            <TextBlock Text="Auswahl" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="1">
+                            <TextBlock Text="{Binding House.Plot.Description}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="2">
+                            <TextBlock Text="{Binding House.numberOfFloors}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="3">
+                            <TextBlock Text="{Binding House.OutsideWall.Description}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="4">
+                            <TextBlock Text="{Binding House.OutsideWallColor.Value}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="5">
+                            <TextBlock Text="{Binding House.InsideWall.Description}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="6">
+                            <TextBlock Text="{Binding House.InsideWallColor.Value}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="7">
+                            <TextBlock Text="{Binding House.RoofType.Description}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="8">
+                            <TextBlock Text="{Binding House.RoofMaterial.Description}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="9">
+                            <TextBlock Text="{Binding House.Window.Description}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="10">
+                            <TextBlock Text="{Binding House.WindowColor.Value}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="11">
+                            <TextBlock Text="{Binding House.Door.Description}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="12">
+                            <TextBlock Text="{Binding House.DoorColor.Value}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="13">
+                            <TextBlock Text="{Binding House.EnergySystem}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="14">
+                            <TextBlock Text="{Binding House.HeatingSystem}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="15">
+                            <TextBlock Text="{Binding House.NumberOfSocket}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="16">
+                            <TextBlock Text="{Binding House.Chimney.Description}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="17">
+                            <TextBlock Text="{Binding House.Pool.Description}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="18">
+                            <TextBlock Text="{Binding House.Poolsize}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="19">
+                            <TextBlock Text="{Binding House.Fence.Description}" />
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="20">
+                            <TextBlock Text="{Binding House.FenceColor.Value}" />
+                        </Border>
+
+                        <!-- 3. Spalte -->
+                        <Border Grid.Column="2">
+                            <TextBlock Text="Preis" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="1">
+                            <TextBlock Text="{Binding House.Plot.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="2">
+                            <TextBlock Text="{Binding SelectedFloor.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="3">
+                            <TextBlock Text="{Binding House.OutsideWall.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="4">
+                            <TextBlock Text="" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="5">
+                            <TextBlock Text="{Binding House.InsideWall.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="6">
+                            <TextBlock Text="" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="7">
+                            <TextBlock Text="{Binding House.RoofType.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="8">
+                            <TextBlock Text="{Binding House.RoofMaterial.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="9">
+                            <TextBlock Text="{Binding House.Window.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="10">
+                            <TextBlock Text="" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="11">
+                            <TextBlock Text="{Binding House.Door.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="12">
+                            <TextBlock Text="" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="13">
+                            <TextBlock Text="{Binding SelectedEnergySystem.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="14">
+                            <TextBlock Text="{Binding SelectedHeatingSystem.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="15">
+                            <TextBlock Text="" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="16">
+                            <TextBlock Text="{Binding House.Chimney.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="17">
+                            <TextBlock Text="{Binding House.Pool.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="18">
+                            <TextBlock Text="" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="19">
+                            <TextBlock Text="{Binding House.Fence.Price}" />
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="20">
+                            <TextBlock Text="" />
+                        </Border>
+
+                        <!-- 4. Spalte -->
+                        <Border Grid.Column="3">
+                            <TextBlock Text="Notiz" />
+                        </Border>
+                        <Border Grid.Column="3" Grid.Row="1">
+                            <TextBlock Text="{Binding NoteStep2, Mode=TwoWay}" TextWrapping="Wrap" />
+                        </Border>
+                        <Border Grid.Column="3" Grid.Row="2">
+                            <TextBlock Text="{Binding NoteStep3, Mode=TwoWay}" TextWrapping="Wrap"/>
+                        </Border>
+
+                        <Border Grid.Column="3" Grid.Row="3" Grid.RowSpan="4">
+                            <TextBlock Text="{Binding NoteStep4, Mode=TwoWay}" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Column="3" Grid.Row="7" Grid.RowSpan="2">
+                            <TextBlock Text="{Binding NoteStep5, Mode=TwoWay}" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Column="3" Grid.Row="9" Grid.RowSpan="4">
+                            <TextBlock Text="{Binding NoteStep6, Mode=TwoWay}" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Column="3" Grid.Row="13" Grid.RowSpan="2">
+                            <TextBlock Text="{Binding NoteStep7, Mode=TwoWay}" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Column="3" Grid.Row="15" Grid.RowSpan="2">
+                            <TextBlock Text="{Binding NoteStep8, Mode=TwoWay}" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Column="3" Grid.Row="17" Grid.RowSpan="4">
+                            <TextBlock Text="{Binding NoteStep9, Mode=TwoWay}" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+
+
+        </Grid>
+    </ScrollViewer>
+
+
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Command="{Binding ButtonCreatePdf}" Icon="Document" Label="Pdf erstellen"/>
+            <AppBarButton Command="{Binding ButtonCreatePdf}" Icon="Repair" Label="Pdf erstellen"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
 

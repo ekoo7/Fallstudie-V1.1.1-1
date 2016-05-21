@@ -30,7 +30,10 @@ namespace Fallstudie.Model
         public RelayCommand ButtonDrawSketch { get; set; }
 
 
-        
+        public ImageInherit()
+        {
+
+        }
 
         //konstruktor für Gründstück
         public ImageInherit(string source, int id, double price)

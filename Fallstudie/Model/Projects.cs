@@ -17,6 +17,10 @@ namespace Fallstudie.Model
         public DateTime ModifiedDate { get; set; }
         public string Invoice { get; set; }
 
+        public Projects()
+        {
+
+        }
 
     }
 }

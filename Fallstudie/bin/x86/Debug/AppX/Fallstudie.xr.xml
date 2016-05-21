@@ -12,7 +12,7 @@
     <RootPropertyPathName Name="SelectedCustomerr" />
     <RootPropertyPathName Name="NumbConfHouses" />
     <RootPropertyPathName Name="NumbProjects" />
-    <RootPropertyPathName Name="Lastname" />
+    <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="ButtonForwardSummary" />
     <RootPropertyPathName Name="ButtonIsVisible" />
     <RootPropertyPathName Name="ButtonForwardChooseAddition" />
@@ -79,7 +79,6 @@
     <RootPropertyPathName Name="ListWindows" />
     <RootPropertyPathName Name="NoteStep8" />
     <RootPropertyPathName Name="SelectedHeatingSystem" />
-    <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="SelectedEnergySystem" />
     <RootPropertyPathName Name="ListHeatingSystem" />
     <RootPropertyPathName Name="ListEnergySystem" />
@@ -112,11 +111,17 @@
     <RootPropertyPathName Name="InsideWallColor" />
     <RootPropertyPathName Name="OutsideWallColor" />
     <RootPropertyPathName Name="numberOfFloors" />
+    <RootPropertyPathName Name="ButtonSaveConfiguration" />
     <RootPropertyPathName Name="ButtonCreatePdf" />
-    <RootPropertyPathName Name="Appointments" />
-    <RootPropertyPathName Name="SelectedAppointment" />
+    <RootPropertyPathName Name="ListProjects" />
+    <RootPropertyPathName Name="SelectedProject" />
     <RootPropertyPathName Name="Consultant" />
     <RootPropertyPathName Name="Customer" />
+    <RootPropertyPathName Name="EndDate" />
+    <RootPropertyPathName Name="StartDate" />
+    <RootPropertyPathName Name="Id" />
+    <RootPropertyPathName Name="Appointments" />
+    <RootPropertyPathName Name="SelectedAppointment" />
     <RootPropertyPathName Name="Time" />
     <RootPropertyPathName Name="DateFormat" />
     <RootPropertyPathName Name="DeleteAppointmentButton" />
@@ -287,9 +292,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
     </RootType>
-    <RootType FullName="Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung" />
-    <RootType FullName="Fallstudie.Pages.KundenPage" />
-    <RootType FullName="Fallstudie.Pages.KundenPages.CreateCustomerPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="HorizontalContentAlignment" />
       <RootProperty Name="Content" />
@@ -300,6 +302,9 @@
       <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
     </RootType>
+    <RootType FullName="Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung" />
+    <RootType FullName="Fallstudie.Pages.KundenPage" />
+    <RootType FullName="Fallstudie.Pages.KundenPages.CreateCustomerPage" />
     <RootType FullName="Fallstudie.Pages.pdfErstellenPage" />
     <RootType FullName="Fallstudie.Pages.ProjektePage" />
     <RootType FullName="Fallstudie.Converter.DateTimeConverter" />

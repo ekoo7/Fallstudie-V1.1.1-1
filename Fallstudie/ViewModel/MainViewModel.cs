@@ -25,6 +25,7 @@ using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
 using Syncfusion.DocIO.DLS;
 using Windows.Storage.Pickers;
+using Syncfusion.Pdf.Tables;
 
 namespace Fallstudie.ViewModel
 {
@@ -46,6 +47,7 @@ namespace Fallstudie.ViewModel
             Customers.Clear();
             SQLGetCustomers();
 
+            ProjectsMethod();
             ManageAppointments();
 
             CreatePdf();
@@ -55,6 +57,8 @@ namespace Fallstudie.ViewModel
         #region PROPERTIES
 
         #region Variablen
+        //Höchste configId auslesen
+        public Houseconfig configId { get; set; }
         //SQLite pfad variable
         public string DbPath { get; set; }
         //SQLite verbindung
@@ -96,13 +100,6 @@ namespace Fallstudie.ViewModel
             set { numberOfFloorDB = value; }
         }
 
-        //Test Variable
-        private string msg = "HausKonfigurator";
-        public string MSG
-        {
-            get { return msg; }
-            set { msg = value; }
-        }
 
         //Frame wird initialisiert - damit wir die Frame, wo alle Pages angezeigt werden haben
         Frame a = new Frame();
@@ -120,13 +117,6 @@ namespace Fallstudie.ViewModel
             set { customers = value; OnChange("Items"); }
         }
 
-        // der ausgewählte Kunde in der Kundenliste
-        private Customer selectedCustomerr;
-        public Customer SelectedCustomerr
-        {
-            get { return selectedCustomerr; }
-            set { selectedCustomerr = value; OnChange("SelectedCustomerr"); }
-        }
 
         //Liste für Häuse aus der DB
         private ObservableCollection<ImageInherit> imagesHouse = new ObservableCollection<ImageInherit>();
@@ -324,14 +314,22 @@ namespace Fallstudie.ViewModel
             set { listColorFence = value; }
         }
 
-        
+
 
         #endregion
 
         #region Selected Items
+
+        // der ausgewählte Kunde in der Kundenliste
+        private Customer selectedCustomerr;
+        public Customer SelectedCustomerr
+        {
+            get { return selectedCustomerr; }
+            set { selectedCustomerr = value; OnChange("SelectedCustomerr"); }
+        }
+
         //selected Anzahl der Stockwerk
         private int selectedItemFloor;
-
         public int SelectedItemFloor
         {
             get { return selectedItemFloor; }
@@ -345,7 +343,6 @@ namespace Fallstudie.ViewModel
 
         //selected Haus
         private ImageInherit selectedHouse;
-
         public ImageInherit SelectedHouse
         {
             get { return selectedHouse; }
@@ -354,7 +351,6 @@ namespace Fallstudie.ViewModel
 
         //selected Grundstück
         private ImageInherit selectedPlot;
-
         public ImageInherit SelectedPlot
         {
             get { return selectedPlot; }
@@ -363,7 +359,6 @@ namespace Fallstudie.ViewModel
 
         //selected Grundriss der Stockwerke
         private ImageInherit selectedFloor;
-
         public ImageInherit SelectedFloor
         {
             get { return selectedFloor; }
@@ -372,7 +367,6 @@ namespace Fallstudie.ViewModel
 
         //selected Außenwand
         private ImageInherit selectedOutsideWall;
-
         public ImageInherit SelectedOutsideWall
         {
             get { return selectedOutsideWall; }
@@ -381,7 +375,6 @@ namespace Fallstudie.ViewModel
 
         //selected Farben Außenwände
         private ColorPalette selectedColorOutsideWall;
-
         public ColorPalette SelectedColorOutsideWall
         {
             get { return selectedColorOutsideWall; }
@@ -390,7 +383,6 @@ namespace Fallstudie.ViewModel
 
         //selected Innside
         private ImageInherit selectedInsideWall;
-
         public ImageInherit SelectedInsideWall
         {
             get { return selectedInsideWall; }
@@ -399,7 +391,6 @@ namespace Fallstudie.ViewModel
 
         //selected Farbe Innenwände
         private ColorPalette selectedColorInsideWall;
-
         public ColorPalette SelectedColorInsideWall
         {
             get { return selectedColorInsideWall; }
@@ -408,7 +399,6 @@ namespace Fallstudie.ViewModel
 
         //selected Dach Typ
         private ImageInherit selectedRoofType;
-
         public ImageInherit SelectedRoofType
         {
             get { return selectedRoofType; }
@@ -417,7 +407,6 @@ namespace Fallstudie.ViewModel
 
         //selected Dach Typ
         private ImageInherit selectedRoofMaterial;
-
         public ImageInherit SelectedRoofMaterial
         {
             get { return selectedRoofMaterial; }
@@ -426,7 +415,6 @@ namespace Fallstudie.ViewModel
 
         //Selected Fenster
         private ImageInherit selectedWindow;
-
         public ImageInherit SelectedWindow
         {
             get { return selectedWindow; }
@@ -435,17 +423,14 @@ namespace Fallstudie.ViewModel
 
         //selected Farbe für Fenster
         private ColorPalette selectedColorWindow;
-
         public ColorPalette SelectedColorWindow
         {
             get { return selectedColorWindow; }
             set { selectedColorWindow = value; OnChange("SelectedColorWindow"); }
         }
 
-
         //Selected Tür
         private ImageInherit selectedDoor;
-
         public ImageInherit SelectedDoor
         {
             get { return selectedDoor; }
@@ -454,7 +439,6 @@ namespace Fallstudie.ViewModel
 
         //selected Farbe für Türen
         private ColorPalette selectedColorDoor;
-
         public ColorPalette SelectedColorDoor
         {
             get { return selectedColorDoor; }
@@ -463,7 +447,6 @@ namespace Fallstudie.ViewModel
 
         //selected Energiesystem
         private EHSystem selectedEnergySystem;
-
         public EHSystem SelectedEnergySystem
         {
             get { return selectedEnergySystem; }
@@ -472,7 +455,6 @@ namespace Fallstudie.ViewModel
 
         //selected Heizungssystem
         private EHSystem selectedHeatingSystem;
-
         public EHSystem SelectedHeatingSystem
         {
             get { return selectedHeatingSystem; }
@@ -481,7 +463,6 @@ namespace Fallstudie.ViewModel
 
         //selected Anzahl der Steckdosen
         private int selectedSocket;
-
         public int SelectedSocket
         {
             get { return selectedSocket; }
@@ -490,7 +471,6 @@ namespace Fallstudie.ViewModel
 
         //selected Kamin
         private ImageInherit selectedChimney;
-
         public ImageInherit SelectedChimney
         {
             get { return selectedChimney; }
@@ -499,7 +479,6 @@ namespace Fallstudie.ViewModel
 
         //selected Größen für die Pools
         private int selectedPoolSize;
-
         public int SelectedPoolSize
         {
             get { return selectedPoolSize; }
@@ -517,7 +496,6 @@ namespace Fallstudie.ViewModel
 
         //selected Zaun
         private ImageInherit selectedFence;
-
         public ImageInherit SelectedFence
         {
             get { return selectedFence; }
@@ -526,7 +504,6 @@ namespace Fallstudie.ViewModel
 
         //selected Farbe Zaun
         private ColorPalette selectedColorFence;
-
         public ColorPalette SelectedColorFence
         {
             get { return selectedColorFence; }
@@ -561,7 +538,9 @@ namespace Fallstudie.ViewModel
         public RelayCommand ButtonForwardSummary { get; set; }
         //Leitet den User zu Schritt 2 zurück -> HausAuswahl
         public RelayCommand ButtonEditConfiguration { get; set; }
-        //Das konfigurierte Haus wird in die Datenbank gespeichert -> Projekt wurde erstellt
+        //Speichert das konfigurierte Haus in der DB
+        public RelayCommand ButtonSaveConfiguration { get; set; }
+        //Das konfigurierte Haus wird in ndie Datenbank gespeichert -> Projekt wurde erstellt
         public RelayCommand ButtonCreateProject { get; set; }
         #endregion
 
@@ -657,9 +636,10 @@ namespace Fallstudie.ViewModel
             ButtonForwardChooseOutsideArea = new RelayCommand(ButtonForwardChooseOutsideAreaMethod);
             ButtonForwardSummary = new RelayCommand(ButtonForwardSummaryMethod);
             ButtonEditConfiguration = new RelayCommand(ButtonEditConfigurationMehtod);
+            ButtonSaveConfiguration = new RelayCommand(ButtonSaveConfigurationMethod);
             ButtonCreateProject = new RelayCommand(ButtonCreateProjectMethod);
         }
-        
+
 
         #region ForwardButtons
 
@@ -710,7 +690,7 @@ namespace Fallstudie.ViewModel
                 {
                     ImagesPlot.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
                 }
-                
+
             }
             else
             {
@@ -728,8 +708,8 @@ namespace Fallstudie.ViewModel
                 //await dialog.ShowAsync();
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt4Grundriss));
-                if(SelectedPlot != null)
-                TotalPrice += SelectedPlot.Price;
+                if (SelectedPlot != null)
+                    TotalPrice += SelectedPlot.Price;
 
                 NumberFloors.Clear();
 
@@ -787,29 +767,41 @@ namespace Fallstudie.ViewModel
                 ListOutsideWall.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
             }
 
-            //farben der außenwände festlegen
-            ListColorOutsideWall.Add(new ColorPalette(Colors.Red));
-            ListColorOutsideWall.Add(new ColorPalette(Colors.Blue));
-            ListColorOutsideWall.Add(new ColorPalette(Colors.Yellow));
-            ListColorOutsideWall.Add(new ColorPalette(Colors.GreenYellow));
-            ListColorOutsideWall.Add(new ColorPalette(Colors.Khaki));
+            //Farben Außenwände aus der Datenbank selecten
+            List<DBModel.Attribute> modelsC = SQLGetAttribute(902);
 
+            //Farben Außenwände werden angezeigt
+            foreach (var item in modelsC)
+            {
+                string[] color = item.description.Split(',');
+                byte r = Byte.Parse(color[0]);
+                byte g = Byte.Parse(color[1]);
+                byte b = Byte.Parse(color[2]);
+                ListColorOutsideWall.Add(new ColorPalette(r, g, b));
+            }
 
             //Innenwände aus der Datenbank selecten
             List<DBModel.Attribute> models2 = SQLGetAttribute(51);
 
-            //Innenwönde werden angezeigt
+            //Innenwände werden angezeigt
             foreach (var item in models2)
             {
                 ListInsideWall.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
             }
 
-            //farben für die Innenwände festlegen
-            ListColorInsideWall.Add(new ColorPalette(Colors.Green));
-            ListColorInsideWall.Add(new ColorPalette(Colors.White));
-            ListColorInsideWall.Add(new ColorPalette(Colors.Red));
-            ListColorInsideWall.Add(new ColorPalette(Colors.Yellow));
-            ListColorInsideWall.Add(new ColorPalette(Colors.Blue));
+            //Farben Innenwände aus der Datenbank selecten
+            List<DBModel.Attribute> models2C = SQLGetAttribute(901);
+
+            //Farben Innenwände werden angezeigt
+            foreach (var item in models2C)
+            {
+                string[] color = item.description.Split(',');
+                byte r = Byte.Parse(color[0]);
+                byte g = Byte.Parse(color[1]);
+                byte b = Byte.Parse(color[2]);
+                ListColorInsideWall.Add(new ColorPalette(r, g, b));
+            }
+
         }
 
         //Hier wird weitergeleitet auf Schritt 6 
@@ -872,12 +864,18 @@ namespace Fallstudie.ViewModel
                     ListWindows.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
                 }
 
-                //farben der Fenster festlegen
-                ListColorWindows.Add(new ColorPalette(Colors.Blue));
-                ListColorWindows.Add(new ColorPalette(Colors.White));
-                ListColorWindows.Add(new ColorPalette(Colors.Black));
-                ListColorWindows.Add(new ColorPalette(Colors.Gray));
-                ListColorWindows.Add(new ColorPalette(Colors.Brown));
+                //Farben Fenster aus der Datenbank selecten
+                List<DBModel.Attribute> modelsC = SQLGetAttribute(903);
+
+                //Farben Fenster werden angezeigt
+                foreach (var item in modelsC)
+                {
+                    string[] color = item.description.Split(',');
+                    byte r = Byte.Parse(color[0]);
+                    byte g = Byte.Parse(color[1]);
+                    byte b = Byte.Parse(color[2]);
+                    ListColorWindows.Add(new ColorPalette(r, g, b));
+                }
 
                 //Türen aus der Datenbank selecten
                 List<DBModel.Attribute> models2 = SQLGetAttribute(71);
@@ -888,13 +886,18 @@ namespace Fallstudie.ViewModel
                     ListDoors.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
                 }
 
-                //Türen ben der Fenster festlegen
-                ListColorDoors.Add(new ColorPalette(Colors.Brown));
-                ListColorDoors.Add(new ColorPalette(Colors.RosyBrown));
-                ListColorDoors.Add(new ColorPalette(Colors.SaddleBrown));
-                ListColorDoors.Add(new ColorPalette(Colors.SandyBrown));
-                ListColorDoors.Add(new ColorPalette(Colors.White));
-                ListColorDoors.Add(new ColorPalette(Colors.Gray));
+                //Farben Türen aus der Datenbank selecten
+                List<DBModel.Attribute> models2C = SQLGetAttribute(904);
+
+                //Farben Türen werden angezeigt
+                foreach (var item in models2C)
+                {
+                    string[] color = item.description.Split(',');
+                    byte r = Byte.Parse(color[0]);
+                    byte g = Byte.Parse(color[1]);
+                    byte b = Byte.Parse(color[2]);
+                    ListColorDoors.Add(new ColorPalette(r, g, b));
+                }
             }
             else
             {
@@ -921,7 +924,7 @@ namespace Fallstudie.ViewModel
                 //Energiesystem werden angezeigt
                 foreach (var item in models)
                 {
-                    ListEnergySystem.Add(new EHSystem(item.description, item.price));
+                    ListEnergySystem.Add(new EHSystem(item.attribute_id, item.description, item.price));
                 }
 
                 //Heizungsystem aus der Datenbank selecten
@@ -930,7 +933,7 @@ namespace Fallstudie.ViewModel
                 //Heizungsystem werden angezeigt
                 foreach (var item in models2)
                 {
-                    ListHeatingSystem.Add(new EHSystem(item.description, item.price));
+                    ListHeatingSystem.Add(new EHSystem(item.attribute_id, item.description, item.price));
                 }
 
                 totalPrice += SelectedWindow.Price + SelectedDoor.Price;
@@ -954,16 +957,14 @@ namespace Fallstudie.ViewModel
                 NumberSockets.Clear();
                 ListChimneys.Clear();
 
-                NumberSockets.Add(1);
-                NumberSockets.Add(2);
-                NumberSockets.Add(3);
-                NumberSockets.Add(4);
-                NumberSockets.Add(5);
-                NumberSockets.Add(6);
-                NumberSockets.Add(7);
-                NumberSockets.Add(8);
-                NumberSockets.Add(9);
-                NumberSockets.Add(10);
+                //Steckdosen aus der Datenbank selecten
+                List<DBModel.Attribute> modelsS = SQLGetAttribute(12);
+
+                //Steckdosen werden angezeigt
+                foreach (var item in modelsS)
+                {
+                    NumberSockets.Add(int.Parse(item.description));
+                }
 
                 //Kamin aus der Datenbank selecten
                 List<DBModel.Attribute> models = SQLGetAttribute(9);
@@ -983,7 +984,7 @@ namespace Fallstudie.ViewModel
 
 
         //Hier wird zu Schritt 10 weitergeleitet
-        private  void ButtonForwardChooseOutsideAreaMethod()
+        private void ButtonForwardChooseOutsideAreaMethod()
         {
             GetFrame();
             a.Navigate(typeof(Pages.HKPages.Schritt10Aussenbereiche));
@@ -993,13 +994,14 @@ namespace Fallstudie.ViewModel
             ListFence.Clear();
             ListColorFence.Clear();
 
-            NumberPoolSizes.Add(10);
-            NumberPoolSizes.Add(15);
-            NumberPoolSizes.Add(20);
-            NumberPoolSizes.Add(25);
-            NumberPoolSizes.Add(30);
-            NumberPoolSizes.Add(35);
-            NumberPoolSizes.Add(50);
+            //Poolgrößen aus der Datenbank selecten
+            List<DBModel.Attribute> modelsP = SQLGetAttribute(11);
+
+            //Poolgrößen werden angezeigt
+            foreach (var item in modelsP)
+            {
+                NumberPoolSizes.Add(int.Parse(item.description));
+            }
 
             //Pools aus der Datenbank selecten
             List<DBModel.Attribute> models = SQLGetAttribute(10);
@@ -1019,9 +1021,18 @@ namespace Fallstudie.ViewModel
                 ListFence.Add(new ImageInherit(item.image, item.attribute_id, item.description, item.price));
             }
 
-            ListColorFence.Add(new ColorPalette(Colors.IndianRed));
-            ListColorFence.Add(new ColorPalette(Colors.Beige));
-            ListColorFence.Add(new ColorPalette(Colors.Black));
+            //Farben Zaun aus der Datenbank selecten
+            List<DBModel.Attribute> modelsC = SQLGetAttribute(904);
+
+            //Farben Zaun werden angezeigt
+            foreach (var item in modelsC)
+            {
+                string[] color = item.description.Split(',');
+                byte r = Byte.Parse(color[0]);
+                byte g = Byte.Parse(color[1]);
+                byte b = Byte.Parse(color[2]);
+                ListColorFence.Add(new ColorPalette(r, g, b));
+            }
 
             try
             {
@@ -1031,9 +1042,7 @@ namespace Fallstudie.ViewModel
             catch (Exception)
             {
 
-                
             }
-            
         }
 
         //Hier wird zu Schritt 11 weitergeleitet
@@ -1041,7 +1050,7 @@ namespace Fallstudie.ViewModel
         {
             GetFrame();
             a.Navigate(typeof(Pages.HKPages.Schrtitt11Zusammenfassung));
-            
+
             House = new HouseSummary()
             {
                 Customer = selectedCustomerr,
@@ -1059,8 +1068,8 @@ namespace Fallstudie.ViewModel
                 WindowColor = SelectedColorWindow,
                 Door = SelectedDoor,
                 DoorColor = selectedColorDoor,
-                EnergySystem = SelectedEnergySystem.Name,
-                HeatingSystem = selectedHeatingSystem.Name,
+                EnergySystem = SelectedEnergySystem,
+                HeatingSystem = selectedHeatingSystem,
                 NumberOfSocket = SelectedSocket,
                 Chimney = SelectedChimney,
                 Pool = selectedPool,
@@ -1086,6 +1095,17 @@ namespace Fallstudie.ViewModel
             a.Navigate(typeof(Pages.HKPages.Schritt2HausAuswahl));
             GetStackPanels();
         }
+        //Hier wird die Hauskonfiguration in der DB gespeichert
+        private async void ButtonSaveConfigurationMethod()
+        {
+            throw new NotImplementedException();
+
+            var dialog = new MessageDialog("Haus wurde als konfiguriertes Haus erstellt.");
+            await dialog.ShowAsync();
+            GetFrame();
+            a.Navigate(typeof(Pages.pdfErstellenPage));
+
+        }
         #endregion
 
 
@@ -1108,7 +1128,7 @@ namespace Fallstudie.ViewModel
             a.Navigate(typeof(Pages.KundenPages.CreateCustomerPage));
         }
 
-        
+
         private void ButtonDrawSketchMethod()
         {
             AsynchMethod();
@@ -1157,7 +1177,7 @@ namespace Fallstudie.ViewModel
             }
             for (int i = 0; i < model.Count; i++)
             {
-                Customers.Add(new Customer(model[i].id, "", model[i].name, 0, 0));
+                Customers.Add(new Customer(model[i].id, model[i].name, 0, 0));
             }
         }
 
@@ -1246,7 +1266,7 @@ namespace Fallstudie.ViewModel
             Conn.Insert(new Attribute_Group
             {
                 attribute_group_id = 81,
-                description = "Pool",
+                description = "Heizungsysteme",
                 modifieddate = ConvertDateTime(DateTime.Now)
             });
             //Attribut Außenbereiche (Zaun)
@@ -1256,44 +1276,168 @@ namespace Fallstudie.ViewModel
                 description = "Zaun",
                 modifieddate = ConvertDateTime(DateTime.Now)
             });
+            //Attribut Poolgröße
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 11,
+                description = "Poolgröße",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Steckdosen
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 12,
+                description = "Steckdosen",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
         }
 
         //Projekt wird erstellt
-        public void SQLCreateProject()
+        public void SQLCreateHouseconfig()
         {
+            //Houseconfig configId;
             Conn.Insert(new Houseconfig
             {
                 price = int.Parse(TotalPrice.ToString()),
                 status = "1",
                 price_floor = int.Parse(SelectedFloor.Price.ToString()),
                 modifieddate = ConvertDateTime(DateTime.Now),
-                house_package_id = SelectedHouse.Id
-
+                house_package_id = SelectedHouse.Id,
+                consultant_user_id = 1,
+                customer_user_id = SelectedCustomerr.Id
             });
-            Conn.Insert(new Housefloor
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
             {
-                price = int.Parse(SelectedFloor.Price.ToString()),
-                sketch = "sketch",
-                modifieddate = ConvertDateTime(DateTime.Now),
-                houseconfig_id = 123,
-                area = 1
-            });
-            Conn.Insert(new Project
+                configId = (con.Table<Houseconfig>().OrderByDescending(u => u.houseconfig_id).FirstOrDefault());
+                con.Close();
+            }
+            for (int i = 0; i < SelectedItemFloor; i++)
             {
-                startdate = ConvertDateTime(DateTime.Now),
-                enddate = ConvertDateTime(DateTime.Now),
-                invoice = "Rechnung 1",
-                status = "Fertig",
-                description = "",
-                modifieddate = ConvertDateTime(DateTime.Now),
-            });
+                Conn.Insert(new Housefloor
+                {
+                    price = int.Parse(SelectedFloor.Price.ToString()),
+                    sketch = FloorsGroundPlot[i].SourceImage,
+                    modifieddate = ConvertDateTime(DateTime.Now),
+                    houseconfig_id = configId.houseconfig_id,
+                    area = i
+                });
+            }
             Conn.Insert(new Houseconfig_Has_Attribute
             {
-                houseconfig_id = 123,
-                attribute_id = 1,
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedPlot.Id,
                 amount = 1,
                 special = "",
                 modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedInsideWall.Id,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedOutsideWall.Id,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedRoofType.Id,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedRoofMaterial.Id,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedDoor.Id,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedWindow.Id,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedEnergySystem.Id,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedHeatingSystem.Id,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedPool.Id,
+                amount = 1,
+                special = SelectedPoolSize.ToString(),
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedFence.Id,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedFence.Id,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = configId.houseconfig_id,
+                attribute_id = SelectedFence.Id,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+        }
+        public void SQLCreateProject()
+        {
+            DateTime d = DateTime.Now;
+            Conn.Insert(new Project
+            {
+                startdate = ConvertDateTime(DateTime.Now),
+                enddate = ConvertDateTime(d.AddYears(1)),
+                invoice = "Rechnung 1",
+                status = "0",
+                description = "",
+                modifieddate = ConvertDateTime(DateTime.Now),
             });
         }
 
@@ -1327,8 +1471,9 @@ namespace Fallstudie.ViewModel
                          from c in con.Table<Ymdh_Address>()
                          where a.producer_id.Equals(b.mdh_producer_id)
                          && a.address_id.Equals(c.mdh_address_id)
-                         select new Houses {
-                             PackageId =  a.house_package_id,
+                         select new Houses
+                         {
+                             PackageId = a.house_package_id,
                              Source = a.image,
                              Description = a.description,
                              Price = a.price,
@@ -1338,8 +1483,8 @@ namespace Fallstudie.ViewModel
                              Street = c.Street,
                              HouseNo = c.houseno,
                              Country = c.country
-                          }).ToList();
-                
+                         }).ToList();
+
                 package = (from b in con.Table<Ymdh_House_Package>()
                            select b).ToList();
 
@@ -1348,6 +1493,7 @@ namespace Fallstudie.ViewModel
 
                 address = (from c in con.Table<Ymdh_Address>()
                            select c).ToList();
+
 
                 /*string comp = "";
                 string zip = "";
@@ -1392,7 +1538,7 @@ namespace Fallstudie.ViewModel
                     };
                 }
                 */
-                    con.Close();
+                con.Close();
             }
             return house;
         }
@@ -1406,6 +1552,65 @@ namespace Fallstudie.ViewModel
         #endregion
 
 
+
+        #endregion
+
+        #region UseCaseProjects
+        //Liste vo Alle Porjecte Geladen werden
+        #region Properties
+        private ObservableCollection<Projects> listProjects = new ObservableCollection<Projects>();
+        public ObservableCollection<Projects> ListProjects
+        {
+            get { return listProjects; }
+            set { listProjects = value; }
+        }
+
+        //selected Project
+        private Projects selectedProject;
+        public Projects SelectedProject
+        {
+            get { return selectedProject; }
+            set { selectedProject = value; OnChange("SelectedProject"); }
+        }
+        #endregion
+
+        #region Methods
+        public void ProjectsMethod()
+        {
+
+
+            foreach (var item in SQLGetProject())
+            {
+                ListProjects.Add(new Projects()
+                {
+                    Id = item.project_id,
+                    StartDate = DateTime.Parse(ConvertDateTime(DateTime.Parse(item.startdate))),
+                    EndDate = DateTime.Parse(ConvertDateTime(DateTime.Parse(item.enddate))),
+                    State = item.status,
+                    Description = item.description,
+                    House = SQLGetHouseconfig(item.project_id)
+                });
+            }
+            
+        }
+        #endregion
+
+        #region SQL
+
+        public List<Project> SQLGetProject()
+        {
+            List<Project> p;
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                p = (from c in con.Table<Project>()
+                     select c).ToList();
+
+                con.Close();
+            }
+            return p;
+        }
+
+        #endregion
 
         #endregion
 
@@ -1485,6 +1690,7 @@ namespace Fallstudie.ViewModel
 
         #endregion
 
+        #region Methods
         //In dieser Methode werden alle Buttons die für den ManageAppointment UseCase gebraucht werden
         //initialisiert
         public void ManageAppointments()
@@ -1501,17 +1707,17 @@ namespace Fallstudie.ViewModel
 
         private async void DeleteAppointmentButtonMethod()
         {
-            if(SelectedAppointment != null)
+            if (SelectedAppointment != null)
             {
                 using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
                 {
                     var p = (from a in con.Table<Ymdh_Appointment>()
-                               where a.appointment_id.Equals(SelectedAppointment.Id)
-                               select a).ToList();
+                             where a.appointment_id.Equals(SelectedAppointment.Id)
+                             select a).ToList();
                     p[0].appointment_status_id = 0;
 
-                    MessageDialog msgDialog = new MessageDialog("Sind Sie sicher, dass Sie diesen Termin ("+ SelectedAppointment.DateFormat + " " + SelectedAppointment.Time +
-                        " " + SelectedAppointment.Customer.Lastname + " " + SelectedAppointment.Consultant.Lastname +") löschen wollen?");
+                    MessageDialog msgDialog = new MessageDialog("Sind Sie sicher, dass Sie diesen Termin (" + SelectedAppointment.DateFormat + " " + SelectedAppointment.Time +
+                        " " + SelectedAppointment.Customer.Name + SelectedAppointment.Consultant.Name + ") löschen wollen?");
                     UICommand yesCmd = new UICommand("Ja");
                     msgDialog.Commands.Add(yesCmd);
                     UICommand noCmd = new UICommand("Nein");
@@ -1538,13 +1744,13 @@ namespace Fallstudie.ViewModel
                     }
 
                     con.Close();
-                }   
+                }
             }
             else
             {
                 var dialog = new MessageDialog("Bitte wählen Sie einen Termin aus.");
                 await dialog.ShowAsync();
-            } 
+            }
         }
 
         //Hier werden alle bereits festgelegten Termine angezeigt
@@ -1595,7 +1801,7 @@ namespace Fallstudie.ViewModel
                                    && c.appointment_status_id.Equals(1)
                                    orderby c.from_
                                    select a.name).ToList();
-             
+
                 con.Close();
             }
 
@@ -1609,15 +1815,15 @@ namespace Fallstudie.ViewModel
                     Id = model[i].appointment_id,
                     Date = DateTime.Parse(temp[0]),
                     Time = TimeSpan.Parse(time),
-                    Customer = new Customer(model[i].user_id, "", customerNamen[i], 0, 0),
-                    Consultant = new Consultant() { Id = model[i].consultant_user_id, Firstname = "", Lastname = consultantNamen[i] }
+                    Customer = new Customer(model[i].user_id, customerNamen[i], 0, 0),
+                    Consultant = new Consultant() { Id = model[i].consultant_user_id, Name = consultantNamen[i] }
                 });
             }
         }
 
         private async void EditAppointmentButtonMethod()
         {
-            if(selectedAppointment!= null)
+            if (selectedAppointment != null)
             {
 
                 GetFrame();
@@ -1635,7 +1841,7 @@ namespace Fallstudie.ViewModel
             {
                 var dialog = new MessageDialog("Bitte wählen Sie einen Termin aus.");
                 await dialog.ShowAsync();
-            }  
+            }
         }
 
         private async void ButtonSaveEditedAppointmentMethod()
@@ -1779,7 +1985,7 @@ namespace Fallstudie.ViewModel
                             });
 
                             con.Close();
-                        } 
+                        }
                     }
                 }
             }
@@ -1838,22 +2044,26 @@ namespace Fallstudie.ViewModel
                 {
                     Id = model[i].id,
                     //Firstname = model[i].name,
-                    Lastname = model[i].name,
+                    Name = model[i].name,
                 });
-            } 
+            }
         }
-
+        #endregion
         #endregion
 
         #region UseCase CreatePdf
 
+        #region Properties
         public RelayCommand ButtonCreatePdf { get; set; }
+        #endregion
+
+        #region Methods
 
         public void CreatePdf()
         {
-            //ButtonCreatePdf = new RelayCommand(ButtonCreatePdfMethod);
+            ButtonCreatePdf = new RelayCommand(ButtonCreatePdfMethod);
         }
-        
+
         private async void ButtonCreatePdfMethod()
         {
 
@@ -1862,27 +2072,123 @@ namespace Fallstudie.ViewModel
 
             //Add a page
             PdfPage page = doc.Pages.Add();
-
-            //Create Pdf graphics for the page
-            PdfGraphics g = page.Graphics;
-
             //Create a solid brush
             PdfBrush brush = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
 
             //Set the font
             PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 36);
 
+            //Create a header and draw the image.
+
+            System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 50);
+            PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
+            //PdfImage image = new PdfBitmap(@"Logo.png");
+
+            //header.Graphics.DrawImage(image, new PointF(0, 0), new SizeF(100, 50));
+            header.Graphics.DrawString("TestHeader", font, brush, new System.Drawing.PointF(0, 0));
+            //Add the header at the top.
+            doc.Template.Top = header;
+
+
+            //Create Pdf graphics for the page
+            PdfGraphics g = page.Graphics;
+            PdfGraphics g1 = page.Graphics;
+
+
+
             //Draw the text
             g.DrawString("Hello world!", font, brush, new System.Drawing.PointF(20, 20));
+            g.DrawString("Hello world!2", font, brush, new System.Drawing.PointF(40, 40));
+
+
+
+            SaveImage(page);
+
+
+            //Create a new PdfGrid.
+
+            PdfGrid pdfGrid = new PdfGrid();
+
+            //Add three columns.
+
+            pdfGrid.Columns.Add(4);
+
+            //Add header.
+            pdfGrid.Headers.Add(1);
+            PdfGridRow pdfGridHeader = pdfGrid.Headers[0];
+            pdfGridHeader.Cells[0].Value = "Spezifikation";
+            pdfGridHeader.Cells[1].Value = "Auswahl";
+            pdfGridHeader.Cells[2].Value = "Preis";
+            pdfGridHeader.Cells[2].Value = "Notitz";
+            
+            
+            //Add rows.
+            PdfGridRow pdfGridRow = pdfGrid.Rows.Add();
+            for (int i = 0; i < 4; i++)
+            {
+                pdfGridRow.Cells[i].Value = "E01";
+            }
+            pdfGridRow.Cells[0].Value = "E01";
+            pdfGridRow.Cells[1].Value = "Clay";
+            pdfGridRow.Cells[2].Value = "$10,000";
+
+
+            //Create an instance of PdfGridRowStyle
+
+            PdfGridRowStyle pdfGridRowStyle = new PdfGridRowStyle();
+
+            pdfGridRowStyle.BackgroundBrush = PdfBrushes.LightGray;
+
+            pdfGridRowStyle.Font = new PdfStandardFont(PdfFontFamily.Courier, 10);
+
+            pdfGridRowStyle.TextBrush = PdfBrushes.Blue;
+
+            pdfGridRowStyle.TextPen = PdfPens.Black;
+
+            //Set the height
+
+            pdfGrid.Rows[0].Height = 50;
+
+            //Set style for the PdfGridRow.
+
+            pdfGrid.Rows[0].Style = pdfGridRowStyle;
+
+            //Draw the PdfGrid.
+            pdfGrid.Draw(page, 10, 10);
+
+
+            /*
+            //Stream s = new FileStream("C:\\Users\\Ermin\\Dropbox\\GitHub\\Fallstudie-V1.1.1-1\\Fallstudie\\Bilder\\2Haeuser\\Haus1.png", FileMode.Open);
+
+            byte[] byteArray = Encoding.UTF8.GetBytes("C:\\Users\\Ermin\\Dropbox\\GitHub\\Fallstudie-V1.1.1-1\\Fallstudie\\Bilder\\2Haeuser\\Haus1.png");
+            //byte[] byteArray = Encoding.ASCII.GetBytes(contents);
+            MemoryStream stream1 = new MemoryStream(byteArray);
+
+            PdfImage image = new PdfBitmap(stream1);
+            g1.DrawImage(image, 60, 60);
+            */
+
 
             MemoryStream stream = new MemoryStream();
             await doc.SaveAsync(stream);
             doc.Close(true);
             Save(stream, "GettingStarted.pdf");
-
-
-
         }
+
+        async void SaveImage(PdfPage page)
+        {
+            PdfGraphics graphics = page.Graphics;
+
+            Stream imageStream = File.OpenRead("Bilder\\2Haeuser\\Haus1.png");
+            //Load the image from the disk.
+
+            PdfBitmap image = new PdfBitmap(imageStream);
+
+            //Draw the image
+
+            graphics.DrawImage(image, 0, 0);
+        }
+
         async void Save(Stream stream, string filename)
         {
 
@@ -1924,12 +2230,299 @@ namespace Fallstudie.ViewModel
                 }
             }
         }
+        #endregion
 
+        #region SQL
+
+        public int SQLCustomerCountProject(int i)
+        {
+            List<Project> p;
+            int h;
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                p = (from a in con.Table<Houseconfig>()
+                     from b in con.Table<Project>()
+                     where a.customer_user_id.Equals(i)
+                     && b.houseconfig_id.Equals(a.houseconfig_id)
+                     select b).ToList();
+
+                h = p.Count;
+
+                con.Close();
+            }
+            return h;
+        }
+        public int SQLCustomerCountHouseconfig(int i)
+        {
+            List<Houseconfig> p;
+            int h;
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                p = (from a in con.Table<Houseconfig>()
+                     where a.customer_user_id.Equals(i)
+                     select a).ToList();
+
+                h = p.Count;
+
+                con.Close();
+            }
+            return h;
+        }
+        public DBModel.Attribute SQLGetRightAttribute(int attributGroupId, int userId)
+        {
+            List<DBModel.Attribute> i;
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                i = (from b in con.Table<Houseconfig>()
+                     from d in con.Table<Houseconfig_Has_Attribute>()
+                     from e in con.Table<DBModel.Attribute>()
+                     where b.customer_user_id.Equals(userId)
+                     && e.attribute_group_id.Equals(attributGroupId)
+                     && d.houseconfig_id.Equals(b.houseconfig_id)
+                     && d.attribute_id.Equals(e.attribute_id)
+                     select e).ToList();
+
+                con.Close();
+            }
+            if (i.Count > 0)
+                return i[0];
+            else
+                return new DBModel.Attribute();
+        }
+        public byte SQLSplitColorR(string i)
+        {
+            if(i != null)
+            {
+                string[] color = i.Split(',');
+                byte r = Byte.Parse(color[0]);
+                return r;
+            }else
+            {
+                return 255;
+            }
+            
+        }
+        public byte SQLSplitColorG(string i)
+        {
+            if (i != null)
+            {
+                string[] color = i.Split(',');
+                byte g = Byte.Parse(color[1]);
+                return g;
+            }
+            else
+            {
+                return 255;
+            }
+        }
+        public byte SQLSplitColorB(string i)
+        {
+            if (i != null)
+            {
+                string[] color = i.Split(',');
+                byte b = Byte.Parse(color[2]);
+                return b;
+            }
+            else
+            {
+                return 255;
+            }
+        }
+        public void SQLGetHouseconfig()
+        {
+            List<HouseSummary> house;
+            //List<ImageInherit> Gplots;
+
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+
+                house = (from a in con.Table<Mdh_Users>()
+                         from b in con.Table<Houseconfig>()
+                         from c in con.Table<Housefloor>()
+                         from d in con.Table<Houseconfig_Has_Attribute>()
+                         from e in con.Table<DBModel.Attribute>()
+                         from f in con.Table<Ymdh_House_Package>()
+                         where a.id.Equals(b.customer_user_id)
+                         && b.house_package_id.Equals(f.house_package_id)
+                         && c.houseconfig_id.Equals(b.houseconfig_id)
+                         && d.houseconfig_id.Equals(b.houseconfig_id)
+                         && d.attribute_id.Equals(e.attribute_id)
+                         select new HouseSummary
+                         {
+                             Customer = new Customer(a.id, a.name, SQLCustomerCountProject(a.id), SQLCustomerCountHouseconfig(a.id)),
+                             Package = new ImageInherit(f.image, f.house_package_id, f.description, f.price),
+                             Plot = new ImageInherit(SQLGetRightAttribute(3, a.id).image, SQLGetRightAttribute(3, a.id).attribute_id, SQLGetRightAttribute(3, a.id).description, SQLGetRightAttribute(3, a.id).price),
+                             numberOfFloors = SelectedItemFloor,
+                             GroundPlots = null,
+                             OutsideWall = new ImageInherit(SQLGetRightAttribute(5, a.id).image, SQLGetRightAttribute(5, a.id).attribute_id, SQLGetRightAttribute(5, a.id).description, SQLGetRightAttribute(5, a.id).price),
+                             OutsideWallColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(902, a.id).description), SQLSplitColorG(SQLGetRightAttribute(902, a.id).description), SQLSplitColorB(SQLGetRightAttribute(902, a.id).description)),
+                             InsideWall = new ImageInherit(SQLGetRightAttribute(51, a.id).image, SQLGetRightAttribute(51, a.id).attribute_id, SQLGetRightAttribute(51, a.id).description, SQLGetRightAttribute(51, a.id).price),
+                             InsideWallColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(901, a.id).description), SQLSplitColorG(SQLGetRightAttribute(901, a.id).description), SQLSplitColorB(SQLGetRightAttribute(901, a.id).description)),
+                             RoofType = new ImageInherit(SQLGetRightAttribute(6, a.id).image, SQLGetRightAttribute(6, a.id).attribute_id, SQLGetRightAttribute(6, a.id).description, SQLGetRightAttribute(6, a.id).price),
+                             RoofMaterial = new ImageInherit(SQLGetRightAttribute(61, a.id).image, SQLGetRightAttribute(61, a.id).attribute_id, SQLGetRightAttribute(61, a.id).description, SQLGetRightAttribute(61, a.id).price),
+                             Window = new ImageInherit(SQLGetRightAttribute(7, a.id).image, SQLGetRightAttribute(7, a.id).attribute_id, SQLGetRightAttribute(7, a.id).description, SQLGetRightAttribute(7, a.id).price),
+                             WindowColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(903, a.id).description), SQLSplitColorG(SQLGetRightAttribute(903, a.id).description), SQLSplitColorB(SQLGetRightAttribute(903, a.id).description)),
+                             Door = new ImageInherit(SQLGetRightAttribute(71, a.id).image, SQLGetRightAttribute(71, a.id).attribute_id, SQLGetRightAttribute(71, a.id).description, SQLGetRightAttribute(71, a.id).price),
+                             DoorColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(904, a.id).description), SQLSplitColorG(SQLGetRightAttribute(904, a.id).description), SQLSplitColorB(SQLGetRightAttribute(904, a.id).description)),
+                             EnergySystem = new EHSystem(SQLGetRightAttribute(8, a.id).attribute_id, SQLGetRightAttribute(8, a.id).description, SQLGetRightAttribute(8, a.id).price),
+                             HeatingSystem = new EHSystem(SQLGetRightAttribute(81, a.id).attribute_id, SQLGetRightAttribute(81, a.id).description, SQLGetRightAttribute(81, a.id).price),
+                             NumberOfSocket = int.Parse(SQLGetRightAttribute(12, a.id).description),
+                             Chimney = new ImageInherit(SQLGetRightAttribute(9, a.id).image, SQLGetRightAttribute(9, a.id).attribute_id, SQLGetRightAttribute(9, a.id).description, SQLGetRightAttribute(9, a.id).price),
+                             Pool = new ImageInherit(SQLGetRightAttribute(10, a.id).image, SQLGetRightAttribute(10, a.id).attribute_id, SQLGetRightAttribute(10, a.id).description, SQLGetRightAttribute(10, a.id).price),
+                             Poolsize = SQLGetRightAttribute(11, a.id).description + " m²",
+                             Fence = new ImageInherit(SQLGetRightAttribute(101, a.id).image, SQLGetRightAttribute(101, a.id).attribute_id, SQLGetRightAttribute(101, a.id).description, SQLGetRightAttribute(101, a.id).price),
+                             FenceColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(905, a.id).description), SQLSplitColorG(SQLGetRightAttribute(905, a.id).description), SQLSplitColorB(SQLGetRightAttribute(905, a.id).description))
+                         }).ToList();
+
+                con.Close();
+            }
+        }
+
+        public HouseSummary SQLGetHouseconfig(int id)
+        {
+            HouseSummary house;
+            //List<ImageInherit> Gplots;
+
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+
+                house = (from a in con.Table<Mdh_Users>()
+                         from b in con.Table<Houseconfig>()
+                         from c in con.Table<Housefloor>()
+                         from d in con.Table<Houseconfig_Has_Attribute>()
+                         from e in con.Table<DBModel.Attribute>()
+                         from f in con.Table<Ymdh_House_Package>()
+                         from g in con.Table<Project>()
+                         where a.id.Equals(b.customer_user_id)
+                         && b.house_package_id.Equals(f.house_package_id)
+                         && c.houseconfig_id.Equals(b.houseconfig_id)
+                         && d.houseconfig_id.Equals(b.houseconfig_id)
+                         && d.attribute_id.Equals(e.attribute_id)
+                         && b.houseconfig_id.Equals(g.houseconfig_id)
+                         && g.project_id.Equals(id)
+                         select new HouseSummary
+                         {
+                             Customer = new Customer(a.id, a.name, SQLCustomerCountProject(a.id), SQLCustomerCountHouseconfig(a.id)),
+                             Package = new ImageInherit(f.image, f.house_package_id, f.description, f.price),
+                             Plot = new ImageInherit(SQLGetRightAttribute(3, a.id).image, SQLGetRightAttribute(3, a.id).attribute_id, SQLGetRightAttribute(3, a.id).description, SQLGetRightAttribute(3, a.id).price),
+                             numberOfFloors = SelectedItemFloor,
+                             GroundPlots = new List<ImageInherit>(),
+                             OutsideWall = new ImageInherit(SQLGetRightAttribute(5, a.id).image, SQLGetRightAttribute(5, a.id).attribute_id, SQLGetRightAttribute(5, a.id).description, SQLGetRightAttribute(5, a.id).price),
+                             OutsideWallColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(902, a.id).description), SQLSplitColorG(SQLGetRightAttribute(902, a.id).description), SQLSplitColorB(SQLGetRightAttribute(902, a.id).description)),
+                             InsideWall = new ImageInherit(SQLGetRightAttribute(51, a.id).image, SQLGetRightAttribute(51, a.id).attribute_id, SQLGetRightAttribute(51, a.id).description, SQLGetRightAttribute(51, a.id).price),
+                             InsideWallColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(901, a.id).description), SQLSplitColorG(SQLGetRightAttribute(901, a.id).description), SQLSplitColorB(SQLGetRightAttribute(901, a.id).description)),
+                             RoofType = new ImageInherit(SQLGetRightAttribute(6, a.id).image, SQLGetRightAttribute(6, a.id).attribute_id, SQLGetRightAttribute(6, a.id).description, SQLGetRightAttribute(6, a.id).price),
+                             RoofMaterial = new ImageInherit(SQLGetRightAttribute(61, a.id).image, SQLGetRightAttribute(61, a.id).attribute_id, SQLGetRightAttribute(61, a.id).description, SQLGetRightAttribute(61, a.id).price),
+                             Window = new ImageInherit(SQLGetRightAttribute(7, a.id).image, SQLGetRightAttribute(7, a.id).attribute_id, SQLGetRightAttribute(7, a.id).description, SQLGetRightAttribute(7, a.id).price),
+                             WindowColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(903, a.id).description), SQLSplitColorG(SQLGetRightAttribute(903, a.id).description), SQLSplitColorB(SQLGetRightAttribute(903, a.id).description)),
+                             Door = new ImageInherit(SQLGetRightAttribute(71, a.id).image, SQLGetRightAttribute(71, a.id).attribute_id, SQLGetRightAttribute(71, a.id).description, SQLGetRightAttribute(71, a.id).price),
+                             DoorColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(904, a.id).description), SQLSplitColorG(SQLGetRightAttribute(904, a.id).description), SQLSplitColorB(SQLGetRightAttribute(904, a.id).description)),
+                             EnergySystem = new EHSystem(SQLGetRightAttribute(8, a.id).attribute_id, SQLGetRightAttribute(8, a.id).description, SQLGetRightAttribute(8, a.id).price),
+                             HeatingSystem = new EHSystem(SQLGetRightAttribute(81, a.id).attribute_id, SQLGetRightAttribute(81, a.id).description, SQLGetRightAttribute(81, a.id).price),
+                             NumberOfSocket = int.Parse(SQLGetRightAttribute(12, a.id).description),
+                             Chimney = new ImageInherit(SQLGetRightAttribute(9, a.id).image, SQLGetRightAttribute(9, a.id).attribute_id, SQLGetRightAttribute(9, a.id).description, SQLGetRightAttribute(9, a.id).price),
+                             Pool = new ImageInherit(SQLGetRightAttribute(10, a.id).image, SQLGetRightAttribute(10, a.id).attribute_id, SQLGetRightAttribute(10, a.id).description, SQLGetRightAttribute(10, a.id).price),
+                             Poolsize = SQLGetRightAttribute(11, a.id).description + " m²",
+                             Fence = new ImageInherit(SQLGetRightAttribute(101, a.id).image, SQLGetRightAttribute(101, a.id).attribute_id, SQLGetRightAttribute(101, a.id).description, SQLGetRightAttribute(101, a.id).price),
+                             FenceColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(905, a.id).description), SQLSplitColorG(SQLGetRightAttribute(905, a.id).description), SQLSplitColorB(SQLGetRightAttribute(905, a.id).description))
+                         }).Single();
+
+                con.Close();
+            }
+            return house;
+        }
+
+        #endregion
+
+            #endregion
+
+            #region GeneralFunctions
+            /// <summary>
+            /// In dieser Region werden allgemeine Funktionien gepseichert
+            /// </summary>
+
+            // Resetet alle Listen und selected Items
+        public void ResetProperties()
+        {
+            //Variablen
+            //HausKonfigurator
+            House = new HouseSummary();
+            TotalPrice = 0;
+            NumberOfFloorDB = 0;
+            //Appointments
+            DateAppointment = new DateTime();
+            TimeAppoitment = new TimeSpan();
+            DateTimeNow = new DateTime();
+
+            //Listen
+            //HausKonfigurator
+            Customers.Clear();
+            ImagesHouse.Clear();
+            imagesPlot.Clear();
+            NumberFloors.Clear();
+            FloorsGroundPlot.Clear();
+            ListOutsideWall.Clear();
+            ListColorOutsideWall.Clear();
+            ListInsideWall.Clear();
+            ListColorInsideWall.Clear();
+            ListRoofType.Clear();
+            ListRoofMaterial.Clear();
+            ListWindows.Clear();
+            ListColorWindows.Clear();
+            ListDoors.Clear();
+            ListColorDoors.Clear();
+            ListEnergySystem.Clear();
+            ListHeatingSystem.Clear();
+            NumberSockets.Clear();
+            ListChimneys.Clear();
+            NumberPoolSizes.Clear();
+            ListPools.Clear();
+            ListFence.Clear();
+            ListColorFence.Clear();
+            //Appintments
+            Appointments.Clear();
+            Consultants.Clear();
+
+            //SelectedItems
+            //HausKonfigurator
+            SelectedCustomerr = new Customer();
+            SelectedItemFloor = 0;
+            SelectedHouse = new ImageInherit();
+            SelectedPlot = new ImageInherit();
+            SelectedFloor = new ImageInherit();
+            SelectedOutsideWall = new ImageInherit();
+            SelectedColorOutsideWall = new ColorPalette();
+            SelectedInsideWall = new ImageInherit();
+            SelectedColorInsideWall = new ColorPalette();
+            SelectedRoofType = new ImageInherit();
+            SelectedRoofMaterial = new ImageInherit();
+            SelectedWindow = new ImageInherit();
+            SelectedColorWindow = new ColorPalette();
+            SelectedDoor = new ImageInherit();
+            SelectedColorDoor = new ColorPalette();
+            SelectedEnergySystem = new EHSystem();
+            SelectedHeatingSystem = new EHSystem();
+            SelectedSocket = 0;
+            SelectedChimney = new ImageInherit();
+            SelectedPoolSize = 0;
+            SelectedPool = new ImageInherit();
+            SelectedFence = new ImageInherit();
+            SelectedColorFence = new ColorPalette();
+            //Appintments
+            selectedAppointment = new Appointment();
+            SelectedConsultant = new Consultant();
+
+        }
         #endregion
 
         #region Test Methoden
 
-            //MessageBox wird angezeigt -> zum Testen
+
+
+
+
+
+        //MessageBox wird angezeigt -> zum Testen
         private async void AsynchMethod()
         {
             var dialog = new MessageDialog("TestMethode wurde aufgerufen");

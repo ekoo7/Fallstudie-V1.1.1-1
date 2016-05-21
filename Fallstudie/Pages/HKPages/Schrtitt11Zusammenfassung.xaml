@@ -280,4 +280,14 @@
             </StackPanel>
         </Grid>
     </ScrollViewer>
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Command="{Binding ButtonEditConfiguration}" Icon="Edit" Label="Hauskonfiguration bearbeiten"/>
+            <AppBarButton Command="{Binding ButtonSaveConfiguration}" Icon="Save" Label="Hauskonfiguration speichern"/>
+            <AppBarButton Command="{Binding ButtonCreateProject}" Icon="ProtectedDocument" Label="Projekt erstellen"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

@@ -43,8 +43,8 @@ namespace Fallstudie.Model
         public ColorPalette DoorColor { get; set; }
 
         //Energiesystem && Heating System
-        public string EnergySystem { get; set; }
-        public string HeatingSystem { get; set; }
+        public EHSystem EnergySystem { get; set; }
+        public EHSystem HeatingSystem { get; set; }
 
         //steckdose pro Raum && Kamin
         public int NumberOfSocket { get; set; }

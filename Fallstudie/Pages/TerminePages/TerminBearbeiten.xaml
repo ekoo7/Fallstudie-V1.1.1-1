@@ -17,8 +17,8 @@
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Termin bearbeiten"></TextBlock>
-                <TextBlock Text="{Binding SelectedAppointment.Customer.Lastname}" Foreground="Red"/>
-                <TextBlock Text="{Binding SelectedAppointment.Consultant.Lastname}" Foreground="Red"/>
+                <TextBlock Text="{Binding SelectedAppointment.Customer.Name}" Foreground="Red"/>
+                <TextBlock Text="{Binding SelectedAppointment.Consultant.Name}" Foreground="Red"/>
                 <TextBlock Text="{Binding SelectedAppointment.DateFormat}"  Foreground="Red"/>
                 <TextBlock Text="{Binding SelectedAppointment.Time}" Foreground="Red"/>
                 <StackPanel Orientation="Horizontal">
@@ -26,7 +26,7 @@
                     <ComboBox Width="180" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Lastname}" />
+                                <TextBlock Text="{Binding Name}" />
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
@@ -35,7 +35,7 @@
                     <ComboBox Width="180" ItemsSource="{Binding Consultants}" SelectedItem="{Binding SelectedConsultant, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Lastname}" />
+                                <TextBlock Text="{Binding Name}" />
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>

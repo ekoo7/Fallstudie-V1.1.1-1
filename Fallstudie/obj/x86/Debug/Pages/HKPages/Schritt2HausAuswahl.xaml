@@ -16,7 +16,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0">
-                <TextBlock Text="{Binding SelectedCustomerr.Lastname}"></TextBlock>
+                <TextBlock Text="{Binding SelectedCustomerr.Name}"></TextBlock>
             </StackPanel>
 
             <StackPanel x:ConnectionId='1' Grid.Row="1" Name="StackSchritt2" Orientation="Horizontal" HorizontalAlignment="Center">

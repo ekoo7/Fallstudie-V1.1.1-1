@@ -18,6 +18,11 @@ namespace Fallstudie.Model
         public string G { get; set; }
         public string B { get; set; }
 
+
+        public ColorPalette()
+        {
+
+        }
         public ColorPalette(Color c)
         {
             Color = new SolidColorBrush(c);
