@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fallstudie.Model
 {
-    public class Project
+    public class Projects
     {
         public int Id { get; set; }
         public HouseSummary House { get; set; }

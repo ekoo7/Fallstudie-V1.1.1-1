@@ -7,51 +7,65 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding Main, Source={StaticResource Locator}}"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     >
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <TextBlock Text="{Binding MSG}"></TextBlock>
-            
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Width="100" Margin="10 0 0 0" Text="Vorname"/>
-                            <TextBlock Width="100" Margin="10 0 0 0" Text="Nachname"/>
-                            <TextBlock Width="60" Margin="10 0 0 0" Text="Projekte"/>
-                            <TextBlock Width="60" Margin="10 0 0 0" Text="Häuser"/>
-                        </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
 
-            <ListView x:ConnectionId='1' Name="CustomerList" ItemsSource="{Binding Customers}" 
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Name" TextAlignment="Center"/>
+                    <ListView x:ConnectionId='3' Name="CustomerList" ItemsSource="{Binding Customers}" 
                       SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
-                      IsItemClickEnabled="False" SelectionMode="Single"
-                      
+                      IsItemClickEnabled="False" SelectionMode="Single"    
                       IsSynchronizedWithCurrentItem="False">
-                
-                <!-- Wenn man eine Liste Clickbarmachen will muss man das einfügen -> siehe Link TestSachen
-                <interactivity:Interaction.Behaviors>
-                    <core:EventTriggerBehavior EventName="SelectionChanged">
-                        <core:InvokeCommandAction Command="{Binding SomeComboBoxCommand}" CommandParameter="{Binding ElementName=CustomerList, Path=SelectedItem}"/>
-                    </core:EventTriggerBehavior>
-                </interactivity:Interaction.Behaviors>-->
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Lastname}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Width="100" Margin="0 0 0 0" Text="{Binding Firstname}"/>
-                            <TextBlock Width="100" Margin="10 0 0 0" Text="{Binding Lastname}"/>
-                            <TextBlock Width="60" Margin="10 0 0 0" Text="{Binding NumbProjects}"/>
-                            <TextBlock Width="60" Margin="10 0 0 0" Text="{Binding NumbConfHouses}"/>
-                    </StackPanel>
-                </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Projekte" TextAlignment="Center"/>
+                    <ListView x:ConnectionId='2' Name="CustomerList2" ItemsSource="{Binding Customers}" 
+                      SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
+                      IsItemClickEnabled="False" SelectionMode="Single"    
+                      IsSynchronizedWithCurrentItem="False" HorizontalAlignment="Center">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding NumbProjects}" TextAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Konfigurierte Häuser"/>
+                    <ListView x:ConnectionId='1' Name="CustomerList3" ItemsSource="{Binding Customers}" 
+                      SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
+                      IsItemClickEnabled="False" SelectionMode="Single"    
+                      IsSynchronizedWithCurrentItem="False">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding NumbConfHouses}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
+            </StackPanel>
+
             <Button Margin="20" Command="{Binding NewCustomerButton}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE8FA;" />
             <Button Margin="20" Command="{Binding ButtonForwardChooseCustomer}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
-            
         </StackPanel>
-        
     </Grid>
 </Page>
 

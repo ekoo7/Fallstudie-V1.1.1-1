@@ -28,8 +28,5 @@ namespace Fallstudie.Pages
             this.InitializeComponent();
         }
 
-        private void CustomerList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        { 
-        }
     }
 }

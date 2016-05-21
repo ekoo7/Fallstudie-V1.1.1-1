@@ -30,6 +30,28 @@ namespace Fallstudie.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        public MainViewModel()
+        {
+            InitializeButtons();
+
+            //Datenbank erstellen
+            DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.sqlite");
+            if (!File.Exists(DbPath))
+            {
+                Conn = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath);
+                SQLCreateTable();
+                SQLInsertAttributeGroup();
+            }
+
+            Customers.Clear();
+            SQLGetCustomers();
+
+            ManageAppointments();
+
+            CreatePdf();
+        }
+
+        #region UseCase HouseConfig
         #region PROPERTIES
 
         #region Variablen
@@ -619,236 +641,6 @@ namespace Fallstudie.ViewModel
 
         #endregion
 
-        public MainViewModel()
-        {
-            InitializeButtons();
-            
-            //Datenbank erstellen
-            DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.sqlite");
-            if (!File.Exists(DbPath))
-            {
-                Conn = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath);
-                SQLCreateTable();
-                SQLInsertAttributeGroup();    
-            }
-
-            Customers.Clear();
-            SQLGetCustomers();
-            
-            ManageAppointments();
-            
-            CreatePdf();
-
-        }
-
-        #region SQL Befehle
-        #region Erstellen der Tabellen
-        public void SQLCreateTable()
-        {
-            Conn.CreateTable<DBModel.Attribute>();
-            Conn.CreateTable<Attribute_Group>();
-            Conn.CreateTable<Houseconfig>();
-            Conn.CreateTable<Houseconfig_Has_Attribute>();
-            Conn.CreateTable<Housefloor>();
-            Conn.CreateTable<Mdh_User_Usergroup_Map>();
-            Conn.CreateTable<Mdh_Usergroups>();
-            Conn.CreateTable<Mdh_Users>();
-            Conn.CreateTable<Package_Not_Attribute>();
-            Conn.CreateTable<Project>();
-            Conn.CreateTable<Ymdh_Address>();
-            Conn.CreateTable<Ymdh_Appointment>();
-            Conn.CreateTable<Ymdh_Appointment_Status>();
-            Conn.CreateTable<Ymdh_House_Package>();
-            Conn.CreateTable<Ymdh_House_Package_Status>();
-            Conn.CreateTable<Ymdh_Message>();
-            Conn.CreateTable<Ymdh_Person>();
-            Conn.CreateTable<Ymdh_Producer>();
-        }
-        
-        public void SQLGetCustomers()
-        {
-            Customers.Clear();
-            List<Mdh_Users> model;
-            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
-            {
-                model = (from a in con.Table<Mdh_Users>()
-                         from b in con.Table<Mdh_User_Usergroup_Map>()
-                         from c in con.Table<Mdh_Usergroups>()
-                         where a.id.Equals(b.user_id)
-                         && b.group_id.Equals(c.id)
-                         && c.title.Equals("Customer")
-                         select a).ToList();
-
-                con.Close();
-            }
-            for (int i = 0; i < model.Count; i++)
-            {
-                Customers.Add(new Customer(model[i].id, "", model[i].name, 0, 0));
-            }
-        }
-        
-        //Attribut Gruppen werden erstellt        
-        public void SQLInsertAttributeGroup()
-        {
-            //Conn.Execute("PRAGMA foreign_keys = '1';");
-            //Attribut Grundstück
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 3,
-                description = "Grundstück",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Grundriss
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 4,
-                description = "Grundriss",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Außenwand
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 5,
-                description = "Außenwand",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Dachtyp
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 6,
-                description = "Dachtyp",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Fenster
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 7,
-                description = "Fenster",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Energiesysteme
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 8,
-                description = "Energiesysteme",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Zusatz (Kamin)
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 9,
-                description = "Kamin",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Außenbereiche (Pool)
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 10,
-                description = "Pool",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Innenwand
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 51,
-                description = "Innenwand",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Dachmaterial
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 61,
-                description = "Dachmaterial",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Türen
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 71,
-                description = "Türen",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Heizungsysteme
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 81,
-                description = "Pool",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-            //Attribut Außenbereiche (Zaun)
-            Conn.Insert(new Attribute_Group
-            {
-                attribute_group_id = 101,
-                description = "Zaun",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-        }
-
-        //Projekt wird erstellt
-        public void SQLCreateProject()
-        {
-            Conn.Insert(new Houseconfig
-            {
-                price = int.Parse(TotalPrice.ToString()),
-                status = "1",
-                price_floor = int.Parse(SelectedFloor.Price.ToString()),
-                modifieddate = ConvertDateTime(DateTime.Now),
-                house_package_id = SelectedHouse.Id
-
-            });
-            Conn.Insert(new Housefloor
-            {
-                price = int.Parse(SelectedFloor.Price.ToString()),
-                sketch = "sketch",
-                modifieddate = ConvertDateTime(DateTime.Now),
-                houseconfig_id = 123,
-                area = 1
-            });
-            Conn.Insert(new Project
-            {
-                startdate = ConvertDateTime(DateTime.Now),
-                enddate = ConvertDateTime(DateTime.Now),
-                invoice = "Rechnung 1",
-                status = "Fertig",
-                description = "",
-                modifieddate = ConvertDateTime(DateTime.Now),
-            });
-            Conn.Insert(new Houseconfig_Has_Attribute
-            {
-                houseconfig_id = 123,
-                attribute_id = 1,
-                amount = 1,
-                special = "",
-                modifieddate = ConvertDateTime(DateTime.Now)
-            });
-        }
-
-        //Get Attribute aus der Joomla/Frontend Datenbank
-        public List<DBModel.Attribute> SQLGetAttribute(int t)
-        {
-            List<DBModel.Attribute> models;
-
-            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
-            {
-                models = (from c in con.Table<DBModel.Attribute>()
-                          where c.attribute_group_id.Equals(t)
-                          select c).ToList();
-
-                con.Close();
-            }
-            return models;
-        }
-        public string ConvertDateTime(DateTime dt)
-        {
-            return String.Format("{0:yyyy-MM-dd HH:mm:ss}", dt);
-        }
-
-
-        #endregion
-
-        #endregion
-
-        #region Alle Methoden
 
         //Hier werden alle Buttons initialisiert
         private void InitializeButtons()
@@ -869,8 +661,6 @@ namespace Fallstudie.ViewModel
         }
         
 
-
-
         #region ForwardButtons
 
         //Hier wird weitergeleitet auf Schritt 2
@@ -886,9 +676,11 @@ namespace Fallstudie.ViewModel
 
                 ImagesHouse.Clear();
 
-                ImagesHouse.Add(new ImageInherit("ms-appx:///Bilder/2Haeuser/Haus1.png", 1111, 107000));
-                ImagesHouse.Add(new ImageInherit("ms-appx:///Bilder/2Haeuser/Haus2.png", 1222, 150000));
-                ImagesHouse.Add(new ImageInherit("ms-appx:///Bilder/2Haeuser/Haus3.png", 1333, 210000));
+                List<Houses> models = SQLGetHouses();
+                foreach (var item in models)
+                {
+                    ImagesHouse.Add(new ImageInherit(item.Source, item.PackageId, item.Description, item.Price, item.Company, item.ZIP, item.City, item.Street, item.HouseNo, item.Country));
+                }
             }
             else
             {
@@ -1322,6 +1114,299 @@ namespace Fallstudie.ViewModel
             AsynchMethod();
         }
 
+
+        #region SQL Befehle
+
+        public void SQLCreateTable()
+        {
+            Conn.CreateTable<DBModel.Attribute>();
+            Conn.CreateTable<Attribute_Group>();
+            Conn.CreateTable<Houseconfig>();
+            Conn.CreateTable<Houseconfig_Has_Attribute>();
+            Conn.CreateTable<Housefloor>();
+            Conn.CreateTable<Mdh_User_Usergroup_Map>();
+            Conn.CreateTable<Mdh_Usergroups>();
+            Conn.CreateTable<Mdh_Users>();
+            Conn.CreateTable<Package_Not_Attribute>();
+            Conn.CreateTable<Project>();
+            Conn.CreateTable<Ymdh_Address>();
+            Conn.CreateTable<Ymdh_Appointment>();
+            Conn.CreateTable<Ymdh_Appointment_Status>();
+            Conn.CreateTable<Ymdh_House_Package>();
+            Conn.CreateTable<Ymdh_House_Package_Status>();
+            Conn.CreateTable<Ymdh_Message>();
+            Conn.CreateTable<Ymdh_Person>();
+            Conn.CreateTable<Ymdh_Producer>();
+        }
+
+        public void SQLGetCustomers()
+        {
+            Customers.Clear();
+            List<Mdh_Users> model;
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                model = (from a in con.Table<Mdh_Users>()
+                         from b in con.Table<Mdh_User_Usergroup_Map>()
+                         from c in con.Table<Mdh_Usergroups>()
+                         where a.id.Equals(b.user_id)
+                         && b.group_id.Equals(c.id)
+                         && c.title.Equals("Customer")
+                         select a).ToList();
+
+                con.Close();
+            }
+            for (int i = 0; i < model.Count; i++)
+            {
+                Customers.Add(new Customer(model[i].id, "", model[i].name, 0, 0));
+            }
+        }
+
+        //Attribut Gruppen werden erstellt        
+        public void SQLInsertAttributeGroup()
+        {
+            //Conn.Execute("PRAGMA foreign_keys = '1';");
+            //Attribut Grundstück
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 3,
+                description = "Grundstück",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Grundriss
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 4,
+                description = "Grundriss",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Außenwand
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 5,
+                description = "Außenwand",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Dachtyp
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 6,
+                description = "Dachtyp",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Fenster
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 7,
+                description = "Fenster",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Energiesysteme
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 8,
+                description = "Energiesysteme",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Zusatz (Kamin)
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 9,
+                description = "Kamin",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Außenbereiche (Pool)
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 10,
+                description = "Pool",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Innenwand
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 51,
+                description = "Innenwand",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Dachmaterial
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 61,
+                description = "Dachmaterial",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Türen
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 71,
+                description = "Türen",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Heizungsysteme
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 81,
+                description = "Pool",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+            //Attribut Außenbereiche (Zaun)
+            Conn.Insert(new Attribute_Group
+            {
+                attribute_group_id = 101,
+                description = "Zaun",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+        }
+
+        //Projekt wird erstellt
+        public void SQLCreateProject()
+        {
+            Conn.Insert(new Houseconfig
+            {
+                price = int.Parse(TotalPrice.ToString()),
+                status = "1",
+                price_floor = int.Parse(SelectedFloor.Price.ToString()),
+                modifieddate = ConvertDateTime(DateTime.Now),
+                house_package_id = SelectedHouse.Id
+
+            });
+            Conn.Insert(new Housefloor
+            {
+                price = int.Parse(SelectedFloor.Price.ToString()),
+                sketch = "sketch",
+                modifieddate = ConvertDateTime(DateTime.Now),
+                houseconfig_id = 123,
+                area = 1
+            });
+            Conn.Insert(new Project
+            {
+                startdate = ConvertDateTime(DateTime.Now),
+                enddate = ConvertDateTime(DateTime.Now),
+                invoice = "Rechnung 1",
+                status = "Fertig",
+                description = "",
+                modifieddate = ConvertDateTime(DateTime.Now),
+            });
+            Conn.Insert(new Houseconfig_Has_Attribute
+            {
+                houseconfig_id = 123,
+                attribute_id = 1,
+                amount = 1,
+                special = "",
+                modifieddate = ConvertDateTime(DateTime.Now)
+            });
+        }
+
+        //Get Attribute aus der Joomla/Frontend Datenbank
+        public List<DBModel.Attribute> SQLGetAttribute(int t)
+        {
+            List<DBModel.Attribute> models;
+
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                models = (from c in con.Table<DBModel.Attribute>()
+                          where c.attribute_group_id.Equals(t)
+                          select c).ToList();
+
+                con.Close();
+            }
+            return models;
+        }
+
+        public List<Houses> SQLGetHouses()
+        {
+            List<Houses> house;
+            List<Ymdh_House_Package> package;
+            List<Ymdh_Producer> producer;
+            List<Ymdh_Address> address;
+
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                house = (from a in con.Table<Ymdh_House_Package>()
+                         from b in con.Table<Ymdh_Producer>()
+                         from c in con.Table<Ymdh_Address>()
+                         where a.producer_id.Equals(b.mdh_producer_id)
+                         && a.address_id.Equals(c.mdh_address_id)
+                         select new Houses {
+                             PackageId =  a.house_package_id,
+                             Source = a.image,
+                             Description = a.description,
+                             Price = a.price,
+                             Company = b.company,
+                             ZIP = c.ZIP,
+                             City = c.City,
+                             Street = c.Street,
+                             HouseNo = c.houseno,
+                             Country = c.country
+                          }).ToList();
+                
+                package = (from b in con.Table<Ymdh_House_Package>()
+                           select b).ToList();
+
+                producer = (from c in con.Table<Ymdh_Producer>()
+                            select c).ToList();
+
+                address = (from c in con.Table<Ymdh_Address>()
+                           select c).ToList();
+
+                /*string comp = "";
+                string zip = "";
+                string city = "";
+                string street = "";
+                string houseNo = "";
+                string country = "";
+                for (int i = 0; i < package.Count; i++)
+                {
+
+                        foreach (var item in producer)
+                        {
+                            if (package[i].producer_id == item.mdh_producer_id)
+                            {
+                                comp = item.company;
+                            }
+                        }
+                        foreach (var item in address)
+                        {
+                            if (package[i].address_id == item.mdh_address_id)
+                            {
+                                zip = item.ZIP;
+                                city = item.City;
+                                street = item.Street;
+                                houseNo = item.houseno;
+                                country = item.country;
+                            }
+                        }
+
+                    house[i] = new Houses()
+                    {
+                        PackageId = package[i].house_package_id,
+                        Source = package[i].image,
+                        Description = package[i].description,
+                        Price = package[i].price,
+                        Company = comp,
+                        ZIP = zip,
+                        City = city,
+                        Street = street,
+                        HouseNo = houseNo,
+                        Country = country
+                    };
+                }
+                */
+                    con.Close();
+            }
+            return house;
+        }
+
+        public string ConvertDateTime(DateTime dt)
+        {
+            return String.Format("{0:yyyy-MM-dd HH:mm:ss}", dt);
+        }
+
+
+        #endregion
+
+
+
         #endregion
 
         #region UseCase ManageAppointment
@@ -1416,31 +1501,44 @@ namespace Fallstudie.ViewModel
 
         private async void DeleteAppointmentButtonMethod()
         {
-            if(selectedAppointment != null)
+            if(SelectedAppointment != null)
             {
                 using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
                 {
                     var p = (from a in con.Table<Ymdh_Appointment>()
-                               where a.appointment_id.Equals(selectedAppointment.Id)
+                               where a.appointment_id.Equals(SelectedAppointment.Id)
                                select a).ToList();
                     p[0].appointment_status_id = 0;
-                    //Update funktion
-                    con.InsertOrReplace(new Ymdh_Appointment()
+
+                    MessageDialog msgDialog = new MessageDialog("Sind Sie sicher, dass Sie diesen Termin ("+ SelectedAppointment.DateFormat + " " + SelectedAppointment.Time +
+                        " " + SelectedAppointment.Customer.Lastname + " " + SelectedAppointment.Consultant.Lastname +") löschen wollen?");
+                    UICommand yesCmd = new UICommand("Ja");
+                    msgDialog.Commands.Add(yesCmd);
+                    UICommand noCmd = new UICommand("Nein");
+                    msgDialog.Commands.Add(noCmd);
+                    IUICommand cmd = await msgDialog.ShowAsync();
+                    if (cmd == yesCmd)
                     {
-                        appointment_id = p[0].appointment_id,
-                        appointment_status_id = p[0].appointment_status_id,
-                        consultant_user_id = p[0].consultant_user_id,
-                        from_ = p[0].from_,
-                        house_package_id = p[0].house_package_id,
-                        message_id = p[0].message_id,
-                        user_id = p[0].user_id
-                    });
+                        //Update funktion
+                        con.Update(new Ymdh_Appointment()
+                        {
+                            appointment_id = p[0].appointment_id,
+                            appointment_status_id = p[0].appointment_status_id,
+                            consultant_user_id = p[0].consultant_user_id,
+                            from_ = p[0].from_,
+                            house_package_id = p[0].house_package_id,
+                            message_id = p[0].message_id,
+                            user_id = p[0].user_id
+                        });
+
+                        var dialog = new MessageDialog("Der ausgewählte Termin wurde gelöscht.");
+                        await dialog.ShowAsync();
+                        Appointments.Clear();
+                        LoadAppointments();
+                    }
+
                     con.Close();
-                }
-                var dialog = new MessageDialog("Der ausgewählte Termin wurde gelöscht.");
-                await dialog.ShowAsync();
-                Appointments.Clear();
-                LoadAppointments();
+                }   
             }
             else
             {
@@ -1452,7 +1550,6 @@ namespace Fallstudie.ViewModel
         //Hier werden alle bereits festgelegten Termine angezeigt
         public void LoadAppointments()
         {
-
             List<Ymdh_Appointment> model;
             List<string> froms_;
             List<string> customerNamen;
@@ -1463,11 +1560,13 @@ namespace Fallstudie.ViewModel
                 //holt alle Termine
                 model = (from a in con.Table<Ymdh_Appointment>()
                          where a.appointment_status_id.Equals(1)
+                         orderby a.from_
                          select a).ToList();
 
                 //holt das Datum + Uhrzeit
                 froms_ = (from a in con.Table<Ymdh_Appointment>()
                           where a.appointment_status_id.Equals(1)
+                          orderby a.from_
                           select a.from_).ToList();
 
                 //holt die Kundennamen
@@ -1481,6 +1580,7 @@ namespace Fallstudie.ViewModel
                                  && c.appointment_status_id.Equals(1)
                                  && b.group_id.Equals(d.id)
                                  && d.title.Equals("Customer")
+                                 orderby c.from_
                                  select a.name).ToList();
 
                 //holt die consultant namen
@@ -1488,13 +1588,14 @@ namespace Fallstudie.ViewModel
                                    from b in con.Table<Mdh_User_Usergroup_Map>()
                                    from c in con.Table<Ymdh_Appointment>()
                                    from d in con.Table<Mdh_Usergroups>()
-                                   where b.group_id.Equals(2)
+                                   where a.id.Equals(c.consultant_user_id)
                                    && a.id.Equals(b.user_id)
-                                   && a.id.Equals(c.consultant_user_id)
-                                   && c.appointment_status_id.Equals(1)
                                    && b.group_id.Equals(d.id)
                                    && d.title.Equals("Consultant")
+                                   && c.appointment_status_id.Equals(1)
+                                   orderby c.from_
                                    select a.name).ToList();
+             
                 con.Close();
             }
 
@@ -1502,11 +1603,12 @@ namespace Fallstudie.ViewModel
             for (int i = 0; i < froms_.Count; i++)
             {
                 string[] temp = froms_[i].Split(' ');
+                string time = temp[1].Substring(0, 5);
                 Appointments.Add(new Appointment()
                 {
                     Id = model[i].appointment_id,
                     Date = DateTime.Parse(temp[0]),
-                    Time = TimeSpan.Parse(temp[1]),
+                    Time = TimeSpan.Parse(time),
                     Customer = new Customer(model[i].user_id, "", customerNamen[i], 0, 0),
                     Consultant = new Consultant() { Id = model[i].consultant_user_id, Firstname = "", Lastname = consultantNamen[i] }
                 });
@@ -1538,131 +1640,159 @@ namespace Fallstudie.ViewModel
 
         private async void ButtonSaveEditedAppointmentMethod()
         {
-            //TimeSpan twelve = new TimeSpan(12, 0, 0);
-            string pattern = "yyyy-MM-dd HH:mm:ss";
-            DateTime choosenAppointment = DateAppointment + TimeAppoitment;
-
-            string dt = choosenAppointment.ToString(pattern, CultureInfo.CurrentUICulture);
-
-            //checken ob der termin für den CONSULTANT belegt ist
-            List<Ymdh_Appointment> models;
-
-            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            //checken ob Kunde und Consultant ausgewählt wurden
+            if (SelectedCustomerr != null && SelectedConsultant != null)
             {
-                models = (from c in con.Table<Ymdh_Appointment>()
-                          where c.consultant_user_id.Equals(SelectedConsultant.Id)
-                          && c.from_.Equals(dt)
-                          && c.appointment_status_id.Equals(1)
-                          select c).ToList();
+                string pattern = "yyyy-MM-dd HH:mm:ss";
+                DateTime choosenAppointment = DateAppointment + TimeAppoitment;
 
-                con.Close();
-            }
-            //checken ob der termin für den KUNDEN belegt ist
-            List<Ymdh_Appointment> models2;
+                string dt = choosenAppointment.ToString(pattern, CultureInfo.CurrentUICulture);
 
-            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
-            {
-                models2 = (from c in con.Table<Ymdh_Appointment>()
-                           where c.user_id.Equals(SelectedCustomerr.Id)
-                           && c.from_.Equals(dt)
-                           && c.appointment_status_id.Equals(1)
-                           select c).ToList();
+                //checken ob der termin für den CONSULTANT belegt ist
+                List<Ymdh_Appointment> models;
 
-                con.Close();
-            }
-            if (models.Count > 0 || models2.Count > 0)
-            {
-                var dialog1 = new MessageDialog("Sie haben bereits am " + models[0].from_ + " einen Termin!");
-                await dialog1.ShowAsync();
-            }
-            else
-            {
-                //in die DB speichern
                 using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
                 {
-                    con.InsertOrReplace(new Ymdh_Appointment()
-                    {
-                        appointment_id = selectedAppointment.Id,
-                        appointment_status_id = 1,
-                        consultant_user_id = SelectedConsultant.Id,
-                        from_ = dt,
-                        user_id = SelectedCustomerr.Id
-                    });
+                    models = (from c in con.Table<Ymdh_Appointment>()
+                              where c.consultant_user_id.Equals(SelectedConsultant.Id)
+                              && c.from_.Equals(dt)
+                              && c.appointment_status_id.Equals(1)
+                              select c).ToList();
 
                     con.Close();
                 }
-                var dialog1 = new MessageDialog("Ihr Termin für " + dt + " wurde gespeichert!");
+                //checken ob der termin für den KUNDEN belegt ist
+                List<Ymdh_Appointment> models2;
+
+                using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                {
+                    models2 = (from c in con.Table<Ymdh_Appointment>()
+                               where c.user_id.Equals(SelectedCustomerr.Id)
+                               && c.from_.Equals(dt)
+                               && c.appointment_status_id.Equals(1)
+                               select c).ToList();
+
+                    con.Close();
+                }
+                if (models.Count > 0)
+                {
+                    var dialog1 = new MessageDialog("Sie haben bereits am " + models[0].from_ + " einen Termin!");
+                    await dialog1.ShowAsync();
+                }
+                else if (models2.Count > 0)
+                {
+                    var dialog1 = new MessageDialog("Sie haben bereits am " + models2[0].from_ + " einen Termin!");
+                    await dialog1.ShowAsync();
+                }
+                else
+                {
+                    //in die DB speichern
+                    using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                    {
+                        con.Update(new Ymdh_Appointment()
+                        {
+                            appointment_id = selectedAppointment.Id,
+                            appointment_status_id = 1,
+                            consultant_user_id = SelectedConsultant.Id,
+                            from_ = dt,
+                            user_id = SelectedCustomerr.Id
+                        });
+
+                        con.Close();
+                    }
+                    var dialog1 = new MessageDialog("Ihr Termin für " + dt + " wurde gespeichert!");
+                    await dialog1.ShowAsync();
+                    ButtonBackToAppointmentPageMethod();
+                }
+            }
+            else
+            {
+                var dialog1 = new MessageDialog("Bitte wählen Sie einen Kunden und einen Mitarbeiter aus!");
                 await dialog1.ShowAsync();
-                ButtonBackToAppointmentPageMethod();
             }
         }
 
         private async void ButtonSaveAppointmentMethod()
         {
-            //TimeSpan twelve = new TimeSpan(12, 0, 0);
-            string pattern = "yyyy-MM-dd HH:mm:ss";
-            DateTime choosenAppointment = DateAppointment + TimeAppoitment;
-
-            string dt = choosenAppointment.ToString(pattern, CultureInfo.CurrentUICulture);
-
-            //checken ob der termin für den CONSULTANT belegt ist
-            List<Ymdh_Appointment> models;
-
-            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            //checken ob Kunde und Consultant ausgewählt wurden
+            if (SelectedCustomerr != null && SelectedConsultant != null)
             {
-                models = (from c in con.Table<Ymdh_Appointment>()
-                          where c.consultant_user_id.Equals(SelectedConsultant.Id) 
-                          && c.from_.Equals(dt)
-                          && c.appointment_status_id.Equals(1)
-                          select c).ToList();
+                string pattern = "yyyy-MM-dd HH:mm:ss";
+                DateTime choosenAppointment = DateAppointment + TimeAppoitment;
 
-                con.Close();
-            }
-            //checken ob der termin für den KUNDEN belegt ist
-            List<Ymdh_Appointment> models2;
+                string dt = choosenAppointment.ToString(pattern, CultureInfo.CurrentUICulture);
 
-            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
-            {
-                models2 = (from c in con.Table<Ymdh_Appointment>()
-                           where c.user_id.Equals(SelectedCustomerr.Id)
-                           && c.from_.Equals(dt)
-                           && c.appointment_status_id.Equals(1)
-                           select c).ToList();
+                //checken ob der termin für den CONSULTANT belegt ist
+                List<Ymdh_Appointment> models;
 
-                con.Close();
-            }
-            if (models.Count > 0 || models2.Count > 0)
-            {
-                var dialog1 = new MessageDialog("Sie haben bereits am " + models[0].from_ + " einen Termin!");
-                await dialog1.ShowAsync();
-            }
-            else
-            {
-                //in die DB speichern
                 using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
                 {
-                    con.Insert(new Ymdh_Appointment()
-                    {
-                        appointment_status_id = 1,
-                        consultant_user_id = SelectedConsultant.Id,
-                        from_ = dt,
-                        user_id = SelectedCustomerr.Id
-                    });
+                    models = (from c in con.Table<Ymdh_Appointment>()
+                              where c.consultant_user_id.Equals(SelectedConsultant.Id)
+                              && c.from_.Equals(dt)
+                              && c.appointment_status_id.Equals(1)
+                              select c).ToList();
 
                     con.Close();
                 }
-                var dialog1 = new MessageDialog("Ihr Termin für " + dt + " wurde gespeichert!");
-                await dialog1.ShowAsync();
-                ButtonBackToAppointmentPageMethod();
-            }
+                //checken ob der termin für den KUNDEN belegt ist
+                List<Ymdh_Appointment> models2;
 
+                using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                {
+                    models2 = (from c in con.Table<Ymdh_Appointment>()
+                               where c.user_id.Equals(SelectedCustomerr.Id)
+                               && c.from_.Equals(dt)
+                               && c.appointment_status_id.Equals(1)
+                               select c).ToList();
+
+                    con.Close();
+                }
+                if (models.Count > 0 || models2.Count > 0)
+                {
+                    var dialog1 = new MessageDialog("Sie haben bereits am " + models[0].from_ + " einen Termin!");
+                    await dialog1.ShowAsync();
+                }
+                else
+                {
+                    if (DateAppointment.DayOfWeek.ToString() == "Sunday")
+                    {
+                        var dialog1 = new MessageDialog("Dieser Termin ist ein Sonntag! Bitte wählen Sie ein anderes Datum aus.");
+                        await dialog1.ShowAsync();
+                    }
+                    else if (DateAppointment.DayOfWeek.ToString() == "Saturday")
+                    {
+                        var dialog1 = new MessageDialog("Dieser Termin ist ein Samstag! Bitte wählen Sie ein anderes Datum aus.");
+                        await dialog1.ShowAsync();
+                    }
+                    else
+                    {
+                        //in die DB speichern
+                        using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                        {
+                            con.Insert(new Ymdh_Appointment()
+                            {
+                                appointment_status_id = 1,
+                                consultant_user_id = SelectedConsultant.Id,
+                                from_ = dt,
+                                user_id = SelectedCustomerr.Id
+                            });
+
+                            con.Close();
+                        } 
+                    }
+                }
+            }
+            else
+            {
+                var dialog1 = new MessageDialog("Bitte wählen Sie einen Kunden und einen Mitarbeiter aus!");
+                await dialog1.ShowAsync();
+            }
             /*
             if (DateAppointment.DayOfWeek.ToString() == "Sunday")
             {
                
             }
-            var dialog = new MessageDialog(choosenAppointment.ToString(pattern, CultureInfo.CurrentUICulture));
-            await dialog.ShowAsync();
             */
         }
 
@@ -1680,6 +1810,8 @@ namespace Fallstudie.ViewModel
         public void AddNewAppointmentButtonMethod()
         {
             SQLGetConsultants();
+            DateAppointment = DateTime.Now;
+            TimeAppoitment = DateTime.Now.TimeOfDay;
             GetFrame();
             a.Navigate(typeof(Pages.TerminePages.NeuTermin));
         }
@@ -1719,9 +1851,9 @@ namespace Fallstudie.ViewModel
 
         public void CreatePdf()
         {
-            ButtonCreatePdf = new RelayCommand(ButtonCreatePdfMethod);
+            //ButtonCreatePdf = new RelayCommand(ButtonCreatePdfMethod);
         }
-
+        
         private async void ButtonCreatePdfMethod()
         {
 
@@ -1795,7 +1927,7 @@ namespace Fallstudie.ViewModel
 
         #endregion
 
-            #region Test Methoden
+        #region Test Methoden
 
             //MessageBox wird angezeigt -> zum Testen
         private async void AsynchMethod()

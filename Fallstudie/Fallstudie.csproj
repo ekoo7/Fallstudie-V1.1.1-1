@@ -130,9 +130,10 @@
     <Compile Include="Model\ColorPalette.cs" />
     <Compile Include="Model\Consultant.cs" />
     <Compile Include="Model\EHSystem.cs" />
+    <Compile Include="Model\Houses.cs" />
     <Compile Include="Model\HouseSummary.cs" />
     <Compile Include="Model\ImageInherit.cs" />
-    <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\Projects.cs" />
     <Compile Include="Pages\HausKonfiguratorPage.xaml.cs">
       <DependentUpon>HausKonfiguratorPage.xaml</DependentUpon>
     </Compile>

@@ -16,31 +16,76 @@
     </Page.Resources>
     <ScrollViewer>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="Termine verwalten"></TextBlock>
-            <StackPanel Orientation="Horizontal">
-                    <DatePicker Date="{Binding DateAppointment, Mode=TwoWay, Converter={StaticResource DateConverter}}" VerticalAlignment="Top"/>
-                    <TimePicker Time="{Binding TimeAppoitment, Mode=TwoWay}" VerticalAlignment="Top" ClockIdentifier="24HourClock"/>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Termine verwalten" TextAlignment="Center" FontWeight="Bold" Margin="0 0 0 20"/>
+                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Datum" TextAlignment="Center"/>
+                        <ListView x:ConnectionId='4' Name="CustomerList" ItemsSource="{Binding Appointments}" 
+                          SelectedItem="{Binding SelectedAppointment, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
 
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="0 0 0 0" Text="{Binding DateFormat}" FontWeight="Bold" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Uhrzeit" TextAlignment="Center"/>
+                        <ListView x:ConnectionId='3' Name="CustomerList2" ItemsSource="{Binding Appointments}" 
+                          SelectedItem="{Binding SelectedAppointment, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Time}" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Kunde" TextAlignment="Center"/>
+                        <ListView x:ConnectionId='2' Name="CustomerList3" ItemsSource="{Binding Appointments}" 
+                          SelectedItem="{Binding SelectedAppointment, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Customer.Lastname}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Mitarbeiter" TextAlignment="Center"/>
+                        <ListView x:ConnectionId='1' Name="CustomerList4" ItemsSource="{Binding Appointments}" 
+                          SelectedItem="{Binding SelectedAppointment, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Consultant.Lastname}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
-            <ListView x:ConnectionId='1' Name="CustomerList" ItemsSource="{Binding Appointments}" 
-                      SelectedItem="{Binding SelectedAppointment, Mode=TwoWay}"
-                      IsItemClickEnabled="False" SelectionMode="Single"
-                      IsSynchronizedWithCurrentItem="False">
-
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock  Margin="0 0 0 0" Text="{Binding DateFormat}" FontWeight="Bold" />
-                                <TextBlock  Margin="10 0 0 0" Text="{Binding Time}" FontWeight="Bold"/>
-                                <TextBlock  Margin="10 0 0 0" Text="{Binding Customer.Lastname}"/>
-                            <TextBlock  Margin="10 0 0 0" Text="{Binding Consultant.Lastname}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackPanel>
-    </Grid>
+        </Grid>
     </ScrollViewer>
     <Page.BottomAppBar>
         <CommandBar HorizontalContentAlignment="Left">

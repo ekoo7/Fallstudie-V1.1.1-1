@@ -11,7 +11,7 @@ namespace Fallstudie.DBModel
     public class Ymdh_Person
     {
         [PrimaryKey, AutoIncrement]
-        public int mdh_person { get; set; }
+        public int mdh_person_id { get; set; }
         public string title { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }

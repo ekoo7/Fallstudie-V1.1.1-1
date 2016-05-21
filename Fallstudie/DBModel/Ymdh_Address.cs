@@ -11,7 +11,7 @@ namespace Fallstudie.DBModel
     public class Ymdh_Address
     {
         [PrimaryKey, AutoIncrement]
-        public int mdh_address { get; set; }
+        public int mdh_address_id { get; set; }
         public string ZIP { get; set; }
         public string City { get; set; }
         public string Street { get; set; }

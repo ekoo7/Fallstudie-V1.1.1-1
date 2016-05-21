@@ -12,7 +12,7 @@ namespace Fallstudie.DBModel
     public class Ymdh_Producer
     {
         [PrimaryKey, AutoIncrement]
-        public int mdh_producer_int { get; set; }
+        public int mdh_producer_id { get; set; }
 
         [ForeignKey(typeof(Ymdh_Person)), ManyToOne]
         public int person_id { get; set; }

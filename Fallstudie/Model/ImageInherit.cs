@@ -17,10 +17,15 @@ namespace Fallstudie.Model
         public Image Image1 { get; set; }
         public BitmapImage BitmapImage1 { get; set; }
         public Uri Uri1 { get; set; }
-
         public string SourceImage { get; set; }
+
         public double Price { get; set; }
         public string Description { get; set; }
+        public string Company { get; set; }
+        public string Address { get; set; }
+        public string Zip { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
 
         public RelayCommand ButtonDrawSketch { get; set; }
 
@@ -66,7 +71,7 @@ namespace Fallstudie.Model
             ButtonDrawSketch = btn;
         }
 
-        //Konstruktor für Wand
+        
         public ImageInherit(string source, int id, string description, double price)
         {
             Image1 = new Image();
@@ -79,6 +84,26 @@ namespace Fallstudie.Model
             Image1.Name = id.ToString();
             Description = description;
             Price = price;
+        }
+
+        //Konstruktor für die Hauspackages
+        public ImageInherit(string source, int id, string description, double price, string company, string zip, string city, string street, string houseNo, string country)
+        {
+            Image1 = new Image();
+            BitmapImage1 = new BitmapImage();
+            Uri1 = new Uri(source, UriKind.Absolute);
+            BitmapImage1.UriSource = Uri1;
+            Image1.Source = BitmapImage1;
+            SourceImage = source;
+
+            Id = id;
+            Description = description;
+            Price = price;
+            Company = company;
+            Zip = zip;
+            City = city;
+            Address = street + " " + houseNo;
+            Country = country;
         }
     }
 }

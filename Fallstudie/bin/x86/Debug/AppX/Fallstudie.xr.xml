@@ -13,8 +13,6 @@
     <RootPropertyPathName Name="NumbConfHouses" />
     <RootPropertyPathName Name="NumbProjects" />
     <RootPropertyPathName Name="Lastname" />
-    <RootPropertyPathName Name="Firstname" />
-    <RootPropertyPathName Name="MSG" />
     <RootPropertyPathName Name="ButtonForwardSummary" />
     <RootPropertyPathName Name="ButtonIsVisible" />
     <RootPropertyPathName Name="ButtonForwardChooseAddition" />
@@ -43,6 +41,11 @@
     <RootPropertyPathName Name="NoteStep2" />
     <RootPropertyPathName Name="SelectedHouse" />
     <RootPropertyPathName Name="ImagesHouse" />
+    <RootPropertyPathName Name="Country" />
+    <RootPropertyPathName Name="City" />
+    <RootPropertyPathName Name="Zip" />
+    <RootPropertyPathName Name="Address" />
+    <RootPropertyPathName Name="Company" />
     <RootPropertyPathName Name="NoteStep3" />
     <RootPropertyPathName Name="SelectedPlot" />
     <RootPropertyPathName Name="ImagesPlot" />
@@ -116,12 +119,12 @@
     <RootPropertyPathName Name="Customer" />
     <RootPropertyPathName Name="Time" />
     <RootPropertyPathName Name="DateFormat" />
-    <RootPropertyPathName Name="TimeAppoitment" />
-    <RootPropertyPathName Name="DateAppointment" />
     <RootPropertyPathName Name="DeleteAppointmentButton" />
     <RootPropertyPathName Name="EditAppointmentButton" />
     <RootPropertyPathName Name="AddNewAppointmentButton" />
+    <RootPropertyPathName Name="TimeAppoitment" />
     <RootPropertyPathName Name="DateTimeNow" />
+    <RootPropertyPathName Name="DateAppointment" />
     <RootPropertyPathName Name="Consultants" />
     <RootPropertyPathName Name="SelectedConsultant" />
     <RootPropertyPathName Name="ButtonSaveAppointment" />
@@ -190,14 +193,16 @@
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Orientation" />
       <RootProperty Name="Children" />
-      <RootProperty Name="Name" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Name" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="FontFamily" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Text" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="TextAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="VerticalAlignment" />
@@ -226,6 +231,7 @@
       <RootProperty Name="SelectionMode" />
       <RootProperty Name="IsSynchronizedWithCurrentItem" />
       <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
@@ -299,17 +305,17 @@
     <RootType FullName="Fallstudie.Converter.DateTimeConverter" />
     <RootType FullName="Fallstudie.Converter.TimeSpanConverter" />
     <RootType FullName="Fallstudie.Converter.StringFormatter" />
+    <RootType FullName="Fallstudie.Pages.TerminePage" />
     <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
+      <RootProperty Name="MinYear" />
       <RootProperty Name="Date" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="MinYear" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TimePicker">
       <RootProperty Name="Time" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="ClockIdentifier" />
     </RootType>
-    <RootType FullName="Fallstudie.Pages.TerminePage" />
     <RootType FullName="Fallstudie.Pages.TerminePages.NeuTermin" />
     <RootType FullName="Fallstudie.Pages.TerminePages.TerminBearbeiten" />
   </Roots.RootTypes>
