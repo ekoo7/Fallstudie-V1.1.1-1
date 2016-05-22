@@ -15,7 +15,7 @@
                 <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
                     
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="ProjektId" TextAlignment="Center" FontSize="20"/>
+                        <TextBlock Text="Projekt" TextAlignment="Center" FontSize="20"/>
                         <ListView Name="CustomerList" ItemsSource="{Binding ListProjects}" 
                           SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
                           IsItemClickEnabled="False" SelectionMode="Single"
@@ -31,8 +31,8 @@
                         </ListView>
                     </StackPanel>
                     
-                    <StackPanel Margin="10 0 0 0" Orientation="Vertical">
-                        <TextBlock Text="Start Datum" TextAlignment="Center" FontSize="20"/>
+                    <StackPanel Margin="0 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Startdatum" TextAlignment="Center" FontSize="20"/>
                         <ListView Name="CustomerList2" ItemsSource="{Binding ListProjects}" 
                           SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
                           IsItemClickEnabled="False" SelectionMode="Single"
@@ -48,8 +48,8 @@
                         </ListView>
                     </StackPanel>
 
-                    <StackPanel  Margin="10 0 0 0" Orientation="Vertical">
-                        <TextBlock Text="End Datum" TextAlignment="Center" FontSize="20"/>
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Enddatum" TextAlignment="Center" FontSize="20"/>
                         <ListView Name="EndDate" ItemsSource="{Binding ListProjects}" 
                           SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
                           IsItemClickEnabled="False" SelectionMode="Single"
@@ -65,7 +65,7 @@
                         </ListView>
                     </StackPanel>
 
-                    <StackPanel  Margin="10 0 0 0" Orientation="Vertical">
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
                         <TextBlock Text="Kunde" TextAlignment="Center" FontSize="20"/>
                         <ListView Name="CustomerList3" ItemsSource="{Binding ListProjects}" 
                           SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
@@ -75,14 +75,14 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Customer.Name}" FontSize="20"/>
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding House.Customer.Name}" FontSize="20"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackPanel>
 
-                    <StackPanel  Margin="10 0 0 0" Orientation="Vertical">
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
                         <TextBlock Text="Mitarbeiter" TextAlignment="Center" FontSize="20"/>
                         <ListView Name="CustomerList4" ItemsSource="{Binding ListProjects}" 
                           SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
@@ -92,13 +92,13 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Consultant.Name}" FontSize="20"/>
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding House.Consultant.Name}" FontSize="20"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackPanel>
-                    <StackPanel  Margin="10 0 0 0" Orientation="Vertical">
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
                         <TextBlock Text="Status" TextAlignment="Center" FontSize="20"/>
                         <ListView Name="State" ItemsSource="{Binding ListProjects}" 
                           SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
@@ -108,7 +108,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <ProgressBar Value="25"/>
+                                        <ProgressBar Width="100" Height="25" Value="25"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -116,12 +116,12 @@
                     </StackPanel>
                     
                 </StackPanel>
-            </StackPanel>
+            
 
             <!-- ANZEIGEN DER SPEZIFIKATIONEN DES PROJEKTES-->
             <StackPanel Margin="20 0 0 0">
                 <StackPanel>
-                    <Image Source="{Binding SelectedHouse.SourceImage}" Width="500" Height="350"/>
+                    <Image Source="{Binding SelectedProject.House.Package.SourceImage}" Width="500" Height="350"/>
                 </StackPanel>
                 <StackPanel>
                     <Grid>
@@ -226,64 +226,64 @@
                             <TextBlock Text="Auswahl" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="1">
-                            <TextBlock Text="{Binding House.Plot.Description}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Plot.Description}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="2">
-                            <TextBlock Text="{Binding House.numberOfFloors}" />
+                            <TextBlock Text="{Binding SelectedProject.House.numberOfFloors}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="3">
-                            <TextBlock Text="{Binding House.OutsideWall.Description}" />
+                            <TextBlock Text="{Binding SelectedProject.House.OutsideWall.Description}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="4">
-                            <TextBlock Text="{Binding House.OutsideWallColor.Value}" />
+                            <TextBlock Text="{Binding SelectedProject.House.OutsideWallColor.Value}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="5">
-                            <TextBlock Text="{Binding House.InsideWall.Description}" />
+                            <TextBlock Text="{Binding SelectedProject.House.InsideWall.Description}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="6">
-                            <TextBlock Text="{Binding House.InsideWallColor.Value}" />
+                            <TextBlock Text="{Binding SelectedProject.House.InsideWallColor.Value}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="7">
-                            <TextBlock Text="{Binding House.RoofType.Description}" />
+                            <TextBlock Text="{Binding SelectedProject.House.RoofType.Description}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="8">
-                            <TextBlock Text="{Binding House.RoofMaterial.Description}" />
+                            <TextBlock Text="{Binding SelectedProject.House.RoofMaterial.Description}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="9">
-                            <TextBlock Text="{Binding House.Window.Description}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Window.Description}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="10">
-                            <TextBlock Text="{Binding House.WindowColor.Value}" />
+                            <TextBlock Text="{Binding SelectedProject.House.WindowColor.Value}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="11">
-                            <TextBlock Text="{Binding House.Door.Description}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Door.Description}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="12">
-                            <TextBlock Text="{Binding House.DoorColor.Value}" />
+                            <TextBlock Text="{Binding SelectedProject.House.DoorColor.Value}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="13">
-                            <TextBlock Text="{Binding House.EnergySystem}" />
+                            <TextBlock Text="{Binding SelectedProject.House.EnergySystem.Name}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="14">
-                            <TextBlock Text="{Binding House.HeatingSystem}" />
+                            <TextBlock Text="{Binding SelectedProject.House.HeatingSystem.Name}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="15">
-                            <TextBlock Text="{Binding House.NumberOfSocket}" />
+                            <TextBlock Text="{Binding SelectedProject.House.NumberOfSocket}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="16">
-                            <TextBlock Text="{Binding House.Chimney.Description}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Chimney.Description}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="17">
-                            <TextBlock Text="{Binding House.Pool.Description}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Pool.Description}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="18">
-                            <TextBlock Text="{Binding House.Poolsize}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Poolsize}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="19">
-                            <TextBlock Text="{Binding House.Fence.Description}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Fence.Description}" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="20">
-                            <TextBlock Text="{Binding House.FenceColor.Value}" />
+                            <TextBlock Text="{Binding SelectedProject.House.FenceColor.Value}" />
                         </Border>
 
                         <!-- 3. Spalte -->
@@ -291,61 +291,61 @@
                             <TextBlock Text="Preis" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="1">
-                            <TextBlock Text="{Binding House.Plot.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Plot.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="2">
-                            <TextBlock Text="{Binding SelectedFloor.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.SelectedFloor.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="3">
-                            <TextBlock Text="{Binding House.OutsideWall.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.House.OutsideWall.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="4">
                             <TextBlock Text="" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="5">
-                            <TextBlock Text="{Binding House.InsideWall.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.House.InsideWall.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="6">
                             <TextBlock Text="" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="7">
-                            <TextBlock Text="{Binding House.RoofType.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.House.RoofType.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="8">
-                            <TextBlock Text="{Binding House.RoofMaterial.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.House.RoofMaterial.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="9">
-                            <TextBlock Text="{Binding House.Window.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Window.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="10">
                             <TextBlock Text="" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="11">
-                            <TextBlock Text="{Binding House.Door.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Door.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="12">
                             <TextBlock Text="" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="13">
-                            <TextBlock Text="{Binding SelectedEnergySystem.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.House.EnergySystem.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="14">
-                            <TextBlock Text="{Binding SelectedHeatingSystem.Price}" />
+                                <TextBlock Text="{Binding SelectedProject.House.HeatingSystem.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="15">
                             <TextBlock Text="" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="16">
-                            <TextBlock Text="{Binding House.Chimney.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Chimney.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="17">
-                            <TextBlock Text="{Binding House.Pool.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Pool.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="18">
                             <TextBlock Text="" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="19">
-                            <TextBlock Text="{Binding House.Fence.Price}" />
+                            <TextBlock Text="{Binding SelectedProject.House.Fence.Price}" />
                         </Border>
                         <Border Grid.Column="2" Grid.Row="20">
                             <TextBlock Text="" />
@@ -383,7 +383,7 @@
                     </Grid>
                 </StackPanel>
             </StackPanel>
-
+            </StackPanel>
 
         </Grid>
     </ScrollViewer>

@@ -10,6 +10,7 @@ namespace Fallstudie.Model
     public class HouseSummary
     {
         public Customer Customer { get; set; }
+        public Consultant Consultant { get; set; }
 
         public ImageInherit Package { get; set; }
 

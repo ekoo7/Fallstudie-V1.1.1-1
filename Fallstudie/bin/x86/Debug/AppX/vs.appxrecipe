@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-05-21T21:12:56.257</Modified>
+      <Modified>2016-05-21T22:58:47.347</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.exe">
       <PackagePath>entrypoint\Fallstudie.exe</PackagePath>
-      <Modified>2016-05-21T21:12:53.499</Modified>
+      <Modified>2016-05-21T22:58:41.533</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.dll">
       <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
@@ -4186,7 +4186,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.xr.xml">
       <PackagePath>Fallstudie.xr.xml</PackagePath>
-      <Modified>2016-05-21T20:18:27.046</Modified>
+      <Modified>2016-05-21T22:40:24.413</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -4194,11 +4194,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-05-21T20:18:32.159</Modified>
+      <Modified>2016-05-21T22:58:46.029</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\Fallstudie.exe">
       <PackagePath>Fallstudie.exe</PackagePath>
-      <Modified>2016-05-21T21:12:56.248</Modified>
+      <Modified>2016-05-21T22:58:47.333</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

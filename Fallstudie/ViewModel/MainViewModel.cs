@@ -1584,8 +1584,8 @@ namespace Fallstudie.ViewModel
                 ListProjects.Add(new Projects()
                 {
                     Id = item.project_id,
-                    StartDate = DateTime.Parse(ConvertDateTime(DateTime.Parse(item.startdate))),
-                    EndDate = DateTime.Parse(ConvertDateTime(DateTime.Parse(item.enddate))),
+                    StartDate = ConvertDateTime(DateTime.Parse(item.startdate)),
+                    EndDate = ConvertDateTime(DateTime.Parse(item.enddate)),
                     State = item.status,
                     Description = item.description,
                     House = SQLGetHouseconfig(item.project_id)
@@ -2328,6 +2328,18 @@ namespace Fallstudie.ViewModel
                 return 255;
             }
         }
+        public string SQLGetConsultantName(int id)
+        {
+            string name;
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                name = (from a in con.Table<Mdh_Users>()
+                        where a.id.Equals(id)
+                        select a.name).Single();
+                con.Close();
+            }
+            return name;
+        }
         public void SQLGetHouseconfig()
         {
             List<HouseSummary> house;
@@ -2352,7 +2364,7 @@ namespace Fallstudie.ViewModel
                              Customer = new Customer(a.id, a.name, SQLCustomerCountProject(a.id), SQLCustomerCountHouseconfig(a.id)),
                              Package = new ImageInherit(f.image, f.house_package_id, f.description, f.price),
                              Plot = new ImageInherit(SQLGetRightAttribute(3, a.id).image, SQLGetRightAttribute(3, a.id).attribute_id, SQLGetRightAttribute(3, a.id).description, SQLGetRightAttribute(3, a.id).price),
-                             numberOfFloors = SelectedItemFloor,
+                             numberOfFloors = 0,
                              GroundPlots = null,
                              OutsideWall = new ImageInherit(SQLGetRightAttribute(5, a.id).image, SQLGetRightAttribute(5, a.id).attribute_id, SQLGetRightAttribute(5, a.id).description, SQLGetRightAttribute(5, a.id).price),
                              OutsideWallColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(902, a.id).description), SQLSplitColorG(SQLGetRightAttribute(902, a.id).description), SQLSplitColorB(SQLGetRightAttribute(902, a.id).description)),
@@ -2388,24 +2400,20 @@ namespace Fallstudie.ViewModel
 
                 house = (from a in con.Table<Mdh_Users>()
                          from b in con.Table<Houseconfig>()
-                         from c in con.Table<Housefloor>()
-                         from d in con.Table<Houseconfig_Has_Attribute>()
-                         from e in con.Table<DBModel.Attribute>()
                          from f in con.Table<Ymdh_House_Package>()
                          from g in con.Table<Project>()
                          where a.id.Equals(b.customer_user_id)
+                         && a.id.Equals(1)
                          && b.house_package_id.Equals(f.house_package_id)
-                         && c.houseconfig_id.Equals(b.houseconfig_id)
-                         && d.houseconfig_id.Equals(b.houseconfig_id)
-                         && d.attribute_id.Equals(e.attribute_id)
-                         && b.houseconfig_id.Equals(g.houseconfig_id)
                          && g.project_id.Equals(id)
+
                          select new HouseSummary
                          {
                              Customer = new Customer(a.id, a.name, SQLCustomerCountProject(a.id), SQLCustomerCountHouseconfig(a.id)),
+                             Consultant = new Consultant(b.consultant_user_id, SQLGetConsultantName(b.consultant_user_id)),
                              Package = new ImageInherit(f.image, f.house_package_id, f.description, f.price),
                              Plot = new ImageInherit(SQLGetRightAttribute(3, a.id).image, SQLGetRightAttribute(3, a.id).attribute_id, SQLGetRightAttribute(3, a.id).description, SQLGetRightAttribute(3, a.id).price),
-                             numberOfFloors = SelectedItemFloor,
+                             numberOfFloors = 0,
                              GroundPlots = new List<ImageInherit>(),
                              OutsideWall = new ImageInherit(SQLGetRightAttribute(5, a.id).image, SQLGetRightAttribute(5, a.id).attribute_id, SQLGetRightAttribute(5, a.id).description, SQLGetRightAttribute(5, a.id).price),
                              OutsideWallColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(902, a.id).description), SQLSplitColorG(SQLGetRightAttribute(902, a.id).description), SQLSplitColorB(SQLGetRightAttribute(902, a.id).description)),
@@ -2425,6 +2433,7 @@ namespace Fallstudie.ViewModel
                              Poolsize = SQLGetRightAttribute(11, a.id).description + " m²",
                              Fence = new ImageInherit(SQLGetRightAttribute(101, a.id).image, SQLGetRightAttribute(101, a.id).attribute_id, SQLGetRightAttribute(101, a.id).description, SQLGetRightAttribute(101, a.id).price),
                              FenceColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(905, a.id).description), SQLSplitColorG(SQLGetRightAttribute(905, a.id).description), SQLSplitColorB(SQLGetRightAttribute(905, a.id).description))
+
                          }).Single();
 
                 con.Close();
