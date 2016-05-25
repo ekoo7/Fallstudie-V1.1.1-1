@@ -99,6 +99,8 @@ namespace Fallstudie.Model
             Image1.Source = BitmapImage1;
             SourceImage = source;
 
+           
+
             Id = id;
             Description = description;
             Price = price;

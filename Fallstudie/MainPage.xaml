@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding Main, Source={StaticResource Locator}}">
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <!-- rows definieren für das menue und den zurück button-->
         <Grid.RowDefinitions>
@@ -29,6 +29,15 @@
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="36"
                     Content="&#xE0C4;" Click="BackButton_Click"/>
+            <Button Name="ButtonLogout"
+                    RelativePanel.AlignRightWithPanel="True"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="36"
+                    Content="&#xE1E0;" Command="{Binding ButtonLogout}" ToolTipService.ToolTip="Logout"/>
+            <TextBlock Margin="-0.333,0,10,0"
+                      Foreground="Gray"
+                Name="TextBlockUser" RelativePanel.LeftOf="ButtonLogout" FontSize="30" Text="{Binding Username}" Height="40" VerticalAlignment="Top"/>
+
         </RelativePanel>
 
         <SplitView Grid.Row="1" Name= "MySplitView"  DisplayMode="CompactOverlay" OpenPaneLength="300" CompactPaneLength="56">
@@ -44,7 +53,8 @@
                     </ListBoxItem>
                     <ListBoxItem Name="HausKonfigurator">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE913;"/> <!-- ohne baum E80F-->
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE913;"/>
+                            <!-- ohne baum E80F-->
                             <TextBlock FontSize="24" Text="Haus Konfigurator" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
@@ -54,7 +64,7 @@
                             <TextBlock FontSize="24" Text="Projekte" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
-                    
+
                     <ListBoxItem Name="Termine">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE163;"/>

@@ -10,6 +10,7 @@ namespace Fallstudie.Model
 {
     public class ColorPalette
     {
+        public int Id { get; set; }
         public SolidColorBrush Color { get; set; }
 
         public string Value { get; set; }
@@ -18,7 +19,9 @@ namespace Fallstudie.Model
         public string G { get; set; }
         public string B { get; set; }
 
-
+        public byte R_byte { get; set; }
+        public byte G_byte { get; set; }
+        public byte B_byte { get; set; }
         public ColorPalette()
         {
 
@@ -29,8 +32,12 @@ namespace Fallstudie.Model
             Value = String.Format("{0} {1} {2}", c.R.ToString(), c.G.ToString(), c.B.ToString());
         }
 
-        public ColorPalette(byte r, byte g, byte b)
+        public ColorPalette(int id, byte r, byte g, byte b)
         {
+            this.Id = id;
+            R_byte = r;
+            G_byte = g;
+            B_byte = b;
             Color c = new Windows.UI.Color();
             c.R = r;
             c.G = g;

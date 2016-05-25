@@ -26,14 +26,27 @@ using Syncfusion.Pdf.Grid;
 using Syncfusion.DocIO.DLS;
 using Windows.Storage.Pickers;
 using Syncfusion.Pdf.Tables;
+using System.Net.Http;
 
 namespace Fallstudie.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        public RelayCommand ButtonLogout { get; set; }
+        private string username;
+
+        public string Username
+        {
+            get { return username; }
+            set { username = value; OnChange("Username"); }
+        }
+
         public MainViewModel()
         {
             InitializeButtons();
+
+            ButtonLogout = new RelayCommand(LogOutMethod);
+
 
             //Datenbank erstellen
             DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.sqlite");
@@ -51,6 +64,24 @@ namespace Fallstudie.ViewModel
             ManageAppointments();
 
             CreatePdf();
+        }
+
+        private async void LogOutMethod()
+        {
+            MessageDialog msgDialog = new MessageDialog("Wollen Sie sich ausloggen?", "Ausloggen.");
+            UICommand yesCmd = new UICommand("Ja");
+            msgDialog.Commands.Add(yesCmd);
+            UICommand noCmd = new UICommand("Nein");
+            msgDialog.Commands.Add(noCmd);
+            IUICommand cmd = await msgDialog.ShowAsync();
+            if (cmd == yesCmd)
+            {
+                // Launch the retrieved file
+                StartPage.FrameObject.GetObject().Navigate(typeof(Login));
+
+                //ES MÜSSEN NOCH ALLE VARIABLEN ZURÜCKGESETZ WERDEN
+            }
+            
         }
 
         #region UseCase HouseConfig
@@ -777,7 +808,7 @@ namespace Fallstudie.ViewModel
                 byte r = Byte.Parse(color[0]);
                 byte g = Byte.Parse(color[1]);
                 byte b = Byte.Parse(color[2]);
-                ListColorOutsideWall.Add(new ColorPalette(r, g, b));
+                ListColorOutsideWall.Add(new ColorPalette(item.attribute_id,r, g, b));
             }
 
             //Innenwände aus der Datenbank selecten
@@ -799,7 +830,7 @@ namespace Fallstudie.ViewModel
                 byte r = Byte.Parse(color[0]);
                 byte g = Byte.Parse(color[1]);
                 byte b = Byte.Parse(color[2]);
-                ListColorInsideWall.Add(new ColorPalette(r, g, b));
+                ListColorInsideWall.Add(new ColorPalette(item.attribute_id, r, g, b));
             }
 
         }
@@ -874,7 +905,7 @@ namespace Fallstudie.ViewModel
                     byte r = Byte.Parse(color[0]);
                     byte g = Byte.Parse(color[1]);
                     byte b = Byte.Parse(color[2]);
-                    ListColorWindows.Add(new ColorPalette(r, g, b));
+                    ListColorWindows.Add(new ColorPalette(item.attribute_id, r, g, b));
                 }
 
                 //Türen aus der Datenbank selecten
@@ -896,7 +927,7 @@ namespace Fallstudie.ViewModel
                     byte r = Byte.Parse(color[0]);
                     byte g = Byte.Parse(color[1]);
                     byte b = Byte.Parse(color[2]);
-                    ListColorDoors.Add(new ColorPalette(r, g, b));
+                    ListColorDoors.Add(new ColorPalette(item.attribute_id, r, g, b));
                 }
             }
             else
@@ -1031,7 +1062,7 @@ namespace Fallstudie.ViewModel
                 byte r = Byte.Parse(color[0]);
                 byte g = Byte.Parse(color[1]);
                 byte b = Byte.Parse(color[2]);
-                ListColorFence.Add(new ColorPalette(r, g, b));
+                ListColorFence.Add(new ColorPalette(item.attribute_id, r, g, b));
             }
 
             try
@@ -1570,8 +1601,27 @@ namespace Fallstudie.ViewModel
         public Projects SelectedProject
         {
             get { return selectedProject; }
-            set { selectedProject = value; OnChange("SelectedProject"); }
+            set {
+                selectedProject = value;
+                OnChange("SelectedProject");
+                ProjectPezVisibility = "Visibible";
+            }
         }
+        private string projectPezVisibility = "Collapsed";
+
+        public string ProjectPezVisibility
+        {
+            get { return projectPezVisibility; }
+            set {
+                if(selectedProject != null)
+                {
+                    projectPezVisibility = value;
+                    OnChange("ProjectPezVisibility");
+                }
+                
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -2054,6 +2104,22 @@ namespace Fallstudie.ViewModel
         #region UseCase CreatePdf
 
         #region Properties
+        private ObservableCollection<HouseSummary> listConfHouses = new ObservableCollection<HouseSummary>();
+
+        public ObservableCollection<HouseSummary> ListConfHouses
+        {
+            get { return listConfHouses; }
+            set { listConfHouses = value;}
+        }
+        private HouseSummary selectedConfHouse;
+
+        public HouseSummary SelectedConfHouse
+        {
+            get { return selectedConfHouse; }
+            set { selectedConfHouse = value; OnChange("SelectedConfHouse"); }
+        }
+
+
         public RelayCommand ButtonCreatePdf { get; set; }
         #endregion
 
@@ -2062,100 +2128,121 @@ namespace Fallstudie.ViewModel
         public void CreatePdf()
         {
             ButtonCreatePdf = new RelayCommand(ButtonCreatePdfMethod);
+
+            foreach (var item in SQLGetHouseconfig())
+            {
+                ListConfHouses.Add(item);
+            }
         }
 
         private async void ButtonCreatePdfMethod()
         {
-
+            const string company = "DreamHouse GmbH \nSchönbrunner Straße 10 / 1 \nA - 1120 Wien \noffice@DreamHouse.com";
             //Create a new document.
             PdfDocument doc = new PdfDocument();
 
             //Add a page
             PdfPage page = doc.Pages.Add();
-            //Create a solid brush
-            PdfBrush brush = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
+            
 
+            #region Header
             //Set the font
-            PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 36);
+            PdfBrush brushHeader = new PdfSolidBrush(System.Drawing.Color.FromArgb(255,0, 0, 0));
+            PdfFont fontHeader = new PdfStandardFont(PdfFontFamily.TimesRoman, 12);
 
             //Create a header and draw the image.
-
-            System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 50);
+            System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 60);
             PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
-            //PdfImage image = new PdfBitmap(@"Logo.png");
+            SaveLogo(header);
+           
 
-            //header.Graphics.DrawImage(image, new PointF(0, 0), new SizeF(100, 50));
-            header.Graphics.DrawString("TestHeader", font, brush, new System.Drawing.PointF(0, 0));
+            header.Graphics.DrawString(company, fontHeader, brushHeader, new System.Drawing.PointF(0, 0));
+            header.Graphics.DrawLine(new PdfPen(new PdfColor(212,0,73), 3), new System.Drawing.PointF(0, 55), new System.Drawing.PointF(600, 55));
             //Add the header at the top.
             doc.Template.Top = header;
-
+            #endregion
 
             //Create Pdf graphics for the page
             PdfGraphics g = page.Graphics;
-            PdfGraphics g1 = page.Graphics;
 
 
-
+            //Create a solid brush //Set the font
+            PdfBrush brushHeadLine = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
+            PdfFont fontHeadLine = new PdfStandardFont(PdfFontFamily.Helvetica, 16);
             //Draw the text
-            g.DrawString("Hello world!", font, brush, new System.Drawing.PointF(20, 20));
-            g.DrawString("Hello world!2", font, brush, new System.Drawing.PointF(40, 40));
+            g.DrawString("SCHNELL ZUM TRAUMHAUS\nGANZ EINFACH MIT UNSEREM HAUSKONFIGURATOR", fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
 
-
-
+            //Name Haus Preis Date
+            PdfFont font1 = new PdfStandardFont(PdfFontFamily.Helvetica, 12);
+            PdfBrush brush1 = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
+            g.DrawString("Name: "+ SelectedConfHouse.Customer.Name, font1, brush1, new System.Drawing.PointF(0, 45));
+            g.DrawString("Preis: " + SelectedConfHouse.Price, font1, brush1, new System.Drawing.PointF(0, 58));
+            g.DrawString("Haus: " + SelectedConfHouse.Package.Description, font1, brush1, new System.Drawing.PointF(0, 71));
+            g.DrawString("Datum: " + SelectedConfHouse.ConfDate, font1, brush1, new System.Drawing.PointF(0, 84));
+            
+           
             SaveImage(page);
+            PdfFont font2 = new PdfStandardFont(PdfFontFamily.Helvetica, 14);
+            PdfBrush brush2 = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
+            g.DrawString("Grundstück:", font2, brush2, new System.Drawing.PointF(10, 410));
+
+            /*
+           #region GRID
+           //Create a new PdfGrid.
+
+           PdfGrid pdfGrid = new PdfGrid();
+
+           //Add three columns.
+
+           pdfGrid.Columns.Add(4);
+
+           //Add header.
+           pdfGrid.Headers.Add(1);
+           PdfGridRow pdfGridHeader = pdfGrid.Headers[0];
+           pdfGridHeader.Cells[0].Value = "Spezifikation";
+           pdfGridHeader.Cells[1].Value = "Auswahl";
+           pdfGridHeader.Cells[2].Value = "Preis [€]";
+           pdfGridHeader.Cells[3].Value = "Notitz";
 
 
-            //Create a new PdfGrid.
+           //Add rows.
+           PdfGridRow pdfGridRow1 = pdfGrid.Rows.Add();
+           pdfGridRow1.Cells[0].Value = "Grundstück";
+           pdfGridRow1.Cells[1].Value = SelectedConfHouse.Plot.Description;
+           pdfGridRow1.Cells[2].Value = SelectedConfHouse.Plot.Price;
 
-            PdfGrid pdfGrid = new PdfGrid();
+           PdfGridRow pdfGridRow2 = pdfGrid.Rows.Add();
+           pdfGridRow2.Cells[0].Value = "Anzahl der Stockwerke";
+           pdfGridRow2.Cells[1].Value = SelectedConfHouse.numberOfFloors;
+           //pdfGridRow2.Cells[2].Value = SelectedConfHouse.;
 
-            //Add three columns.
+           //Add rows.
+           PdfGridRow pdfGridRow3 = pdfGrid.Rows.Add();
+           pdfGridRow3.Cells[0].Value = "Außenwand";
+           pdfGridRow3.Cells[1].Value = SelectedConfHouse.OutsideWall.Description;
+           pdfGridRow3.Cells[2].Value = SelectedConfHouse.OutsideWall.Price;
 
-            pdfGrid.Columns.Add(4);
+           //Add rows.
+           PdfGridRow pdfGridRow4 = pdfGrid.Rows.Add();
+           pdfGridRow4.Cells[0].Value = "Außenwand Farbe";
+           pdfGridRow4.Cells[1].Style.BackgroundBrush = 
+               new PdfSolidBrush(new PdfColor(SelectedConfHouse.OutsideWallColor.R_byte, SelectedConfHouse.OutsideWallColor.G_byte, 0));
+           pdfGridRow4.Cells[2].Value = SelectedConfHouse.OutsideWall.Price;
 
-            //Add header.
-            pdfGrid.Headers.Add(1);
-            PdfGridRow pdfGridHeader = pdfGrid.Headers[0];
-            pdfGridHeader.Cells[0].Value = "Spezifikation";
-            pdfGridHeader.Cells[1].Value = "Auswahl";
-            pdfGridHeader.Cells[2].Value = "Preis";
-            pdfGridHeader.Cells[2].Value = "Notitz";
-            
-            
-            //Add rows.
-            PdfGridRow pdfGridRow = pdfGrid.Rows.Add();
-            for (int i = 0; i < 4; i++)
-            {
-                pdfGridRow.Cells[i].Value = "E01";
-            }
-            pdfGridRow.Cells[0].Value = "E01";
-            pdfGridRow.Cells[1].Value = "Clay";
-            pdfGridRow.Cells[2].Value = "$10,000";
-
-
-            //Create an instance of PdfGridRowStyle
-
-            PdfGridRowStyle pdfGridRowStyle = new PdfGridRowStyle();
-
-            pdfGridRowStyle.BackgroundBrush = PdfBrushes.LightGray;
-
-            pdfGridRowStyle.Font = new PdfStandardFont(PdfFontFamily.Courier, 10);
-
-            pdfGridRowStyle.TextBrush = PdfBrushes.Blue;
-
-            pdfGridRowStyle.TextPen = PdfPens.Black;
-
-            //Set the height
-
-            pdfGrid.Rows[0].Height = 50;
-
-            //Set style for the PdfGridRow.
-
-            pdfGrid.Rows[0].Style = pdfGridRowStyle;
-
-            //Draw the PdfGrid.
-            pdfGrid.Draw(page, 10, 10);
-
+           //Create an instance of PdfGridRowStyle
+           PdfGridRowStyle pdfGridRowStyle = new PdfGridRowStyle();
+           pdfGridRowStyle.BackgroundBrush = PdfBrushes.LightGray;
+           pdfGridRowStyle.Font = new PdfStandardFont(PdfFontFamily.Courier, 10);
+           pdfGridRowStyle.TextBrush = PdfBrushes.Blue;
+           pdfGridRowStyle.TextPen = PdfPens.Black;
+           //Set the height
+           pdfGrid.Rows[0].Height = 50;
+           //Set style for the PdfGridRow.
+           pdfGrid.Rows[0].Style = pdfGridRowStyle;
+           //Draw the PdfGrid.
+           pdfGrid.Draw(page, 10, 410);
+           #endregion
+           */
 
             /*
             //Stream s = new FileStream("C:\\Users\\Ermin\\Dropbox\\GitHub\\Fallstudie-V1.1.1-1\\Fallstudie\\Bilder\\2Haeuser\\Haus1.png", FileMode.Open);
@@ -2177,18 +2264,45 @@ namespace Fallstudie.ViewModel
 
         async void SaveImage(PdfPage page)
         {
-            PdfGraphics graphics = page.Graphics;
 
-            Stream imageStream = File.OpenRead("Bilder\\2Haeuser\\Haus1.png");
+
+            var rootFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("MyAppName\\CoverPics", CreationCollisionOption.OpenIfExists);
+
+            var coverpic_file = await rootFolder.CreateFileAsync("test.png", CreationCollisionOption.FailIfExists);
+
+            HttpClient client = new HttpClient(); // Create HttpClient
+            string buffer1 = await client.GetStringAsync(selectedConfHouse.Package.SourceImage); // Download file
+            byte[] buffer = Encoding.ASCII.GetBytes(buffer1);
+            using (Stream stream = await coverpic_file.OpenStreamForWriteAsync())
+                stream.Write(buffer, 0, buffer.Length); // Save
+
+            
+
+            Stream imageStream = File.OpenRead(rootFolder.Path + "//test.png");
+            //PdfBitmap image = new PdfBitmap(imageStream);
+
+
+
+
+
+
+
+
+            PdfGraphics graphics = page.Graphics;
+            //Stream imageStream = File.OpenRead("Bilder//2Haeuser//Haus1.png");
             //Load the image from the disk.
 
             PdfBitmap image = new PdfBitmap(imageStream);
-
             //Draw the image
 
-            graphics.DrawImage(image, 0, 0);
+            graphics.DrawImage(image, 10, 100, 500, 300);
         }
-
+        async void SaveLogo(PdfPageTemplateElement header)
+        {
+            Stream imageStream = File.OpenRead("Bilder\\Logo\\DreamHouse_lang.png");
+            PdfBitmap image = new PdfBitmap(imageStream);
+            header.Graphics.DrawImage(image, new System.Drawing.PointF(350, 0), new System.Drawing.SizeF(150, 50));
+        }
         async void Save(Stream stream, string filename)
         {
 
@@ -2233,7 +2347,6 @@ namespace Fallstudie.ViewModel
         #endregion
 
         #region SQL
-
         public int SQLCustomerCountProject(int i)
         {
             List<Project> p;
@@ -2340,7 +2453,7 @@ namespace Fallstudie.ViewModel
             }
             return name;
         }
-        public void SQLGetHouseconfig()
+        public List<HouseSummary> SQLGetHouseconfig()
         {
             List<HouseSummary> house;
             //List<ImageInherit> Gplots;
@@ -2350,32 +2463,33 @@ namespace Fallstudie.ViewModel
 
                 house = (from a in con.Table<Mdh_Users>()
                          from b in con.Table<Houseconfig>()
-                         from c in con.Table<Housefloor>()
-                         from d in con.Table<Houseconfig_Has_Attribute>()
-                         from e in con.Table<DBModel.Attribute>()
                          from f in con.Table<Ymdh_House_Package>()
                          where a.id.Equals(b.customer_user_id)
+                         && a.id.Equals(1)
                          && b.house_package_id.Equals(f.house_package_id)
-                         && c.houseconfig_id.Equals(b.houseconfig_id)
-                         && d.houseconfig_id.Equals(b.houseconfig_id)
-                         && d.attribute_id.Equals(e.attribute_id)
+
                          select new HouseSummary
                          {
+                             Id = b.houseconfig_id,
+                             Price = b.price,
+                             ConfDate = b.modifieddate,
+
                              Customer = new Customer(a.id, a.name, SQLCustomerCountProject(a.id), SQLCustomerCountHouseconfig(a.id)),
+                             Consultant = new Consultant(b.consultant_user_id, SQLGetConsultantName(b.consultant_user_id)),
                              Package = new ImageInherit(f.image, f.house_package_id, f.description, f.price),
                              Plot = new ImageInherit(SQLGetRightAttribute(3, a.id).image, SQLGetRightAttribute(3, a.id).attribute_id, SQLGetRightAttribute(3, a.id).description, SQLGetRightAttribute(3, a.id).price),
                              numberOfFloors = 0,
-                             GroundPlots = null,
+                             GroundPlots = new List<ImageInherit>(),
                              OutsideWall = new ImageInherit(SQLGetRightAttribute(5, a.id).image, SQLGetRightAttribute(5, a.id).attribute_id, SQLGetRightAttribute(5, a.id).description, SQLGetRightAttribute(5, a.id).price),
-                             OutsideWallColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(902, a.id).description), SQLSplitColorG(SQLGetRightAttribute(902, a.id).description), SQLSplitColorB(SQLGetRightAttribute(902, a.id).description)),
+                             OutsideWallColor = new ColorPalette(SQLGetRightAttribute(902, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(902, a.id).description), SQLSplitColorG(SQLGetRightAttribute(902, a.id).description), SQLSplitColorB(SQLGetRightAttribute(902, a.id).description)),
                              InsideWall = new ImageInherit(SQLGetRightAttribute(51, a.id).image, SQLGetRightAttribute(51, a.id).attribute_id, SQLGetRightAttribute(51, a.id).description, SQLGetRightAttribute(51, a.id).price),
-                             InsideWallColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(901, a.id).description), SQLSplitColorG(SQLGetRightAttribute(901, a.id).description), SQLSplitColorB(SQLGetRightAttribute(901, a.id).description)),
+                             InsideWallColor = new ColorPalette(SQLGetRightAttribute(901, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(901, a.id).description), SQLSplitColorG(SQLGetRightAttribute(901, a.id).description), SQLSplitColorB(SQLGetRightAttribute(901, a.id).description)),
                              RoofType = new ImageInherit(SQLGetRightAttribute(6, a.id).image, SQLGetRightAttribute(6, a.id).attribute_id, SQLGetRightAttribute(6, a.id).description, SQLGetRightAttribute(6, a.id).price),
                              RoofMaterial = new ImageInherit(SQLGetRightAttribute(61, a.id).image, SQLGetRightAttribute(61, a.id).attribute_id, SQLGetRightAttribute(61, a.id).description, SQLGetRightAttribute(61, a.id).price),
                              Window = new ImageInherit(SQLGetRightAttribute(7, a.id).image, SQLGetRightAttribute(7, a.id).attribute_id, SQLGetRightAttribute(7, a.id).description, SQLGetRightAttribute(7, a.id).price),
-                             WindowColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(903, a.id).description), SQLSplitColorG(SQLGetRightAttribute(903, a.id).description), SQLSplitColorB(SQLGetRightAttribute(903, a.id).description)),
+                             WindowColor = new ColorPalette(SQLGetRightAttribute(903, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(903, a.id).description), SQLSplitColorG(SQLGetRightAttribute(903, a.id).description), SQLSplitColorB(SQLGetRightAttribute(903, a.id).description)),
                              Door = new ImageInherit(SQLGetRightAttribute(71, a.id).image, SQLGetRightAttribute(71, a.id).attribute_id, SQLGetRightAttribute(71, a.id).description, SQLGetRightAttribute(71, a.id).price),
-                             DoorColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(904, a.id).description), SQLSplitColorG(SQLGetRightAttribute(904, a.id).description), SQLSplitColorB(SQLGetRightAttribute(904, a.id).description)),
+                             DoorColor = new ColorPalette(SQLGetRightAttribute(904, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(904, a.id).description), SQLSplitColorG(SQLGetRightAttribute(904, a.id).description), SQLSplitColorB(SQLGetRightAttribute(904, a.id).description)),
                              EnergySystem = new EHSystem(SQLGetRightAttribute(8, a.id).attribute_id, SQLGetRightAttribute(8, a.id).description, SQLGetRightAttribute(8, a.id).price),
                              HeatingSystem = new EHSystem(SQLGetRightAttribute(81, a.id).attribute_id, SQLGetRightAttribute(81, a.id).description, SQLGetRightAttribute(81, a.id).price),
                              NumberOfSocket = int.Parse(SQLGetRightAttribute(12, a.id).description),
@@ -2383,13 +2497,14 @@ namespace Fallstudie.ViewModel
                              Pool = new ImageInherit(SQLGetRightAttribute(10, a.id).image, SQLGetRightAttribute(10, a.id).attribute_id, SQLGetRightAttribute(10, a.id).description, SQLGetRightAttribute(10, a.id).price),
                              Poolsize = SQLGetRightAttribute(11, a.id).description + " m²",
                              Fence = new ImageInherit(SQLGetRightAttribute(101, a.id).image, SQLGetRightAttribute(101, a.id).attribute_id, SQLGetRightAttribute(101, a.id).description, SQLGetRightAttribute(101, a.id).price),
-                             FenceColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(905, a.id).description), SQLSplitColorG(SQLGetRightAttribute(905, a.id).description), SQLSplitColorB(SQLGetRightAttribute(905, a.id).description))
+                             FenceColor = new ColorPalette(SQLGetRightAttribute(905, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(905, a.id).description), SQLSplitColorG(SQLGetRightAttribute(905, a.id).description), SQLSplitColorB(SQLGetRightAttribute(905, a.id).description))
+
                          }).ToList();
 
                 con.Close();
             }
+            return house;
         }
-
         public HouseSummary SQLGetHouseconfig(int id)
         {
             HouseSummary house;
@@ -2409,6 +2524,10 @@ namespace Fallstudie.ViewModel
 
                          select new HouseSummary
                          {
+                             Id = b.houseconfig_id,
+                             Price = b.price,
+                             ConfDate = b.modifieddate,
+
                              Customer = new Customer(a.id, a.name, SQLCustomerCountProject(a.id), SQLCustomerCountHouseconfig(a.id)),
                              Consultant = new Consultant(b.consultant_user_id, SQLGetConsultantName(b.consultant_user_id)),
                              Package = new ImageInherit(f.image, f.house_package_id, f.description, f.price),
@@ -2416,15 +2535,15 @@ namespace Fallstudie.ViewModel
                              numberOfFloors = 0,
                              GroundPlots = new List<ImageInherit>(),
                              OutsideWall = new ImageInherit(SQLGetRightAttribute(5, a.id).image, SQLGetRightAttribute(5, a.id).attribute_id, SQLGetRightAttribute(5, a.id).description, SQLGetRightAttribute(5, a.id).price),
-                             OutsideWallColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(902, a.id).description), SQLSplitColorG(SQLGetRightAttribute(902, a.id).description), SQLSplitColorB(SQLGetRightAttribute(902, a.id).description)),
+                             OutsideWallColor = new ColorPalette(SQLGetRightAttribute(902, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(902, a.id).description), SQLSplitColorG(SQLGetRightAttribute(902, a.id).description), SQLSplitColorB(SQLGetRightAttribute(902, a.id).description)),
                              InsideWall = new ImageInherit(SQLGetRightAttribute(51, a.id).image, SQLGetRightAttribute(51, a.id).attribute_id, SQLGetRightAttribute(51, a.id).description, SQLGetRightAttribute(51, a.id).price),
-                             InsideWallColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(901, a.id).description), SQLSplitColorG(SQLGetRightAttribute(901, a.id).description), SQLSplitColorB(SQLGetRightAttribute(901, a.id).description)),
+                             InsideWallColor = new ColorPalette(SQLGetRightAttribute(901, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(901, a.id).description), SQLSplitColorG(SQLGetRightAttribute(901, a.id).description), SQLSplitColorB(SQLGetRightAttribute(901, a.id).description)),
                              RoofType = new ImageInherit(SQLGetRightAttribute(6, a.id).image, SQLGetRightAttribute(6, a.id).attribute_id, SQLGetRightAttribute(6, a.id).description, SQLGetRightAttribute(6, a.id).price),
                              RoofMaterial = new ImageInherit(SQLGetRightAttribute(61, a.id).image, SQLGetRightAttribute(61, a.id).attribute_id, SQLGetRightAttribute(61, a.id).description, SQLGetRightAttribute(61, a.id).price),
                              Window = new ImageInherit(SQLGetRightAttribute(7, a.id).image, SQLGetRightAttribute(7, a.id).attribute_id, SQLGetRightAttribute(7, a.id).description, SQLGetRightAttribute(7, a.id).price),
-                             WindowColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(903, a.id).description), SQLSplitColorG(SQLGetRightAttribute(903, a.id).description), SQLSplitColorB(SQLGetRightAttribute(903, a.id).description)),
+                             WindowColor = new ColorPalette(SQLGetRightAttribute(903, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(903, a.id).description), SQLSplitColorG(SQLGetRightAttribute(903, a.id).description), SQLSplitColorB(SQLGetRightAttribute(903, a.id).description)),
                              Door = new ImageInherit(SQLGetRightAttribute(71, a.id).image, SQLGetRightAttribute(71, a.id).attribute_id, SQLGetRightAttribute(71, a.id).description, SQLGetRightAttribute(71, a.id).price),
-                             DoorColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(904, a.id).description), SQLSplitColorG(SQLGetRightAttribute(904, a.id).description), SQLSplitColorB(SQLGetRightAttribute(904, a.id).description)),
+                             DoorColor = new ColorPalette(SQLGetRightAttribute(904, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(904, a.id).description), SQLSplitColorG(SQLGetRightAttribute(904, a.id).description), SQLSplitColorB(SQLGetRightAttribute(904, a.id).description)),
                              EnergySystem = new EHSystem(SQLGetRightAttribute(8, a.id).attribute_id, SQLGetRightAttribute(8, a.id).description, SQLGetRightAttribute(8, a.id).price),
                              HeatingSystem = new EHSystem(SQLGetRightAttribute(81, a.id).attribute_id, SQLGetRightAttribute(81, a.id).description, SQLGetRightAttribute(81, a.id).price),
                              NumberOfSocket = int.Parse(SQLGetRightAttribute(12, a.id).description),
@@ -2432,7 +2551,7 @@ namespace Fallstudie.ViewModel
                              Pool = new ImageInherit(SQLGetRightAttribute(10, a.id).image, SQLGetRightAttribute(10, a.id).attribute_id, SQLGetRightAttribute(10, a.id).description, SQLGetRightAttribute(10, a.id).price),
                              Poolsize = SQLGetRightAttribute(11, a.id).description + " m²",
                              Fence = new ImageInherit(SQLGetRightAttribute(101, a.id).image, SQLGetRightAttribute(101, a.id).attribute_id, SQLGetRightAttribute(101, a.id).description, SQLGetRightAttribute(101, a.id).price),
-                             FenceColor = new ColorPalette(SQLSplitColorR(SQLGetRightAttribute(905, a.id).description), SQLSplitColorG(SQLGetRightAttribute(905, a.id).description), SQLSplitColorB(SQLGetRightAttribute(905, a.id).description))
+                             FenceColor = new ColorPalette(SQLGetRightAttribute(905, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(905, a.id).description), SQLSplitColorG(SQLGetRightAttribute(905, a.id).description), SQLSplitColorB(SQLGetRightAttribute(905, a.id).description))
 
                          }).Single();
 
@@ -2445,7 +2564,7 @@ namespace Fallstudie.ViewModel
 
             #endregion
 
-            #region GeneralFunctions
+        #region GeneralFunctions
             /// <summary>
             /// In dieser Region werden allgemeine Funktionien gepseichert
             /// </summary>
@@ -2525,10 +2644,6 @@ namespace Fallstudie.ViewModel
         #endregion
 
         #region Test Methoden
-
-
-
-
 
 
         //MessageBox wird angezeigt -> zum Testen

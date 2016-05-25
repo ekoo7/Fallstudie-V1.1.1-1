@@ -156,65 +156,69 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[28];
+            _typeNameTable = new string[30];
             _typeNameTable[0] = "Fallstudie.ViewModel.ViewModelLocator";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "Fallstudie.ViewModel.MainViewModel";
             _typeNameTable[3] = "Fallstudie.ViewModel.BaseViewModel";
-            _typeNameTable[4] = "Fallstudie.MainPage";
+            _typeNameTable[4] = "Fallstudie.Login";
             _typeNameTable[5] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[6] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[7] = "Fallstudie.Pages.HausKonfiguratorPage";
-            _typeNameTable[8] = "Fallstudie.Pages.HKPages.Schritt10Aussenbereiche";
-            _typeNameTable[9] = "Fallstudie.Pages.HKPages.Schritt2HausAuswahl";
-            _typeNameTable[10] = "Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl";
-            _typeNameTable[11] = "Fallstudie.Pages.HKPages.Schritt4Grundriss";
-            _typeNameTable[12] = "Fallstudie.Pages.HKPages.Schritt5Wand";
-            _typeNameTable[13] = "Fallstudie.Pages.HKPages.Schritt6Dach";
-            _typeNameTable[14] = "Fallstudie.Pages.HKPages.Schritt7FensterTueren";
-            _typeNameTable[15] = "Fallstudie.Pages.HKPages.Schritt8EnergyHeizung";
-            _typeNameTable[16] = "Fallstudie.Pages.HKPages.Schritt9Zusatz";
-            _typeNameTable[17] = "Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung";
-            _typeNameTable[18] = "Fallstudie.Pages.KundenPage";
-            _typeNameTable[19] = "Fallstudie.Pages.KundenPages.CreateCustomerPage";
-            _typeNameTable[20] = "Fallstudie.Pages.pdfErstellenPage";
-            _typeNameTable[21] = "Fallstudie.Pages.ProjektePage";
-            _typeNameTable[22] = "Fallstudie.Converter.DateTimeConverter";
-            _typeNameTable[23] = "Fallstudie.Converter.TimeSpanConverter";
-            _typeNameTable[24] = "Fallstudie.Converter.StringFormatter";
-            _typeNameTable[25] = "Fallstudie.Pages.TerminePage";
-            _typeNameTable[26] = "Fallstudie.Pages.TerminePages.NeuTermin";
-            _typeNameTable[27] = "Fallstudie.Pages.TerminePages.TerminBearbeiten";
+            _typeNameTable[7] = "Fallstudie.MainPage";
+            _typeNameTable[8] = "Fallstudie.Pages.HausKonfiguratorPage";
+            _typeNameTable[9] = "Fallstudie.Pages.HKPages.Schritt10Aussenbereiche";
+            _typeNameTable[10] = "Fallstudie.Pages.HKPages.Schritt2HausAuswahl";
+            _typeNameTable[11] = "Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl";
+            _typeNameTable[12] = "Fallstudie.Pages.HKPages.Schritt4Grundriss";
+            _typeNameTable[13] = "Fallstudie.Pages.HKPages.Schritt5Wand";
+            _typeNameTable[14] = "Fallstudie.Pages.HKPages.Schritt6Dach";
+            _typeNameTable[15] = "Fallstudie.Pages.HKPages.Schritt7FensterTueren";
+            _typeNameTable[16] = "Fallstudie.Pages.HKPages.Schritt8EnergyHeizung";
+            _typeNameTable[17] = "Fallstudie.Pages.HKPages.Schritt9Zusatz";
+            _typeNameTable[18] = "Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung";
+            _typeNameTable[19] = "Fallstudie.Pages.KundenPage";
+            _typeNameTable[20] = "Fallstudie.Pages.KundenPages.CreateCustomerPage";
+            _typeNameTable[21] = "Fallstudie.Pages.pdfErstellenPage";
+            _typeNameTable[22] = "Fallstudie.Pages.ProjektePage";
+            _typeNameTable[23] = "Fallstudie.Converter.DateTimeConverter";
+            _typeNameTable[24] = "Fallstudie.Converter.TimeSpanConverter";
+            _typeNameTable[25] = "Fallstudie.Converter.StringFormatter";
+            _typeNameTable[26] = "Fallstudie.Pages.TerminePage";
+            _typeNameTable[27] = "Fallstudie.Pages.TerminePages.NeuTermin";
+            _typeNameTable[28] = "Fallstudie.Pages.TerminePages.TerminBearbeiten";
+            _typeNameTable[29] = "Fallstudie.StartPage";
 
-            _typeTable = new global::System.Type[28];
+            _typeTable = new global::System.Type[30];
             _typeTable[0] = typeof(global::Fallstudie.ViewModel.ViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::Fallstudie.ViewModel.MainViewModel);
             _typeTable[3] = typeof(global::Fallstudie.ViewModel.BaseViewModel);
-            _typeTable[4] = typeof(global::Fallstudie.MainPage);
+            _typeTable[4] = typeof(global::Fallstudie.Login);
             _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[6] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[7] = typeof(global::Fallstudie.Pages.HausKonfiguratorPage);
-            _typeTable[8] = typeof(global::Fallstudie.Pages.HKPages.Schritt10Aussenbereiche);
-            _typeTable[9] = typeof(global::Fallstudie.Pages.HKPages.Schritt2HausAuswahl);
-            _typeTable[10] = typeof(global::Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl);
-            _typeTable[11] = typeof(global::Fallstudie.Pages.HKPages.Schritt4Grundriss);
-            _typeTable[12] = typeof(global::Fallstudie.Pages.HKPages.Schritt5Wand);
-            _typeTable[13] = typeof(global::Fallstudie.Pages.HKPages.Schritt6Dach);
-            _typeTable[14] = typeof(global::Fallstudie.Pages.HKPages.Schritt7FensterTueren);
-            _typeTable[15] = typeof(global::Fallstudie.Pages.HKPages.Schritt8EnergyHeizung);
-            _typeTable[16] = typeof(global::Fallstudie.Pages.HKPages.Schritt9Zusatz);
-            _typeTable[17] = typeof(global::Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung);
-            _typeTable[18] = typeof(global::Fallstudie.Pages.KundenPage);
-            _typeTable[19] = typeof(global::Fallstudie.Pages.KundenPages.CreateCustomerPage);
-            _typeTable[20] = typeof(global::Fallstudie.Pages.pdfErstellenPage);
-            _typeTable[21] = typeof(global::Fallstudie.Pages.ProjektePage);
-            _typeTable[22] = typeof(global::Fallstudie.Converter.DateTimeConverter);
-            _typeTable[23] = typeof(global::Fallstudie.Converter.TimeSpanConverter);
-            _typeTable[24] = typeof(global::Fallstudie.Converter.StringFormatter);
-            _typeTable[25] = typeof(global::Fallstudie.Pages.TerminePage);
-            _typeTable[26] = typeof(global::Fallstudie.Pages.TerminePages.NeuTermin);
-            _typeTable[27] = typeof(global::Fallstudie.Pages.TerminePages.TerminBearbeiten);
+            _typeTable[7] = typeof(global::Fallstudie.MainPage);
+            _typeTable[8] = typeof(global::Fallstudie.Pages.HausKonfiguratorPage);
+            _typeTable[9] = typeof(global::Fallstudie.Pages.HKPages.Schritt10Aussenbereiche);
+            _typeTable[10] = typeof(global::Fallstudie.Pages.HKPages.Schritt2HausAuswahl);
+            _typeTable[11] = typeof(global::Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl);
+            _typeTable[12] = typeof(global::Fallstudie.Pages.HKPages.Schritt4Grundriss);
+            _typeTable[13] = typeof(global::Fallstudie.Pages.HKPages.Schritt5Wand);
+            _typeTable[14] = typeof(global::Fallstudie.Pages.HKPages.Schritt6Dach);
+            _typeTable[15] = typeof(global::Fallstudie.Pages.HKPages.Schritt7FensterTueren);
+            _typeTable[16] = typeof(global::Fallstudie.Pages.HKPages.Schritt8EnergyHeizung);
+            _typeTable[17] = typeof(global::Fallstudie.Pages.HKPages.Schritt9Zusatz);
+            _typeTable[18] = typeof(global::Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung);
+            _typeTable[19] = typeof(global::Fallstudie.Pages.KundenPage);
+            _typeTable[20] = typeof(global::Fallstudie.Pages.KundenPages.CreateCustomerPage);
+            _typeTable[21] = typeof(global::Fallstudie.Pages.pdfErstellenPage);
+            _typeTable[22] = typeof(global::Fallstudie.Pages.ProjektePage);
+            _typeTable[23] = typeof(global::Fallstudie.Converter.DateTimeConverter);
+            _typeTable[24] = typeof(global::Fallstudie.Converter.TimeSpanConverter);
+            _typeTable[25] = typeof(global::Fallstudie.Converter.StringFormatter);
+            _typeTable[26] = typeof(global::Fallstudie.Pages.TerminePage);
+            _typeTable[27] = typeof(global::Fallstudie.Pages.TerminePages.NeuTermin);
+            _typeTable[28] = typeof(global::Fallstudie.Pages.TerminePages.TerminBearbeiten);
+            _typeTable[29] = typeof(global::Fallstudie.StartPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -252,28 +256,30 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
         private object Activate_0_ViewModelLocator() { return new global::Fallstudie.ViewModel.ViewModelLocator(); }
         private object Activate_2_MainViewModel() { return new global::Fallstudie.ViewModel.MainViewModel(); }
         private object Activate_3_BaseViewModel() { return new global::Fallstudie.ViewModel.BaseViewModel(); }
-        private object Activate_4_MainPage() { return new global::Fallstudie.MainPage(); }
-        private object Activate_7_HausKonfiguratorPage() { return new global::Fallstudie.Pages.HausKonfiguratorPage(); }
-        private object Activate_8_Schritt10Aussenbereiche() { return new global::Fallstudie.Pages.HKPages.Schritt10Aussenbereiche(); }
-        private object Activate_9_Schritt2HausAuswahl() { return new global::Fallstudie.Pages.HKPages.Schritt2HausAuswahl(); }
-        private object Activate_10_Schritt3GrundstückAuswahl() { return new global::Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl(); }
-        private object Activate_11_Schritt4Grundriss() { return new global::Fallstudie.Pages.HKPages.Schritt4Grundriss(); }
-        private object Activate_12_Schritt5Wand() { return new global::Fallstudie.Pages.HKPages.Schritt5Wand(); }
-        private object Activate_13_Schritt6Dach() { return new global::Fallstudie.Pages.HKPages.Schritt6Dach(); }
-        private object Activate_14_Schritt7FensterTueren() { return new global::Fallstudie.Pages.HKPages.Schritt7FensterTueren(); }
-        private object Activate_15_Schritt8EnergyHeizung() { return new global::Fallstudie.Pages.HKPages.Schritt8EnergyHeizung(); }
-        private object Activate_16_Schritt9Zusatz() { return new global::Fallstudie.Pages.HKPages.Schritt9Zusatz(); }
-        private object Activate_17_Schrtitt11Zusammenfassung() { return new global::Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung(); }
-        private object Activate_18_KundenPage() { return new global::Fallstudie.Pages.KundenPage(); }
-        private object Activate_19_CreateCustomerPage() { return new global::Fallstudie.Pages.KundenPages.CreateCustomerPage(); }
-        private object Activate_20_pdfErstellenPage() { return new global::Fallstudie.Pages.pdfErstellenPage(); }
-        private object Activate_21_ProjektePage() { return new global::Fallstudie.Pages.ProjektePage(); }
-        private object Activate_22_DateTimeConverter() { return new global::Fallstudie.Converter.DateTimeConverter(); }
-        private object Activate_23_TimeSpanConverter() { return new global::Fallstudie.Converter.TimeSpanConverter(); }
-        private object Activate_24_StringFormatter() { return new global::Fallstudie.Converter.StringFormatter(); }
-        private object Activate_25_TerminePage() { return new global::Fallstudie.Pages.TerminePage(); }
-        private object Activate_26_NeuTermin() { return new global::Fallstudie.Pages.TerminePages.NeuTermin(); }
-        private object Activate_27_TerminBearbeiten() { return new global::Fallstudie.Pages.TerminePages.TerminBearbeiten(); }
+        private object Activate_4_Login() { return new global::Fallstudie.Login(); }
+        private object Activate_7_MainPage() { return new global::Fallstudie.MainPage(); }
+        private object Activate_8_HausKonfiguratorPage() { return new global::Fallstudie.Pages.HausKonfiguratorPage(); }
+        private object Activate_9_Schritt10Aussenbereiche() { return new global::Fallstudie.Pages.HKPages.Schritt10Aussenbereiche(); }
+        private object Activate_10_Schritt2HausAuswahl() { return new global::Fallstudie.Pages.HKPages.Schritt2HausAuswahl(); }
+        private object Activate_11_Schritt3GrundstückAuswahl() { return new global::Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl(); }
+        private object Activate_12_Schritt4Grundriss() { return new global::Fallstudie.Pages.HKPages.Schritt4Grundriss(); }
+        private object Activate_13_Schritt5Wand() { return new global::Fallstudie.Pages.HKPages.Schritt5Wand(); }
+        private object Activate_14_Schritt6Dach() { return new global::Fallstudie.Pages.HKPages.Schritt6Dach(); }
+        private object Activate_15_Schritt7FensterTueren() { return new global::Fallstudie.Pages.HKPages.Schritt7FensterTueren(); }
+        private object Activate_16_Schritt8EnergyHeizung() { return new global::Fallstudie.Pages.HKPages.Schritt8EnergyHeizung(); }
+        private object Activate_17_Schritt9Zusatz() { return new global::Fallstudie.Pages.HKPages.Schritt9Zusatz(); }
+        private object Activate_18_Schrtitt11Zusammenfassung() { return new global::Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung(); }
+        private object Activate_19_KundenPage() { return new global::Fallstudie.Pages.KundenPage(); }
+        private object Activate_20_CreateCustomerPage() { return new global::Fallstudie.Pages.KundenPages.CreateCustomerPage(); }
+        private object Activate_21_pdfErstellenPage() { return new global::Fallstudie.Pages.pdfErstellenPage(); }
+        private object Activate_22_ProjektePage() { return new global::Fallstudie.Pages.ProjektePage(); }
+        private object Activate_23_DateTimeConverter() { return new global::Fallstudie.Converter.DateTimeConverter(); }
+        private object Activate_24_TimeSpanConverter() { return new global::Fallstudie.Converter.TimeSpanConverter(); }
+        private object Activate_25_StringFormatter() { return new global::Fallstudie.Converter.StringFormatter(); }
+        private object Activate_26_TerminePage() { return new global::Fallstudie.Pages.TerminePage(); }
+        private object Activate_27_NeuTermin() { return new global::Fallstudie.Pages.TerminePages.NeuTermin(); }
+        private object Activate_28_TerminBearbeiten() { return new global::Fallstudie.Pages.TerminePages.TerminBearbeiten(); }
+        private object Activate_29_StartPage() { return new global::Fallstudie.StartPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -311,9 +317,9 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 4:   //  Fallstudie.MainPage
+            case 4:   //  Fallstudie.Login
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_4_MainPage;
+                userType.Activator = Activate_4_Login;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -326,149 +332,163 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
                 xamlType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 7:   //  Fallstudie.Pages.HausKonfiguratorPage
+            case 7:   //  Fallstudie.MainPage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_7_HausKonfiguratorPage;
+                userType.Activator = Activate_7_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 8:   //  Fallstudie.Pages.HKPages.Schritt10Aussenbereiche
+            case 8:   //  Fallstudie.Pages.HausKonfiguratorPage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_8_Schritt10Aussenbereiche;
+                userType.Activator = Activate_8_HausKonfiguratorPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 9:   //  Fallstudie.Pages.HKPages.Schritt2HausAuswahl
+            case 9:   //  Fallstudie.Pages.HKPages.Schritt10Aussenbereiche
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_9_Schritt2HausAuswahl;
+                userType.Activator = Activate_9_Schritt10Aussenbereiche;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 10:   //  Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl
+            case 10:   //  Fallstudie.Pages.HKPages.Schritt2HausAuswahl
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_10_Schritt3GrundstückAuswahl;
+                userType.Activator = Activate_10_Schritt2HausAuswahl;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 11:   //  Fallstudie.Pages.HKPages.Schritt4Grundriss
+            case 11:   //  Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_11_Schritt4Grundriss;
+                userType.Activator = Activate_11_Schritt3GrundstückAuswahl;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 12:   //  Fallstudie.Pages.HKPages.Schritt5Wand
+            case 12:   //  Fallstudie.Pages.HKPages.Schritt4Grundriss
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_12_Schritt5Wand;
+                userType.Activator = Activate_12_Schritt4Grundriss;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 13:   //  Fallstudie.Pages.HKPages.Schritt6Dach
+            case 13:   //  Fallstudie.Pages.HKPages.Schritt5Wand
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_13_Schritt6Dach;
+                userType.Activator = Activate_13_Schritt5Wand;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 14:   //  Fallstudie.Pages.HKPages.Schritt7FensterTueren
+            case 14:   //  Fallstudie.Pages.HKPages.Schritt6Dach
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_14_Schritt7FensterTueren;
+                userType.Activator = Activate_14_Schritt6Dach;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 15:   //  Fallstudie.Pages.HKPages.Schritt8EnergyHeizung
+            case 15:   //  Fallstudie.Pages.HKPages.Schritt7FensterTueren
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_15_Schritt8EnergyHeizung;
+                userType.Activator = Activate_15_Schritt7FensterTueren;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 16:   //  Fallstudie.Pages.HKPages.Schritt9Zusatz
+            case 16:   //  Fallstudie.Pages.HKPages.Schritt8EnergyHeizung
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_16_Schritt9Zusatz;
+                userType.Activator = Activate_16_Schritt8EnergyHeizung;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 17:   //  Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung
+            case 17:   //  Fallstudie.Pages.HKPages.Schritt9Zusatz
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_17_Schrtitt11Zusammenfassung;
+                userType.Activator = Activate_17_Schritt9Zusatz;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 18:   //  Fallstudie.Pages.KundenPage
+            case 18:   //  Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_18_KundenPage;
+                userType.Activator = Activate_18_Schrtitt11Zusammenfassung;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 19:   //  Fallstudie.Pages.KundenPages.CreateCustomerPage
+            case 19:   //  Fallstudie.Pages.KundenPage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_19_CreateCustomerPage;
+                userType.Activator = Activate_19_KundenPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 20:   //  Fallstudie.Pages.pdfErstellenPage
+            case 20:   //  Fallstudie.Pages.KundenPages.CreateCustomerPage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_20_pdfErstellenPage;
+                userType.Activator = Activate_20_CreateCustomerPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 21:   //  Fallstudie.Pages.ProjektePage
+            case 21:   //  Fallstudie.Pages.pdfErstellenPage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_21_ProjektePage;
+                userType.Activator = Activate_21_pdfErstellenPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 22:   //  Fallstudie.Converter.DateTimeConverter
+            case 22:   //  Fallstudie.Pages.ProjektePage
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_22_ProjektePage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 23:   //  Fallstudie.Converter.DateTimeConverter
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_22_DateTimeConverter;
+                userType.Activator = Activate_23_DateTimeConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 23:   //  Fallstudie.Converter.TimeSpanConverter
+            case 24:   //  Fallstudie.Converter.TimeSpanConverter
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_23_TimeSpanConverter;
+                userType.Activator = Activate_24_TimeSpanConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 24:   //  Fallstudie.Converter.StringFormatter
+            case 25:   //  Fallstudie.Converter.StringFormatter
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_24_StringFormatter;
+                userType.Activator = Activate_25_StringFormatter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 25:   //  Fallstudie.Pages.TerminePage
+            case 26:   //  Fallstudie.Pages.TerminePage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_25_TerminePage;
+                userType.Activator = Activate_26_TerminePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 26:   //  Fallstudie.Pages.TerminePages.NeuTermin
+            case 27:   //  Fallstudie.Pages.TerminePages.NeuTermin
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_26_NeuTermin;
+                userType.Activator = Activate_27_NeuTermin;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 27:   //  Fallstudie.Pages.TerminePages.TerminBearbeiten
+            case 28:   //  Fallstudie.Pages.TerminePages.TerminBearbeiten
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_27_TerminBearbeiten;
+                userType.Activator = Activate_28_TerminBearbeiten;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 29:   //  Fallstudie.StartPage
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_29_StartPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

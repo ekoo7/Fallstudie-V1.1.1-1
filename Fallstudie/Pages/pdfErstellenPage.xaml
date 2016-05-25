@@ -7,10 +7,211 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="pdfErstellen"></TextBlock>
-        
-    </Grid>
+    <ScrollViewer>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Projekte" TextAlignment="Center" FontWeight="Bold" Margin="0 0 0 20"/>
+
+                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Projekt" TextAlignment="Center" FontSize="20"/>
+                        <ListView Name="CustomerList" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="0 0 0 0" Text="{Binding Id}" FontWeight="Bold" FontSize="20" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                    <StackPanel Margin="0 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Startdatum" TextAlignment="Center" FontSize="20"/>
+                        <ListView Name="CustomerList2" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding StartDate}" FontWeight="Bold" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Enddatum" TextAlignment="Center" FontSize="20"/>
+                        <ListView Name="EndDate" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding EndDate}" FontWeight="Bold" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Kunde" TextAlignment="Center" FontSize="20"/>
+                        <ListView Name="CustomerList3" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding House.Customer.Name}" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Mitarbeiter" TextAlignment="Center" FontSize="20"/>
+                        <ListView Name="CustomerList4" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding House.Consultant.Name}" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Status" TextAlignment="Center" FontSize="20"/>
+                        <ListView Name="State" ItemsSource="{Binding ListProjects}" 
+                          SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <ProgressBar Width="100" Height="25" Value="{Binding StateValue}"/>
+                                        <TextBlock TextAlignment="Center" Text="{Binding State}" FontSize="10"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+                
+                <!-- Konfigureierte Häuser -->
+                <TextBlock Text="Konfigurierte Häuser" TextAlignment="Center" FontWeight="Bold" Margin="0 0 0 20"/>
+
+                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Projekt" TextAlignment="Center" FontSize="20"/>
+                        <ListView Name="CustomerList1" ItemsSource="{Binding ListConfHouses}" 
+                          SelectedItem="{Binding SelectedConfHouse, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="0 0 0 0" Text="{Binding Id}" FontWeight="Bold" FontSize="20" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Enddatum" TextAlignment="Center" FontSize="20"/>
+                        <ListView Name="EndDate1" ItemsSource="{Binding ListConfHouses}" 
+                          SelectedItem="{Binding SelectedConfHouse, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding ConfDate}" FontWeight="Bold" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Kunde" TextAlignment="Center" FontSize="20"/>
+                        <ListView Name="CustomerName" ItemsSource="{Binding ListConfHouses}" 
+                          SelectedItem="{Binding SelectedConfHouse, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Customer.Name}" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Mitarbeiter" TextAlignment="Center" FontSize="20"/>
+                        <ListView Name="Customer" ItemsSource="{Binding ListConfHouses}" 
+                          SelectedItem="{Binding SelectedConfHouse, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Consultant.Name}" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel  Margin="0 0 0 0" Orientation="Vertical">
+                        <TextBlock Text="Status" TextAlignment="Center" FontSize="20"/>
+                        <ListView Name="StateConf" ItemsSource="{Binding ListConfHouses}" 
+                          SelectedItem="{Binding SelectedConfHouse, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock TextAlignment="Center" Text="{Binding Price}" FontSize="20"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+
+
     <Page.BottomAppBar>
         <CommandBar HorizontalContentAlignment="Left">
             <CommandBar.Content>

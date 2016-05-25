@@ -1342,3 +1342,13 @@ C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\De
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Syncfusion.OfficeChart.UWP\en\Syncfusion.OfficeChart.TexturePatternGradient.resw
 C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Syncfusion.OfficeChart.UWP\en\Syncfusion.OfficeChart.VMLPresetGradientFills.resw
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Fallstudie.csprojResolveAssemblyReference.cache
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Login.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Login.g.i.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Login.g.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Login.xaml
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Login.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\StartPage.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\StartPage.g.i.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\StartPage.g.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\StartPage.xaml
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\StartPage.xbf

@@ -5,6 +5,8 @@
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Main" />
+    <RootPropertyPathName Name="Username" />
+    <RootPropertyPathName Name="ButtonLogout" />
     <RootPropertyPathName Name="MenuButtonClicked" />
     <RootPropertyPathName Name="ButtonForwardChooseCustomer" />
     <RootPropertyPathName Name="NewCustomerButton" />
@@ -112,15 +114,21 @@
     <RootPropertyPathName Name="OutsideWallColor" />
     <RootPropertyPathName Name="numberOfFloors" />
     <RootPropertyPathName Name="ButtonSaveConfiguration" />
-    <RootPropertyPathName Name="ButtonCreatePdf" />
-    <RootPropertyPathName Name="SelectedProject" />
-    <RootPropertyPathName Name="Package" />
-    <RootPropertyPathName Name="ListProjects" />
+    <RootPropertyPathName Name="ListConfHouses" />
+    <RootPropertyPathName Name="SelectedConfHouse" />
     <RootPropertyPathName Name="Consultant" />
     <RootPropertyPathName Name="Customer" />
+    <RootPropertyPathName Name="ConfDate" />
+    <RootPropertyPathName Name="Id" />
+    <RootPropertyPathName Name="ListProjects" />
+    <RootPropertyPathName Name="SelectedProject" />
+    <RootPropertyPathName Name="State" />
+    <RootPropertyPathName Name="StateValue" />
     <RootPropertyPathName Name="EndDate" />
     <RootPropertyPathName Name="StartDate" />
-    <RootPropertyPathName Name="Id" />
+    <RootPropertyPathName Name="ButtonCreatePdf" />
+    <RootPropertyPathName Name="ProjectPezVisibility" />
+    <RootPropertyPathName Name="Package" />
     <RootPropertyPathName Name="Appointments" />
     <RootPropertyPathName Name="SelectedAppointment" />
     <RootPropertyPathName Name="Time" />
@@ -144,6 +152,7 @@
     </RootType>
     <RootType FullName="Fallstudie.ViewModel.ViewModelLocator" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
+      <RootProperty Name="Width" />
       <RootProperty Name="DataContext" />
       <RootProperty Name="Content" />
       <RootProperty Name="BottomAppBar" />
@@ -157,8 +166,8 @@
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Background" />
-      <RootProperty Name="RowDefinitions" />
       <RootProperty Name="Children" />
+      <RootProperty Name="RowDefinitions" />
       <RootProperty Name="ColumnDefinitions" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
@@ -168,6 +177,62 @@
       <RootMethod Name="SetRowSpan" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
+      <RootProperty Name="Children" />
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Name" />
+      <RootProperty Name="Visibility" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="Text" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="TextAlignment" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="Name" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="FontWeight" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Text" />
+      <RootProperty Name="AcceptsReturn" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="PlaceholderText" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Width" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Button">
+      <RootProperty Name="Content" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Name" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="Visibility" />
+      <RootEvent Name="Click" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="IsActive" />
+    </RootType>
+    <RootType FullName="Fallstudie.Login" />
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
     </RootType>
@@ -177,6 +242,10 @@
       <RootMethod Name="SetAlignLeftWithPanel" />
       <RootMethod Name="GetRightOf" />
       <RootMethod Name="SetRightOf" />
+      <RootMethod Name="GetAlignRightWithPanel" />
+      <RootMethod Name="SetAlignRightWithPanel" />
+      <RootMethod Name="GetLeftOf" />
+      <RootMethod Name="SetLeftOf" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.SplitView">
       <RootProperty Name="Name" />
@@ -196,37 +265,13 @@
       <RootProperty Name="Name" />
       <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
-      <RootProperty Name="Orientation" />
-      <RootProperty Name="Children" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Name" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
-      <RootProperty Name="FontFamily" />
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="Text" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="TextAlignment" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="FontWeight" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="TextWrapping" />
-      <RootProperty Name="Foreground" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootProperty Name="Name" />
+      <RootEvent Name="Navigated" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Button">
-      <RootProperty Name="Name" />
-      <RootProperty Name="FontFamily" />
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="Command" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Visibility" />
-      <RootEvent Name="Click" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
+      <RootMethod Name="GetToolTip" />
+      <RootMethod Name="SetToolTip" />
     </RootType>
     <RootType FullName="Fallstudie.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
@@ -253,14 +298,6 @@
       <RootProperty Name="Value" />
       <RootProperty Name="Name" />
       <RootProperty Name="Width" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
-      <RootProperty Name="Text" />
-      <RootProperty Name="AcceptsReturn" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="TextWrapping" />
-      <RootProperty Name="PlaceholderText" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
       <RootProperty Name="Background" />
@@ -325,5 +362,6 @@
     </RootType>
     <RootType FullName="Fallstudie.Pages.TerminePages.NeuTermin" />
     <RootType FullName="Fallstudie.Pages.TerminePages.TerminBearbeiten" />
+    <RootType FullName="Fallstudie.StartPage" />
   </Roots.RootTypes>
 </Roots>

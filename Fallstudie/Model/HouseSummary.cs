@@ -9,6 +9,10 @@ namespace Fallstudie.Model
 {
     public class HouseSummary
     {
+        public int Id { get; set; }
+        public string ConfDate { get; set; }
+        public double Price { get; set; }
+
         public Customer Customer { get; set; }
         public Consultant Consultant { get; set; }
 
