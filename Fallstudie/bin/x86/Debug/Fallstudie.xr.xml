@@ -47,7 +47,6 @@
     <RootPropertyPathName Name="City" />
     <RootPropertyPathName Name="Zip" />
     <RootPropertyPathName Name="Address" />
-    <RootPropertyPathName Name="Company" />
     <RootPropertyPathName Name="NoteStep3" />
     <RootPropertyPathName Name="SelectedPlot" />
     <RootPropertyPathName Name="ImagesPlot" />

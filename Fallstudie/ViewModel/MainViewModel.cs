@@ -27,6 +27,7 @@ using Syncfusion.DocIO.DLS;
 using Windows.Storage.Pickers;
 using Syncfusion.Pdf.Tables;
 using System.Net.Http;
+using System.Net;
 
 namespace Fallstudie.ViewModel
 {
@@ -60,10 +61,10 @@ namespace Fallstudie.ViewModel
             Customers.Clear();
             SQLGetCustomers();
 
-            ProjectsMethod();
+            //ProjectsMethod();
             ManageAppointments();
 
-            CreatePdf();
+            //CreatePdf();
         }
         //TODO: Alle Listen und Variablen zurücksetzen
         private async void LogOutMethod()
@@ -1139,7 +1140,7 @@ namespace Fallstudie.ViewModel
         {
             if (SelectedPool != null && SelectedFence != null)
             {
-                if (SelectedPool.Description == "Kein Pool" && SelectedPoolSize == null)
+                if (SelectedPool.Description == "Kein Pool" && (SelectedPoolSize == null || SelectedPoolSize.Description != "0"))
                 {
                     SelectedPoolSize = new ImageInherit(56, "0", 0);
                 }
@@ -1311,7 +1312,7 @@ namespace Fallstudie.ViewModel
             }
             for (int i = 0; i < model.Count; i++)
             {
-                Customers.Add(new Customer(model[i].id, model[i].name, 0, 0));
+                Customers.Add(new Customer(model[i].id, model[i].name, SQLCustomerCountProject(model[i].id), SQLCustomerCountHouseconfig(model[i].id)));
             }
         }
 

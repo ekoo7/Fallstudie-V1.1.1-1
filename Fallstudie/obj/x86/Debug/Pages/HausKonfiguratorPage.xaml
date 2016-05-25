@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="Fallstudie.Pages.HausKonfiguratorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Fallstudie.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Main, Source={StaticResource Locator}}"
+    >
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Name" TextAlignment="Center"/>
+                    <ListView x:ConnectionId='3' Name="CustomerList" ItemsSource="{Binding Customers}" 
+                      SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
+                      IsItemClickEnabled="False" SelectionMode="Single"    
+                      IsSynchronizedWithCurrentItem="False">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Projekte" TextAlignment="Center"/>
+                    <ListView x:ConnectionId='2' Name="CustomerList2" ItemsSource="{Binding Customers}" 
+                      SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
+                      IsItemClickEnabled="False" SelectionMode="Single"    
+                      IsSynchronizedWithCurrentItem="False" HorizontalAlignment="Center">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding NumbProjects}" TextAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Konfigurierte Häuser"/>
+                    <ListView x:ConnectionId='1' Name="CustomerList3" ItemsSource="{Binding Customers}" 
+                      SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
+                      IsItemClickEnabled="False" SelectionMode="Single"    
+                      IsSynchronizedWithCurrentItem="False">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding NumbConfHouses}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+
+            </StackPanel>
+
+            <Button Margin="20" Command="{Binding NewCustomerButton}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE8FA;" />
+            <Button Margin="20" Command="{Binding ButtonForwardChooseCustomer}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
+        </StackPanel>
+    </Grid>
+</Page>
+
