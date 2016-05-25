@@ -110,6 +110,7 @@
     <Compile Include="DBModel\Houseconfig.cs" />
     <Compile Include="DBModel\Houseconfig_Has_Attribute.cs" />
     <Compile Include="DBModel\Housefloor.cs" />
+    <Compile Include="DBModel\Housefloor_Package.cs" />
     <Compile Include="DBModel\Mdh_Usergroups.cs" />
     <Compile Include="DBModel\Mdh_Users.cs" />
     <Compile Include="DBModel\Mdh_User_Usergroup_Map.cs" />
@@ -350,7 +351,10 @@
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>
     <SDKReference Include="SQLite.UWP.2015, Version=3.12.2">
-      <Name>SQLite for Universal Windows Platform</Name>
+      <Name>SQLite for Universal Windows Platform %28SQLite.UWP.2015, Version=3.12.2%29</Name>
+    </SDKReference>
+    <SDKReference Include="SQLite.UWP.2015, Version=3.13.0">
+      <Name>SQLite for Universal Windows Platform %28SQLite.UWP.2015, Version=3.13.0%29</Name>
     </SDKReference>
     <SDKReference Include="Syncfusion Controls for UWP XAML, Version=14.1.0.41">
       <Name>Syncfusion Controls for UWP XAML</Name>

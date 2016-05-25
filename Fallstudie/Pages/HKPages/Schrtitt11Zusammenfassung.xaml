@@ -153,10 +153,10 @@
                         <TextBlock Text="{Binding House.DoorColor.Value}" />
                     </Border>
                     <Border Grid.Column="1" Grid.Row="13">
-                        <TextBlock Text="{Binding House.EnergySystem}" />
+                        <TextBlock Text="{Binding House.EnergySystem.Name}" />
                     </Border>
                     <Border Grid.Column="1" Grid.Row="14">
-                        <TextBlock Text="{Binding House.HeatingSystem}" />
+                        <TextBlock Text="{Binding House.HeatingSystem.Name}" />
                     </Border>
                     <Border Grid.Column="1" Grid.Row="15">
                         <TextBlock Text="{Binding House.NumberOfSocket}" />

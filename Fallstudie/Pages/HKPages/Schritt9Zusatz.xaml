@@ -28,7 +28,13 @@
                     <TextBlock Text="Elektrische Installation"></TextBlock>
 
                     <TextBlock Text="Steckdosen/Raum"/>
-                    <ComboBox ItemsSource="{Binding NumberSockets}" SelectedItem="{Binding SelectedSocket, Mode=TwoWay}" />
+                    <ComboBox ItemsSource="{Binding NumberSockets}" SelectedItem="{Binding SelectedSocket, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Description}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </StackPanel>
             </StackPanel>
 

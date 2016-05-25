@@ -13,7 +13,6 @@ namespace Fallstudie.Model
         public string Source { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }
-        public string Company { get; set; }
         public string ZIP { get; set; }
         public string City { get; set; }
         public string Street { get; set; }

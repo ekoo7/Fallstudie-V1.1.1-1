@@ -36,23 +36,17 @@ namespace Fallstudie.Model
         }
 
         //konstruktor für Gründstück
-        public ImageInherit(string source, int id, double price)
+        public ImageInherit(int id, string desc, double price)
         {
-            Image1 = new Image();
-            BitmapImage1 = new BitmapImage();
-            Uri1 = new Uri(source, UriKind.Absolute);
-            BitmapImage1.UriSource = Uri1;
-            Image1.Source = BitmapImage1;
-            SourceImage = source;
             Id = id;
-            Image1.Name = id.ToString();
-            
+            Description = desc;
             Price = price;
         }
-        
+
         //Konstruktor für Grundriss
-        public ImageInherit(string source, int id, string description, RelayCommand btn, int floors, int floorsDB)
+        public ImageInherit(string source, int id, decimal area, RelayCommand btn, int floors, int floorsDB)
         {
+
             Image1 = new Image();
             BitmapImage1 = new BitmapImage();
             Uri1 = new Uri(source, UriKind.Absolute);
@@ -61,20 +55,31 @@ namespace Fallstudie.Model
             SourceImage = source;
             Id = id;
             Image1.Name = id.ToString();
-   
+
             if (floors > floorsDB && floors - 1 == floorsDB) Price = 1000;
             else if (floors > floorsDB && floors - 2 == floorsDB) Price = 2000;
             else if (floors < floorsDB && floors + 1 == floorsDB) Price = -1000;
             else if (floors < floorsDB && floors + 2 == floorsDB) Price = -2000;
             else Price = 0;
-            
-            
-            Description = description;
+
+            if (area == 0)
+            {
+                Description = "Erdgeschoss";
+            }
+            else if (area == 1)
+            {
+                Description = "Stockwerk 1";
+            }
+            else if (area == 2)
+            {
+                Description = "Stockwerk 2";
+            }
 
             ButtonDrawSketch = btn;
+
         }
 
-        
+
         public ImageInherit(string source, int id, string description, double price)
         {
             Image1 = new Image();
@@ -90,7 +95,7 @@ namespace Fallstudie.Model
         }
 
         //Konstruktor für die Hauspackages
-        public ImageInherit(string source, int id, string description, double price, string company, string zip, string city, string street, string houseNo, string country)
+        public ImageInherit(string source, int id, string description, double price, string zip, string city, string street, string houseNo, string country)
         {
             Image1 = new Image();
             BitmapImage1 = new BitmapImage();
@@ -99,16 +104,14 @@ namespace Fallstudie.Model
             Image1.Source = BitmapImage1;
             SourceImage = source;
 
-           
-
             Id = id;
             Description = description;
             Price = price;
-            Company = company;
             Zip = zip;
             City = city;
             Address = street + " " + houseNo;
             Country = country;
+
         }
     }
 }

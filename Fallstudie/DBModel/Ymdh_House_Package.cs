@@ -25,5 +25,7 @@ namespace Fallstudie.DBModel
 
         [ForeignKey(typeof(Ymdh_Address)), ManyToOne]
         public int address_id { get; set; }
+
+        public int housefloors { get; set; }
     }
 }

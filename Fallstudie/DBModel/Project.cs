@@ -23,5 +23,8 @@ namespace Fallstudie.DBModel
         [ForeignKey(typeof(Houseconfig)), ManyToOne]
         public int houseconfig_id { get; set; }
 
+        [ForeignKey(typeof(Mdh_Users)), ManyToOne]
+        public int customer_user_id { get; set; }
+
     }
 }
