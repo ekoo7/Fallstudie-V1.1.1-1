@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-05-25T16:38:51.917</Modified>
+      <Modified>2016-05-26T16:51:21.019</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.exe">
       <PackagePath>entrypoint\Fallstudie.exe</PackagePath>
-      <Modified>2016-05-25T16:38:50.997</Modified>
+      <Modified>2016-05-26T16:51:19.977</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.dll">
       <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
@@ -3998,154 +3998,6 @@
       <PackagePath>ApplicationInsights.config</PackagePath>
       <Modified>2016-05-22T08:24:31.751</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\3Grundstuecke\Grundstueck1.png">
-      <PackagePath>Bilder\3Grundstuecke\Grundstueck1.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.751</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\3Grundstuecke\Grundstueck2.png">
-      <PackagePath>Bilder\3Grundstuecke\Grundstueck2.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.751</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\3Grundstuecke\Grundstueck3.png">
-      <PackagePath>Bilder\3Grundstuecke\Grundstueck3.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.766</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\2Haeuser\Haus1.png">
-      <PackagePath>Bilder\2Haeuser\Haus1.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.751</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\2Haeuser\Haus2.png">
-      <PackagePath>Bilder\2Haeuser\Haus2.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.751</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\2Haeuser\Haus3.png">
-      <PackagePath>Bilder\2Haeuser\Haus3.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.751</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\4Grundriss\GrundrissErdgeschoss.png">
-      <PackagePath>Bilder\4Grundriss\GrundrissErdgeschoss.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.766</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\4Grundriss\GrundrissStock1.png">
-      <PackagePath>Bilder\4Grundriss\GrundrissStock1.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.783</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\4Grundriss\GrundrissStock2.png">
-      <PackagePath>Bilder\4Grundriss\GrundrissStock2.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.785</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\5Wand\AußenBeton.png">
-      <PackagePath>Bilder\5Wand\AußenBeton.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.786</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\5Wand\AußenHolz.png">
-      <PackagePath>Bilder\5Wand\AußenHolz.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.789</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\5Wand\AußenZiegel.png">
-      <PackagePath>Bilder\5Wand\AußenZiegel.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.789</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\5Wand\InnenHolz.png">
-      <PackagePath>Bilder\5Wand\InnenHolz.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\5Wand\InnenRigips.png">
-      <PackagePath>Bilder\5Wand\InnenRigips.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\5Wand\InnenZiegel.PNG">
-      <PackagePath>Bilder\5Wand\InnenZiegel.PNG</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\6Dach\Aluminiumdach.png">
-      <PackagePath>Bilder\6Dach\Aluminiumdach.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\6Dach\Faserzementplattendach.png">
-      <PackagePath>Bilder\6Dach\Faserzementplattendach.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\6Dach\Flachdach.png">
-      <PackagePath>Bilder\6Dach\Flachdach.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\6Dach\Pultdach.png">
-      <PackagePath>Bilder\6Dach\Pultdach.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\6Dach\Satteldach.png">
-      <PackagePath>Bilder\6Dach\Satteldach.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\6Dach\Ziegeldach.png">
-      <PackagePath>Bilder\6Dach\Ziegeldach.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\7FensterTueren\Einteilig.png">
-      <PackagePath>Bilder\7FensterTueren\Einteilig.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\7FensterTueren\Glastür.png">
-      <PackagePath>Bilder\7FensterTueren\Glastür.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\7FensterTueren\Holztür.png">
-      <PackagePath>Bilder\7FensterTueren\Holztür.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\7FensterTueren\Rundfenster.PNG">
-      <PackagePath>Bilder\7FensterTueren\Rundfenster.PNG</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\7FensterTueren\Schiebetür.PNG">
-      <PackagePath>Bilder\7FensterTueren\Schiebetür.PNG</PackagePath>
-      <Modified>2016-05-22T08:24:31.805</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\7FensterTueren\Trapezfenster.png">
-      <PackagePath>Bilder\7FensterTueren\Trapezfenster.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.820</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\7FensterTueren\Zweiteilig.png">
-      <PackagePath>Bilder\7FensterTueren\Zweiteilig.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.820</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\8Kamin\Kamin1.PNG">
-      <PackagePath>Bilder\8Kamin\Kamin1.PNG</PackagePath>
-      <Modified>2016-05-22T08:24:31.820</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\8Kamin\Kamin2.PNG">
-      <PackagePath>Bilder\8Kamin\Kamin2.PNG</PackagePath>
-      <Modified>2016-05-22T08:24:31.820</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\8Kamin\Kamin3.PNG">
-      <PackagePath>Bilder\8Kamin\Kamin3.PNG</PackagePath>
-      <Modified>2016-05-22T08:24:31.820</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Pool1.png">
-      <PackagePath>Bilder\9Aussenbereiche\Pool1.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.836</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Pool2.png">
-      <PackagePath>Bilder\9Aussenbereiche\Pool2.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.836</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Pool3.png">
-      <PackagePath>Bilder\9Aussenbereiche\Pool3.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.836</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Zaun1.png">
-      <PackagePath>Bilder\9Aussenbereiche\Zaun1.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.836</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Zaun2.png">
-      <PackagePath>Bilder\9Aussenbereiche\Zaun2.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.836</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\9Aussenbereiche\Zaun3.png">
-      <PackagePath>Bilder\9Aussenbereiche\Zaun3.png</PackagePath>
-      <Modified>2016-05-22T08:24:31.836</Modified>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\Logo\DreamHouse_lang.png">
       <PackagePath>Bilder\Logo\DreamHouse_lang.png</PackagePath>
       <Modified>2016-05-25T06:33:36.000</Modified>
@@ -4194,7 +4046,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.xr.xml">
       <PackagePath>Fallstudie.xr.xml</PackagePath>
-      <Modified>2016-05-25T15:02:10.374</Modified>
+      <Modified>2016-05-26T16:45:46.411</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -4202,11 +4054,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-05-25T16:32:52.842</Modified>
+      <Modified>2016-05-26T16:45:48.080</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\Fallstudie.exe">
       <PackagePath>Fallstudie.exe</PackagePath>
-      <Modified>2016-05-25T16:38:51.911</Modified>
+      <Modified>2016-05-26T16:51:21.013</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

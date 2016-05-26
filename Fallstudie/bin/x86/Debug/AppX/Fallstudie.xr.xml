@@ -5,16 +5,18 @@
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Main" />
+    <RootPropertyPathName Name="Login" />
     <RootPropertyPathName Name="Username" />
     <RootPropertyPathName Name="ButtonLogout" />
     <RootPropertyPathName Name="MenuButtonClicked" />
-    <RootPropertyPathName Name="ButtonForwardChooseCustomer" />
-    <RootPropertyPathName Name="NewCustomerButton" />
+    <RootPropertyPathName Name="ButtonDownloadNewImage" />
     <RootPropertyPathName Name="Customers" />
     <RootPropertyPathName Name="SelectedCustomerr" />
     <RootPropertyPathName Name="NumbConfHouses" />
     <RootPropertyPathName Name="NumbProjects" />
     <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="ButtonForwardChooseCustomer" />
+    <RootPropertyPathName Name="ButtonForwardChooseCustomerVisibility" />
     <RootPropertyPathName Name="ButtonForwardSummary" />
     <RootPropertyPathName Name="ButtonIsVisible" />
     <RootPropertyPathName Name="ButtonForwardChooseAddition" />
@@ -219,10 +221,10 @@
       <RootProperty Name="Width" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Command" />
       <RootProperty Name="Name" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="FontSize" />
-      <RootProperty Name="Command" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="Click" />
     </RootType>
@@ -272,25 +274,36 @@
       <RootMethod Name="GetToolTip" />
       <RootMethod Name="SetToolTip" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="PrimaryCommands" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Command" />
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+      <RootProperty Name="Visibility" />
+    </RootType>
     <RootType FullName="Fallstudie.MainPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="Content" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
-      <RootProperty Name="Name" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="SelectedItem" />
       <RootProperty Name="IsItemClickEnabled" />
       <RootProperty Name="SelectionMode" />
       <RootProperty Name="IsSynchronizedWithCurrentItem" />
-      <RootProperty Name="ItemTemplate" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="Name" />
       <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>
     <RootType FullName="Fallstudie.Pages.HausKonfiguratorPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
@@ -329,16 +342,6 @@
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt9Zusatz" />
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="PrimaryCommands" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Command" />
-      <RootProperty Name="Icon" />
-      <RootProperty Name="Label" />
     </RootType>
     <RootType FullName="Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung" />
     <RootType FullName="Fallstudie.Pages.KundenPage" />

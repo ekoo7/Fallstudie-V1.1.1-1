@@ -44,18 +44,17 @@
             <SplitView.Pane>
 
                 <ListBox Name="ListBoxMenu" SelectionMode="Single" SelectionChanged="ListBoxMenu_SelectionChanged">
-
-                    <ListBoxItem Name="Kunden">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE716;"/>
-                            <TextBlock FontSize="24" Text="Kunden" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
                     <ListBoxItem Name="HausKonfigurator">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE913;"/>
                             <!-- ohne baum E80F-->
                             <TextBlock FontSize="24" Text="Haus Konfigurator" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="Kunden">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE716;"/>
+                            <TextBlock FontSize="24" Text="Kunden" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="Projekte">
@@ -75,10 +74,9 @@
                     <ListBoxItem Name="pdfErstellen">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE160;"/>
-                            <TextBlock FontSize="24" Text="pdf erstellen" Margin="20,0,0,0"/>
+                            <TextBlock FontSize="24" Text="PDF erstellen" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
-
                 </ListBox>
 
             </SplitView.Pane>
@@ -88,9 +86,13 @@
                 </Frame>
             </SplitView.Content>
         </SplitView>
-
-
-
-        <!--<TextBlock Text="{Binding MSG}" Grid.Row="1" FontSize="50" />-->
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Command="{Binding ButtonDownloadNewImage}" Icon="Download" Label="Neusten Bilder Downloaden"/>
+        </CommandBar>
+    </Page.BottomAppBar>    
 </Page>

@@ -19,8 +19,8 @@
             <TextBox x:Name="UsernameTextBox" Margin="4" Width="250" Text="{Binding Username, Mode=TwoWay}"/>
             <PasswordBox x:Name="PasswordBox" Margin="4" Width="250"/>
             <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"
-        Click="PassportSignInButton_Click" Width="80" HorizontalAlignment="Center" Margin="0,20"/>
-                <ProgressRing x:Name="ProgressRingLoading" Height="64" Width="64" IsActive="False"/>
+        Click="PassportSignInButton_Click" Width="80" HorizontalAlignment="Center" Margin="0,20" Command="{Binding Login}"/>
+            <ProgressRing x:Name="ProgressRingLoading" Height="64" Width="64" IsActive="False"/>
             <TextBlock x:Name="TextBlockLoading" TextAlignment="Center" Text="Startvorgang..." Visibility="Collapsed"/>
         </StackPanel>
 

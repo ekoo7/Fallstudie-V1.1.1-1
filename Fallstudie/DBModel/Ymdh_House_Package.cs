@@ -27,5 +27,6 @@ namespace Fallstudie.DBModel
         public int address_id { get; set; }
 
         public int housefloors { get; set; }
+        public string rootfolder { get; set; }
     }
 }

@@ -8,64 +8,72 @@
     mc:Ignorable="d"
     DataContext="{Binding Main, Source={StaticResource Locator}}"
     >
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
-
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Name" TextAlignment="Center"/>
-                    <ListView x:ConnectionId='3' Name="CustomerList" ItemsSource="{Binding Customers}" 
+    <ScrollViewer>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Kundenauswahl" TextAlignment="Center" FontWeight="Bold" Margin="0 10 0 20" FontSize="25"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Name" TextAlignment="Center" FontWeight="Bold" FontSize="15"/>
+                        <ListView x:ConnectionId='3' Name="CustomerList" ItemsSource="{Binding Customers}" 
                       SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
                       IsItemClickEnabled="False" SelectionMode="Single"    
-                      IsSynchronizedWithCurrentItem="False">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Name}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackPanel>
+                      IsSynchronizedWithCurrentItem="False" HorizontalAlignment="Stretch">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Name}" TextAlignment="Center" FontSize="15" Margin="5 0 0 0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
 
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Projekte" TextAlignment="Center"/>
-                    <ListView x:ConnectionId='2' Name="CustomerList2" ItemsSource="{Binding Customers}" 
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Projekte" TextAlignment="Center" FontWeight="Bold" FontSize="15"/>
+                        <ListView x:ConnectionId='2' Name="CustomerList2" ItemsSource="{Binding Customers}" 
                       SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
                       IsItemClickEnabled="False" SelectionMode="Single"    
-                      IsSynchronizedWithCurrentItem="False" HorizontalAlignment="Center">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding NumbProjects}" TextAlignment="Center"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                      IsSynchronizedWithCurrentItem="False" HorizontalAlignment="Stretch">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding NumbProjects}" Margin="25 0 0 0" FontSize="15"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Konfigurierte Häuser" FontWeight="Bold" FontSize="15" Margin="15 0 0 0"/>
+                        <ListView x:ConnectionId='1' x:Name="CustomerList3" ItemsSource="{Binding Customers}" 
+                    	SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
+                    	IsItemClickEnabled="False" SelectionMode="Single"    
+                    	IsSynchronizedWithCurrentItem="False" HorizontalAlignment="Stretch">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding NumbConfHouses}" Margin="80 0 0 0" FontSize="15"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
                 </StackPanel>
 
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Konfigurierte Häuser"/>
-                    <ListView x:ConnectionId='1' Name="CustomerList3" ItemsSource="{Binding Customers}" 
-                      SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
-                      IsItemClickEnabled="False" SelectionMode="Single"    
-                      IsSynchronizedWithCurrentItem="False">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding NumbConfHouses}" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackPanel>
-
+                <!--<Button Margin="20" Command="{Binding ButtonForwardChooseCustomer}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />-->
             </StackPanel>
-
-            <Button Margin="20" Command="{Binding NewCustomerButton}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE8FA;" />
-            <Button Margin="20" Command="{Binding ButtonForwardChooseCustomer}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Command="{Binding ButtonForwardChooseCustomer}" Icon="Forward" Label="Weiter" Visibility="{Binding ButtonForwardChooseCustomerVisibility, Mode=TwoWay}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
 

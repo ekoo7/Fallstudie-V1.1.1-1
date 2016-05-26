@@ -21,5 +21,6 @@ namespace Fallstudie.DBModel
         public int houseconfig_id { get; set; }
 
         public decimal area { get; set; }
+        public string rootfolder { get; set; }
     }
 }

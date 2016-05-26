@@ -21,6 +21,7 @@ namespace Fallstudie.DBModel
 
         [ForeignKey(typeof(Attribute_Group)), ManyToOne]
         public int attribute_group_id { get; set; }
+        public string rootfolder { get; set; }
 
     }
 }
