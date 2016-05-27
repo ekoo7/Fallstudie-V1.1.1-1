@@ -44,31 +44,34 @@ namespace Fallstudie.ViewModel
             InitializeButtons();
 
             ButtonLogout = new RelayCommand(LogOutMethod);
-            ButtonDownloadNewImage = new RelayCommand(CheckInternetConnection, () => { return true; });
+            //ButtonDownloadNewImage = new RelayCommand(CheckInternetConnection, () => { return true; });
 
             //Datenbank erstellen
             DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.sqlite");
             if (!File.Exists(DbPath))
             {
-                Conn = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath);
-                SQLCreateTable();
-                SQLInsertAttributeGroup();
+                IsInternetConnected = NetworkInterface.GetIsNetworkAvailable();
+                if (IsInternetConnected)
+                {
+                    Conn = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath);
+                    SQLCreateTable();
+                    SQLInsertAttributeGroup();
+                    DownloadImages();
+                }
+                else
+                    FirstConnectionWithServer();  
+            }
+            else
+            {
+                Customers.Clear();
+                SQLGetCustomers();
+                //ProjectsMethod();
+                ManageAppointments();
+                //CreatePdf();
+                DownloadImages();
             }
 
-            Customers.Clear();
-            SQLGetCustomers();
-
-            //ProjectsMethod();
-            ManageAppointments();
-
-            //CreatePdf();
-
-            //Timer t = new Timer(CheckInternetConnection, null, 5000, 10000);
-
-            IsInternetConnected = NetworkInterface.GetIsNetworkAvailable();
-            if (IsInternetConnected)
-                DownloadImages();
-            
+            ThreadPool.RunAsync(CheckNewImages);     
         }
 
         //Hier werden alle Buttons initialisiert
@@ -94,20 +97,76 @@ namespace Fallstudie.ViewModel
         public StorageFolder HouseconfigFolder { get; set; }
         public bool IsInternetConnected { get; set; }
         public RelayCommand ButtonDownloadNewImage { get; set; }
+        public bool BoolNewImages { get; set; }
 
-        private async void CheckInternetConnection()
+        public async void FirstConnectionWithServer()
+        {
+            MessageDialog msgDialog = new MessageDialog("Sie benötigen Internet beim erstmaligem Start der App.", "Fehler: Verbindung fehlgeschlagen!");
+            UICommand yesCmd = new UICommand("Nochmal");
+            msgDialog.Commands.Add(yesCmd);
+            UICommand noCmd = new UICommand("Abbrechen");
+            msgDialog.Commands.Add(noCmd);
+            IUICommand cmd = await msgDialog.ShowAsync();
+            if (cmd == yesCmd)
+                if (!CheckInternetConnection())
+                    FirstConnectionWithServer();
+                else
+                    DownloadImages();
+        }
+
+        public bool CheckInternetConnection()
         {
             IsInternetConnected = NetworkInterface.GetIsNetworkAvailable();
             if (IsInternetConnected)
-            {
-                DownloadImages();
-                var dialog = new MessageDialog("Die neusten Bilder wurden heruntergeladen.");
-                await dialog.ShowAsync();
-            }
+                return true;
             else
+                return false;
+        }
+
+        public async void CheckNewImages(object abc)
+        {
+            while (true)
             {
-                var dialog = new MessageDialog("Dreamhouse kann keine Verbindung zum Server aufbauen. Bitte überprüfen Sie Ihre Internetverbindung.", "Fehler: Verbindung fehlgeschlagen!");
-                await dialog.ShowAsync();
+                List<string> hp;
+                List<string> attribute;
+                List<string> housefloor;
+                List<List<string>> test = new List<List<string>>();
+                using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                {
+                    hp = (from a in con.Table<Ymdh_House_Package>()
+                          select a.image).ToList();
+                    attribute = (from b in con.Table<DBModel.Attribute>()
+                                 where !b.image.Equals("NULL")
+                                 || !b.image.Equals(null)
+                                 select b.image).ToList();
+                    housefloor = (from c in con.Table<Housefloor_Package>()
+                                  select c.sketch).ToList();
+                    test.Add(hp);
+                    test.Add(attribute);
+                    test.Add(housefloor);
+                    con.Close();
+                }
+                foreach (var item1 in test)
+                {
+                    foreach (var item in item1)
+                    {
+                        string[] names = item.Substring(71).Split('/');
+                        var rootFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\Houseconfig\\" + names[0], CreationCollisionOption.OpenIfExists); // Create folder
+                        string imagePath = rootFolder.Path + "\\" + names[1];
+                        if (!File.Exists(imagePath))
+                        {
+                            if (CheckInternetConnection())
+                                DownloadImages();
+                        }
+                        byte[] size = File.ReadAllBytes(imagePath);
+                        if (size.Length == 0)
+                        {
+                            File.Delete(imagePath);
+                            DownloadImages();
+                        }
+                    }
+                }
+                await Task.Delay(10000);
             }
         }
 
@@ -134,13 +193,11 @@ namespace Fallstudie.ViewModel
             }
             foreach (var item1 in test)
             {
-                string folderName;
                 foreach (var item in item1)
                 {
                     try
                     {
-                        folderName = item.Substring(71);
-                        string[] names = folderName.Split('/');
+                        string[] names = item.Substring(71).Split('/');
                         var rootFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\Houseconfig\\" + names[0], CreationCollisionOption.OpenIfExists); // Create folder
                         HouseconfigFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\Houseconfig\\", CreationCollisionOption.OpenIfExists); // Create folder
 
