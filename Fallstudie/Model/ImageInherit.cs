@@ -20,6 +20,15 @@ namespace Fallstudie.Model
         public string SourceImage { get; set; }
 
         public double Price { get; set; }
+
+        public string PriceFormat
+        {
+            get {
+                return String.Format("{0} €" , Price);
+            }
+
+        }
+
         public string Description { get; set; }
         public string Company { get; set; }
         public string Address { get; set; }

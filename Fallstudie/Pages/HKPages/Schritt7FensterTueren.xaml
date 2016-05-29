@@ -10,125 +10,166 @@
 
     <ScrollViewer>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="49*" />
-                <RowDefinition Height="622*"/>
-                <RowDefinition Height="622*"/>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <StackPanel Grid.Row="0">
-                <TextBlock Text="{Binding SelectedCustomerr.Name}"></TextBlock>
-            </StackPanel>
-
-            <!--Fenster-->
-            <StackPanel Grid.Row="1" Name="StackSchritt7_Fenster" Orientation="Vertical">
-                <Border Background="#50BFB4">
-                    <TextBlock Width="100" FontWeight="Bold" Text="Fenster"></TextBlock>
+            <StackPanel Orientation="Vertical" Margin="0 0 0 180">
+                <Image Source="/Assets/steep7.png" Height="50"/>
+                <Border Background="#0091FF">
+                    <TextBlock Text="Fenster -und Türenauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
-                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <ListView ItemsSource="{Binding ListWindows}" 
+                <Border Background="#45BAFF">
+                    <TextBlock Text="Wählen Sie die Fenster und Türen aus." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                </Border>
+                <Border Background="#45BAFF">
+                    <TextBlock Text="Sie können ebenfalls die Farbe auswählen." Padding="3" TextAlignment="Left" FontSize="12" Foreground="White"/>
+                </Border>
+                <Border>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                            <GradientStop Color="#FF33D5E8" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock Text="Fenster" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                </Border>
+                <!--Fenster-->
+                <StackPanel Margin="10" Name="StackSchritt7_Fenster" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <ListView ItemsSource="{Binding ListWindows}" 
                           SelectedItem="{Binding SelectedWindow, Mode=TwoWay}"
                           IsItemClickEnabled="False" SelectionMode="Single"
                           IsSynchronizedWithCurrentItem="False"
                           Height="Auto"
                           >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Description}"></TextBlock>
-                                    <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock TextAlignment="Center" Text="{Binding Description}"></TextBlock>
+                                        <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
+                                        <TextBlock TextAlignment="Right" FontWeight="Medium" Text="{Binding PriceFormat}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!--Fenster Farben-->
-                    <ListView ItemsSource="{Binding ListColorWindows}" 
+                        <!--Fenster Farben-->
+                        <ListView ItemsSource="{Binding ListColorWindows}" 
                           SelectedItem="{Binding SelectedColorWindow, Mode=TwoWay}"
                           IsItemClickEnabled="False" SelectionMode="Single"
                           IsSynchronizedWithCurrentItem="False"
                           Height="Auto"
                           >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Rectangle Height="45" Width="45" Fill="{Binding Color}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackPanel>
-            </StackPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle Height="45" Width="45" Fill="{Binding Color}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <TextBox Margin="10" Text="{Binding NoteStep7_1, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
 
-            <!--Türen-->
-            <StackPanel Grid.Row="2" Name="StackSchritt5_Innenwand" Orientation="Vertical">
-                <Border Background="#50BFB4">
-                    <TextBlock Width="100" FontWeight="Bold" Text="Türen"></TextBlock>
+                </StackPanel>
+
+                <!--Türen-->
+                <Border>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                            <GradientStop Color="#FF33D5E8" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock Text="Tür" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
                 </Border>
-                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <ListView ItemsSource="{Binding ListDoors}" 
+                <StackPanel Margin="10" Name="StackSchritt5_Innenwand" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <ListView ItemsSource="{Binding ListDoors}" 
                           SelectedItem="{Binding SelectedDoor, Mode=TwoWay}"
                           IsItemClickEnabled="False" SelectionMode="Single"
                           IsSynchronizedWithCurrentItem="False"
                           Height="Auto"
                           >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Description}"></TextBlock>
-                                    <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock TextAlignment="Center" Text="{Binding Description}"></TextBlock>
+                                        <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
+                                        <TextBlock TextAlignment="Right" FontWeight="Medium" Text="{Binding PriceFormat}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <!--Farben-->
-                    <ListView ItemsSource="{Binding ListColorDoors}" 
+                        <!--Farben-->
+                        <ListView ItemsSource="{Binding ListColorDoors}" 
                           SelectedItem="{Binding SelectedColorDoor, Mode=TwoWay}"
                           IsItemClickEnabled="False" SelectionMode="Single"
                           IsSynchronizedWithCurrentItem="False"
                           Height="Auto"
                           >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Rectangle Height="45" Width="45" Fill="{Binding Color}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle Height="45" Width="45" Fill="{Binding Color}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
                 </StackPanel>
+
+                <StackPanel Margin="10">
+                    <TextBox Text="{Binding NoteStep7_2, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
+                </StackPanel>
+
             </StackPanel>
+            <StackPanel Background="#B2AFAD" VerticalAlignment="Bottom">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                    </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="3">
-                <StackPanel>
-                    <TextBlock Text="Fenster"/>
-                    <TextBlock Text="{Binding SelectedWindow.Description, Mode=TwoWay}"/>
-                    <TextBlock Text="{Binding SelectedColorWindow.Value, Mode=TwoWay}"/>
-                    <TextBlock Text="{Binding SelectedWindow.Price, Mode=TwoWay}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Fenster"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedWindow.Description}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Farbe"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedColorWindow.Value}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedWindow.PriceFormat}"/>
 
-                    <TextBlock Text="Türen"/>
-                    <TextBlock Text="{Binding SelectedDoor.Description, Mode=TwoWay}"/>
-                    <TextBlock Text="{Binding SelectedColorDoor.Value, Mode=TwoWay}"/>
-                    <TextBlock Text="{Binding SelectedDoor.Price, Mode=TwoWay}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Tür"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedDoor.Description}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Farbe"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedColorDoor.Value}"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedDoor.PriceFormat}"/>
 
-                    <TextBlock Text="{Binding TotalPrice}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseEnergie}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseCustomer}" FontFamily="Arial" FontSize="36" Content="2" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseHouse}" FontFamily="Arial" FontSize="36" Content="3" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChoosePlot}" FontFamily="Arial" FontSize="36" Content="4" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseWall}" FontFamily="Arial" FontSize="36" Content="5" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseRoof}" FontFamily="Arial" FontSize="36" Content="6" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseEnergie}" FontFamily="Arial" FontSize="36" Content="8" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseAddition}" FontFamily="Arial" FontSize="36" Content="9" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseOutsideArea}" FontFamily="Arial" FontSize="36" Content="10" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardSummary}" FontFamily="Arial" FontSize="36" Content="11" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                </StackPanel>
-                <StackPanel >
-                    <ProgressBar Height="26" Margin="10 0 10 10" Value="60"/>
-                </StackPanel>
+                    <TextBlock Grid.Row="6" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesammtpreis"/>
+                    <TextBlock Grid.Row="6" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
+                </Grid>
             </StackPanel>
-         
-
         </Grid>
     </ScrollViewer>
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Content="       2" Command="{Binding ButtonForwardChooseCustomer}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 3"/>
+            <AppBarButton Content="       3" Command="{Binding ButtonForwardChooseHouse}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 4"/>
+            <AppBarButton Content="       4" Command="{Binding ButtonForwardChoosePlot}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 5"/>
+            <AppBarButton Content="       5" Command="{Binding ButtonForwardChooseWall}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 6"/>
+            <AppBarButton Content="       6" Command="{Binding ButtonForwardChooseRoof}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 7"/>
+            <AppBarButton Content="       8" Command="{Binding ButtonForwardChooseEnergie}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 8"/>
+            <AppBarButton Content="       9" Command="{Binding ButtonForwardChooseAddition}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 9"/>
+            <AppBarButton Content="      10" Command="{Binding ButtonForwardChooseOutsideArea}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 10"/>
+            <AppBarButton Icon="Accept" Command="{Binding ButtonForwardSummary}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Übersicht"/>
+
+            <AppBarButton Command="{Binding ButtonForwardChooseEnergie}" Icon="Forward" Label="Weiter"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

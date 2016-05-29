@@ -827,12 +827,19 @@ namespace Fallstudie.ViewModel
             set { noteStep4 = value; OnChange("NoteStep4"); }
         }
 
-        private string noteStep5;
+        private string noteStep5_1;
 
-        public string NoteStep5
+        public string NoteStep5_1
         {
-            get { return noteStep5; }
-            set { noteStep5 = value; OnChange("NoteStep5"); }
+            get { return noteStep5_1; }
+            set { noteStep5_1 = value; OnChange("NoteStep5_1"); }
+        }
+        private string noteStep5_2;
+
+        public string NoteStep5_2
+        {
+            get { return noteStep5_2; }
+            set { noteStep5_2 = value; OnChange("NoteStep5_2"); }
         }
 
         private string noteStep6;
@@ -843,12 +850,19 @@ namespace Fallstudie.ViewModel
             set { noteStep6 = value; OnChange("NoteStep6"); }
         }
 
-        private string noteStep7;
+        private string noteStep7_1;
 
-        public string NoteStep7
+        public string NoteStep7_1
         {
-            get { return noteStep7; }
-            set { noteStep7 = value; OnChange("NoteStep7"); }
+            get { return noteStep7_1; }
+            set { noteStep7_1 = value; OnChange("NoteStep7_1"); }
+        }
+        private string noteStep7_2;
+
+        public string NoteStep7_2
+        {
+            get { return noteStep7_2; }
+            set { noteStep7_2 = value; OnChange("NoteStep7_2"); }
         }
 
         private string noteStep8;
@@ -867,12 +881,19 @@ namespace Fallstudie.ViewModel
             set { noteStep9 = value; OnChange("NoteStep9"); }
         }
 
-        private string noteStep10;
+        private string noteStep10_1;
 
-        public string NoteStep10
+        public string NoteStep10_1
         {
-            get { return noteStep10; }
-            set { noteStep10 = value; OnChange("NoteStep10"); }
+            get { return noteStep10_1; }
+            set { noteStep10_1 = value; OnChange("NoteStep10_1"); }
+        }
+        private string noteStep10_2;
+
+        public string NoteStep10_2
+        {
+            get { return noteStep10_2; }
+            set { noteStep10_2 = value; OnChange("NoteStep10_2"); }
         }
         #endregion
 
@@ -1666,7 +1687,7 @@ namespace Fallstudie.ViewModel
                     houseconfig_id = configId.houseconfig_id,
                     attribute_id = SelectedInsideWall.Id,
                     amount = 1,
-                    special = NoteStep5,
+                    special = NoteStep5_2,
                     modifieddate = ConvertDateTime(DateTime.Now)
                 });
                 //OutsideWall
@@ -1675,7 +1696,7 @@ namespace Fallstudie.ViewModel
                     houseconfig_id = configId.houseconfig_id,
                     attribute_id = SelectedOutsideWall.Id,
                     amount = 1,
-                    special = "",
+                    special = NoteStep5_1,
                     modifieddate = ConvertDateTime(DateTime.Now)
                 });
                 //RoofType
@@ -1702,7 +1723,7 @@ namespace Fallstudie.ViewModel
                     houseconfig_id = configId.houseconfig_id,
                     attribute_id = SelectedDoor.Id,
                     amount = 1,
-                    special = NoteStep7,
+                    special = NoteStep7_2,
                     modifieddate = ConvertDateTime(DateTime.Now)
                 });
                 //Window
@@ -1711,7 +1732,7 @@ namespace Fallstudie.ViewModel
                     houseconfig_id = configId.houseconfig_id,
                     attribute_id = SelectedWindow.Id,
                     amount = 1,
-                    special = "",
+                    special = NoteStep7_1,
                     modifieddate = ConvertDateTime(DateTime.Now)
                 });
                 //EnergySystem
@@ -1738,7 +1759,7 @@ namespace Fallstudie.ViewModel
                     houseconfig_id = configId.houseconfig_id,
                     attribute_id = SelectedPool.Id,
                     amount = 1,
-                    special = NoteStep10,
+                    special = NoteStep10_1,
                     modifieddate = ConvertDateTime(DateTime.Now)
                 });
                 //Fence
@@ -1747,7 +1768,7 @@ namespace Fallstudie.ViewModel
                     houseconfig_id = configId.houseconfig_id,
                     attribute_id = SelectedFence.Id,
                     amount = 1,
-                    special = "",
+                    special = NoteStep10_2,
                     modifieddate = ConvertDateTime(DateTime.Now)
                 });
                 //Chimney

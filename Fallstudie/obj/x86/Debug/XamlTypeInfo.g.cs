@@ -156,7 +156,7 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[30];
+            _typeNameTable = new string[31];
             _typeNameTable[0] = "Fallstudie.ViewModel.ViewModelLocator";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "Fallstudie.ViewModel.MainViewModel";
@@ -180,15 +180,16 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
             _typeNameTable[20] = "Fallstudie.Pages.KundenPages.CreateCustomerPage";
             _typeNameTable[21] = "Fallstudie.Pages.pdfErstellenPage";
             _typeNameTable[22] = "Fallstudie.Pages.ProjektePage";
-            _typeNameTable[23] = "Fallstudie.Converter.DateTimeConverter";
-            _typeNameTable[24] = "Fallstudie.Converter.TimeSpanConverter";
-            _typeNameTable[25] = "Fallstudie.Converter.StringFormatter";
-            _typeNameTable[26] = "Fallstudie.Pages.TerminePage";
-            _typeNameTable[27] = "Fallstudie.Pages.TerminePages.NeuTermin";
-            _typeNameTable[28] = "Fallstudie.Pages.TerminePages.TerminBearbeiten";
-            _typeNameTable[29] = "Fallstudie.StartPage";
+            _typeNameTable[23] = "Fallstudie.Pages.Startseite";
+            _typeNameTable[24] = "Fallstudie.Converter.DateTimeConverter";
+            _typeNameTable[25] = "Fallstudie.Converter.TimeSpanConverter";
+            _typeNameTable[26] = "Fallstudie.Converter.StringFormatter";
+            _typeNameTable[27] = "Fallstudie.Pages.TerminePage";
+            _typeNameTable[28] = "Fallstudie.Pages.TerminePages.NeuTermin";
+            _typeNameTable[29] = "Fallstudie.Pages.TerminePages.TerminBearbeiten";
+            _typeNameTable[30] = "Fallstudie.StartPage";
 
-            _typeTable = new global::System.Type[30];
+            _typeTable = new global::System.Type[31];
             _typeTable[0] = typeof(global::Fallstudie.ViewModel.ViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::Fallstudie.ViewModel.MainViewModel);
@@ -212,13 +213,14 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
             _typeTable[20] = typeof(global::Fallstudie.Pages.KundenPages.CreateCustomerPage);
             _typeTable[21] = typeof(global::Fallstudie.Pages.pdfErstellenPage);
             _typeTable[22] = typeof(global::Fallstudie.Pages.ProjektePage);
-            _typeTable[23] = typeof(global::Fallstudie.Converter.DateTimeConverter);
-            _typeTable[24] = typeof(global::Fallstudie.Converter.TimeSpanConverter);
-            _typeTable[25] = typeof(global::Fallstudie.Converter.StringFormatter);
-            _typeTable[26] = typeof(global::Fallstudie.Pages.TerminePage);
-            _typeTable[27] = typeof(global::Fallstudie.Pages.TerminePages.NeuTermin);
-            _typeTable[28] = typeof(global::Fallstudie.Pages.TerminePages.TerminBearbeiten);
-            _typeTable[29] = typeof(global::Fallstudie.StartPage);
+            _typeTable[23] = typeof(global::Fallstudie.Pages.Startseite);
+            _typeTable[24] = typeof(global::Fallstudie.Converter.DateTimeConverter);
+            _typeTable[25] = typeof(global::Fallstudie.Converter.TimeSpanConverter);
+            _typeTable[26] = typeof(global::Fallstudie.Converter.StringFormatter);
+            _typeTable[27] = typeof(global::Fallstudie.Pages.TerminePage);
+            _typeTable[28] = typeof(global::Fallstudie.Pages.TerminePages.NeuTermin);
+            _typeTable[29] = typeof(global::Fallstudie.Pages.TerminePages.TerminBearbeiten);
+            _typeTable[30] = typeof(global::Fallstudie.StartPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -273,13 +275,14 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
         private object Activate_20_CreateCustomerPage() { return new global::Fallstudie.Pages.KundenPages.CreateCustomerPage(); }
         private object Activate_21_pdfErstellenPage() { return new global::Fallstudie.Pages.pdfErstellenPage(); }
         private object Activate_22_ProjektePage() { return new global::Fallstudie.Pages.ProjektePage(); }
-        private object Activate_23_DateTimeConverter() { return new global::Fallstudie.Converter.DateTimeConverter(); }
-        private object Activate_24_TimeSpanConverter() { return new global::Fallstudie.Converter.TimeSpanConverter(); }
-        private object Activate_25_StringFormatter() { return new global::Fallstudie.Converter.StringFormatter(); }
-        private object Activate_26_TerminePage() { return new global::Fallstudie.Pages.TerminePage(); }
-        private object Activate_27_NeuTermin() { return new global::Fallstudie.Pages.TerminePages.NeuTermin(); }
-        private object Activate_28_TerminBearbeiten() { return new global::Fallstudie.Pages.TerminePages.TerminBearbeiten(); }
-        private object Activate_29_StartPage() { return new global::Fallstudie.StartPage(); }
+        private object Activate_23_Startseite() { return new global::Fallstudie.Pages.Startseite(); }
+        private object Activate_24_DateTimeConverter() { return new global::Fallstudie.Converter.DateTimeConverter(); }
+        private object Activate_25_TimeSpanConverter() { return new global::Fallstudie.Converter.TimeSpanConverter(); }
+        private object Activate_26_StringFormatter() { return new global::Fallstudie.Converter.StringFormatter(); }
+        private object Activate_27_TerminePage() { return new global::Fallstudie.Pages.TerminePage(); }
+        private object Activate_28_NeuTermin() { return new global::Fallstudie.Pages.TerminePages.NeuTermin(); }
+        private object Activate_29_TerminBearbeiten() { return new global::Fallstudie.Pages.TerminePages.TerminBearbeiten(); }
+        private object Activate_30_StartPage() { return new global::Fallstudie.StartPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -444,51 +447,58 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 23:   //  Fallstudie.Converter.DateTimeConverter
+            case 23:   //  Fallstudie.Pages.Startseite
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_23_Startseite;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 24:   //  Fallstudie.Converter.DateTimeConverter
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_23_DateTimeConverter;
+                userType.Activator = Activate_24_DateTimeConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 24:   //  Fallstudie.Converter.TimeSpanConverter
+            case 25:   //  Fallstudie.Converter.TimeSpanConverter
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_24_TimeSpanConverter;
+                userType.Activator = Activate_25_TimeSpanConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 25:   //  Fallstudie.Converter.StringFormatter
+            case 26:   //  Fallstudie.Converter.StringFormatter
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_25_StringFormatter;
+                userType.Activator = Activate_26_StringFormatter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 26:   //  Fallstudie.Pages.TerminePage
+            case 27:   //  Fallstudie.Pages.TerminePage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_26_TerminePage;
+                userType.Activator = Activate_27_TerminePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 27:   //  Fallstudie.Pages.TerminePages.NeuTermin
+            case 28:   //  Fallstudie.Pages.TerminePages.NeuTermin
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_27_NeuTermin;
+                userType.Activator = Activate_28_NeuTermin;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 28:   //  Fallstudie.Pages.TerminePages.TerminBearbeiten
+            case 29:   //  Fallstudie.Pages.TerminePages.TerminBearbeiten
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_28_TerminBearbeiten;
+                userType.Activator = Activate_29_TerminBearbeiten;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 29:   //  Fallstudie.StartPage
+            case 30:   //  Fallstudie.StartPage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_29_StartPage;
+                userType.Activator = Activate_30_StartPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

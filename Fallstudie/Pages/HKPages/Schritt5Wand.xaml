@@ -10,126 +10,167 @@
     >
     <ScrollViewer>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="49*" />
-                <RowDefinition Height="622*"/>
-                <RowDefinition Height="622*"/>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0">
-                <TextBlock Text="{Binding SelectedCustomerr.Name}"></TextBlock>
-            </StackPanel>
-
-            <!--Außenwände-->
-            <StackPanel Grid.Row="1" Name="StackSchritt5_Aussenwand" Orientation="Vertical">
-                <Border Background="#50BFB4">
-                    <TextBlock Width="100" FontWeight="Bold" Text="Außenwände"></TextBlock>
+            <StackPanel Orientation="Vertical" Margin="0 0 0 180">
+                <Image Source="/Assets/steep5.png" Height="50"/>
+                <Border Background="#0091FF">
+                    <TextBlock Text="Wändeauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
-                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <ListView ItemsSource="{Binding ListOutsideWall}" 
+                <Border Background="#45BAFF">
+                    <TextBlock Text="Wählen Sie die Außen -und Innenwände aus." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                </Border>
+                <Border Background="#45BAFF">
+                    <TextBlock Text="Sie können ebenfalls die Farbe auswählen." Padding="3" TextAlignment="Left" FontSize="12" Foreground="White"/>
+                </Border>
+                <Border>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                            <GradientStop Color="#FF33D5E8" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock Text="Außenwand" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                </Border>
+
+                <!--Außenwände-->
+                <StackPanel Margin="10" Name="StackSchritt5_Aussenwand" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <ListView ItemsSource="{Binding ListOutsideWall}" 
                               SelectedItem="{Binding SelectedOutsideWall, Mode=TwoWay}"
                               IsItemClickEnabled="False" SelectionMode="Single"
                               IsSynchronizedWithCurrentItem="False"
                               Height="Auto"
                               >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Description}"></TextBlock>
-                                    <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-            
-                <!--Farben-->
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock TextAlignment="Center" Text="{Binding Description}"></TextBlock>
+                                        <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
+                                        <TextBlock TextAlignment="Right" FontWeight="Medium" Text="{Binding PriceFormat}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                    <ListView ItemsSource="{Binding ListColorOutsideWall}" 
+                        <!--Farben-->
+
+                        <ListView ItemsSource="{Binding ListColorOutsideWall}" 
                               SelectedItem="{Binding SelectedColorOutsideWall, Mode=TwoWay}"
                               IsItemClickEnabled="False" SelectionMode="Single"
                               IsSynchronizedWithCurrentItem="False"
                               Height="Auto"
                               >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Rectangle Height="45" Width="45" Fill="{Binding Color}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle Height="45" Width="45" Fill="{Binding Color}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                    <TextBox Margin="10" Text="{Binding NoteStep5_1, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
                 </StackPanel>
-            </StackPanel>
 
-            <!--Innenwände-->
-            <StackPanel Grid.Row="2" Name="StackSchritt5_Innenwand" Orientation="Vertical">
-                <Border Background="#50BFB4">
-                    <TextBlock Width="100" FontWeight="Bold" Text="Innenwände"></TextBlock>
+                <Border>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                            <GradientStop Color="#FF33D5E8" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock Text="Innenwand" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
                 </Border>
-                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <ListView ItemsSource="{Binding ListInsideWall}" 
+                <!--Innenwände-->
+                <StackPanel Margin="10" Name="StackSchritt5_Innenwand" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <ListView ItemsSource="{Binding ListInsideWall}" 
                               SelectedItem="{Binding SelectedInsideWall, Mode=TwoWay}"
                               IsItemClickEnabled="False" SelectionMode="Single"
                               IsSynchronizedWithCurrentItem="False"
                               Height="Auto"
                               >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Description}"></TextBlock>
-                                    <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock TextAlignment="Center" Text="{Binding Description}"></TextBlock>
+                                        <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
+                                        <TextBlock TextAlignment="Right" FontWeight="Medium" Text="{Binding PriceFormat}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
-                <!--Farben-->
-                   <ListView ItemsSource="{Binding ListColorInsideWall}" 
+                        <!--Farben-->
+                        <ListView ItemsSource="{Binding ListColorInsideWall}" 
                               SelectedItem="{Binding SelectedColorInsideWall, Mode=TwoWay}"
                               IsItemClickEnabled="False" SelectionMode="Single"
                               IsSynchronizedWithCurrentItem="False"
                               Height="Auto"
                               >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Rectangle Height="45" Width="45" Fill="{Binding Color}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle Height="45" Width="45" Fill="{Binding Color}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Margin="10">
+                    <TextBox Text="{Binding NoteStep5_2, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
                 </StackPanel>
             </StackPanel>
+            <StackPanel Background="#B2AFAD" VerticalAlignment="Bottom">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                    </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="3">
-                <StackPanel  >
-                        <TextBlock Text="Außenwand"/>
-                        <TextBlock Text="{Binding SelectedOutsideWall.Description, Mode=TwoWay}"/>
-                        <TextBlock Text="{Binding SelectedColorOutsideWall.Value, Mode=TwoWay}"/>
-                        <TextBlock Text="{Binding SelectedOutsideWall.Price, Mode=TwoWay}"/>
-                    
-                        <TextBlock Text="Innenwand"/>
-                        <TextBlock Text="{Binding SelectedInsideWall.Description, Mode=TwoWay}"/>
-                        <TextBlock Text="{Binding SelectedColorInsideWall.Value, Mode=TwoWay}"/>
-                        <TextBlock Text="{Binding SelectedInsideWall.Price, Mode=TwoWay}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Außenwand"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedOutsideWall.Description}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Farbe"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedColorOutsideWall.Value}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedOutsideWall.PriceFormat}"/>
 
-                        <TextBlock Text="{Binding TotalPrice}"/>
-                    <TextBox Text="{Binding NoteStep5, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseRoof}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseCustomer}" FontFamily="Arial" FontSize="36" Content="2" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseHouse}" FontFamily="Arial" FontSize="36" Content="3" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChoosePlot}" FontFamily="Arial" FontSize="36" Content="4" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseRoof}" FontFamily="Arial" FontSize="36" Content="6" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseWindowsDoors}" FontFamily="Arial" FontSize="36" Content="7" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseEnergie}" FontFamily="Arial" FontSize="36" Content="8" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseAddition}" FontFamily="Arial" FontSize="36" Content="9" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseOutsideArea}" FontFamily="Arial" FontSize="36" Content="10" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardSummary}" FontFamily="Arial" FontSize="36" Content="11" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                </StackPanel>
-                <StackPanel >
-                    <ProgressBar Height="26" Margin="10 0 10 10" Value="40"/>
-                </StackPanel>
+                    <TextBlock Grid.Row="3" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Innenwand"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedInsideWall.Description}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Farbe"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedColorInsideWall.Value}"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedInsideWall.PriceFormat}"/>
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesammtpreis"/>
+                    <TextBlock Grid.Row="6" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
+                </Grid>
             </StackPanel>
-           
         </Grid>
     </ScrollViewer>
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Content="       2" Command="{Binding ButtonForwardChooseCustomer}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 3"/>
+            <AppBarButton Content="       3" Command="{Binding ButtonForwardChooseHouse}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 4"/>
+            <AppBarButton Content="       4" Command="{Binding ButtonForwardChoosePlot}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 5"/>
+            <AppBarButton Content="       6" Command="{Binding ButtonForwardChooseRoof}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 6"/>
+            <AppBarButton Content="       7" Command="{Binding ButtonForwardChooseWindowsDoors}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 7"/>
+            <AppBarButton Content="       8" Command="{Binding ButtonForwardChooseEnergie}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 8"/>
+            <AppBarButton Content="       9" Command="{Binding ButtonForwardChooseAddition}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 9"/>
+            <AppBarButton Content="      10" Command="{Binding ButtonForwardChooseOutsideArea}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 10"/>
+            <AppBarButton Icon="Accept" Command="{Binding ButtonForwardSummary}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Übersicht"/>
+
+            <AppBarButton Command="{Binding ButtonForwardChooseRoof}" Icon="Forward" Label="Weiter"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

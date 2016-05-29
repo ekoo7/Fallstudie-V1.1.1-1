@@ -23,7 +23,7 @@
                     Content="&#xE700;"
                     Command="{Binding MenuButtonClicked}" Click="MenueButton_Click"
                     />
-
+            
             <Button Name="BackButton"
                     RelativePanel.RightOf="MenueButton"
                     FontFamily="Segoe MDL2 Assets"
@@ -44,11 +44,18 @@
             <SplitView.Pane>
 
                 <ListBox Name="ListBoxMenu" SelectionMode="Single" SelectionChanged="ListBoxMenu_SelectionChanged">
-                    <ListBoxItem Name="HausKonfigurator">
+                    <ListBoxItem Name="Startseite">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE913;"/>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE8FC;"/>
                             <!-- ohne baum E80F-->
-                            <TextBlock FontSize="24" Text="Haus Konfigurator" Margin="20,0,0,0"/>
+                            <TextBlock FontSize="24" Text="Startseite" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="HausKonfigurator" Background="#0091FF">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="White" FontSize="36" Text="&#xE913;"/>
+                            <!-- ohne baum E80F-->
+                            <TextBlock FontSize="24" Text="Haus Konfigurator" Foreground="White" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="Kunden">

@@ -183,6 +183,9 @@
     <Compile Include="Pages\ProjektePage.xaml.cs">
       <DependentUpon>ProjektePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Startseite.xaml.cs">
+      <DependentUpon>Startseite.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TerminePage.xaml.cs">
       <DependentUpon>TerminePage.xaml</DependentUpon>
     </Compile>
@@ -208,6 +211,17 @@
     <None Include="Fallstudie_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\steep1.png" />
+    <Content Include="Assets\steep10.png" />
+    <Content Include="Assets\steep11.png" />
+    <Content Include="Assets\steep2.png" />
+    <Content Include="Assets\steep3.png" />
+    <Content Include="Assets\steep4.png" />
+    <Content Include="Assets\steep5.png" />
+    <Content Include="Assets\steep6.png" />
+    <Content Include="Assets\steep7.png" />
+    <Content Include="Assets\steep8.png" />
+    <Content Include="Assets\steep9.png" />
     <Content Include="Bilder\Logo\DreamHouse_lang.png" />
     <Content Include="Bilder\Logo\DreamHouse_quadr.png" />
     <Content Include="Properties\Default.rd.xml" />
@@ -289,6 +303,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ProjektePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Startseite.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

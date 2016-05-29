@@ -11,81 +11,111 @@
 
     <ScrollViewer>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="49*" />
-                <RowDefinition Height="622*"/>
-                <RowDefinition Height="622*"/>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <StackPanel Grid.Row="0">
-                <TextBlock Text="{Binding SelectedCustomerr.Name}"></TextBlock>
-
-            </StackPanel>
-
-            <StackPanel Grid.Row="1" Name="StackSchritt9Steckdosen" Orientation="Vertical" HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Elektrische Installation"></TextBlock>
-
-                    <TextBlock Text="Steckdosen/Raum"/>
-                    <ComboBox ItemsSource="{Binding NumberSockets}" SelectedItem="{Binding SelectedSocket, Mode=TwoWay}">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Description}"/>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-            </StackPanel>
-
-            <!--Kamin-->
-            <StackPanel Grid.Row="2" Name="StackSchritt9_Kamin" Orientation="Vertical">
-                <Border Background="#50BFB4">
-                    <TextBlock Width="100" FontWeight="Bold" Text="Typ"></TextBlock>
+            <StackPanel Orientation="Vertical" Margin="0 0 0 100">
+                <Image Source="/Assets/steep9.png" Height="50"/>
+                <Border Background="#0091FF">
+                    <TextBlock Text="Zusätzliche Merkmale" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
-                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <ListView ItemsSource="{Binding ListChimneys}" 
+                <Border Background="#45BAFF">
+                    <TextBlock Text="Sie können hier zusätzliche Merkmalse zu Ihrem Haus auswählen." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                </Border>
+                <Border>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                            <GradientStop Color="#FF33D5E8" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock Text="Elektronische Installation" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                </Border>
+
+                <StackPanel Margin="10" Name="StackSchritt9Steckdosen" Orientation="Vertical" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBlock FontSize="20" Text="Steckdosen/Raum"/>
+                        <ComboBox Margin="10 0 0 0" ItemsSource="{Binding NumberSockets}" SelectedItem="{Binding SelectedSocket, Mode=TwoWay}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Description}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+
+                <!--Kamin-->
+                <Border>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                            <GradientStop Color="#FF33D5E8" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock Text="Kamin" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                </Border>
+                <StackPanel Margin="10" Name="StackSchritt9_Kamin" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <ListView ItemsSource="{Binding ListChimneys}" 
                           SelectedItem="{Binding SelectedChimney, Mode=TwoWay}"
                           IsItemClickEnabled="False" SelectionMode="Single"
                           IsSynchronizedWithCurrentItem="False"
-                          Height="Auto"
-                          >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Description}"></TextBlock>
-                                    <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                          Height="Auto">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock TextAlignment="Center" Text="{Binding Description}"></TextBlock>
+                                        <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
+                                        <TextBlock TextAlignment="Right" FontWeight="Medium" Text="{Binding PriceFormat}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
 
-            <StackPanel Grid.Row="3">
-                <StackPanel  >
-                    <TextBlock Text="{Binding SelectedChimney.Description, Mode=TwoWay}"/>
-                    <TextBlock Text="{Binding SelectedChimney.Price, Mode=TwoWay}"/>
-                    <TextBlock Text="{Binding TotalPrice}"/>
+                <StackPanel Margin="10">
                     <TextBox Text="{Binding NoteStep9, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
                 </StackPanel>
+            </StackPanel>
+            <StackPanel Background="#B2AFAD" VerticalAlignment="Bottom">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                    </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Horizontal">
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseOutsideArea}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseCustomer}" FontFamily="Arial" FontSize="36" Content="2" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseHouse}" FontFamily="Arial" FontSize="36" Content="3" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChoosePlot}" FontFamily="Arial" FontSize="36" Content="4" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseWall}" FontFamily="Arial" FontSize="36" Content="5" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseRoof}" FontFamily="Arial" FontSize="36" Content="6" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseWindowsDoors}" FontFamily="Arial" FontSize="36" Content="7" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseEnergie}" FontFamily="Arial" FontSize="36" Content="8" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseOutsideArea}" FontFamily="Arial" FontSize="36" Content="10" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardSummary}" FontFamily="Arial" FontSize="36" Content="11" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                </StackPanel>
-                <StackPanel >
-                    <ProgressBar Height="26" Margin="10 0 10 10" Value="80"/>
-                </StackPanel>
+                    <TextBlock Grid.Row="0" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Kamin"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedChimney.Description}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedChimney.PriceFormat}"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesammtpreis"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
+                </Grid>
             </StackPanel>
         </Grid>
     </ScrollViewer>
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Content="       2" Command="{Binding ButtonForwardChooseCustomer}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 3"/>
+            <AppBarButton Content="       3" Command="{Binding ButtonForwardChooseHouse}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 4"/>
+            <AppBarButton Content="       4" Command="{Binding ButtonForwardChoosePlot}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 5"/>
+            <AppBarButton Content="       5" Command="{Binding ButtonForwardChooseWall}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 6"/>
+            <AppBarButton Content="       6" Command="{Binding ButtonForwardChooseRoof}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 7"/>
+            <AppBarButton Content="       7" Command="{Binding ButtonForwardChooseWindowsDoors}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 8"/>
+            <AppBarButton Content="       8" Command="{Binding ButtonForwardChooseEnergie}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 9"/>
+            <AppBarButton Content="      10" Command="{Binding ButtonForwardChooseOutsideArea}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 10"/>
+            <AppBarButton Icon="Accept" Command="{Binding ButtonForwardSummary}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Übersicht"/>
+
+            <AppBarButton Command="{Binding ButtonForwardChooseOutsideArea}" Icon="Forward" Label="Weiter"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

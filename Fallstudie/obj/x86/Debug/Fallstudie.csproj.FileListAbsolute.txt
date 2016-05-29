@@ -1784,3 +1784,8 @@ C:\Users\Stephan\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86
 C:\Users\Stephan\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\resources.en.resfiles.intermediate
 C:\Users\Stephan\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\GalaSoft.MvvmLight.Platform.pri.xml
 C:\Users\Stephan\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\ProjectArchitectures.txt
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Pages\Startseite.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\Startseite.g.i.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\Startseite.g.cs
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\Startseite.xaml
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\Startseite.xbf

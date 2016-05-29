@@ -30,7 +30,8 @@ namespace Fallstudie
             this.InitializeComponent();
             //damit man auf die Frame von MainPage zugreifen kann
             frame1 = MyFrame;
-            
+            MyFrame.Navigate(typeof(Pages.Startseite));
+
 
         }
 
@@ -46,13 +47,17 @@ namespace Fallstudie
         //Hier wird bestimmt welche Page im Frame angezeigt wird
         private void ListBoxMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (Startseite.IsSelected)
+            {
+                MyFrame.Navigate(typeof(Pages.Startseite));
+                closeSplitView();
+            }
             if (Kunden.IsSelected)
             {
                 //BackButton.Visibility = Visibility.Collapsed;
                 MyFrame.Navigate(typeof(Pages.KundenPage));
                 closeSplitView();
-
-
+               
             }
             if (HausKonfigurator.IsSelected)
             {

@@ -16,6 +16,7 @@ Pages\KundenPage.xbf
 Pages\KundenPages\CreateCustomerPage.xbf
 Pages\pdfErstellenPage.xbf
 Pages\ProjektePage.xbf
+Pages\Startseite.xbf
 Pages\TerminePage.xbf
 Pages\TerminePages\NeuTermin.xbf
 Pages\TerminePages\TerminBearbeiten.xbf

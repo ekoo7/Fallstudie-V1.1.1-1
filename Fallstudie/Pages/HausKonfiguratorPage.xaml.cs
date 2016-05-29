@@ -27,6 +27,5 @@ namespace Fallstudie.Pages
         {
             this.InitializeComponent();
         }
-
     }
 }

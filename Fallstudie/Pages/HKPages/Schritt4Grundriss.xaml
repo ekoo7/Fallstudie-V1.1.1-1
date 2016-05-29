@@ -9,65 +9,84 @@
     DataContext="{Binding Main, Source={StaticResource Locator}}">
     <ScrollViewer>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="49*" />
-                <RowDefinition Height="311*"/>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Margin="0 0 0 100">
+                <Image Source="/Assets/steep4.png" Height="50"/>
+                <Border Background="#0091FF">
+                    <TextBlock Text="Grundrissauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
+                </Border>
+                <Border Background="#45BAFF">
+                    <TextBlock Text="Wählen Sie die Anzahl der Stockwerke aus." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                </Border>
+                <Border Background="#45BAFF">
+                    <TextBlock Text="Sie können die Grundrisse auch selbst zeichnen." Padding="3" TextAlignment="Left" FontSize="12" Foreground="White"/>
+                </Border>
 
-            <StackPanel Grid.Row="0">
-                <TextBlock Text="{Binding SelectedCustomerr.Name}"></TextBlock>
-            
-            </StackPanel>
-
-            <StackPanel Grid.Row="1" Name="StackSchritt4" Orientation="Vertical" HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="Anzahl der Stockwerke"></TextBlock>
-                    <ComboBox ItemsSource="{Binding NumberFloors}" SelectedItem="{Binding SelectedItemFloor, Mode=TwoWay}" />
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Center">
-                <ListView ItemsSource="{Binding FloorsGroundPlot}" 
+                <StackPanel Margin="10" Name="StackSchritt4" Orientation="Vertical" HorizontalAlignment="Center">
+                    <StackPanel Padding="10" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock FontSize="20" Text="Anzahl der Stockwerke"></TextBlock>
+                        <ComboBox Margin="10 0 0 0" ItemsSource="{Binding NumberFloors}" SelectedItem="{Binding SelectedItemFloor, Mode=TwoWay}" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center">
+                        <ListView ItemsSource="{Binding FloorsGroundPlot}" 
                               SelectedItem="{Binding SelectedFloor, Mode=TwoWay}"
                               IsItemClickEnabled="False" SelectionMode="Single"
                               IsSynchronizedWithCurrentItem="False"
                               Height="Auto"
                               >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding Description}"></TextBlock>
-                                    <Image Source="{Binding SourceImage}" Width="500" Height="350"/>
-                                    <Button Content="Umriss zeichnen" Command="{Binding ButtonDrawSketch}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Description}"></TextBlock>
+                                        <Image Source="{Binding SourceImage}" Width="500" Height="350"/>
+                                        <Button Content="Umriss zeichnen" Command="{Binding ButtonDrawSketch}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
 
-            <StackPanel Grid.Row="2">
-                <StackPanel  >
-                    <TextBlock Text="{Binding SelectedFloor.Price, Mode=TwoWay}"/>
-                    <TextBlock Text="{Binding TotalPrice}"/>
+                <StackPanel Margin="10">
                     <TextBox Text="{Binding NoteStep4, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseWall}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseCustomer}" FontFamily="Arial" FontSize="36" Content="2" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseHouse}" FontFamily="Arial" FontSize="36" Content="3" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseWall}" FontFamily="Arial" FontSize="36" Content="5" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseRoof}" FontFamily="Arial" FontSize="36" Content="6" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseWindowsDoors}" FontFamily="Arial" FontSize="36" Content="7" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseEnergie}" FontFamily="Arial" FontSize="36" Content="8" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseAddition}" FontFamily="Arial" FontSize="36" Content="9" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardChooseOutsideArea}" FontFamily="Arial" FontSize="36" Content="10" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                    <Button Margin="20" Command="{Binding ButtonForwardSummary}" FontFamily="Arial" FontSize="36" Content="11" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}"/>
-                </StackPanel>
+                    </StackPanel>
+            </StackPanel>
+            <StackPanel Background="#B2AFAD" VerticalAlignment="Bottom">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                    </Grid.RowDefinitions>
 
-                <StackPanel >
-                    <ProgressBar Height="26" Margin="10 0 10 10" Value="30"/>
-                </StackPanel>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedFloor.Price}"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesammtpreis"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
+                </Grid>
             </StackPanel>
         </Grid>
     </ScrollViewer>
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Content="       2" Command="{Binding ButtonForwardChooseCustomer}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 3"/>
+            <AppBarButton Content="       3" Command="{Binding ButtonForwardChooseHouse}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 4"/>
+            <AppBarButton Content="       5" Command="{Binding ButtonForwardChooseWall}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 5"/>
+            <AppBarButton Content="       6" Command="{Binding ButtonForwardChooseRoof}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 6"/>
+            <AppBarButton Content="       7" Command="{Binding ButtonForwardChooseWindowsDoors}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 7"/>
+            <AppBarButton Content="       8" Command="{Binding ButtonForwardChooseEnergie}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 8"/>
+            <AppBarButton Content="       9" Command="{Binding ButtonForwardChooseAddition}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 9"/>
+            <AppBarButton Content="      10" Command="{Binding ButtonForwardChooseOutsideArea}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 10"/>
+            <AppBarButton Icon="Accept" Command="{Binding ButtonForwardSummary}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Übersicht"/>
+            
+            <AppBarButton Command="{Binding ButtonForwardChooseWall}" Icon="Forward" Label="Weiter"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
