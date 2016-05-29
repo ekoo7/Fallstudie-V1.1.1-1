@@ -934,7 +934,8 @@ namespace Fallstudie.ViewModel
             {
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt3GrundstückAuswahl));
-                TotalPrice = SelectedHouse.Price;
+                GetTotalPrice();
+
 
                 ImagesPlot.Clear();
 
@@ -961,8 +962,7 @@ namespace Fallstudie.ViewModel
             {
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt4Grundriss));
-                if (SelectedPlot != null)
-                    TotalPrice += SelectedPlot.Price;
+                GetTotalPrice();
 
                 NumberFloors.Clear();
 
@@ -1048,7 +1048,7 @@ namespace Fallstudie.ViewModel
             {
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt5Wand));
-                if (selectedItemFloor != NumberOfFloorDB) TotalPrice += SelectedFloor.Price;
+                GetTotalPrice();
 
                 ListOutsideWall.Clear();
                 ListColorOutsideWall.Clear();
@@ -1111,7 +1111,7 @@ namespace Fallstudie.ViewModel
         {
             if (SelectedInsideWall != null && selectedOutsideWall != null)
             {
-                TotalPrice += selectedOutsideWall.Price + selectedInsideWall.Price;
+                GetTotalPrice();
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt6Dach));
 
@@ -1148,7 +1148,7 @@ namespace Fallstudie.ViewModel
         {
             if (selectedRoofType != null && SelectedRoofMaterial != null)
             {
-                TotalPrice += selectedRoofType.Price + SelectedRoofMaterial.Price;
+                GetTotalPrice();
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt7FensterTueren));
 
@@ -1238,7 +1238,7 @@ namespace Fallstudie.ViewModel
                     ListHeatingSystem.Add(new EHSystem(item.attribute_id, item.description, item.price));
                 }
 
-                totalPrice += SelectedWindow.Price + SelectedDoor.Price;
+                GetTotalPrice();
             }
             else
             {
@@ -1254,7 +1254,7 @@ namespace Fallstudie.ViewModel
             {
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt9Zusatz));
-                totalPrice += SelectedEnergySystem.Price + selectedHeatingSystem.Price;
+                GetTotalPrice();
 
                 NumberSockets.Clear();
                 ListChimneys.Clear();
@@ -1342,7 +1342,7 @@ namespace Fallstudie.ViewModel
                     ListColorFence.Add(new ColorPalette(item.attribute_id, r, g, b));
                 }
 
-                TotalPrice += selectedChimney.Price;
+                GetTotalPrice();
             }
             else
             {
@@ -1396,6 +1396,7 @@ namespace Fallstudie.ViewModel
                         Fence = selectedFence,
                         FenceColor = selectedColorFence
                     };
+                    GetTotalPrice();
                     ButtonIsVisible = "Visible";
                 }
             }
@@ -1475,6 +1476,25 @@ namespace Fallstudie.ViewModel
         private void ButtonDrawSketchMethod()
         {
             AsynchMethod();
+        }
+        private void GetTotalPrice()
+        {
+            TotalPrice = 0;
+            TotalPrice += SelectedHouse != null ? SelectedHouse.Price : 0;
+            TotalPrice += SelectedPlot != null ? SelectedPlot.Price : 0;
+            //TODO: Grudnriss fehlt
+            TotalPrice += SelectedOutsideWall != null ? SelectedOutsideWall.Price : 0;
+            TotalPrice += SelectedInsideWall != null ? SelectedInsideWall.Price : 0;
+            TotalPrice += SelectedRoofType != null ? SelectedRoofType.Price : 0;
+            TotalPrice += SelectedRoofMaterial != null ? SelectedRoofMaterial.Price : 0;
+            TotalPrice += SelectedWindow != null ? SelectedWindow.Price : 0;
+            TotalPrice += SelectedDoor != null ? SelectedWindow.Price : 0;
+            TotalPrice += selectedEnergySystem != null ? selectedEnergySystem.Price : 0;
+            TotalPrice += SelectedHeatingSystem != null ? SelectedHeatingSystem.Price : 0;
+            TotalPrice += SelectedChimney != null ? SelectedChimney.Price : 0;
+            TotalPrice += SelectedPool != null ? SelectedPool.Price : 0;
+            TotalPrice += SelectedFence != null ? SelectedFence.Price : 0;
+
         }
         #endregion
 
