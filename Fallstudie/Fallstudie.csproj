@@ -141,6 +141,9 @@
     <Compile Include="Pages\HausKonfiguratorPage.xaml.cs">
       <DependentUpon>HausKonfiguratorPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HKPages\GrundrissZeichnen.xaml.cs">
+      <DependentUpon>GrundrissZeichnen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HKPages\Schritt10Aussenbereiche.xaml.cs">
       <DependentUpon>Schritt10Aussenbereiche.xaml</DependentUpon>
     </Compile>
@@ -211,6 +214,11 @@
     <None Include="Fallstudie_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\icons\eraser.png" />
+    <Content Include="Assets\icons\pen.png" />
+    <Content Include="Assets\icons\pen1.png" />
+    <Content Include="Assets\icons\pen2.png" />
+    <Content Include="Assets\icons\pen3.png" />
     <Content Include="Assets\steep1.png" />
     <Content Include="Assets\steep10.png" />
     <Content Include="Assets\steep11.png" />
@@ -247,6 +255,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\HausKonfiguratorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HKPages\GrundrissZeichnen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

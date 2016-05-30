@@ -16,6 +16,18 @@
     <RootPropertyPathName Name="NumbProjects" />
     <RootPropertyPathName Name="ButtonForwardChooseCustomer" />
     <RootPropertyPathName Name="ButtonForwardChooseCustomerVisibility" />
+    <RootPropertyPathName Name="ButtonCancelScetch" />
+    <RootPropertyPathName Name="ButtonSaveScetch" />
+    <RootPropertyPathName Name="ButtonDeleteScetch" />
+    <RootPropertyPathName Name="ButtonEraser" />
+    <RootPropertyPathName Name="ButtonPen" />
+    <RootPropertyPathName Name="ButtonColorBlack" />
+    <RootPropertyPathName Name="ScetchesColorVisibility" />
+    <RootPropertyPathName Name="ButtonColorWhite" />
+    <RootPropertyPathName Name="ButtonColorRed" />
+    <RootPropertyPathName Name="ButtonPenHardnessDegree5" />
+    <RootPropertyPathName Name="ButtonPenHardnessDegree3" />
+    <RootPropertyPathName Name="ButtonPenHardnessDegree1" />
     <RootPropertyPathName Name="TotalPrice" />
     <RootPropertyPathName Name="SelectedFence" />
     <RootPropertyPathName Name="PriceFormat" />
@@ -303,6 +315,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
       <RootProperty Name="Background" />
       <RootProperty Name="Child" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
       <RootProperty Name="ItemsSource" />
@@ -322,17 +335,33 @@
       <RootProperty Name="HorizontalContentAlignment" />
       <RootProperty Name="Content" />
       <RootProperty Name="PrimaryCommands" />
+      <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
       <RootProperty Name="Command" />
       <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Background" />
       <RootProperty Name="Content" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Fallstudie.Pages.HausKonfiguratorPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.InkCanvas">
+      <RootProperty Name="Height" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarSeparator">
+      <RootProperty Name="Visibility" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.BitmapIcon">
+      <RootProperty Name="UriSource" />
+      <RootProperty Name="Margin" />
+    </RootType>
+    <RootType FullName="Fallstudie.Pages.HKPages.GrundrissZeichnen" />
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />

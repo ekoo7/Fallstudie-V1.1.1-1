@@ -2,6 +2,7 @@ App.xbf
 Login.xbf
 MainPage.xbf
 Pages\HausKonfiguratorPage.xbf
+Pages\HKPages\GrundrissZeichnen.xbf
 Pages\HKPages\Schritt10Aussenbereiche.xbf
 Pages\HKPages\Schritt2HausAuswahl.xbf
 Pages\HKPages\Schritt3Grundstueck.xbf

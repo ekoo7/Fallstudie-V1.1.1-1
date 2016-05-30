@@ -1,5 +1,10 @@
 WinMetadata\Windows.winmd
 ApplicationInsights.config
+Assets\icons\eraser.png
+Assets\icons\pen.png
+Assets\icons\pen1.png
+Assets\icons\pen2.png
+Assets\icons\pen3.png
 Assets\LockScreenLogo.scale-200.png
 Assets\SplashScreen.scale-200.png
 Assets\Square150x150Logo.scale-200.png

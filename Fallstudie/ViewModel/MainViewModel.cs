@@ -33,6 +33,7 @@ using Windows.System.Threading;
 using System.Threading;
 using Windows.UI.Xaml;
 using Windows.Foundation;
+using Windows.UI.Input.Inking;
 
 namespace Fallstudie.ViewModel
 {
@@ -904,7 +905,6 @@ namespace Fallstudie.ViewModel
 
         #endregion
 
-
         #region ForwardButtons
 
         //Hier wird weitergeleitet auf Schritt 2
@@ -1526,10 +1526,7 @@ namespace Fallstudie.ViewModel
             stackPanelS2 = Pages.HKPages.Schritt2HausAuswahl.StackObjectSchritt2.GetObject();
         }*/
 
-        private void ButtonDrawSketchMethod()
-        {
-            AsynchMethod();
-        }
+
         private void GetTotalPrice()
         {
             TotalPrice = 0;
@@ -1583,8 +1580,6 @@ namespace Fallstudie.ViewModel
             }
         }
         #endregion
-
-
 
         #region SQL Befehle
 
@@ -2037,7 +2032,157 @@ namespace Fallstudie.ViewModel
 
         #endregion
 
+        #region DrawScetches
+        public RelayCommand ButtonSaveScetch { get; set; }
+        public RelayCommand ButtonPen { get; set; }
+        public RelayCommand ButtonEraser { get; set; }
+        public RelayCommand ButtonColorRed { get; set; }
+        public RelayCommand ButtonColorWhite { get; set; }
+        public RelayCommand ButtonColorBlack { get; set; }
+        public RelayCommand ButtonPenHardnessDegree1 { get; set; }
+        public RelayCommand ButtonPenHardnessDegree3 { get; set; }
+        public RelayCommand ButtonPenHardnessDegree5 { get; set; }
+        public RelayCommand ButtonDeleteScetch { get; set; }
+        public RelayCommand ButtonCancelScetch { get; set; }
 
+        private string scetchesColorVisibility = "Collapsed";
+        public string ScetchesColorVisibility
+        {
+            get { return scetchesColorVisibility; }
+            set { scetchesColorVisibility = value; OnChange("ScetchesColorVisibility"); }
+        }
+
+
+        InkCanvas canvas;
+        InkPresenter myPresenter;
+        private void ButtonDrawSketchMethod()
+        {
+            GetFrame();
+            a.Navigate(typeof(Pages.HKPages.GrundrissZeichnen));
+            ButtonSaveScetch = new RelayCommand(ButtonSaveScetchMethod);
+            ButtonPen = new RelayCommand(ButtonPenMethod);
+            ButtonEraser = new RelayCommand(ButtonEraserMethod);
+            ButtonColorRed = new RelayCommand(ButtonColorRedMethod);
+            ButtonColorWhite = new RelayCommand(ButtonColorWhiteMethod);
+            ButtonColorBlack = new RelayCommand(ButtonColorBlackMethod);
+            ButtonPenHardnessDegree1 = new RelayCommand(ButtonPenHardnessDegree1Method);
+            ButtonPenHardnessDegree3 = new RelayCommand(ButtonPenHardnessDegree3Method);
+            ButtonPenHardnessDegree5 = new RelayCommand(ButtonPenHardnessDegree5Method);
+            ButtonDeleteScetch = new RelayCommand(ButtonDeleteScetchMethod);
+            ButtonCancelScetch = new RelayCommand(ButtonCancelScetchMethod);
+
+
+            canvas = Pages.HKPages.GrundrissZeichnen.InkCanvasObject.GetInkCanvasObject();
+            
+            myPresenter = canvas.InkPresenter;
+            myPresenter.InputDeviceTypes = Windows.UI.Core.CoreInputDeviceTypes.Mouse | Windows.UI.Core.CoreInputDeviceTypes.Pen;
+            
+        }
+
+        private void ButtonCancelScetchMethod()
+        {
+            ButtonForwardChoosePlotMethod();
+        }
+
+        private void ButtonDeleteScetchMethod()
+        {
+            ButtonDrawSketchMethod();
+        }
+
+        private void ButtonPenHardnessDegree5Method()
+        {
+            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
+            myAttributes.Size = new Windows.Foundation.Size(7.5, 7.5);
+            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
+        }
+
+        private void ButtonPenHardnessDegree3Method()
+        {
+            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
+            myAttributes.Size = new Windows.Foundation.Size(5, 5);
+            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
+        }
+
+        private void ButtonPenHardnessDegree1Method()
+        {
+            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
+            myAttributes.Size = new Windows.Foundation.Size(2.5, 2.5);
+            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
+        }
+
+        private void ButtonColorBlackMethod()
+        {
+            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
+            myAttributes.Color = Windows.UI.Colors.Black;
+            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
+        }
+
+        private void ButtonColorWhiteMethod()
+        {
+            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
+            myAttributes.Color = Windows.UI.Colors.White;
+            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
+        }
+
+        private void ButtonColorRedMethod()
+        {
+            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
+            myAttributes.Color = Windows.UI.Colors.Red;
+            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
+        }
+
+        private void ButtonEraserMethod()
+        {
+            canvas.InkPresenter.InputProcessingConfiguration.Mode = Windows.UI.Input.Inking.InkInputProcessingMode.Erasing;
+            ScetchesColorVisibility = "Collapsed";
+        }
+
+        private void ButtonPenMethod()
+        {
+            canvas.InkPresenter.InputProcessingConfiguration.Mode = Windows.UI.Input.Inking.InkInputProcessingMode.Inking;
+            ScetchesColorVisibility = "Visible";
+        }
+
+        private async void ButtonSaveScetchMethod()
+        {
+            var picker = new FileOpenPicker();
+            picker.ViewMode = PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".png");
+
+            StorageFile file = await picker.PickSingleFileAsync();
+            var rootFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\" + SelectedCustomerr.Id + "GroundPlots", CreationCollisionOption.OpenIfExists); // Create folder
+            await file.CopyAsync(rootFolder, file.Name, NameCollisionOption.ReplaceExisting);
+
+
+
+            /*
+
+            var savePicker = new FileSavePicker();
+            savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            savePicker.FileTypeChoices.Add("PNG", new
+            System.Collections.Generic.List<string> { ".png" });
+
+            StorageFile file = await savePicker.PickSaveFileAsync();
+            if (null != file)
+            {
+                try
+                {
+                    using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
+                    {
+                        await canvas.InkPresenter.StrokeContainer.SaveAsync(stream);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //GenerateErrorMessage();
+                }
+            }
+            */
+            
+        }
+
+        #endregion
 
         #endregion
 

@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="Fallstudie.Pages.HKPages.GrundrissZeichnen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Fallstudie.Pages.HKPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Background="#EBEDF1">
+            <Border Background="#0091FF">
+                <TextBlock Text="Umriss zeichnen" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
+            </Border>
+            <CommandBar Background="#EBEDF1">
+                <AppBarButton Label="Härte 1" Command="{Binding ButtonPenHardnessDegree1}" Visibility="{Binding ScetchesColorVisibility}" >
+                    <AppBarButton.Icon>
+                        <BitmapIcon  UriSource="ms-appx:///Assets/icons/pen1.png" Margin="0,-5,0,-5" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton Label="Härte 3" Command="{Binding ButtonPenHardnessDegree3}" Visibility="{Binding ScetchesColorVisibility}" >
+                    <AppBarButton.Icon>
+                        <BitmapIcon  UriSource="ms-appx:///Assets/icons/pen2.png" Margin="0,-10,0,-10" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton Label="Härte 5" Command="{Binding ButtonPenHardnessDegree5}" Visibility="{Binding ScetchesColorVisibility}" >
+                    <AppBarButton.Icon>
+                        <BitmapIcon  UriSource="ms-appx:///Assets/icons/pen3.png" Margin="0,-10,0,-10" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarSeparator Visibility="{Binding ScetchesColorVisibility}" />
+                <AppBarButton Command="{Binding ButtonColorRed}" Width="40" Height="40" Margin="0 4 5 0" Background="Red"  Visibility="{Binding ScetchesColorVisibility}" />
+                <AppBarButton Command="{Binding ButtonColorWhite}" Width="40" Height="40" Margin="0 4 5 0" Background="White"  Visibility="{Binding ScetchesColorVisibility}"/>
+                <AppBarButton Command="{Binding ButtonColorBlack}" Width="40" Height="40" Margin="0 4 0 0" Background="Black"  Visibility="{Binding ScetchesColorVisibility}" />
+                <AppBarSeparator />
+                <AppBarButton Label="Stift" Command="{Binding ButtonPen}">
+                    <AppBarButton.Icon>
+                        <BitmapIcon  UriSource="ms-appx:///Assets/icons/pen.png" Margin="0,-5,0,-5" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton Label="Radierer" Command="{Binding ButtonEraser}" >
+                    <AppBarButton.Icon>
+                        <BitmapIcon  UriSource="ms-appx:///Assets/icons/eraser.png" Margin="0,-5,0,-5" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarSeparator />
+                <AppBarButton  Command="{Binding ButtonDeleteScetch}" Icon="Delete" Label="Löschen"/>
+                <AppBarButton Command="{Binding ButtonSaveScetch}" Icon="Save" Label="Speichern"/>
+                <AppBarButton  Command="{Binding ButtonCancelScetch}" Icon="Cancel" Label="Abbrechen"/>
+            </CommandBar>
+            <Border Margin="0 0 0 0" Background="White">
+                <InkCanvas x:Name="inkCanvas"  Height="500">
+                    
+                </InkCanvas>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
