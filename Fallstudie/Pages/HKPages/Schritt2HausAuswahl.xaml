@@ -31,10 +31,14 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
                                     <StackPanel Orientation="Vertical" Margin="5 0 0 0">
+                                        <TextBlock Text="Name:"/>
+                                        <TextBlock Text="Größe:"/>
                                         <TextBlock Text="Beschreibung:"/>
                                         <TextBlock Text="Addresse:"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" Margin="5 0 0 0">
+                                        <TextBlock Text="{Binding Name}"/>
+                                        <TextBlock Text="{Binding Size}"/>
                                         <TextBlock Text="{Binding Description}"/>
                                         <TextBlock Text="{Binding Address}"/>
                                         <StackPanel Orientation="Horizontal">
@@ -70,12 +74,12 @@
                     </Grid.RowDefinitions>
                     
                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Haus"/>
-                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedHouse.Description}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedHouse.Name}"/>
 
                     <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedHouse.Price}"/>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesammtpreis"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesamtpreis"/>
                     <TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
                 </Grid>
             </StackPanel>

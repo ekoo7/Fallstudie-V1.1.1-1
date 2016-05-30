@@ -28,7 +28,7 @@
                             <GradientStop Color="White" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
-                    <TextBlock Text="Schwimmingpool" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                    <TextBlock Text="Swimmingpool" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
                 </Border>
                 <!--Swimmingpool-->
                 <StackPanel Margin="10" Name="Schritt10_Swimmingpool" Orientation="Vertical">
@@ -139,7 +139,7 @@
                     <TextBlock Grid.Row="4" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
                     <TextBlock Grid.Row="4" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedFence.PriceFormat}"/>
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesammtpreis"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesamtpreis"/>
                     <TextBlock Grid.Row="6" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
                 </Grid>
             </StackPanel>

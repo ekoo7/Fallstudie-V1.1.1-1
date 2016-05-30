@@ -29,6 +29,8 @@ namespace Fallstudie.Model
 
         }
 
+        public string Name { get; set; }
+        public string Size { get; set; }
         public string Description { get; set; }
         public string Company { get; set; }
         public string Address { get; set; }
@@ -113,8 +115,15 @@ namespace Fallstudie.Model
             Image1.Source = BitmapImage1;
             SourceImage = source;
 
+            string delimStr = ",";
+            char[] delimiter = delimStr.ToCharArray();
+            string[] split = description.Split(delimiter,3);
+
+
             Id = id;
-            Description = description;
+            Name = split[0];
+            Size = split[1];
+            Description = split[2];
             Price = price;
             Zip = zip;
             City = city;

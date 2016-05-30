@@ -9,7 +9,6 @@
     <RootPropertyPathName Name="Username" />
     <RootPropertyPathName Name="ButtonLogout" />
     <RootPropertyPathName Name="MenuButtonClicked" />
-    <RootPropertyPathName Name="ButtonDownloadNewImage" />
     <RootPropertyPathName Name="SelectedCustomerr" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="Customers" />
@@ -49,6 +48,7 @@
     <RootPropertyPathName Name="City" />
     <RootPropertyPathName Name="Zip" />
     <RootPropertyPathName Name="Address" />
+    <RootPropertyPathName Name="Size" />
     <RootPropertyPathName Name="ButtonForwardChooseOutsideArea" />
     <RootPropertyPathName Name="SelectedPlot" />
     <RootPropertyPathName Name="NoteStep3" />
@@ -287,20 +287,6 @@
       <RootMethod Name="GetToolTip" />
       <RootMethod Name="SetToolTip" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="PrimaryCommands" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Command" />
-      <RootProperty Name="Icon" />
-      <RootProperty Name="Label" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="FontFamily" />
-      <RootProperty Name="HorizontalAlignment" />
-    </RootType>
     <RootType FullName="Fallstudie.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="Content" />
@@ -331,6 +317,20 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="PrimaryCommands" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Command" />
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Label" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Fallstudie.Pages.HausKonfiguratorPage" />
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">

@@ -23,7 +23,7 @@
                     Content="&#xE700;"
                     Command="{Binding MenuButtonClicked}" Click="MenueButton_Click"
                     />
-            
+
             <Button Name="BackButton"
                     RelativePanel.RightOf="MenueButton"
                     FontFamily="Segoe MDL2 Assets"
@@ -94,12 +94,4 @@
             </SplitView.Content>
         </SplitView>
     </Grid>
-    <Page.BottomAppBar>
-        <CommandBar HorizontalContentAlignment="Left">
-            <CommandBar.Content>
-                <Grid/>
-            </CommandBar.Content>
-            <AppBarButton Command="{Binding ButtonDownloadNewImage}" Icon="Download" Label="Neusten Bilder Downloaden"/>
-        </CommandBar>
-    </Page.BottomAppBar>    
 </Page>

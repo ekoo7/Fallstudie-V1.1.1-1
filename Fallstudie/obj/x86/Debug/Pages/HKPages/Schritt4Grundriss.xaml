@@ -65,7 +65,7 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
                     <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedFloor.Price}"/>
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesammtpreis"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesamtpreis"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
                 </Grid>
             </StackPanel>

@@ -8,7 +8,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Startseite" FontSize="36" Foreground="Gray"/>
+        <StackPanel>
+            <TextBlock Text="Ihr Traumhaus wird Wirklichkeit" FontSize="36"/>
+            <TextBlock Text="Der Wunsch nach eigenen vier Wänden muss kein Traum bleiben." FontSize="25"/>
+        </StackPanel>
     </Grid>
 </Page>
 

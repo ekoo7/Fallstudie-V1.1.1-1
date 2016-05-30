@@ -17,7 +17,7 @@
                     <TextBlock Text="Dachauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
                 <Border Background="#45BAFF">
-                    <TextBlock Text="Wählen Sie den Dachtypen und das Dachmaterial aus." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                    <TextBlock Text="Wählen Sie den Dachtyp und das Dachmaterial aus." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
                 </Border>
                 <Border>
                     <Border.Background>
@@ -112,7 +112,7 @@
                     <TextBlock Grid.Row="3" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedRoofMaterial.PriceFormat}"/>
 
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesammtpreis"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesamtpreis"/>
                     <TextBlock Grid.Row="4" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
                 </Grid>
             </StackPanel>

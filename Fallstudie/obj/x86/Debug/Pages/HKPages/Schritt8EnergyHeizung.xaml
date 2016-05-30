@@ -13,10 +13,10 @@
             <StackPanel Orientation="Vertical" Margin="0 0 0 100">
                 <Image Source="/Assets/steep8.png" Height="50"/>
                 <Border Background="#0091FF">
-                    <TextBlock Text="Energie -und Heizungssystemauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
+                    <TextBlock Text="Energie- und Heizungsystemauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
                 <Border Background="#45BAFF">
-                    <TextBlock Text="Wählen Sie das Energie und Heizungssystem aus." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                    <TextBlock Text="Wählen Sie das Energie- und Heizungsystem aus." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
                 </Border>
 
 
@@ -31,7 +31,7 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-                    <TextBlock FontSize="20" Text="Heizungssystem"></TextBlock>
+                    <TextBlock FontSize="20" Text="Heizungsystem"></TextBlock>
                     <ComboBox Margin="10 0 0 0" ItemsSource="{Binding ListHeatingSystem}" SelectedItem="{Binding SelectedHeatingSystem, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -72,7 +72,7 @@
                     <TextBlock Grid.Row="3" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedHeatingSystem.PriceFormat}"/>
 
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesammtpreis"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesamtpreis"/>
                     <TextBlock Grid.Row="4" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
                 </Grid>
             </StackPanel>

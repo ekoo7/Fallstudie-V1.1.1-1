@@ -96,9 +96,8 @@ namespace Fallstudie.ViewModel
 
         public StorageFolder HouseconfigFolder { get; set; }
         public bool IsInternetConnected { get; set; }
-        public RelayCommand ButtonDownloadNewImage { get; set; }
         public bool BoolNewImages { get; set; }
-
+        
         public async void FirstConnectionWithServer()
         {
             MessageDialog msgDialog = new MessageDialog("Sie benötigen Internet beim erstmaligem Start der App.", "Fehler: Verbindung fehlgeschlagen!");
@@ -158,15 +157,15 @@ namespace Fallstudie.ViewModel
                             if (CheckInternetConnection())
                                 DownloadImages();
                         }
-                        byte[] size = File.ReadAllBytes(imagePath);
-                        if (size.Length == 0)
+                        else
                         {
-                            File.Delete(imagePath);
-                            DownloadImages();
+                            byte[] size = File.ReadAllBytes(imagePath);
+                            if (size.Length == 0)
+                                File.Delete(imagePath);
                         }
                     }
                 }
-                await Task.Delay(10000);
+                await Task.Delay(15000);
             }
         }
 
@@ -607,7 +606,12 @@ namespace Fallstudie.ViewModel
         public ImageInherit SelectedHouse
         {
             get { return selectedHouse; }
-            set { selectedHouse = value; OnChange("SelectedHouse"); }
+            set
+            {
+                selectedHouse = value;
+                OnChange("SelectedHouse");
+                SetPackageProperties();
+            }
         }
 
         //selected Grundstück
@@ -926,6 +930,22 @@ namespace Fallstudie.ViewModel
                 await dialog.ShowAsync();
             }
         }
+        public DBModel.Attribute SQLGetRightAttributeForHousePackage(int attributGroupId)
+        {
+            DBModel.Attribute i;
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                i = (from a in con.Table<Package_Not_Attribute>()
+                     from b in con.Table<DBModel.Attribute>()
+                     where a.house_package_id.Equals(SelectedHouse.Id)
+                     && b.attribute_id.Equals(a.attribute_id)
+                     && b.attribute_group_id.Equals(attributGroupId)
+                     select b).Single();
+
+                con.Close();
+            }
+                return i;
+        }
 
         //Hier wird weitergeleitet auf Schritt 3
         private async void ButtonForwardChooseHouseMethod()
@@ -935,7 +955,6 @@ namespace Fallstudie.ViewModel
                 GetFrame();
                 a.Navigate(typeof(Pages.HKPages.Schritt3GrundstückAuswahl));
                 GetTotalPrice();
-
 
                 ImagesPlot.Clear();
 
@@ -990,7 +1009,6 @@ namespace Fallstudie.ViewModel
         //wenn anzahl von stockwerken angeklickt wird -> anzeigen der Grundrisse
         public void ChooseGroundPlots()
         {
-
             FloorsGroundPlot.Clear();
 
             List<Housefloor_Package> floorPackage = new List<Housefloor_Package>();
@@ -998,45 +1016,47 @@ namespace Fallstudie.ViewModel
             {
                 for (int i = 0; i < NumberOfFloorDB + 1; i++)
                 {
-                    floorPackage.Add((from a in con.Table<Ymdh_House_Package>()
-                                      from b in con.Table<Housefloor_Package>()
-                                      where a.house_package_id.Equals(SelectedHouse.Id)
-                                      && b.house_package_id.Equals(a.house_package_id)
-                                      && b.area.Equals(i)
-                                      select b).Single());
+                    try
+                    {
+                        floorPackage.Add((from a in con.Table<Ymdh_House_Package>()
+                                          from b in con.Table<Housefloor_Package>()
+                                          where a.house_package_id.Equals(SelectedHouse.Id)
+                                          && b.house_package_id.Equals(a.house_package_id)
+                                          && b.area.Equals(i)
+                                          select b).Single());
+                    }
+                    catch (Exception){}
                 }
                 con.Close();
             }
-            if (NumberOfFloorDB >= 0)
+            if (floorPackage.Count == 0 && SelectedItemFloor == 0)
+                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 0, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+            else if(floorPackage.Count == 0 && SelectedItemFloor == 1)
+                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+            else if (floorPackage.Count == 0 && SelectedItemFloor == 2)
+                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+            else
             {
-                FloorsGroundPlot.Add(new ImageInherit(floorPackage[0].rootfolder, floorPackage[0].housefloor_id, floorPackage[0].area, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
-            }
-            if (NumberOfFloorDB >= 1)
-            {
-                if (SelectedItemFloor == 1 || SelectedItemFloor == 2)
+                if (NumberOfFloorDB >= 0)
+                    FloorsGroundPlot.Add(new ImageInherit(floorPackage[0].rootfolder, floorPackage[0].housefloor_id, floorPackage[0].area, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                if (NumberOfFloorDB >= 1)
                 {
-                    FloorsGroundPlot.Add(new ImageInherit(floorPackage[1].rootfolder, floorPackage[1].housefloor_id, floorPackage[1].area, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                    if (SelectedItemFloor == 1 || SelectedItemFloor == 2)
+                    {
+                        FloorsGroundPlot.Add(new ImageInherit(floorPackage[1].rootfolder, floorPackage[1].housefloor_id, floorPackage[1].area, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                    }
                 }
-            }
-            if (NumberOfFloorDB >= 2)
-            {
-                if (SelectedItemFloor == 2)
-                {
+                if (NumberOfFloorDB >= 2 && SelectedItemFloor == 2)
                     FloorsGroundPlot.Add(new ImageInherit(floorPackage[2].rootfolder, floorPackage[2].housefloor_id, floorPackage[2].area, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                if (NumberOfFloorDB == 0 && SelectedItemFloor == 1)
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                if (NumberOfFloorDB == 0 && SelectedItemFloor == 2)
+                {
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
                 }
-            }
-            if (NumberOfFloorDB == 0 && SelectedItemFloor == 1)
-            {
-                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
-            }
-            if (NumberOfFloorDB == 0 && SelectedItemFloor == 2)
-            {
-                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
-                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
-            }
-            if (NumberOfFloorDB == 1 && SelectedItemFloor == 2)
-            {
-                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                if (NumberOfFloorDB == 1 && SelectedItemFloor == 2)
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
             }
             OnChange("FloorsGroundPlot");
         }
@@ -1061,7 +1081,10 @@ namespace Fallstudie.ViewModel
                 //Außenwände werden angezeigt
                 foreach (var item in models)
                 {
-                    ListOutsideWall.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
+                    if (SelectedOutsideWall.Id == item.attribute_id)
+                        ListOutsideWall.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, 0));
+                    else
+                        ListOutsideWall.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
                 }
 
                 //Farben Außenwände aus der Datenbank selecten
@@ -1083,7 +1106,10 @@ namespace Fallstudie.ViewModel
                 //Innenwände werden angezeigt
                 foreach (var item in models2)
                 {
-                    ListInsideWall.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
+                    if (SelectedInsideWall.Id == item.attribute_id)
+                        ListInsideWall.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, 0));
+                    else
+                        ListInsideWall.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
                 }
 
                 //Farben Innenwände aus der Datenbank selecten
@@ -1124,7 +1150,10 @@ namespace Fallstudie.ViewModel
                 //Dachtypen werden angezeigt
                 foreach (var item in models)
                 {
-                    ListRoofType.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
+                    if (SelectedRoofType.Id == item.attribute_id)
+                        ListRoofType.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, 0));
+                    else
+                        ListRoofType.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
                 }
 
                 //Dachmaterial aus der Datenbank selecten
@@ -1133,7 +1162,10 @@ namespace Fallstudie.ViewModel
                 //Dachmaterial werden angezeigt
                 foreach (var item in models2)
                 {
-                    ListRoofMaterial.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
+                    if (SelectedRoofMaterial.Id == item.attribute_id)
+                        ListRoofMaterial.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, 0));
+                    else
+                        ListRoofMaterial.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
                 }
             }
             else
@@ -1163,7 +1195,10 @@ namespace Fallstudie.ViewModel
                 //Fenster werden angezeigt
                 foreach (var item in models)
                 {
-                    ListWindows.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
+                    if (SelectedWindow.Id == item.attribute_id)
+                        ListWindows.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, 0));
+                    else
+                        ListWindows.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
                 }
 
                 //Farben Fenster aus der Datenbank selecten
@@ -1185,7 +1220,10 @@ namespace Fallstudie.ViewModel
                 //Türen werden angezeigt
                 foreach (var item in models2)
                 {
-                    ListDoors.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
+                    if (SelectedDoor.Id == item.attribute_id)
+                        ListDoors.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, 0));
+                    else
+                        ListDoors.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
                 }
 
                 //Farben Türen aus der Datenbank selecten
@@ -1226,7 +1264,10 @@ namespace Fallstudie.ViewModel
                 //Energiesystem werden angezeigt
                 foreach (var item in models)
                 {
-                    ListEnergySystem.Add(new EHSystem(item.attribute_id, item.description, item.price));
+                    if (SelectedEnergySystem.Id == item.attribute_id)
+                        ListEnergySystem.Add(new EHSystem(item.attribute_id, item.description, 0));
+                    else
+                        ListEnergySystem.Add(new EHSystem(item.attribute_id, item.description, item.price));
                 }
 
                 //Heizungsystem aus der Datenbank selecten
@@ -1235,7 +1276,10 @@ namespace Fallstudie.ViewModel
                 //Heizungsystem werden angezeigt
                 foreach (var item in models2)
                 {
-                    ListHeatingSystem.Add(new EHSystem(item.attribute_id, item.description, item.price));
+                    if (SelectedHeatingSystem.Id == item.attribute_id)
+                        ListHeatingSystem.Add(new EHSystem(item.attribute_id, item.description, 0));
+                    else
+                        ListHeatingSystem.Add(new EHSystem(item.attribute_id, item.description, item.price));
                 }
 
                 GetTotalPrice();
@@ -1274,7 +1318,10 @@ namespace Fallstudie.ViewModel
                 //Kamin werden angezeigt
                 foreach (var item in models)
                 {
-                    ListChimneys.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
+                    if (SelectedChimney.Id == item.attribute_id)
+                        ListChimneys.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, 0));
+                    else
+                        ListChimneys.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
                 }
             }
             else
@@ -1317,7 +1364,10 @@ namespace Fallstudie.ViewModel
                 //Pools werden angezeigt
                 foreach (var item in models)
                 {
-                    ListPools.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
+                    if (SelectedPool.Id == item.attribute_id)
+                        ListPools.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, 0));
+                    else
+                        ListPools.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
                 }
 
                 //Zaun aus der Datenbank selecten
@@ -1326,7 +1376,10 @@ namespace Fallstudie.ViewModel
                 //Zaun werden angezeigt
                 foreach (var item in models2)
                 {
-                    ListFence.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
+                    if (SelectedFence.Id == item.attribute_id)
+                        ListFence.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, 0));
+                    else
+                        ListFence.Add(new ImageInherit(item.rootfolder, item.attribute_id, item.description, item.price));
                 }
 
                 //Farben Zaun aus der Datenbank selecten
@@ -1495,6 +1548,39 @@ namespace Fallstudie.ViewModel
             TotalPrice += SelectedPool != null ? SelectedPool.Price : 0;
             TotalPrice += SelectedFence != null ? SelectedFence.Price : 0;
 
+        }
+
+        private void SetPackageProperties()
+        {
+            //Setzen der SelectedItems für das ausgewählte Haus
+            DBModel.Attribute i1 = SQLGetRightAttributeForHousePackage(5);
+            SelectedOutsideWall = new ImageInherit(i1.rootfolder, i1.attribute_id, i1.description, 0);
+            DBModel.Attribute i2 = SQLGetRightAttributeForHousePackage(51);
+            SelectedInsideWall = new ImageInherit(i2.rootfolder, i2.attribute_id, i2.description, 0);
+            DBModel.Attribute i3 = SQLGetRightAttributeForHousePackage(6);
+            SelectedRoofType = new ImageInherit(i3.rootfolder, i3.attribute_id, i3.description, 0);
+            DBModel.Attribute i4 = SQLGetRightAttributeForHousePackage(61);
+            SelectedRoofMaterial = new ImageInherit(i4.rootfolder, i4.attribute_id, i4.description, 0);
+            DBModel.Attribute i5 = SQLGetRightAttributeForHousePackage(7);
+            SelectedWindow = new ImageInherit(i5.rootfolder, i5.attribute_id, i5.description, 0);
+            DBModel.Attribute i6 = SQLGetRightAttributeForHousePackage(71);
+            SelectedDoor = new ImageInherit(i6.rootfolder, i6.attribute_id, i6.description, 0);
+            DBModel.Attribute i7 = SQLGetRightAttributeForHousePackage(8);
+            SelectedEnergySystem = new EHSystem(i7.attribute_id, i7.description, 0);
+            DBModel.Attribute i8 = SQLGetRightAttributeForHousePackage(81);
+            SelectedHeatingSystem = new EHSystem(i8.attribute_id, i8.description, 0);
+            DBModel.Attribute i9 = SQLGetRightAttributeForHousePackage(9);
+            SelectedChimney = new ImageInherit(i9.rootfolder, i9.attribute_id, i9.description, 0);
+            DBModel.Attribute i10 = SQLGetRightAttributeForHousePackage(10);
+            SelectedPool = new ImageInherit(i10.rootfolder, i10.attribute_id, i10.description, 0);
+            DBModel.Attribute i11 = SQLGetRightAttributeForHousePackage(101);
+            SelectedFence = new ImageInherit(i11.rootfolder, i11.attribute_id, i11.description, 0);
+
+            if (i10.description != "Kein Pool")
+            {
+                DBModel.Attribute i12 = SQLGetRightAttributeForHousePackage(11);
+                SelectedPoolSize = new ImageInherit(i12.attribute_id, i12.description, 0);
+            }
         }
         #endregion
 
@@ -2779,9 +2865,7 @@ namespace Fallstudie.ViewModel
                 byte r = Byte.Parse(color[0]);
                 return r;
             }else
-            {
-                return 255;
-            }           
+                return 255;        
         }
         public byte SQLSplitColorG(string i)
         {
@@ -2792,9 +2876,7 @@ namespace Fallstudie.ViewModel
                 return g;
             }
             else
-            {
                 return 255;
-            }
         }
         public byte SQLSplitColorB(string i)
         {
@@ -2805,9 +2887,7 @@ namespace Fallstudie.ViewModel
                 return b;
             }
             else
-            {
                 return 255;
-            }
         }
         public string SQLGetConsultantName(int id)
         {

@@ -16,7 +16,7 @@
                     <TextBlock Text="Auswahlüberischt" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
                 <Border Background="#45BAFF">
-                    <TextBlock Text="Hier sehen Sie nocheinmal alles was Sie ausgewählt haben." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                    <TextBlock Text="Hier sehen Sie Ihre ausgewählten Attribute." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
                 </Border>
                 <Border Background="#45BAFF">
                     <TextBlock Text="Sie können das konfigurierte Haus bearbeiten, speichern oder ein Projekt erstellen." Padding="3" TextAlignment="Left" FontSize="12" Foreground="White"/>
@@ -25,7 +25,7 @@
             
             <StackPanel Margin="10">
                 <StackPanel Orientation="Vertical">
-                        <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedHouse.Description}"/>
+                        <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedHouse.Name}"/>
                         <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedHouse.Address}"/>
                         <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedHouse.City}"/>
                         <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedHouse.PriceFormat}"/>
@@ -70,7 +70,7 @@
 
                             <!-- 1. Spalte -->
                             <Border Grid.Column="0" Grid.Row="0">
-                                <TextBlock FontWeight="Thin" Text="Spezifikation" />
+                                <TextBlock FontWeight="Bold" Text="Spezifikation" />
                             </Border>
                             <Border Grid.Column="0" Grid.Row="1">
                                 <TextBlock FontWeight="Thin" Text="Grundstück" />
@@ -136,7 +136,7 @@
 
                             <!-- 2. Spalte -->
                             <Border Grid.Column="1">
-                                <TextBlock FontWeight="Thin" Text="Auswahl" />
+                                <TextBlock FontWeight="Bold" Text="Auswahl" />
                             </Border>
                             <Border Grid.Column="1" Grid.Row="1">
                                 <TextBlock Text="{Binding House.Plot.Description}" />
@@ -201,7 +201,7 @@
 
                             <!-- 3. Spalte -->
                             <Border Grid.Column="2">
-                                <TextBlock FontWeight="Thin" Text="Preis" />
+                                <TextBlock FontWeight="Bold" Text="Preis" />
                             </Border>
                             <Border Grid.Column="2" Grid.Row="1">
                                 <TextBlock Text="{Binding House.Plot.Price}" />
@@ -266,7 +266,7 @@
 
                             <!-- 4. Spalte -->
                             <Border Grid.Column="3">
-                                <TextBlock FontWeight="Thin" Text="Notiz" />
+                                <TextBlock FontWeight="Bold" Text="Notiz" />
                             </Border>
                             <Border Grid.Column="3" Grid.Row="1">
                                 <TextBlock Text="{Binding NoteStep3, Mode=TwoWay}" TextWrapping="Wrap" />
