@@ -156,7 +156,7 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[32];
+            _typeNameTable = new string[45];
             _typeNameTable[0] = "Fallstudie.ViewModel.ViewModelLocator";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "Fallstudie.ViewModel.MainViewModel";
@@ -166,31 +166,44 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
             _typeNameTable[6] = "Windows.UI.Xaml.Controls.UserControl";
             _typeNameTable[7] = "Fallstudie.MainPage";
             _typeNameTable[8] = "Fallstudie.Pages.HausKonfiguratorPage";
-            _typeNameTable[9] = "Fallstudie.Pages.HKPages.GrundrissZeichnen";
-            _typeNameTable[10] = "Fallstudie.Pages.HKPages.Schritt10Aussenbereiche";
-            _typeNameTable[11] = "Fallstudie.Pages.HKPages.Schritt2HausAuswahl";
-            _typeNameTable[12] = "Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl";
-            _typeNameTable[13] = "Fallstudie.Pages.HKPages.Schritt4Grundriss";
-            _typeNameTable[14] = "Fallstudie.Pages.HKPages.Schritt5Wand";
-            _typeNameTable[15] = "Fallstudie.Pages.HKPages.Schritt6Dach";
-            _typeNameTable[16] = "Fallstudie.Pages.HKPages.Schritt7FensterTueren";
-            _typeNameTable[17] = "Fallstudie.Pages.HKPages.Schritt8EnergyHeizung";
-            _typeNameTable[18] = "Fallstudie.Pages.HKPages.Schritt9Zusatz";
-            _typeNameTable[19] = "Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung";
-            _typeNameTable[20] = "Fallstudie.Pages.KundenPage";
-            _typeNameTable[21] = "Fallstudie.Pages.KundenPages.CreateCustomerPage";
-            _typeNameTable[22] = "Fallstudie.Pages.pdfErstellenPage";
-            _typeNameTable[23] = "Fallstudie.Pages.ProjektePage";
-            _typeNameTable[24] = "Fallstudie.Pages.Startseite";
-            _typeNameTable[25] = "Fallstudie.Converter.DateTimeConverter";
-            _typeNameTable[26] = "Fallstudie.Converter.TimeSpanConverter";
-            _typeNameTable[27] = "Fallstudie.Converter.StringFormatter";
-            _typeNameTable[28] = "Fallstudie.Pages.TerminePage";
-            _typeNameTable[29] = "Fallstudie.Pages.TerminePages.NeuTermin";
-            _typeNameTable[30] = "Fallstudie.Pages.TerminePages.TerminBearbeiten";
-            _typeNameTable[31] = "Fallstudie.StartPage";
+            _typeNameTable[9] = "Microsoft.Labs.InkToolbarControl.InkToolbar";
+            _typeNameTable[10] = "Windows.UI.Xaml.Controls.Control";
+            _typeNameTable[11] = "Windows.UI.Xaml.Controls.InkCanvas";
+            _typeNameTable[12] = "Windows.UI.Color";
+            _typeNameTable[13] = "System.ValueType";
+            _typeNameTable[14] = "Windows.UI.Xaml.Visibility";
+            _typeNameTable[15] = "Microsoft.Labs.InkToolbarControl.InkToolbarEraserKind";
+            _typeNameTable[16] = "System.Enum";
+            _typeNameTable[17] = "Windows.UI.Input.Inking.PenTipShape";
+            _typeNameTable[18] = "Windows.Foundation.Size";
+            _typeNameTable[19] = "Double";
+            _typeNameTable[20] = "Windows.UI.Xaml.Media.SolidColorBrush";
+            _typeNameTable[21] = "Microsoft.Labs.InkToolbarControl.InkToolbarTool";
+            _typeNameTable[22] = "Fallstudie.Pages.HKPages.GrundrissZeichnen";
+            _typeNameTable[23] = "Fallstudie.Pages.HKPages.Schritt10Aussenbereiche";
+            _typeNameTable[24] = "Fallstudie.Pages.HKPages.Schritt2HausAuswahl";
+            _typeNameTable[25] = "Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl";
+            _typeNameTable[26] = "Fallstudie.Pages.HKPages.Schritt4Grundriss";
+            _typeNameTable[27] = "Fallstudie.Pages.HKPages.Schritt5Wand";
+            _typeNameTable[28] = "Fallstudie.Pages.HKPages.Schritt6Dach";
+            _typeNameTable[29] = "Fallstudie.Pages.HKPages.Schritt7FensterTueren";
+            _typeNameTable[30] = "Fallstudie.Pages.HKPages.Schritt8EnergyHeizung";
+            _typeNameTable[31] = "Fallstudie.Pages.HKPages.Schritt9Zusatz";
+            _typeNameTable[32] = "Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung";
+            _typeNameTable[33] = "Fallstudie.Pages.KundenPage";
+            _typeNameTable[34] = "Fallstudie.Pages.KundenPages.CreateCustomerPage";
+            _typeNameTable[35] = "Fallstudie.Pages.pdfErstellenPage";
+            _typeNameTable[36] = "Fallstudie.Pages.ProjektePage";
+            _typeNameTable[37] = "Fallstudie.Pages.Startseite";
+            _typeNameTable[38] = "Fallstudie.Converter.DateTimeConverter";
+            _typeNameTable[39] = "Fallstudie.Converter.TimeSpanConverter";
+            _typeNameTable[40] = "Fallstudie.Converter.StringFormatter";
+            _typeNameTable[41] = "Fallstudie.Pages.TerminePage";
+            _typeNameTable[42] = "Fallstudie.Pages.TerminePages.NeuTermin";
+            _typeNameTable[43] = "Fallstudie.Pages.TerminePages.TerminBearbeiten";
+            _typeNameTable[44] = "Fallstudie.StartPage";
 
-            _typeTable = new global::System.Type[32];
+            _typeTable = new global::System.Type[45];
             _typeTable[0] = typeof(global::Fallstudie.ViewModel.ViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::Fallstudie.ViewModel.MainViewModel);
@@ -200,29 +213,42 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
             _typeTable[6] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
             _typeTable[7] = typeof(global::Fallstudie.MainPage);
             _typeTable[8] = typeof(global::Fallstudie.Pages.HausKonfiguratorPage);
-            _typeTable[9] = typeof(global::Fallstudie.Pages.HKPages.GrundrissZeichnen);
-            _typeTable[10] = typeof(global::Fallstudie.Pages.HKPages.Schritt10Aussenbereiche);
-            _typeTable[11] = typeof(global::Fallstudie.Pages.HKPages.Schritt2HausAuswahl);
-            _typeTable[12] = typeof(global::Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl);
-            _typeTable[13] = typeof(global::Fallstudie.Pages.HKPages.Schritt4Grundriss);
-            _typeTable[14] = typeof(global::Fallstudie.Pages.HKPages.Schritt5Wand);
-            _typeTable[15] = typeof(global::Fallstudie.Pages.HKPages.Schritt6Dach);
-            _typeTable[16] = typeof(global::Fallstudie.Pages.HKPages.Schritt7FensterTueren);
-            _typeTable[17] = typeof(global::Fallstudie.Pages.HKPages.Schritt8EnergyHeizung);
-            _typeTable[18] = typeof(global::Fallstudie.Pages.HKPages.Schritt9Zusatz);
-            _typeTable[19] = typeof(global::Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung);
-            _typeTable[20] = typeof(global::Fallstudie.Pages.KundenPage);
-            _typeTable[21] = typeof(global::Fallstudie.Pages.KundenPages.CreateCustomerPage);
-            _typeTable[22] = typeof(global::Fallstudie.Pages.pdfErstellenPage);
-            _typeTable[23] = typeof(global::Fallstudie.Pages.ProjektePage);
-            _typeTable[24] = typeof(global::Fallstudie.Pages.Startseite);
-            _typeTable[25] = typeof(global::Fallstudie.Converter.DateTimeConverter);
-            _typeTable[26] = typeof(global::Fallstudie.Converter.TimeSpanConverter);
-            _typeTable[27] = typeof(global::Fallstudie.Converter.StringFormatter);
-            _typeTable[28] = typeof(global::Fallstudie.Pages.TerminePage);
-            _typeTable[29] = typeof(global::Fallstudie.Pages.TerminePages.NeuTermin);
-            _typeTable[30] = typeof(global::Fallstudie.Pages.TerminePages.TerminBearbeiten);
-            _typeTable[31] = typeof(global::Fallstudie.StartPage);
+            _typeTable[9] = typeof(global::Microsoft.Labs.InkToolbarControl.InkToolbar);
+            _typeTable[10] = typeof(global::Windows.UI.Xaml.Controls.Control);
+            _typeTable[11] = typeof(global::Windows.UI.Xaml.Controls.InkCanvas);
+            _typeTable[12] = typeof(global::Windows.UI.Color);
+            _typeTable[13] = typeof(global::System.ValueType);
+            _typeTable[14] = typeof(global::Windows.UI.Xaml.Visibility);
+            _typeTable[15] = typeof(global::Microsoft.Labs.InkToolbarControl.InkToolbarEraserKind);
+            _typeTable[16] = typeof(global::System.Enum);
+            _typeTable[17] = typeof(global::Windows.UI.Input.Inking.PenTipShape);
+            _typeTable[18] = typeof(global::Windows.Foundation.Size);
+            _typeTable[19] = typeof(global::System.Double);
+            _typeTable[20] = typeof(global::Windows.UI.Xaml.Media.SolidColorBrush);
+            _typeTable[21] = typeof(global::Microsoft.Labs.InkToolbarControl.InkToolbarTool);
+            _typeTable[22] = typeof(global::Fallstudie.Pages.HKPages.GrundrissZeichnen);
+            _typeTable[23] = typeof(global::Fallstudie.Pages.HKPages.Schritt10Aussenbereiche);
+            _typeTable[24] = typeof(global::Fallstudie.Pages.HKPages.Schritt2HausAuswahl);
+            _typeTable[25] = typeof(global::Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl);
+            _typeTable[26] = typeof(global::Fallstudie.Pages.HKPages.Schritt4Grundriss);
+            _typeTable[27] = typeof(global::Fallstudie.Pages.HKPages.Schritt5Wand);
+            _typeTable[28] = typeof(global::Fallstudie.Pages.HKPages.Schritt6Dach);
+            _typeTable[29] = typeof(global::Fallstudie.Pages.HKPages.Schritt7FensterTueren);
+            _typeTable[30] = typeof(global::Fallstudie.Pages.HKPages.Schritt8EnergyHeizung);
+            _typeTable[31] = typeof(global::Fallstudie.Pages.HKPages.Schritt9Zusatz);
+            _typeTable[32] = typeof(global::Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung);
+            _typeTable[33] = typeof(global::Fallstudie.Pages.KundenPage);
+            _typeTable[34] = typeof(global::Fallstudie.Pages.KundenPages.CreateCustomerPage);
+            _typeTable[35] = typeof(global::Fallstudie.Pages.pdfErstellenPage);
+            _typeTable[36] = typeof(global::Fallstudie.Pages.ProjektePage);
+            _typeTable[37] = typeof(global::Fallstudie.Pages.Startseite);
+            _typeTable[38] = typeof(global::Fallstudie.Converter.DateTimeConverter);
+            _typeTable[39] = typeof(global::Fallstudie.Converter.TimeSpanConverter);
+            _typeTable[40] = typeof(global::Fallstudie.Converter.StringFormatter);
+            _typeTable[41] = typeof(global::Fallstudie.Pages.TerminePage);
+            _typeTable[42] = typeof(global::Fallstudie.Pages.TerminePages.NeuTermin);
+            _typeTable[43] = typeof(global::Fallstudie.Pages.TerminePages.TerminBearbeiten);
+            _typeTable[44] = typeof(global::Fallstudie.StartPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -263,29 +289,30 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
         private object Activate_4_Login() { return new global::Fallstudie.Login(); }
         private object Activate_7_MainPage() { return new global::Fallstudie.MainPage(); }
         private object Activate_8_HausKonfiguratorPage() { return new global::Fallstudie.Pages.HausKonfiguratorPage(); }
-        private object Activate_9_GrundrissZeichnen() { return new global::Fallstudie.Pages.HKPages.GrundrissZeichnen(); }
-        private object Activate_10_Schritt10Aussenbereiche() { return new global::Fallstudie.Pages.HKPages.Schritt10Aussenbereiche(); }
-        private object Activate_11_Schritt2HausAuswahl() { return new global::Fallstudie.Pages.HKPages.Schritt2HausAuswahl(); }
-        private object Activate_12_Schritt3GrundstückAuswahl() { return new global::Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl(); }
-        private object Activate_13_Schritt4Grundriss() { return new global::Fallstudie.Pages.HKPages.Schritt4Grundriss(); }
-        private object Activate_14_Schritt5Wand() { return new global::Fallstudie.Pages.HKPages.Schritt5Wand(); }
-        private object Activate_15_Schritt6Dach() { return new global::Fallstudie.Pages.HKPages.Schritt6Dach(); }
-        private object Activate_16_Schritt7FensterTueren() { return new global::Fallstudie.Pages.HKPages.Schritt7FensterTueren(); }
-        private object Activate_17_Schritt8EnergyHeizung() { return new global::Fallstudie.Pages.HKPages.Schritt8EnergyHeizung(); }
-        private object Activate_18_Schritt9Zusatz() { return new global::Fallstudie.Pages.HKPages.Schritt9Zusatz(); }
-        private object Activate_19_Schrtitt11Zusammenfassung() { return new global::Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung(); }
-        private object Activate_20_KundenPage() { return new global::Fallstudie.Pages.KundenPage(); }
-        private object Activate_21_CreateCustomerPage() { return new global::Fallstudie.Pages.KundenPages.CreateCustomerPage(); }
-        private object Activate_22_pdfErstellenPage() { return new global::Fallstudie.Pages.pdfErstellenPage(); }
-        private object Activate_23_ProjektePage() { return new global::Fallstudie.Pages.ProjektePage(); }
-        private object Activate_24_Startseite() { return new global::Fallstudie.Pages.Startseite(); }
-        private object Activate_25_DateTimeConverter() { return new global::Fallstudie.Converter.DateTimeConverter(); }
-        private object Activate_26_TimeSpanConverter() { return new global::Fallstudie.Converter.TimeSpanConverter(); }
-        private object Activate_27_StringFormatter() { return new global::Fallstudie.Converter.StringFormatter(); }
-        private object Activate_28_TerminePage() { return new global::Fallstudie.Pages.TerminePage(); }
-        private object Activate_29_NeuTermin() { return new global::Fallstudie.Pages.TerminePages.NeuTermin(); }
-        private object Activate_30_TerminBearbeiten() { return new global::Fallstudie.Pages.TerminePages.TerminBearbeiten(); }
-        private object Activate_31_StartPage() { return new global::Fallstudie.StartPage(); }
+        private object Activate_9_InkToolbar() { return new global::Microsoft.Labs.InkToolbarControl.InkToolbar(); }
+        private object Activate_22_GrundrissZeichnen() { return new global::Fallstudie.Pages.HKPages.GrundrissZeichnen(); }
+        private object Activate_23_Schritt10Aussenbereiche() { return new global::Fallstudie.Pages.HKPages.Schritt10Aussenbereiche(); }
+        private object Activate_24_Schritt2HausAuswahl() { return new global::Fallstudie.Pages.HKPages.Schritt2HausAuswahl(); }
+        private object Activate_25_Schritt3GrundstückAuswahl() { return new global::Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl(); }
+        private object Activate_26_Schritt4Grundriss() { return new global::Fallstudie.Pages.HKPages.Schritt4Grundriss(); }
+        private object Activate_27_Schritt5Wand() { return new global::Fallstudie.Pages.HKPages.Schritt5Wand(); }
+        private object Activate_28_Schritt6Dach() { return new global::Fallstudie.Pages.HKPages.Schritt6Dach(); }
+        private object Activate_29_Schritt7FensterTueren() { return new global::Fallstudie.Pages.HKPages.Schritt7FensterTueren(); }
+        private object Activate_30_Schritt8EnergyHeizung() { return new global::Fallstudie.Pages.HKPages.Schritt8EnergyHeizung(); }
+        private object Activate_31_Schritt9Zusatz() { return new global::Fallstudie.Pages.HKPages.Schritt9Zusatz(); }
+        private object Activate_32_Schrtitt11Zusammenfassung() { return new global::Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung(); }
+        private object Activate_33_KundenPage() { return new global::Fallstudie.Pages.KundenPage(); }
+        private object Activate_34_CreateCustomerPage() { return new global::Fallstudie.Pages.KundenPages.CreateCustomerPage(); }
+        private object Activate_35_pdfErstellenPage() { return new global::Fallstudie.Pages.pdfErstellenPage(); }
+        private object Activate_36_ProjektePage() { return new global::Fallstudie.Pages.ProjektePage(); }
+        private object Activate_37_Startseite() { return new global::Fallstudie.Pages.Startseite(); }
+        private object Activate_38_DateTimeConverter() { return new global::Fallstudie.Converter.DateTimeConverter(); }
+        private object Activate_39_TimeSpanConverter() { return new global::Fallstudie.Converter.TimeSpanConverter(); }
+        private object Activate_40_StringFormatter() { return new global::Fallstudie.Converter.StringFormatter(); }
+        private object Activate_41_TerminePage() { return new global::Fallstudie.Pages.TerminePage(); }
+        private object Activate_42_NeuTermin() { return new global::Fallstudie.Pages.TerminePages.NeuTermin(); }
+        private object Activate_43_TerminBearbeiten() { return new global::Fallstudie.Pages.TerminePages.TerminBearbeiten(); }
+        private object Activate_44_StartPage() { return new global::Fallstudie.StartPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -352,163 +379,252 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 9:   //  Fallstudie.Pages.HKPages.GrundrissZeichnen
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_9_GrundrissZeichnen;
-                userType.SetIsLocalType();
+            case 9:   //  Microsoft.Labs.InkToolbarControl.InkToolbar
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Control"));
+                userType.Activator = Activate_9_InkToolbar;
+                userType.AddMemberName("TargetInkCanvas");
+                userType.AddMemberName("PenColor");
+                userType.AddMemberName("HighlighterVisibility");
+                userType.AddMemberName("EraserKind");
+                userType.AddMemberName("HighlighterPenTipShape");
+                userType.AddMemberName("HighlighterSize");
+                userType.AddMemberName("HighlighterColor");
+                userType.AddMemberName("PenSize");
+                userType.AddMemberName("ButtonHeight");
+                userType.AddMemberName("ButtonWidth");
+                userType.AddMemberName("PressedButtonForeground");
+                userType.AddMemberName("PressedButtonBackground");
+                userType.AddMemberName("PointerOverButtonForeground");
+                userType.AddMemberName("PointerOverButtonBackground");
+                userType.AddMemberName("SelectedButtonForeground");
+                userType.AddMemberName("SelectedButtonBackground");
+                userType.AddMemberName("ButtonIconFill");
+                userType.AddMemberName("ButtonForeground");
+                userType.AddMemberName("ButtonBackground");
+                userType.AddMemberName("ActiveTool");
                 xamlType = userType;
                 break;
 
-            case 10:   //  Fallstudie.Pages.HKPages.Schritt10Aussenbereiche
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_10_Schritt10Aussenbereiche;
-                userType.SetIsLocalType();
+            case 10:   //  Windows.UI.Xaml.Controls.Control
+                xamlType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 11:   //  Windows.UI.Xaml.Controls.InkCanvas
+                xamlType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 12:   //  Windows.UI.Color
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 11:   //  Fallstudie.Pages.HKPages.Schritt2HausAuswahl
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_11_Schritt2HausAuswahl;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 12:   //  Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_12_Schritt3GrundstückAuswahl;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 13:   //  Fallstudie.Pages.HKPages.Schritt4Grundriss
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_13_Schritt4Grundriss;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 14:   //  Fallstudie.Pages.HKPages.Schritt5Wand
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_14_Schritt5Wand;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 15:   //  Fallstudie.Pages.HKPages.Schritt6Dach
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_15_Schritt6Dach;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 16:   //  Fallstudie.Pages.HKPages.Schritt7FensterTueren
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_16_Schritt7FensterTueren;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 17:   //  Fallstudie.Pages.HKPages.Schritt8EnergyHeizung
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_17_Schritt8EnergyHeizung;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 18:   //  Fallstudie.Pages.HKPages.Schritt9Zusatz
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_18_Schritt9Zusatz;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 19:   //  Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_19_Schrtitt11Zusammenfassung;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 20:   //  Fallstudie.Pages.KundenPage
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_20_KundenPage;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 21:   //  Fallstudie.Pages.KundenPages.CreateCustomerPage
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_21_CreateCustomerPage;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 22:   //  Fallstudie.Pages.pdfErstellenPage
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_22_pdfErstellenPage;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 23:   //  Fallstudie.Pages.ProjektePage
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_23_ProjektePage;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 24:   //  Fallstudie.Pages.Startseite
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_24_Startseite;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 25:   //  Fallstudie.Converter.DateTimeConverter
+            case 13:   //  System.ValueType
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_25_DateTimeConverter;
+                xamlType = userType;
+                break;
+
+            case 14:   //  Windows.UI.Xaml.Visibility
+                xamlType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 15:   //  Microsoft.Labs.InkToolbarControl.InkToolbarEraserKind
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("None", global::Microsoft.Labs.InkToolbarControl.InkToolbarEraserKind.None);
+                userType.AddEnumValue("Stroke", global::Microsoft.Labs.InkToolbarControl.InkToolbarEraserKind.Stroke);
+                xamlType = userType;
+                break;
+
+            case 16:   //  System.Enum
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                xamlType = userType;
+                break;
+
+            case 17:   //  Windows.UI.Input.Inking.PenTipShape
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Circle", global::Windows.UI.Input.Inking.PenTipShape.Circle);
+                userType.AddEnumValue("Rectangle", global::Windows.UI.Input.Inking.PenTipShape.Rectangle);
+                xamlType = userType;
+                break;
+
+            case 18:   //  Windows.Foundation.Size
+                xamlType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 19:   //  Double
+                xamlType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 20:   //  Windows.UI.Xaml.Media.SolidColorBrush
+                xamlType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 21:   //  Microsoft.Labs.InkToolbarControl.InkToolbarTool
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("None", global::Microsoft.Labs.InkToolbarControl.InkToolbarTool.None);
+                userType.AddEnumValue("Pen", global::Microsoft.Labs.InkToolbarControl.InkToolbarTool.Pen);
+                userType.AddEnumValue("Highlighter", global::Microsoft.Labs.InkToolbarControl.InkToolbarTool.Highlighter);
+                userType.AddEnumValue("Eraser", global::Microsoft.Labs.InkToolbarControl.InkToolbarTool.Eraser);
+                xamlType = userType;
+                break;
+
+            case 22:   //  Fallstudie.Pages.HKPages.GrundrissZeichnen
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_22_GrundrissZeichnen;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 26:   //  Fallstudie.Converter.TimeSpanConverter
+            case 23:   //  Fallstudie.Pages.HKPages.Schritt10Aussenbereiche
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_23_Schritt10Aussenbereiche;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 24:   //  Fallstudie.Pages.HKPages.Schritt2HausAuswahl
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_24_Schritt2HausAuswahl;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 25:   //  Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_25_Schritt3GrundstückAuswahl;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 26:   //  Fallstudie.Pages.HKPages.Schritt4Grundriss
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_26_Schritt4Grundriss;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 27:   //  Fallstudie.Pages.HKPages.Schritt5Wand
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_27_Schritt5Wand;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 28:   //  Fallstudie.Pages.HKPages.Schritt6Dach
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_28_Schritt6Dach;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 29:   //  Fallstudie.Pages.HKPages.Schritt7FensterTueren
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_29_Schritt7FensterTueren;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 30:   //  Fallstudie.Pages.HKPages.Schritt8EnergyHeizung
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_30_Schritt8EnergyHeizung;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 31:   //  Fallstudie.Pages.HKPages.Schritt9Zusatz
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_31_Schritt9Zusatz;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 32:   //  Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_32_Schrtitt11Zusammenfassung;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 33:   //  Fallstudie.Pages.KundenPage
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_33_KundenPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 34:   //  Fallstudie.Pages.KundenPages.CreateCustomerPage
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_34_CreateCustomerPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 35:   //  Fallstudie.Pages.pdfErstellenPage
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_35_pdfErstellenPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 36:   //  Fallstudie.Pages.ProjektePage
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_36_ProjektePage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 37:   //  Fallstudie.Pages.Startseite
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_37_Startseite;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 38:   //  Fallstudie.Converter.DateTimeConverter
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_26_TimeSpanConverter;
+                userType.Activator = Activate_38_DateTimeConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 27:   //  Fallstudie.Converter.StringFormatter
+            case 39:   //  Fallstudie.Converter.TimeSpanConverter
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_27_StringFormatter;
+                userType.Activator = Activate_39_TimeSpanConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 28:   //  Fallstudie.Pages.TerminePage
-                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_28_TerminePage;
+            case 40:   //  Fallstudie.Converter.StringFormatter
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_40_StringFormatter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 29:   //  Fallstudie.Pages.TerminePages.NeuTermin
+            case 41:   //  Fallstudie.Pages.TerminePage
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_29_NeuTermin;
+                userType.Activator = Activate_41_TerminePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 30:   //  Fallstudie.Pages.TerminePages.TerminBearbeiten
+            case 42:   //  Fallstudie.Pages.TerminePages.NeuTermin
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_30_TerminBearbeiten;
+                userType.Activator = Activate_42_NeuTermin;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 31:   //  Fallstudie.StartPage
+            case 43:   //  Fallstudie.Pages.TerminePages.TerminBearbeiten
                 userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_31_StartPage;
+                userType.Activator = Activate_43_TerminBearbeiten;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 44:   //  Fallstudie.StartPage
+                userType = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_44_StartPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -525,6 +641,8 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
                 {
                     var otherProviders = new global::System.Collections.Generic.List<global::Windows.UI.Xaml.Markup.IXamlMetadataProvider>();
                     global::Windows.UI.Xaml.Markup.IXamlMetadataProvider provider;
+                    provider = new global::Microsoft.Labs.InkToolbarControl.InkToolbar_UAP_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
+                    otherProviders.Add(provider); 
                     provider = new global::Syncfusion.UI.Xaml.Controls.Layout.Syncfusion_SfAccordion_UWP_2015_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
                     otherProviders.Add(provider); 
                     provider = new global::Syncfusion.SfBarcode.UWP.Syncfusion_SfBarcode_UWP_2015_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
@@ -648,6 +766,206 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
             var that = (global::Fallstudie.ViewModel.ViewModelLocator)instance;
             return that.Main;
         }
+        private object get_1_InkToolbar_TargetInkCanvas(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.TargetInkCanvas;
+        }
+        private void set_1_InkToolbar_TargetInkCanvas(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.TargetInkCanvas = (global::Windows.UI.Xaml.Controls.InkCanvas)Value;
+        }
+        private object get_2_InkToolbar_PenColor(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.PenColor;
+        }
+        private void set_2_InkToolbar_PenColor(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.PenColor = (global::Windows.UI.Color)Value;
+        }
+        private object get_3_InkToolbar_HighlighterVisibility(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.HighlighterVisibility;
+        }
+        private void set_3_InkToolbar_HighlighterVisibility(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.HighlighterVisibility = (global::Windows.UI.Xaml.Visibility)Value;
+        }
+        private object get_4_InkToolbar_EraserKind(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.EraserKind;
+        }
+        private void set_4_InkToolbar_EraserKind(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.EraserKind = (global::Microsoft.Labs.InkToolbarControl.InkToolbarEraserKind)Value;
+        }
+        private object get_5_InkToolbar_HighlighterPenTipShape(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.HighlighterPenTipShape;
+        }
+        private void set_5_InkToolbar_HighlighterPenTipShape(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.HighlighterPenTipShape = (global::Windows.UI.Input.Inking.PenTipShape)Value;
+        }
+        private object get_6_InkToolbar_HighlighterSize(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.HighlighterSize;
+        }
+        private void set_6_InkToolbar_HighlighterSize(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.HighlighterSize = (global::Windows.Foundation.Size)Value;
+        }
+        private object get_7_InkToolbar_HighlighterColor(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.HighlighterColor;
+        }
+        private void set_7_InkToolbar_HighlighterColor(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.HighlighterColor = (global::Windows.UI.Color)Value;
+        }
+        private object get_8_InkToolbar_PenSize(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.PenSize;
+        }
+        private void set_8_InkToolbar_PenSize(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.PenSize = (global::Windows.Foundation.Size)Value;
+        }
+        private object get_9_InkToolbar_ButtonHeight(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.ButtonHeight;
+        }
+        private void set_9_InkToolbar_ButtonHeight(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.ButtonHeight = (global::System.Double)Value;
+        }
+        private object get_10_InkToolbar_ButtonWidth(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.ButtonWidth;
+        }
+        private void set_10_InkToolbar_ButtonWidth(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.ButtonWidth = (global::System.Double)Value;
+        }
+        private object get_11_InkToolbar_PressedButtonForeground(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.PressedButtonForeground;
+        }
+        private void set_11_InkToolbar_PressedButtonForeground(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.PressedButtonForeground = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
+        }
+        private object get_12_InkToolbar_PressedButtonBackground(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.PressedButtonBackground;
+        }
+        private void set_12_InkToolbar_PressedButtonBackground(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.PressedButtonBackground = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
+        }
+        private object get_13_InkToolbar_PointerOverButtonForeground(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.PointerOverButtonForeground;
+        }
+        private void set_13_InkToolbar_PointerOverButtonForeground(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.PointerOverButtonForeground = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
+        }
+        private object get_14_InkToolbar_PointerOverButtonBackground(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.PointerOverButtonBackground;
+        }
+        private void set_14_InkToolbar_PointerOverButtonBackground(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.PointerOverButtonBackground = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
+        }
+        private object get_15_InkToolbar_SelectedButtonForeground(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.SelectedButtonForeground;
+        }
+        private void set_15_InkToolbar_SelectedButtonForeground(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.SelectedButtonForeground = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
+        }
+        private object get_16_InkToolbar_SelectedButtonBackground(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.SelectedButtonBackground;
+        }
+        private void set_16_InkToolbar_SelectedButtonBackground(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.SelectedButtonBackground = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
+        }
+        private object get_17_InkToolbar_ButtonIconFill(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.ButtonIconFill;
+        }
+        private void set_17_InkToolbar_ButtonIconFill(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.ButtonIconFill = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
+        }
+        private object get_18_InkToolbar_ButtonForeground(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.ButtonForeground;
+        }
+        private void set_18_InkToolbar_ButtonForeground(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.ButtonForeground = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
+        }
+        private object get_19_InkToolbar_ButtonBackground(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.ButtonBackground;
+        }
+        private void set_19_InkToolbar_ButtonBackground(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.ButtonBackground = (global::Windows.UI.Xaml.Media.SolidColorBrush)Value;
+        }
+        private object get_20_InkToolbar_ActiveTool(object instance)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            return that.ActiveTool;
+        }
+        private void set_20_InkToolbar_ActiveTool(object instance, object Value)
+        {
+            var that = (global::Microsoft.Labs.InkToolbarControl.InkToolbar)instance;
+            that.ActiveTool = (global::Microsoft.Labs.InkToolbarControl.InkToolbarTool)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -661,6 +979,146 @@ namespace Fallstudie.Fallstudie_XamlTypeInfo
                 xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "Main", "Fallstudie.ViewModel.MainViewModel");
                 xamlMember.Getter = get_0_ViewModelLocator_Main;
                 xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.TargetInkCanvas":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "TargetInkCanvas", "Windows.UI.Xaml.Controls.InkCanvas");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_1_InkToolbar_TargetInkCanvas;
+                xamlMember.Setter = set_1_InkToolbar_TargetInkCanvas;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.PenColor":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "PenColor", "Windows.UI.Color");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_2_InkToolbar_PenColor;
+                xamlMember.Setter = set_2_InkToolbar_PenColor;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.HighlighterVisibility":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "HighlighterVisibility", "Windows.UI.Xaml.Visibility");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_3_InkToolbar_HighlighterVisibility;
+                xamlMember.Setter = set_3_InkToolbar_HighlighterVisibility;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.EraserKind":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "EraserKind", "Microsoft.Labs.InkToolbarControl.InkToolbarEraserKind");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_4_InkToolbar_EraserKind;
+                xamlMember.Setter = set_4_InkToolbar_EraserKind;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.HighlighterPenTipShape":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "HighlighterPenTipShape", "Windows.UI.Input.Inking.PenTipShape");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_5_InkToolbar_HighlighterPenTipShape;
+                xamlMember.Setter = set_5_InkToolbar_HighlighterPenTipShape;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.HighlighterSize":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "HighlighterSize", "Windows.Foundation.Size");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_6_InkToolbar_HighlighterSize;
+                xamlMember.Setter = set_6_InkToolbar_HighlighterSize;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.HighlighterColor":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "HighlighterColor", "Windows.UI.Color");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_7_InkToolbar_HighlighterColor;
+                xamlMember.Setter = set_7_InkToolbar_HighlighterColor;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.PenSize":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "PenSize", "Windows.Foundation.Size");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_8_InkToolbar_PenSize;
+                xamlMember.Setter = set_8_InkToolbar_PenSize;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.ButtonHeight":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "ButtonHeight", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_9_InkToolbar_ButtonHeight;
+                xamlMember.Setter = set_9_InkToolbar_ButtonHeight;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.ButtonWidth":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "ButtonWidth", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_10_InkToolbar_ButtonWidth;
+                xamlMember.Setter = set_10_InkToolbar_ButtonWidth;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.PressedButtonForeground":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "PressedButtonForeground", "Windows.UI.Xaml.Media.SolidColorBrush");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_11_InkToolbar_PressedButtonForeground;
+                xamlMember.Setter = set_11_InkToolbar_PressedButtonForeground;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.PressedButtonBackground":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "PressedButtonBackground", "Windows.UI.Xaml.Media.SolidColorBrush");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_12_InkToolbar_PressedButtonBackground;
+                xamlMember.Setter = set_12_InkToolbar_PressedButtonBackground;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.PointerOverButtonForeground":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "PointerOverButtonForeground", "Windows.UI.Xaml.Media.SolidColorBrush");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_13_InkToolbar_PointerOverButtonForeground;
+                xamlMember.Setter = set_13_InkToolbar_PointerOverButtonForeground;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.PointerOverButtonBackground":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "PointerOverButtonBackground", "Windows.UI.Xaml.Media.SolidColorBrush");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_14_InkToolbar_PointerOverButtonBackground;
+                xamlMember.Setter = set_14_InkToolbar_PointerOverButtonBackground;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.SelectedButtonForeground":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "SelectedButtonForeground", "Windows.UI.Xaml.Media.SolidColorBrush");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_15_InkToolbar_SelectedButtonForeground;
+                xamlMember.Setter = set_15_InkToolbar_SelectedButtonForeground;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.SelectedButtonBackground":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "SelectedButtonBackground", "Windows.UI.Xaml.Media.SolidColorBrush");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_16_InkToolbar_SelectedButtonBackground;
+                xamlMember.Setter = set_16_InkToolbar_SelectedButtonBackground;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.ButtonIconFill":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "ButtonIconFill", "Windows.UI.Xaml.Media.SolidColorBrush");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_17_InkToolbar_ButtonIconFill;
+                xamlMember.Setter = set_17_InkToolbar_ButtonIconFill;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.ButtonForeground":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "ButtonForeground", "Windows.UI.Xaml.Media.SolidColorBrush");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_18_InkToolbar_ButtonForeground;
+                xamlMember.Setter = set_18_InkToolbar_ButtonForeground;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.ButtonBackground":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "ButtonBackground", "Windows.UI.Xaml.Media.SolidColorBrush");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_19_InkToolbar_ButtonBackground;
+                xamlMember.Setter = set_19_InkToolbar_ButtonBackground;
+                break;
+            case "Microsoft.Labs.InkToolbarControl.InkToolbar.ActiveTool":
+                userType = (global::Fallstudie.Fallstudie_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Labs.InkToolbarControl.InkToolbar");
+                xamlMember = new global::Fallstudie.Fallstudie_XamlTypeInfo.XamlMember(this, "ActiveTool", "Microsoft.Labs.InkToolbarControl.InkToolbarTool");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_20_InkToolbar_ActiveTool;
+                xamlMember.Setter = set_20_InkToolbar_ActiveTool;
                 break;
             }
             return xamlMember;

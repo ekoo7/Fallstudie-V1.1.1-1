@@ -2034,23 +2034,9 @@ namespace Fallstudie.ViewModel
 
         #region DrawScetches
         public RelayCommand ButtonSaveScetch { get; set; }
-        public RelayCommand ButtonPen { get; set; }
-        public RelayCommand ButtonEraser { get; set; }
-        public RelayCommand ButtonColorRed { get; set; }
-        public RelayCommand ButtonColorWhite { get; set; }
-        public RelayCommand ButtonColorBlack { get; set; }
-        public RelayCommand ButtonPenHardnessDegree1 { get; set; }
-        public RelayCommand ButtonPenHardnessDegree3 { get; set; }
-        public RelayCommand ButtonPenHardnessDegree5 { get; set; }
         public RelayCommand ButtonDeleteScetch { get; set; }
         public RelayCommand ButtonCancelScetch { get; set; }
 
-        private string scetchesColorVisibility = "Collapsed";
-        public string ScetchesColorVisibility
-        {
-            get { return scetchesColorVisibility; }
-            set { scetchesColorVisibility = value; OnChange("ScetchesColorVisibility"); }
-        }
 
 
         InkCanvas canvas;
@@ -2060,14 +2046,6 @@ namespace Fallstudie.ViewModel
             GetFrame();
             a.Navigate(typeof(Pages.HKPages.GrundrissZeichnen));
             ButtonSaveScetch = new RelayCommand(ButtonSaveScetchMethod);
-            ButtonPen = new RelayCommand(ButtonPenMethod);
-            ButtonEraser = new RelayCommand(ButtonEraserMethod);
-            ButtonColorRed = new RelayCommand(ButtonColorRedMethod);
-            ButtonColorWhite = new RelayCommand(ButtonColorWhiteMethod);
-            ButtonColorBlack = new RelayCommand(ButtonColorBlackMethod);
-            ButtonPenHardnessDegree1 = new RelayCommand(ButtonPenHardnessDegree1Method);
-            ButtonPenHardnessDegree3 = new RelayCommand(ButtonPenHardnessDegree3Method);
-            ButtonPenHardnessDegree5 = new RelayCommand(ButtonPenHardnessDegree5Method);
             ButtonDeleteScetch = new RelayCommand(ButtonDeleteScetchMethod);
             ButtonCancelScetch = new RelayCommand(ButtonCancelScetchMethod);
 
@@ -2089,70 +2067,33 @@ namespace Fallstudie.ViewModel
             ButtonDrawSketchMethod();
         }
 
-        private void ButtonPenHardnessDegree5Method()
+        /*private void ButtonPenHardnessDegree5Method()
         {
             InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
             myAttributes.Size = new Windows.Foundation.Size(7.5, 7.5);
             myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
-        }
+        }*/
 
-        private void ButtonPenHardnessDegree3Method()
-        {
-            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
-            myAttributes.Size = new Windows.Foundation.Size(5, 5);
-            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
-        }
-
-        private void ButtonPenHardnessDegree1Method()
-        {
-            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
-            myAttributes.Size = new Windows.Foundation.Size(2.5, 2.5);
-            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
-        }
-
-        private void ButtonColorBlackMethod()
-        {
-            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
-            myAttributes.Color = Windows.UI.Colors.Black;
-            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
-        }
-
-        private void ButtonColorWhiteMethod()
-        {
-            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
-            myAttributes.Color = Windows.UI.Colors.White;
-            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
-        }
-
-        private void ButtonColorRedMethod()
-        {
-            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
-            myAttributes.Color = Windows.UI.Colors.Red;
-            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
-        }
-
-        private void ButtonEraserMethod()
-        {
-            canvas.InkPresenter.InputProcessingConfiguration.Mode = Windows.UI.Input.Inking.InkInputProcessingMode.Erasing;
-            ScetchesColorVisibility = "Collapsed";
-        }
-
-        private void ButtonPenMethod()
-        {
-            canvas.InkPresenter.InputProcessingConfiguration.Mode = Windows.UI.Input.Inking.InkInputProcessingMode.Inking;
-            ScetchesColorVisibility = "Visible";
-        }
+       
 
         private async void ButtonSaveScetchMethod()
         {
-            var picker = new FileOpenPicker();
-            picker.ViewMode = PickerViewMode.Thumbnail;
-            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-            picker.FileTypeFilter.Add(".png");
-
-            StorageFile file = await picker.PickSingleFileAsync();
             var rootFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\" + SelectedCustomerr.Id + "GroundPlots", CreationCollisionOption.OpenIfExists); // Create folder
-            await file.CopyAsync(rootFolder, file.Name, NameCollisionOption.ReplaceExisting);
+            var coverpic_file = await rootFolder.CreateFileAsync("abc.png", CreationCollisionOption.ReplaceExisting); // Create file
+
+            if (coverpic_file != null)
+            {
+                try
+                {
+                    using (IRandomAccessStream stream = await coverpic_file.OpenAsync(FileAccessMode.ReadWrite))
+                    {
+                        await canvas.InkPresenter.StrokeContainer.SaveAsync(stream);
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
 
 
 
@@ -2179,7 +2120,7 @@ namespace Fallstudie.ViewModel
                 }
             }
             */
-            
+
         }
 
         #endregion

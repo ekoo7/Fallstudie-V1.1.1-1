@@ -1799,3 +1799,4 @@ C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\GrundrissZeichnen.g.cs
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\GrundrissZeichnen.xaml
 C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Pages\HKPages\GrundrissZeichnen.xbf
+C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Microsoft.Labs.InkToolbarControl.winmd

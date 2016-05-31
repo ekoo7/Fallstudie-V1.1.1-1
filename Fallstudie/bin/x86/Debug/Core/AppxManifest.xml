@@ -38,6 +38,17 @@
     <Capability Name="internetClient" />
     <Capability Name="internetClientServer" />
   </Capabilities>
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>Microsoft.Labs.InkToolbarControl.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.Labs.InkToolbarControl.InkToolbar_UAP_XamlTypeInfo.XamlMetaDataProvider" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Labs.InkToolbarControl.DrawingAttributesChangedEventArgs" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Labs.InkToolbarControl.InkToolbar" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Labs.InkToolbarControl.InkToolbarButton" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+  </Extensions>
   <build:Metadata>
     <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
     <build:Item Name="VisualStudio" Version="14.0" />
@@ -49,6 +60,7 @@
     <build:Item Name="TargetRuntime" Value="Managed" />
     <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="14.0.25123.0" />
     <build:Item Name="BehaviorsXamlSDKManaged" Version="12.0" />
+    <build:Item Name="InkToolbarControl" Version="0.3.2" />
     <build:Item Name="SQLite.UWP.2015" Version="3.12.2" />
     <build:Item Name="Syncfusion Controls for UWP XAML" Version="14.1.0.41" />
     <build:Item Name="MakePri.exe" Version="10.0.10586.15 (th2_release.151119-1817)" />

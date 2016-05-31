@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>edd1e308-4172-4199-aeed-fd546e55591b</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>E717A17AD3D31296F8AFFB8CD294BC2039D9A628D9C8F926D437981CF1379F6D</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>114767FBD21F6E5C8E6C3A75F1379D33BA134467339C4DAB6FD25A777FE21C0E</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>edd1e308-4172-4199-aeed-fd546e55591b_1.0.2.0_x86__7cz6n1n3sb2rm</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>edd1e308-4172-4199-aeed-fd546e55591b_7cz6n1n3sb2rm!App</RegisteredUserModeAppID>
     <RegisteredPackageID>edd1e308-4172-4199-aeed-fd546e55591b</RegisteredPackageID>
@@ -22,13 +22,17 @@
     <AppXManifest Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-05-30T18:41:50.794</Modified>
+      <Modified>2016-05-31T09:34:00.892</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.exe">
       <PackagePath>entrypoint\Fallstudie.exe</PackagePath>
-      <Modified>2016-05-30T18:41:46.313</Modified>
+      <Modified>2016-05-31T09:33:43.090</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UAP\v0.8.0.0\ExtensionSDKs\InkToolbarControl\0.3.2\References\CommonConfiguration\neutral\Microsoft.Labs.InkToolbarControl.winmd">
+      <PackagePath>Microsoft.Labs.InkToolbarControl.winmd</PackagePath>
+      <Modified>2016-05-30T19:27:51.944</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.dll">
       <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
@@ -3134,6 +3138,14 @@
       <PackagePath>Syncfusion.SfDiagram.UWP\Themes\WinRTResource.xbf</PackagePath>
       <Modified>2016-04-01T21:30:48.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UAP\v0.8.0.0\ExtensionSDKs\InkToolbarControl\0.3.2\Redist\debug\x86\Microsoft.Labs.InkToolbarControl.dll">
+      <PackagePath>Microsoft.Labs.InkToolbarControl.dll</PackagePath>
+      <Modified>2016-05-30T19:27:51.871</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UAP\v0.8.0.0\ExtensionSDKs\SQLite.UWP.2015\3.12.2\Redist\Debug\x86\sqlite3.dll">
+      <PackagePath>sqlite3.dll</PackagePath>
+      <Modified>2016-05-14T16:14:07.271</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Syncfusion\Essential Studio\14.1.0.41\Universal Windows\10.0\SDK\Redist\CommonConfiguration\neutral\Syncfusion.SfSpreadsheet.UWP\CopyPaste\Icons\PasteOptions.bmp">
       <PackagePath>Syncfusion.SfSpreadsheet.UWP\CopyPaste\Icons\PasteOptions.bmp</PackagePath>
       <Modified>2016-03-23T08:43:56.000</Modified>
@@ -3990,10 +4002,6 @@
       <PackagePath>Syncfusion.SfSpreadsheetHelper.UWP\Syncfusion.XlsIO.UWP.xml</PackagePath>
       <Modified>2016-04-01T21:32:50.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UAP\v0.8.0.0\ExtensionSDKs\SQLite.UWP.2015\3.12.2\Redist\Debug\x86\sqlite3.dll">
-      <PackagePath>sqlite3.dll</PackagePath>
-      <Modified>2016-05-14T16:14:07.271</Modified>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
       <Modified>2016-05-30T13:49:14.813</Modified>
@@ -4110,7 +4118,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.xr.xml">
       <PackagePath>Fallstudie.xr.xml</PackagePath>
-      <Modified>2016-05-30T18:41:44.675</Modified>
+      <Modified>2016-05-30T19:59:17.353</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -4118,11 +4126,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-05-30T18:41:49.974</Modified>
+      <Modified>2016-05-31T09:33:45.660</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\Fallstudie.exe">
       <PackagePath>Fallstudie.exe</PackagePath>
-      <Modified>2016-05-30T18:41:50.782</Modified>
+      <Modified>2016-05-31T09:34:00.879</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
