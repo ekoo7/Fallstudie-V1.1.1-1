@@ -78,12 +78,6 @@ namespace Fallstudie
                 closeSplitView();
 
             }
-            if (PDFErstellen.IsSelected)
-            {
-                MyFrame.Navigate(typeof(Pages.pdfErstellenPage));
-                closeSplitView();
-
-            }
         }
 
         //Das Öffnen und Schließen vom Menü

@@ -180,9 +180,6 @@
     <Compile Include="Pages\KundenPages\CreateCustomerPage.xaml.cs">
       <DependentUpon>CreateCustomerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\pdfErstellenPage.xaml.cs">
-      <DependentUpon>pdfErstellenPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\ProjektePage.xaml.cs">
       <DependentUpon>ProjektePage.xaml</DependentUpon>
     </Compile>
@@ -316,10 +313,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\pdfErstellenPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\ProjektePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -352,8 +345,8 @@
     <SDKReference Include="InkToolbarControl, Version=0.3.2">
       <Name>InkToolbar Control</Name>
     </SDKReference>
-    <SDKReference Include="SQLite.UWP.2015, Version=3.12.2">
-      <Name>SQLite for Universal Windows Platform %28SQLite.UWP.2015, Version=3.12.2%29</Name>
+    <SDKReference Include="SQLite.UWP.2015, Version=3.13.0">
+      <Name>SQLite for Universal Windows Platform %28SQLite.UWP.2015, Version=3.13.0%29</Name>
     </SDKReference>
     <SDKReference Include="Syncfusion Controls for UWP XAML, Version=14.1.0.41">
       <Name>Syncfusion Controls for UWP XAML</Name>

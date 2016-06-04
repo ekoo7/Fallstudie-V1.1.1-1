@@ -79,13 +79,6 @@
                             <TextBlock FontSize="24" Text="Termine" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
-
-                    <ListBoxItem Name="PDF Erstellen">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE160;"/>
-                            <TextBlock FontSize="24" Text="PDF erstellen" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
                 </ListBox>
 
             </SplitView.Pane>

@@ -39,6 +39,7 @@ namespace Fallstudie.Model
         public string Country { get; set; }
 
         public RelayCommand ButtonDrawSketch { get; set; }
+        public RelayCommand ButtonUploadSketch { get; set; }
 
 
         public ImageInherit()
@@ -46,7 +47,7 @@ namespace Fallstudie.Model
 
         }
 
-        //konstruktor für Gründstück
+        //konstruktor für Poolsize, Socket
         public ImageInherit(int id, string desc, double price)
         {
             Id = id;
@@ -55,7 +56,7 @@ namespace Fallstudie.Model
         }
 
         //Konstruktor für Grundriss
-        public ImageInherit(string source, int id, decimal area, RelayCommand btn, int floors, int floorsDB)
+        public ImageInherit(string source, int id, decimal area, RelayCommand btn, RelayCommand btn2, int floors, int floorsDB)
         {
 
             Image1 = new Image();
@@ -87,9 +88,8 @@ namespace Fallstudie.Model
             }
 
             ButtonDrawSketch = btn;
-
+            ButtonUploadSketch = btn2;
         }
-
 
         public ImageInherit(string source, int id, string description, double price)
         {

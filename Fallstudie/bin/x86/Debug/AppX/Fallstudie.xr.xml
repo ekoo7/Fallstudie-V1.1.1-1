@@ -62,6 +62,7 @@
     <RootPropertyPathName Name="SelectedFloor" />
     <RootPropertyPathName Name="NoteStep4" />
     <RootPropertyPathName Name="FloorsGroundPlot" />
+    <RootPropertyPathName Name="ButtonUploadSketch" />
     <RootPropertyPathName Name="ButtonDrawSketch" />
     <RootPropertyPathName Name="NumberFloors" />
     <RootPropertyPathName Name="SelectedItemFloor" />
@@ -135,16 +136,15 @@
     <RootPropertyPathName Name="SelectedCustomerList" />
     <RootPropertyPathName Name="PDFButtonVisibility" />
     <RootPropertyPathName Name="ButtonCreatePdf" />
-    <RootPropertyPathName Name="ListProjects" />
+    <RootPropertyPathName Name="ProjectPezVisibility" />
+    <RootPropertyPathName Name="NoteStep7" />
+    <RootPropertyPathName Name="NoteStep5" />
     <RootPropertyPathName Name="SelectedProject" />
+    <RootPropertyPathName Name="ListProjects" />
     <RootPropertyPathName Name="State" />
     <RootPropertyPathName Name="StateValue" />
     <RootPropertyPathName Name="EndDate" />
     <RootPropertyPathName Name="StartDate" />
-    <RootPropertyPathName Name="LoadItemsIntoLists" />
-    <RootPropertyPathName Name="ProjectPezVisibility" />
-    <RootPropertyPathName Name="NoteStep7" />
-    <RootPropertyPathName Name="NoteStep5" />
     <RootPropertyPathName Name="Appointments" />
     <RootPropertyPathName Name="SelectedAppointment" />
     <RootPropertyPathName Name="Time" />
@@ -400,7 +400,6 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Value" />
     </RootType>
-    <RootType FullName="Fallstudie.Pages.pdfErstellenPage" />
     <RootType FullName="Fallstudie.Pages.ProjektePage" />
     <RootType FullName="Fallstudie.Pages.Startseite" />
     <RootType FullName="Fallstudie.Converter.DateTimeConverter" />

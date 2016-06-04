@@ -89,7 +89,7 @@
             <AppBarButton Content="      10" Command="{Binding ButtonForwardChooseOutsideArea}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 10"/>
             <AppBarButton Icon="Accept" Command="{Binding ButtonForwardSummary}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Übersicht"/>
 
-            <AppBarButton Command="{Binding ButtonUploadPlot}" Icon="Upload" Label="Weiter"/>
+            <AppBarButton Command="{Binding ButtonUploadPlot}" Icon="Upload" Label="Upload Grundstück"/>
             <AppBarButton Command="{Binding ButtonForwardChoosePlot}" Icon="Forward" Label="Weiter"/>
         </CommandBar>
     </Page.BottomAppBar>

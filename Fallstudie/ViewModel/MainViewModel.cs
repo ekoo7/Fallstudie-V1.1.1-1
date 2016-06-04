@@ -8,31 +8,17 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
-using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 using Syncfusion.Pdf;
-using Syncfusion.Pdf.Parsing;
 using Syncfusion.Pdf.Graphics;
-using Syncfusion.Pdf.Grid;
-using Syncfusion.DocIO.DLS;
 using Windows.Storage.Pickers;
-using Syncfusion.Pdf.Tables;
 using System.Net.Http;
-using System.Net;
 using System.Net.NetworkInformation;
 using Windows.System.Threading;
-using System.Threading;
-using Windows.UI.Xaml;
-using Windows.Foundation;
 using Windows.UI.Input.Inking;
 
 namespace Fallstudie.ViewModel
@@ -93,6 +79,7 @@ namespace Fallstudie.ViewModel
             ButtonEditConfiguration = new RelayCommand(ButtonEditConfigurationMehtod);
             ButtonSaveConfiguration = new RelayCommand(ButtonSaveConfigurationMethod);
             ButtonCreateProject = new RelayCommand(ButtonCreateProjectMethod);
+            ButtonUploadPlot = new RelayCommand(ButtonUploadPlotMethod);
         }
 
         #region Offline Funktionalität
@@ -817,6 +804,8 @@ namespace Fallstudie.ViewModel
         public RelayCommand ButtonSaveConfiguration { get; set; }
         //Das konfigurierte Haus wird in ndie Datenbank gespeichert -> Projekt wurde erstellt
         public RelayCommand ButtonCreateProject { get; set; }
+        //Upload Grundstück
+        public RelayCommand ButtonUploadPlot { get; set; }
         #endregion
 
         #region Notizen
@@ -985,6 +974,50 @@ namespace Fallstudie.ViewModel
             }
         }
 
+        //Upload Grundstück
+        private async void ButtonUploadPlotMethod()
+        {
+            var picker = new FileOpenPicker();
+            picker.ViewMode = PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".png");
+
+            StorageFile file = await picker.PickSingleFileAsync();
+            if (file != null)
+            {
+                try
+                {
+                    var rootFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\" + SelectedCustomerr.Id + "Plots", CreationCollisionOption.OpenIfExists); // Create folder
+                    await file.CopyAsync(rootFolder, file.Name, NameCollisionOption.ReplaceExisting);
+                    string fileName = file.Name.Split('.').First();
+                    string filePath = rootFolder.Path + "\\" + file.Name;
+                    int newAttributeId;
+                    using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                    {
+                        con.Insert(new DBModel.Attribute()
+                        {
+                            description = fileName,
+                            price = 0,
+                            //TODO
+                            image = "NULL",
+                            deleted = 0,
+                            modifieddate = ConvertDateTime(DateTime.Now),
+                            attribute_group_id = 3,
+                            rootfolder = filePath
+                        });
+                        newAttributeId = (con.Table<DBModel.Attribute>().OrderByDescending(u => u.attribute_id).FirstOrDefault()).attribute_id;
+                        con.Close();
+                    }
+                    ImagesPlot.Add(new ImageInherit(filePath, newAttributeId, fileName, 0));
+                }
+                catch (Exception)
+                {
+                    var dialog = new MessageDialog("Ein Fehler ist aufgetreten!", "Error");
+                    await dialog.ShowAsync();
+                }
+            }
+        }
+
         //Hier wird weitergeleitet auf Schritt 4
         private async void ButtonForwardChoosePlotMethod()
         {
@@ -1041,35 +1074,99 @@ namespace Fallstudie.ViewModel
                 con.Close();
             }
             if (floorPackage.Count == 0 && SelectedItemFloor == 0)
-                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 0, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
-            else if(floorPackage.Count == 0 && SelectedItemFloor == 1)
-                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 0, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(GroundfloorMethod), SelectedItemFloor, NumberOfFloorDB));
+            else if (floorPackage.Count == 0 && SelectedItemFloor == 1)
+                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
             else if (floorPackage.Count == 0 && SelectedItemFloor == 2)
-                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
             else
             {
                 if (NumberOfFloorDB >= 0)
-                    FloorsGroundPlot.Add(new ImageInherit(floorPackage[0].rootfolder, floorPackage[0].housefloor_id, floorPackage[0].area, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(floorPackage[0].rootfolder, floorPackage[0].housefloor_id, floorPackage[0].area, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(GroundfloorMethod), SelectedItemFloor, NumberOfFloorDB));
+
                 if (NumberOfFloorDB >= 1)
-                {
                     if (SelectedItemFloor == 1 || SelectedItemFloor == 2)
-                    {
-                        FloorsGroundPlot.Add(new ImageInherit(floorPackage[1].rootfolder, floorPackage[1].housefloor_id, floorPackage[1].area, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
-                    }
-                }
+                        FloorsGroundPlot.Add(new ImageInherit(floorPackage[1].rootfolder, floorPackage[1].housefloor_id, floorPackage[1].area, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
+
                 if (NumberOfFloorDB >= 2 && SelectedItemFloor == 2)
-                    FloorsGroundPlot.Add(new ImageInherit(floorPackage[2].rootfolder, floorPackage[2].housefloor_id, floorPackage[2].area, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(floorPackage[2].rootfolder, floorPackage[2].housefloor_id, floorPackage[2].area, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
+
                 if (NumberOfFloorDB == 0 && SelectedItemFloor == 1)
-                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
+
                 if (NumberOfFloorDB == 0 && SelectedItemFloor == 2)
                 {
-                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
-                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
                 }
                 if (NumberOfFloorDB == 1 && SelectedItemFloor == 2)
-                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
             }
             OnChange("FloorsGroundPlot");
+        }
+
+        //Upload Grundriss Erdgeschoss
+        private void GroundfloorMethod()
+        {
+            UploadGroundplot("Erdgeschoss", 0);
+        }
+
+        //Upload Grundriss Stockwerk1
+        private void Floor1Method()
+        {
+            UploadGroundplot("Stockwerk 1", 1);
+        }
+
+        private void Floor2Method()
+        {
+            UploadGroundplot("Stockwerk 2", 2);
+        }
+
+        private async void UploadGroundplot(string name, int i)
+        {
+            var picker = new FileOpenPicker();
+            picker.ViewMode = PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".png");
+
+            StorageFile file = await picker.PickSingleFileAsync();
+            if (file != null)
+            {
+                try
+                {
+                    var rootFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\" + SelectedCustomerr.Id + "Groundplots", CreationCollisionOption.OpenIfExists); // Create folder
+                    await file.CopyAsync(rootFolder, file.Name, NameCollisionOption.ReplaceExisting);
+                    string fileName = name;
+                    string filePath = rootFolder.Path + "\\" + file.Name;
+                    int newAttributeId;
+
+                    using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                    {/*
+                        con.Insert(new DBModel.Attribute()
+                        {
+                            description = fileName,
+                            price = 0,
+                            //TODO
+                            image = "",
+                            deleted = 0,
+                            modifieddate = ConvertDateTime(DateTime.Now),
+                            attribute_group_id = 3,
+                            rootfolder = filePath
+                        });
+                        newAttributeId = (con.Table<DBModel.Attribute>().OrderByDescending(u => u.attribute_id).FirstOrDefault()).attribute_id;*/
+                        con.Close();
+                    }
+
+                    FloorsGroundPlot.Add(new ImageInherit(filePath, 0, i, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(GroundfloorMethod), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.RemoveAt(i);
+                    FloorsGroundPlot.Move(FloorsGroundPlot.Count - 1, i);
+                }
+                catch (Exception)
+                {
+                    var dialog = new MessageDialog("Ein Fehler ist aufgetreten!", "Error");
+                    await dialog.ShowAsync();
+                }
+            }
         }
 
         //Hier wird weitergeleitet auf Schritt 5
@@ -1518,9 +1615,6 @@ namespace Fallstudie.ViewModel
 
             var dialog = new MessageDialog("Haus wurde als konfiguriertes Haus erstellt.");
             await dialog.ShowAsync();
-            GetFrame();
-            a.Navigate(typeof(Pages.pdfErstellenPage));
-
         }
         #endregion
 
@@ -2993,6 +3087,7 @@ namespace Fallstudie.ViewModel
                      from b in con.Table<Project>()
                      where a.customer_user_id.Equals(i)
                      && b.houseconfig_id.Equals(a.houseconfig_id)
+                     && b.status.Equals("1")
                      select b).ToList();
 
                 h = p.Count;
@@ -3009,6 +3104,7 @@ namespace Fallstudie.ViewModel
             {
                 p = (from a in con.Table<Houseconfig>()
                      where a.customer_user_id.Equals(i)
+                     && a.status.Equals("1")
                      select a).ToList();
 
                 h = p.Count;

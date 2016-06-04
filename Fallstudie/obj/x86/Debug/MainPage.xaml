@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <RelativePanel>
-            <Button x:ConnectionId='10' Name="MenueButton" 
+            <Button x:ConnectionId='9' Name="MenueButton" 
                     RelativePanel.AlignLeftWithPanel="True" 
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="36"
@@ -24,19 +24,19 @@
                     Command="{Binding MenuButtonClicked}"                          
                     />
 
-            <Button x:ConnectionId='11' Name="BackButton"
+            <Button x:ConnectionId='10' Name="BackButton"
                     RelativePanel.RightOf="MenueButton"
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="36"
                     Content="&#xE0C4;"                         />
-            <Button x:ConnectionId='12' Name="ButtonLogout"
+            <Button x:ConnectionId='11' Name="ButtonLogout"
                     RelativePanel.AlignRightWithPanel="True"
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="36"
                     Command="{Binding ButtonLogout}" ToolTipService.ToolTip="Logout">
                 <Image Source="Assets/icons/logout3.png" Width="36"/>
             </Button>
-            <TextBlock x:ConnectionId='13' Margin="-0.333,0,10,0"
+            <TextBlock x:ConnectionId='12' Margin="-0.333,0,10,0"
                       Foreground="Gray"
                 Name="TextBlockUser" RelativePanel.LeftOf="ButtonLogout" FontSize="30" Text="{Binding Username}" Height="40" VerticalAlignment="Top"/>
 
@@ -79,18 +79,11 @@
                             <TextBlock FontSize="24" Text="Termine" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
-
-                    <ListBoxItem x:ConnectionId='8' Name="PDF Erstellen">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE160;"/>
-                            <TextBlock FontSize="24" Text="PDF erstellen" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
                 </ListBox>
 
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame x:ConnectionId='9' Name="MyFrame">
+                <Frame x:ConnectionId='8' Name="MyFrame">
 
                 </Frame>
             </SplitView.Content>
