@@ -16,9 +16,9 @@
     <RootPropertyPathName Name="NumbProjects" />
     <RootPropertyPathName Name="ButtonForwardChooseCustomer" />
     <RootPropertyPathName Name="ButtonForwardChooseCustomerVisibility" />
-    <RootPropertyPathName Name="ButtonCancelScetch" />
-    <RootPropertyPathName Name="ButtonSaveScetch" />
-    <RootPropertyPathName Name="ButtonDeleteScetch" />
+    <RootPropertyPathName Name="ButtonCancelSketch" />
+    <RootPropertyPathName Name="ButtonSaveSketch" />
+    <RootPropertyPathName Name="ButtonDeleteSketch" />
     <RootPropertyPathName Name="TotalPrice" />
     <RootPropertyPathName Name="SelectedFence" />
     <RootPropertyPathName Name="PriceFormat" />

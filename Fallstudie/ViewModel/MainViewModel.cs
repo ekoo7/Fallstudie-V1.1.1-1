@@ -297,6 +297,30 @@ namespace Fallstudie.ViewModel
         #region PROPERTIES
 
         #region Variablen
+        private int newGroundPlotId0 = 0;
+
+        public int NewGroundPlotId0
+        {
+            get { return newGroundPlotId0; }
+            set { newGroundPlotId0 = value; }
+        }
+        private int newGroundPlotId1 = 0;
+
+        public int NewGroundPlotId1
+        {
+            get { return newGroundPlotId1; }
+            set { newGroundPlotId1 = value; }
+        }
+        private int newGroundPlotId2 = 0;
+
+        public int NewGroundPlotId2
+        {
+            get { return newGroundPlotId2; }
+            set { newGroundPlotId2 = value; }
+        }
+
+
+        public int NewPlotId { get; set; }
         private string buttonForwardChooseCustomerVisibility = "Collapsed";
 
         public string ButtonForwardChooseCustomerVisibility
@@ -973,7 +997,6 @@ namespace Fallstudie.ViewModel
                 await dialog.ShowAsync();
             }
         }
-
         //Upload Grundstück
         private async void ButtonUploadPlotMethod()
         {
@@ -991,28 +1014,22 @@ namespace Fallstudie.ViewModel
                     await file.CopyAsync(rootFolder, file.Name, NameCollisionOption.ReplaceExisting);
                     string fileName = file.Name.Split('.').First();
                     string filePath = rootFolder.Path + "\\" + file.Name;
-                    int newAttributeId;
                     using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
                     {
-                        con.Insert(new DBModel.Attribute()
+                        con.Insert(new Temp_Table()
                         {
                             description = fileName,
                             price = 0,
-                            //TODO
-                            image = "NULL",
-                            deleted = 0,
-                            modifieddate = ConvertDateTime(DateTime.Now),
-                            attribute_group_id = 3,
                             rootfolder = filePath
                         });
-                        newAttributeId = (con.Table<DBModel.Attribute>().OrderByDescending(u => u.attribute_id).FirstOrDefault()).attribute_id;
+                        NewPlotId = (con.Table<Temp_Table>().OrderByDescending(u => u.id).FirstOrDefault()).id;
                         con.Close();
                     }
-                    ImagesPlot.Add(new ImageInherit(filePath, newAttributeId, fileName, 0));
+                    ImagesPlot.Add(new ImageInherit(filePath, 0, fileName, 0));
                 }
                 catch (Exception)
                 {
-                    var dialog = new MessageDialog("Ein Fehler ist aufgetreten!", "Error");
+                    var dialog = new MessageDialog("Bitte versuchen Sie es mit einem anderen Namen für Ihre Datei!", "Error");
                     await dialog.ShowAsync();
                 }
             }
@@ -1074,37 +1091,51 @@ namespace Fallstudie.ViewModel
                 con.Close();
             }
             if (floorPackage.Count == 0 && SelectedItemFloor == 0)
-                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 0, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(GroundfloorMethod), SelectedItemFloor, NumberOfFloorDB));
+                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 0, new RelayCommand(DrawSketchGroundfloorMethod), new RelayCommand(GroundfloorMethod), SelectedItemFloor, NumberOfFloorDB));
             else if (floorPackage.Count == 0 && SelectedItemFloor == 1)
-                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
+                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(DrawSketchFloor1Method), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
             else if (floorPackage.Count == 0 && SelectedItemFloor == 2)
-                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
+                FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(DrawSketchFloor2Method), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
             else
             {
                 if (NumberOfFloorDB >= 0)
-                    FloorsGroundPlot.Add(new ImageInherit(floorPackage[0].rootfolder, floorPackage[0].housefloor_id, floorPackage[0].area, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(GroundfloorMethod), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(floorPackage[0].rootfolder, floorPackage[0].housefloor_id, floorPackage[0].area, new RelayCommand(DrawSketchGroundfloorMethod), new RelayCommand(GroundfloorMethod), SelectedItemFloor, NumberOfFloorDB));
 
                 if (NumberOfFloorDB >= 1)
                     if (SelectedItemFloor == 1 || SelectedItemFloor == 2)
-                        FloorsGroundPlot.Add(new ImageInherit(floorPackage[1].rootfolder, floorPackage[1].housefloor_id, floorPackage[1].area, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
+                        FloorsGroundPlot.Add(new ImageInherit(floorPackage[1].rootfolder, floorPackage[1].housefloor_id, floorPackage[1].area, new RelayCommand(DrawSketchFloor1Method), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
 
                 if (NumberOfFloorDB >= 2 && SelectedItemFloor == 2)
-                    FloorsGroundPlot.Add(new ImageInherit(floorPackage[2].rootfolder, floorPackage[2].housefloor_id, floorPackage[2].area, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(floorPackage[2].rootfolder, floorPackage[2].housefloor_id, floorPackage[2].area, new RelayCommand(DrawSketchFloor2Method), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
 
                 if (NumberOfFloorDB == 0 && SelectedItemFloor == 1)
-                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(DrawSketchFloor1Method), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
 
                 if (NumberOfFloorDB == 0 && SelectedItemFloor == 2)
                 {
-                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
-                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 1, new RelayCommand(DrawSketchFloor1Method), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(DrawSketchFloor2Method), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
                 }
                 if (NumberOfFloorDB == 1 && SelectedItemFloor == 2)
-                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
+                    FloorsGroundPlot.Add(new ImageInherit(HouseconfigFolder.Path + "/4Grundriss/weiss.png", 0, 2, new RelayCommand(DrawSketchFloor2Method), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
             }
             OnChange("FloorsGroundPlot");
         }
-
+        //Grundriss zeichnen Erdgeschoss
+        private void DrawSketchGroundfloorMethod()
+        {
+            DrawSketch(0);
+        }
+        //Grundriss zeichnen Stockwerk 1
+        private void DrawSketchFloor1Method()
+        {
+            DrawSketch(1);
+        }
+        //Grundriss zeichnen Stockwerk 2
+        private void DrawSketchFloor2Method()
+        {
+            DrawSketch(2);
+        }
         //Upload Grundriss Erdgeschoss
         private void GroundfloorMethod()
         {
@@ -1136,30 +1167,38 @@ namespace Fallstudie.ViewModel
                 {
                     var rootFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\" + SelectedCustomerr.Id + "Groundplots", CreationCollisionOption.OpenIfExists); // Create folder
                     await file.CopyAsync(rootFolder, file.Name, NameCollisionOption.ReplaceExisting);
-                    string fileName = name;
+                    string fileName = new Guid().ToString();
                     string filePath = rootFolder.Path + "\\" + file.Name;
-                    int newAttributeId;
 
                     using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
-                    {/*
-                        con.Insert(new DBModel.Attribute()
+                    {
+                        con.Insert(new Temp_Table()
                         {
                             description = fileName,
                             price = 0,
-                            //TODO
-                            image = "",
-                            deleted = 0,
-                            modifieddate = ConvertDateTime(DateTime.Now),
-                            attribute_group_id = 3,
                             rootfolder = filePath
                         });
-                        newAttributeId = (con.Table<DBModel.Attribute>().OrderByDescending(u => u.attribute_id).FirstOrDefault()).attribute_id;*/
+
+                        if (i == 0)
+                        {
+                            NewGroundPlotId0 = (con.Table<Temp_Table>().OrderByDescending(u => u.id).FirstOrDefault()).id;
+                            FloorsGroundPlot.Add(new ImageInherit(filePath, 0, i, new RelayCommand(DrawSketchGroundfloorMethod), new RelayCommand(GroundfloorMethod), SelectedItemFloor, NumberOfFloorDB));
+                        }
+                        else if (i == 1)
+                        {
+                            NewGroundPlotId1 = (con.Table<Temp_Table>().OrderByDescending(u => u.id).FirstOrDefault()).id;
+                            FloorsGroundPlot.Add(new ImageInherit(filePath, 0, i, new RelayCommand(DrawSketchFloor1Method), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
+                        }
+                        else if (i == 2)
+                        {
+                            NewGroundPlotId2 = (con.Table<Temp_Table>().OrderByDescending(u => u.id).FirstOrDefault()).id;
+                            FloorsGroundPlot.Add(new ImageInherit(filePath, 0, i, new RelayCommand(DrawSketchFloor2Method), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
+                        }
+                        FloorsGroundPlot.RemoveAt(i);
+                        FloorsGroundPlot.Move(FloorsGroundPlot.Count - 1, i);
+
                         con.Close();
                     }
-
-                    FloorsGroundPlot.Add(new ImageInherit(filePath, 0, i, new RelayCommand(ButtonDrawSketchMethod), new RelayCommand(GroundfloorMethod), SelectedItemFloor, NumberOfFloorDB));
-                    FloorsGroundPlot.RemoveAt(i);
-                    FloorsGroundPlot.Move(FloorsGroundPlot.Count - 1, i);
                 }
                 catch (Exception)
                 {
@@ -1845,7 +1884,7 @@ namespace Fallstudie.ViewModel
                 modifieddate = ConvertDateTime(DateTime.Now)
             });
         }
-
+        //TODO insert housefloor sketch
         //Houseconfig wird erstellt
         public void SQLCreateHouseconfig()
         {
@@ -1864,28 +1903,103 @@ namespace Fallstudie.ViewModel
 
                 //Get houseconfig Id von gerade erstelltem Houseconfig
                 configId = (con.Table<Houseconfig>().OrderByDescending(u => u.houseconfig_id).FirstOrDefault());
-                
+
                 //GroundPlot
-                for (int i = 0; i < SelectedItemFloor; i++)
+                if (NewGroundPlotId0 != 0)
                 {
-                    Housefloor_Package lh = (from a in con.Table<Housefloor_Package>()
-                                             where a.rootfolder.Equals(FloorsGroundPlot[i].SourceImage)
-                                             select a).Single();
                     con.Insert(new Housefloor
                     {
                         price = int.Parse(SelectedFloor.Price.ToString()),
-                        sketch = lh.sketch,
+                        sketch = "NULL",
                         modifieddate = ConvertDateTime(DateTime.Now),
                         houseconfig_id = configId.houseconfig_id,
-                        area = i,
-                        rootfolder = FloorsGroundPlot[i].SourceImage
+                        area = 0,
+                        rootfolder = FloorsGroundPlot[0].SourceImage
+                    });
+                    con.Delete<Temp_Table>(NewGroundPlotId0);
+                }
+                else
+                {
+                    con.Insert(new Housefloor
+                    {
+                        price = int.Parse(SelectedFloor.Price.ToString()),
+                        sketch = "",//(from a in con.Table<Housefloor_Package>() where a.rootfolder.Equals(FloorsGroundPlot[0].SourceImage) select a.sketch).Single(),
+                        modifieddate = ConvertDateTime(DateTime.Now),
+                        houseconfig_id = configId.houseconfig_id,
+                        area = 0,
+                        rootfolder = FloorsGroundPlot[0].SourceImage
+                    });
+                }
+                if (NewGroundPlotId1 != 0 && SelectedItemFloor > 0)
+                {
+                    con.Insert(new Housefloor
+                    {
+                        price = int.Parse(SelectedFloor.Price.ToString()),
+                        sketch = "NULL",
+                        modifieddate = ConvertDateTime(DateTime.Now),
+                        houseconfig_id = configId.houseconfig_id,
+                        area = 1,
+                        rootfolder = FloorsGroundPlot[1].SourceImage
+                    });
+                    con.Delete<Temp_Table>(NewGroundPlotId1);
+                }
+                else if (NewGroundPlotId1 == 0 && SelectedItemFloor > 0)
+                {
+                    con.Insert(new Housefloor
+                    {
+                        price = int.Parse(SelectedFloor.Price.ToString()),
+                        sketch = "",//(from a in con.Table<Housefloor_Package>() where a.rootfolder.Equals(FloorsGroundPlot[1].SourceImage) select a.sketch).Single(),
+                        modifieddate = ConvertDateTime(DateTime.Now),
+                        houseconfig_id = configId.houseconfig_id,
+                        area = 1,
+                        rootfolder = FloorsGroundPlot[1].SourceImage
+                    });
+                }
+                if (NewGroundPlotId2 != 0 && SelectedItemFloor > 1)
+                {
+                    con.Insert(new Housefloor
+                    {
+                        price = int.Parse(SelectedFloor.Price.ToString()),
+                        sketch = "NULL",
+                        modifieddate = ConvertDateTime(DateTime.Now),
+                        houseconfig_id = configId.houseconfig_id,
+                        area = 0,
+                        rootfolder = FloorsGroundPlot[0].SourceImage
+                    });
+                    con.Delete<Temp_Table>(NewGroundPlotId2);
+                }
+                else if (NewGroundPlotId2 == 0 && SelectedItemFloor > 1)
+                {
+                    con.Insert(new Housefloor
+                    {
+                        price = int.Parse(SelectedFloor.Price.ToString()),
+                        sketch = "",//(from a in con.Table<Housefloor_Package>() where a.rootfolder.Equals(FloorsGroundPlot[2].SourceImage) select a.sketch).Single(),
+                        modifieddate = ConvertDateTime(DateTime.Now),
+                        houseconfig_id = configId.houseconfig_id,
+                        area = 2,
+                        rootfolder = FloorsGroundPlot[2].SourceImage
                     });
                 }
                 //Plot
+                if (SelectedPlot.Id == 0)
+                {
+                    con.Insert(new DBModel.Attribute()
+                    {
+                        description = SelectedPlot.Description,
+                        price = 0,
+                        image = "NULL",
+                        deleted = 1,
+                        modifieddate = ConvertDateTime(DateTime.Now),
+                        attribute_group_id = 3,
+                        rootfolder = SelectedPlot.SourceImage
+                    });
+                    con.Delete<Temp_Table>(NewPlotId);
+                }
+                int AttId = (con.Table<DBModel.Attribute>().OrderByDescending(u => u.attribute_id).FirstOrDefault()).attribute_id;
                 con.Insert(new Houseconfig_Has_Attribute
                 {
                     houseconfig_id = configId.houseconfig_id,
-                    attribute_id = SelectedPlot.Id,
+                    attribute_id = AttId,
                     amount = 1,
                     special = NoteStep3,
                     modifieddate = ConvertDateTime(DateTime.Now)
@@ -2098,6 +2212,7 @@ namespace Fallstudie.ViewModel
             {
                 models = (from c in con.Table<DBModel.Attribute>()
                           where c.attribute_group_id.Equals(t)
+                          && c.deleted.Equals("0")
                           select c).ToList();
 
                 con.Close();
@@ -2140,56 +2255,76 @@ namespace Fallstudie.ViewModel
 
         #endregion
 
-        #region DrawScetches
-        public RelayCommand ButtonSaveScetch { get; set; }
-        public RelayCommand ButtonDeleteScetch { get; set; }
-        public RelayCommand ButtonCancelScetch { get; set; }
-
-
+        #region DrawSketches
+        public RelayCommand ButtonSaveSketch { get; set; }
+        public RelayCommand ButtonDeleteSketch { get; set; }
+        public RelayCommand ButtonCancelSketch { get; set; }
 
         InkCanvas canvas;
         InkPresenter myPresenter;
-        private void ButtonDrawSketchMethod()
+
+
+        private void DrawSketch(int i)
         {
             GetFrame();
             a.Navigate(typeof(Pages.HKPages.GrundrissZeichnen));
-            ButtonSaveScetch = new RelayCommand(ButtonSaveScetchMethod);
-            ButtonDeleteScetch = new RelayCommand(ButtonDeleteScetchMethod);
-            ButtonCancelScetch = new RelayCommand(ButtonCancelScetchMethod);
-
+            ButtonCancelSketch = new RelayCommand(ButtonCancelSketchMethod);
+            if (i == 0)
+            {
+                ButtonSaveSketch = new RelayCommand(ButtonSaveSketchGroundfloorMethod);
+                ButtonDeleteSketch = new RelayCommand(ButtonDeleteSketchGroundfloorMethod);
+            }
+            else if (i == 1)
+            {
+                ButtonSaveSketch = new RelayCommand(ButtonSaveSketchFloor1Method);
+                ButtonDeleteSketch = new RelayCommand(ButtonDeleteSketchFloor1Method);
+            }
+            else if (i == 2)
+            {
+                ButtonSaveSketch = new RelayCommand(ButtonSaveSketchFloor2Method);
+                ButtonDeleteSketch = new RelayCommand(ButtonDeleteSketchFloor2Method);
+            }
 
             canvas = Pages.HKPages.GrundrissZeichnen.InkCanvasObject.GetInkCanvasObject();
-            
+
             myPresenter = canvas.InkPresenter;
-            myPresenter.InputDeviceTypes = Windows.UI.Core.CoreInputDeviceTypes.Mouse 
-                | Windows.UI.Core.CoreInputDeviceTypes.Pen 
+            myPresenter.InputDeviceTypes = Windows.UI.Core.CoreInputDeviceTypes.Mouse
+                | Windows.UI.Core.CoreInputDeviceTypes.Pen
                 | Windows.UI.Core.CoreInputDeviceTypes.Touch;
-            
         }
-
-        private void ButtonCancelScetchMethod()
+        //Save Sketch Methods
+        private void ButtonSaveSketchGroundfloorMethod()
         {
-            ButtonForwardChoosePlotMethod();
+            SaveSketchMehtod(0);
         }
-
-        private void ButtonDeleteScetchMethod()
+        private void ButtonSaveSketchFloor1Method()
         {
-            ButtonDrawSketchMethod();
+            SaveSketchMehtod(1);
         }
-
-        /*private void ButtonPenHardnessDegree5Method()
+        private void ButtonSaveSketchFloor2Method()
         {
-            InkDrawingAttributes myAttributes = myPresenter.CopyDefaultDrawingAttributes();
-            myAttributes.Size = new Windows.Foundation.Size(7.5, 7.5);
-            myPresenter.UpdateDefaultDrawingAttributes(myAttributes);
-        }*/
-
-       
-
-        private async void ButtonSaveScetchMethod()
+            SaveSketchMehtod(2);
+        }
+        //Delete Sketch Methods
+        private void ButtonDeleteSketchGroundfloorMethod()
         {
+            ButtonDeleteSketchMethod(0);
+        }
+        private void ButtonDeleteSketchFloor1Method()
+        {
+            ButtonDeleteSketchMethod(1);
+        }
+        private void ButtonDeleteSketchFloor2Method()
+        {
+            ButtonDeleteSketchMethod(2);
+        }
+        //Save Sketch
+        private async void SaveSketchMehtod(int i)
+        {
+            string name = "Groundplot";
             var rootFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\" + SelectedCustomerr.Id + "GroundPlots", CreationCollisionOption.OpenIfExists); // Create folder
-            var coverpic_file = await rootFolder.CreateFileAsync("abc.png", CreationCollisionOption.ReplaceExisting); // Create file
+            var coverpic_file = await rootFolder.CreateFileAsync(name + ".png", CreationCollisionOption.ReplaceExisting); // Create file
+            string filePath = rootFolder.Path + "\\" + name + ".png";
 
             if (coverpic_file != null)
             {
@@ -2199,38 +2334,54 @@ namespace Fallstudie.ViewModel
                     {
                         await canvas.InkPresenter.StrokeContainer.SaveAsync(stream);
                     }
+                    using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                    {
+                        con.Insert(new Temp_Table()
+                        {
+                            description = name,
+                            price = 0,
+                            rootfolder = filePath
+                        });
+                        if (i == 0)
+                        {
+                            NewGroundPlotId0 = (con.Table<Temp_Table>().OrderByDescending(u => u.id).FirstOrDefault()).id;
+                            FloorsGroundPlot.Add(new ImageInherit(filePath, 0, i, new RelayCommand(DrawSketchGroundfloorMethod), new RelayCommand(GroundfloorMethod), SelectedItemFloor, NumberOfFloorDB));
+                        }
+                        else if (i == 1)
+                        {
+                            NewGroundPlotId1 = (con.Table<Temp_Table>().OrderByDescending(u => u.id).FirstOrDefault()).id;
+                            FloorsGroundPlot.Add(new ImageInherit(filePath, 0, i, new RelayCommand(DrawSketchFloor1Method), new RelayCommand(Floor1Method), SelectedItemFloor, NumberOfFloorDB));
+                        }
+                        else if (i == 2)
+                        {
+                            NewGroundPlotId2 = (con.Table<Temp_Table>().OrderByDescending(u => u.id).FirstOrDefault()).id;
+                            FloorsGroundPlot.Add(new ImageInherit(filePath, 0, i, new RelayCommand(DrawSketchFloor2Method), new RelayCommand(Floor2Method), SelectedItemFloor, NumberOfFloorDB));
+                        }
+                        con.Close();
+                    }
+                    FloorsGroundPlot.RemoveAt(i);
+                    FloorsGroundPlot.Move(FloorsGroundPlot.Count - 1, i);
+                    ButtonForwardChoosePlotMethod();
                 }
                 catch (Exception)
                 {
                 }
             }
+        }
 
+        private void ButtonCancelSketchMethod()
+        {
+            ButtonForwardChoosePlotMethod();
+        }
 
-
-            /*
-
-            var savePicker = new FileSavePicker();
-            savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
-            savePicker.FileTypeChoices.Add("PNG", new
-            System.Collections.Generic.List<string> { ".png" });
-
-            StorageFile file = await savePicker.PickSaveFileAsync();
-            if (null != file)
-            {
-                try
-                {
-                    using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
-                    {
-                        await canvas.InkPresenter.StrokeContainer.SaveAsync(stream);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //GenerateErrorMessage();
-                }
-            }
-            */
-
+        private void ButtonDeleteSketchMethod(int i)
+        {
+            if (i == 0)
+                DrawSketch(0);
+            else if (i == 1)
+                DrawSketch(1);
+            else if (i == 2)
+                DrawSketch(2);
         }
 
         #endregion
@@ -3114,104 +3265,6 @@ namespace Fallstudie.ViewModel
             return h;
         }
 
-        private ColorPalette SQLGetRightAttributeColor(int attributGroupId, int userId)
-        {
-            List<ColorPalette> j;
-            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
-            {
-                j = (from b in con.Table<Houseconfig>()
-                     from d in con.Table<Houseconfig_Has_Attribute>()
-                     from e in con.Table<DBModel.Attribute>()
-                     where b.customer_user_id.Equals(userId)
-                     && e.attribute_group_id.Equals(attributGroupId)
-                     && d.houseconfig_id.Equals(b.houseconfig_id)
-                     && d.attribute_id.Equals(e.attribute_id)
-                     select new ColorPalette
-                     (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))
-                          ).ToList();
-
-                con.Close();
-            }
-            if (j.Count > 0)
-                return j[0];
-            else
-                return new ColorPalette();
-        }
-        private EHSystem SQLGetRightAttributeEHSystem(int attributGroupId, int userId)
-        {
-            List<EHSystem> y;
-            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
-            {
-                y = (from b in con.Table<Houseconfig>()
-                     from d in con.Table<Houseconfig_Has_Attribute>()
-                     from e in con.Table<DBModel.Attribute>()
-                     where b.customer_user_id.Equals(userId)
-                     && e.attribute_group_id.Equals(attributGroupId)
-                     && d.houseconfig_id.Equals(b.houseconfig_id)
-                     && d.attribute_id.Equals(e.attribute_id)
-                     select new EHSystem()
-                     {
-                         Id = e.attribute_id,
-                         Name = e.description,
-                         Price = e.price
-                     }).ToList();
-
-                con.Close();
-            }
-            if (y.Count > 0)
-                return y[0];
-            else
-                return new EHSystem();
-        }
-
-        private string SQLGetRightAttributeString(int attributGroupId, int userId)
-        {
-            List<string> x;
-            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
-            {
-                x = (from b in con.Table<Houseconfig>()
-                     from d in con.Table<Houseconfig_Has_Attribute>()
-                     from e in con.Table<DBModel.Attribute>()
-                     where b.customer_user_id.Equals(userId)
-                     && e.attribute_group_id.Equals(attributGroupId)
-                     && d.houseconfig_id.Equals(b.houseconfig_id)
-                     && d.attribute_id.Equals(e.attribute_id)
-                     select e.description).ToList();
-
-                con.Close();
-            }
-            return x[0];
-        }
-
-        private ImageInherit SQLGetRightAttributeImage(int attributGroupId, int userId)
-        {
-            List<ImageInherit> i;
-            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
-            {
-                i = (from b in con.Table<Houseconfig>()
-                     from d in con.Table<Houseconfig_Has_Attribute>()
-                     from e in con.Table<DBModel.Attribute>()
-                     where b.customer_user_id.Equals(userId)
-                     && e.attribute_group_id.Equals(attributGroupId)
-                     && d.houseconfig_id.Equals(b.houseconfig_id)
-                     && d.attribute_id.Equals(e.attribute_id)
-                     select new ImageInherit()
-                     {
-                         SourceImage = e.rootfolder,
-                         Id = e.attribute_id,
-                         Description = e.description,
-                         Price = e.price
-                     }).ToList();
-
-                con.Close();
-            }
-            if (i.Count > 0)
-                return i[0];
-            else
-                return new ImageInherit();
-        }
-
-
         private string SQLGetConsultantName(int id)
         {
             string name;
@@ -3224,7 +3277,7 @@ namespace Fallstudie.ViewModel
             }
             return name;
         }
-        // TODO: Nochmal bearbeiten
+
         private List<HouseSummary> SQLGetHouseconfig()
         {
             List<HouseSummary> house;
@@ -3259,9 +3312,9 @@ namespace Fallstudie.ViewModel
                                          Description = e.description,
                                          Price = e.price
                                      }).FirstOrDefault(),
-                             numberOfFloors = (from h in con.Table<Housefloor>()
-                                               where h.houseconfig_id.Equals(b.houseconfig_id)
-                                               select h).Count() - 1,
+                             numberOfFloors = int.Parse((from h in con.Table<Housefloor>()
+                                                         where h.houseconfig_id.Equals(b.houseconfig_id)
+                                                         select h.area).LastOrDefault().ToString()),
                              GroundPlots = SQLGetGroundPlots(b.houseconfig_id),
                              OutsideWall = (from b in con.Table<Houseconfig>()
                                             from d in con.Table<Houseconfig_Has_Attribute>()
@@ -3519,9 +3572,9 @@ namespace Fallstudie.ViewModel
                                          Description = e.description,
                                          Price = e.price
                                      }).FirstOrDefault(),
-                             numberOfFloors = (from h in con.Table<Housefloor>()
-                                               where h.houseconfig_id.Equals(b.houseconfig_id)
-                                               select h).Count() - 1,
+                             numberOfFloors = int.Parse((from h in con.Table<Housefloor>()
+                                                         where h.houseconfig_id.Equals(b.houseconfig_id)
+                                                         select h.area).LastOrDefault().ToString()),
                              GroundPlots = SQLGetGroundPlots(b.houseconfig_id),
                              OutsideWall = (from b in con.Table<Houseconfig>()
                                             from d in con.Table<Houseconfig_Has_Attribute>()
@@ -3766,7 +3819,7 @@ namespace Fallstudie.ViewModel
         #endregion
 
 
-        #region UseCase Cusomer
+        #region UseCase Customer
         private ObservableCollection<Customer> listCustomer  = new ObservableCollection<Customer>();
 
         public ObservableCollection<Customer> ListCustomer
