@@ -3006,6 +3006,24 @@
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\eraser.png">
       <PackagePath>Assets\icons\eraser.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout.png">
+      <PackagePath>Assets\icons\logout.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout2.png">
+      <PackagePath>Assets\icons\logout2.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout3.png">
+      <PackagePath>Assets\icons\logout3.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout4.png">
+      <PackagePath>Assets\icons\logout4.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout5.png">
+      <PackagePath>Assets\icons\logout5.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\pdf1.png">
+      <PackagePath>Assets\icons\pdf1.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\pen.png">
       <PackagePath>Assets\icons\pen.png</PackagePath>
     </AppxPackagedFile>

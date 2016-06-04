@@ -78,7 +78,7 @@ namespace Fallstudie
                 closeSplitView();
 
             }
-            if (pdfErstellen.IsSelected)
+            if (PDFErstellen.IsSelected)
             {
                 MyFrame.Navigate(typeof(Pages.pdfErstellenPage));
                 closeSplitView();

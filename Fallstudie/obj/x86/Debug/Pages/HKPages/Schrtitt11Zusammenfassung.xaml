@@ -276,10 +276,10 @@
                             </Border>
 
                             <Border Grid.Column="3" Grid.Row="3" Grid.RowSpan="2">
-                                <TextBlock Text="{Binding NoteStep5_2, Mode=TwoWay}" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding NoteStep5_1, Mode=TwoWay}" VerticalAlignment="Center"/>
                             </Border>
                             <Border Grid.Column="3" Grid.Row="5" Grid.RowSpan="2">
-                                <TextBlock Text="{Binding NoteStep5_1, Mode=TwoWay}" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding NoteStep5_2, Mode=TwoWay}" VerticalAlignment="Center"/>
                             </Border>
                             <Border Grid.Column="3" Grid.Row="7" Grid.RowSpan="2">
                                 <TextBlock Text="{Binding NoteStep6, Mode=TwoWay}" VerticalAlignment="Center"/>

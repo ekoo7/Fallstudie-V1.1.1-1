@@ -8,8 +8,9 @@
     mc:Ignorable="d"
     DataContext="{Binding Main, Source={StaticResource Locator}}"
     >
-    <ScrollViewer>
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
             <StackPanel Orientation="Vertical">
                 <Image Source="/Assets/steep1.png" Height="50"/>
                 <Border Background="#0091FF">
@@ -72,19 +73,26 @@
 
                 <!--<Button Margin="20" Command="{Binding ButtonForwardChooseCustomer}" FontFamily="Segoe MDL2 Assets" FontSize="36" Content="&#xE0AB;" />-->
             </StackPanel>
-            <StackPanel Background="#B2AFAD" VerticalAlignment="Bottom">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="50*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Kunde"/>
-                    <TextBlock Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedCustomerr.Name}"/>
-                </Grid>
-               
-            </StackPanel>
-        </Grid>
-    </ScrollViewer>
+        </ScrollViewer>
+        <StackPanel VerticalAlignment="Bottom" Opacity="0.85" >
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="{ThemeResource SystemAltHighColor}" Offset="0.5"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="White"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Kunde"/>
+                <TextBlock Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedCustomerr.Name}"/>
+            </Grid>
+
+        </StackPanel>
+    </Grid>
     <Page.BottomAppBar>
         <CommandBar HorizontalContentAlignment="Left">
             <CommandBar.Content>

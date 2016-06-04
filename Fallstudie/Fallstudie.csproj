@@ -215,6 +215,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\icons\eraser.png" />
+    <Content Include="Assets\icons\logout.png" />
+    <Content Include="Assets\icons\logout2.png" />
+    <Content Include="Assets\icons\logout3.png" />
+    <Content Include="Assets\icons\logout4.png" />
+    <Content Include="Assets\icons\logout5.png" />
+    <Content Include="Assets\icons\pdf1.png" />
     <Content Include="Assets\icons\pen.png" />
     <Content Include="Assets\icons\pen1.png" />
     <Content Include="Assets\icons\pen2.png" />

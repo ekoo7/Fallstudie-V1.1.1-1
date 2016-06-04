@@ -11,15 +11,18 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
+            <Image Margin="0 15 0 0" Source="/Bilder/Logo/DreamHouse_lang.png" Height="80"/>
             <TextBlock Text="Login" FontSize="36" Margin="4" TextAlignment="Center"/>
-                <TextBlock x:ConnectionId='1' x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center"/>
-                <TextBlock Text="Username und Passwort eingeben." Margin="0,0,0,20"
+                
+                <TextBlock Text="Username und Passwort eingeben." Margin="0 0 0 10"
                TextWrapping="Wrap" Width="300"
                TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-            <TextBox x:ConnectionId='2' x:Name="UsernameTextBox" Margin="4" Width="250" Text="{Binding Username, Mode=TwoWay}"/>
-            <PasswordBox x:ConnectionId='3' x:Name="PasswordBox" Margin="4" Width="250"/>
-            <Button x:ConnectionId='4' x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"
+            <TextBox x:ConnectionId='1' x:Name="UsernameTextBox" Margin="4" Width="250" Text="{Binding Username, Mode=TwoWay}"/>
+            <PasswordBox x:ConnectionId='2' x:Name="PasswordBox" Margin="4" Width="250"/>
+            <Button x:ConnectionId='3' x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"
                                            Width="80" HorizontalAlignment="Center" Margin="0,20" Command="{Binding Login}"/>
+            
+            <TextBlock x:ConnectionId='4' x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center"/>
             <ProgressRing x:ConnectionId='5' x:Name="ProgressRingLoading" Height="64" Width="64" IsActive="False"/>
             <TextBlock x:ConnectionId='6' x:Name="TextBlockLoading" TextAlignment="Center" Text="Startvorgang..." Visibility="Collapsed"/>
         </StackPanel>

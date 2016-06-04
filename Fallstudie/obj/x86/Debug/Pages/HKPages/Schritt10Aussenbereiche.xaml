@@ -8,8 +8,9 @@
     DataContext="{Binding Main, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
-    <ScrollViewer>
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
             <StackPanel Orientation="Vertical" Margin="0 0 0 150">
                 <Image Source="/Assets/steep10.png" Height="50"/>
                 <Border Background="#0091FF">
@@ -21,6 +22,17 @@
                 <Border Background="#45BAFF">
                     <TextBlock Text="Sie können ebenfalls die größe des Pools und die Farbe des Zauns auswählen." Padding="3" TextAlignment="Left" FontSize="12" Foreground="White"/>
                 </Border>
+                <Border>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
+                            <GradientStop Color="#FF33D5E8" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock Text="Garage" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                </Border>
+                <CheckBox Margin="10 0 0 0" FontSize="16" Content="Garage" IsChecked="{Binding CheckBoxIsSelected, Mode=TwoWay}" />
+                
                 <Border>
                     <Border.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
@@ -61,7 +73,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackPanel>
-                    <TextBox Margin="10" Text="{Binding NoteStep10_2, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
+                    <TextBox Margin="10" Text="{Binding NoteStep10_1, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
                 </StackPanel>
 
                 <!--Zaun-->
@@ -112,52 +124,63 @@
                     <TextBox Text="{Binding NoteStep10_2, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Background="#B2AFAD" VerticalAlignment="Bottom">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="50*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="7*"/>
-                        <RowDefinition Height="7*"/>
-                        <RowDefinition Height="7*"/>
-                        <RowDefinition Height="7*"/>
-                        <RowDefinition Height="7*"/>
-                        <RowDefinition Height="7*"/>
-                    </Grid.RowDefinitions>
+        </ScrollViewer>
+        <StackPanel Opacity="0.85" VerticalAlignment="Bottom">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="{ThemeResource SystemAltHighColor}" Offset="0.5"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="White"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Pool"/>
-                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedPool.Description}"/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
-                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedPool.PriceFormat}"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Garage"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding CheckBoxIsSelected, Mode=TwoWay}"/>
+                
+                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Pool"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedPool.Description}"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedPool.PriceFormat}"/>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Zaun"/>
-                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedFence.Description}"/>
-                    <TextBlock Grid.Row="3" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Farbe"/>
-                    <TextBlock Grid.Row="3" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedColorFence.Value}"/>
-                    <TextBlock Grid.Row="4" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
-                    <TextBlock Grid.Row="4" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedFence.PriceFormat}"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Zaun"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedFence.Description}"/>
+                <TextBlock Grid.Row="4" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Farbe"/>
+                <TextBlock Grid.Row="4" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedColorFence.Value}"/>
+                <TextBlock Grid.Row="5" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
+                <TextBlock Grid.Row="5" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedFence.PriceFormat}"/>
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesamtpreis"/>
-                    <TextBlock Grid.Row="6" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
-                </Grid>
-            </StackPanel>
-        </Grid>
-    </ScrollViewer>
+                <TextBlock Grid.Row="6" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesamtpreis"/>
+                <TextBlock Grid.Row="6" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
     <Page.BottomAppBar>
         <CommandBar HorizontalContentAlignment="Left">
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton Content="       2" Command="{Binding ButtonForwardChooseCustomer}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 3"/>
-            <AppBarButton Content="       3" Command="{Binding ButtonForwardChooseHouse}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 4"/>
-            <AppBarButton Content="       4" Command="{Binding ButtonForwardChoosePlot}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 5"/>
-            <AppBarButton Content="       5" Command="{Binding ButtonForwardChooseWall}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 6"/>
-            <AppBarButton Content="       6" Command="{Binding ButtonForwardChooseRoof}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 7"/>
-            <AppBarButton Content="       7" Command="{Binding ButtonForwardChooseWindowsDoors}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 8"/>
-            <AppBarButton Content="       8" Command="{Binding ButtonForwardChooseEnergie}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 9"/>
-            <AppBarButton Content="       9" Command="{Binding ButtonForwardChooseAddition}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 10"/>
+            <AppBarButton Content="       2" Command="{Binding ButtonForwardChooseCustomer}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 2"/>
+            <AppBarButton Content="       3" Command="{Binding ButtonForwardChooseHouse}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 3"/>
+            <AppBarButton Content="       4" Command="{Binding ButtonForwardChoosePlot}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 4"/>
+            <AppBarButton Content="       5" Command="{Binding ButtonForwardChooseWall}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 5"/>
+            <AppBarButton Content="       6" Command="{Binding ButtonForwardChooseRoof}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 6"/>
+            <AppBarButton Content="       7" Command="{Binding ButtonForwardChooseWindowsDoors}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 7"/>
+            <AppBarButton Content="       8" Command="{Binding ButtonForwardChooseEnergie}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 8"/>
+            <AppBarButton Content="       9" Command="{Binding ButtonForwardChooseAddition}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 9"/>
             <AppBarButton Icon="Accept" Command="{Binding ButtonForwardSummary}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Übersicht"/>
 
             <AppBarButton Command="{Binding ButtonForwardSummary}" Icon="Forward" Label="Weiter"/>

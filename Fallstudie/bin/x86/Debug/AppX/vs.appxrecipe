@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-05-31T09:34:00.892</Modified>
+      <Modified>2016-06-04T10:32:26.777</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.exe">
       <PackagePath>entrypoint\Fallstudie.exe</PackagePath>
-      <Modified>2016-05-31T09:33:43.090</Modified>
+      <Modified>2016-06-04T10:32:22.081</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UAP\v0.8.0.0\ExtensionSDKs\InkToolbarControl\0.3.2\References\CommonConfiguration\neutral\Microsoft.Labs.InkToolbarControl.winmd">
       <PackagePath>Microsoft.Labs.InkToolbarControl.winmd</PackagePath>
@@ -4010,6 +4010,30 @@
       <PackagePath>Assets\icons\eraser.png</PackagePath>
       <Modified>2016-05-30T16:21:02.475</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout.png">
+      <PackagePath>Assets\icons\logout.png</PackagePath>
+      <Modified>2016-06-03T15:18:38.723</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout2.png">
+      <PackagePath>Assets\icons\logout2.png</PackagePath>
+      <Modified>2016-06-03T15:26:52.505</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout3.png">
+      <PackagePath>Assets\icons\logout3.png</PackagePath>
+      <Modified>2016-06-03T16:26:22.732</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout4.png">
+      <PackagePath>Assets\icons\logout4.png</PackagePath>
+      <Modified>2016-06-03T16:26:22.764</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout5.png">
+      <PackagePath>Assets\icons\logout5.png</PackagePath>
+      <Modified>2016-06-03T16:26:22.716</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\pdf1.png">
+      <PackagePath>Assets\icons\pdf1.png</PackagePath>
+      <Modified>2016-06-03T15:13:13.004</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\pen.png">
       <PackagePath>Assets\icons\pen.png</PackagePath>
       <Modified>2016-05-30T16:25:52.707</Modified>
@@ -4118,7 +4142,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.xr.xml">
       <PackagePath>Fallstudie.xr.xml</PackagePath>
-      <Modified>2016-05-30T19:59:17.353</Modified>
+      <Modified>2016-06-03T19:51:01.191</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -4126,11 +4150,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-05-31T09:33:45.660</Modified>
+      <Modified>2016-06-04T10:20:03.117</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Dropbox\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\Fallstudie.exe">
       <PackagePath>Fallstudie.exe</PackagePath>
-      <Modified>2016-05-31T09:34:00.879</Modified>
+      <Modified>2016-06-04T10:32:26.742</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

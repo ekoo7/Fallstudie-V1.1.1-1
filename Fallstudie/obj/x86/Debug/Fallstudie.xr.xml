@@ -26,11 +26,13 @@
     <RootPropertyPathName Name="Value" />
     <RootPropertyPathName Name="Description" />
     <RootPropertyPathName Name="SelectedPool" />
+    <RootPropertyPathName Name="CheckBoxIsSelected" />
     <RootPropertyPathName Name="NoteStep10_2" />
     <RootPropertyPathName Name="ListColorFence" />
     <RootPropertyPathName Name="Color" />
     <RootPropertyPathName Name="ListFence" />
     <RootPropertyPathName Name="SourceImage" />
+    <RootPropertyPathName Name="NoteStep10_1" />
     <RootPropertyPathName Name="ListPools" />
     <RootPropertyPathName Name="NumberPoolSizes" />
     <RootPropertyPathName Name="SelectedPoolSize" />
@@ -98,7 +100,6 @@
     <RootPropertyPathName Name="ListChimneys" />
     <RootPropertyPathName Name="NumberSockets" />
     <RootPropertyPathName Name="SelectedSocket" />
-    <RootPropertyPathName Name="NoteStep10_1" />
     <RootPropertyPathName Name="House" />
     <RootPropertyPathName Name="Fence" />
     <RootPropertyPathName Name="Pool" />
@@ -125,21 +126,25 @@
     <RootPropertyPathName Name="ButtonEditConfiguration" />
     <RootPropertyPathName Name="ListConfHouses" />
     <RootPropertyPathName Name="SelectedConfHouse" />
+    <RootPropertyPathName Name="Package" />
     <RootPropertyPathName Name="Consultant" />
     <RootPropertyPathName Name="Customer" />
     <RootPropertyPathName Name="ConfDate" />
     <RootPropertyPathName Name="Id" />
+    <RootPropertyPathName Name="ListCustomer" />
+    <RootPropertyPathName Name="SelectedCustomerList" />
+    <RootPropertyPathName Name="PDFButtonVisibility" />
+    <RootPropertyPathName Name="ButtonCreatePdf" />
     <RootPropertyPathName Name="ListProjects" />
     <RootPropertyPathName Name="SelectedProject" />
     <RootPropertyPathName Name="State" />
     <RootPropertyPathName Name="StateValue" />
     <RootPropertyPathName Name="EndDate" />
     <RootPropertyPathName Name="StartDate" />
-    <RootPropertyPathName Name="ButtonCreatePdf" />
+    <RootPropertyPathName Name="LoadItemsIntoLists" />
     <RootPropertyPathName Name="ProjectPezVisibility" />
     <RootPropertyPathName Name="NoteStep7" />
     <RootPropertyPathName Name="NoteStep5" />
-    <RootPropertyPathName Name="Package" />
     <RootPropertyPathName Name="Appointments" />
     <RootPropertyPathName Name="SelectedAppointment" />
     <RootPropertyPathName Name="Time" />
@@ -191,24 +196,30 @@
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Children" />
       <RootProperty Name="Orientation" />
-      <RootProperty Name="Background" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Opacity" />
+      <RootProperty Name="Background" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Name" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="Opacity" />
       <RootProperty Name="Visibility" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Image">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Source" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Text" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Margin" />
       <RootProperty Name="TextAlignment" />
-      <RootProperty Name="Foreground" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="Width" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Foreground" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="Name" />
@@ -280,7 +291,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ListBoxItem">
       <RootProperty Name="Name" />
       <RootProperty Name="Content" />
-      <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootProperty Name="Name" />
@@ -294,14 +304,17 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.LinearGradientBrush">
+      <RootProperty Name="EndPoint" />
+      <RootProperty Name="StartPoint" />
+      <RootProperty Name="GradientStops" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.GradientStop">
+      <RootProperty Name="Color" />
+      <RootProperty Name="Offset" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Image">
-      <RootProperty Name="Source" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
       <RootProperty Name="Background" />
@@ -348,19 +361,16 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarSeparator" />
     <RootType FullName="Fallstudie.Pages.HKPages.GrundrissZeichnen" />
+    <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="IsChecked" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
       <RootProperty Name="Fill" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.LinearGradientBrush">
-      <RootProperty Name="EndPoint" />
-      <RootProperty Name="StartPoint" />
-      <RootProperty Name="GradientStops" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.GradientStop">
-      <RootProperty Name="Color" />
-      <RootProperty Name="Offset" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="Margin" />
@@ -379,6 +389,10 @@
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt8EnergyHeizung" />
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt9Zusatz" />
     <RootType FullName="Fallstudie.Pages.HKPages.Schrtitt11Zusammenfassung" />
+    <RootType FullName="Windows.UI.Xaml.Controls.BitmapIcon">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="UriSource" />
+    </RootType>
     <RootType FullName="Fallstudie.Pages.KundenPage" />
     <RootType FullName="Fallstudie.Pages.KundenPages.CreateCustomerPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">

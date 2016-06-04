@@ -45,6 +45,7 @@ namespace Fallstudie.ViewModel
             InitializeButtons();
 
             ButtonLogout = new RelayCommand(LogOutMethod);
+            ButtonCreatePdf = new RelayCommand(ButtonCreatePdfMethod);
             //ButtonDownloadNewImage = new RelayCommand(CheckInternetConnection, () => { return true; });
 
             //Datenbank erstellen
@@ -65,10 +66,11 @@ namespace Fallstudie.ViewModel
             else
             {
                 Customers.Clear();
+                ListCustomer.Clear();
                 SQLGetCustomers();
-                //ProjectsMethod();
+                ProjectsMethod();
                 ManageAppointments();
-                //CreatePdf();
+                
                 DownloadImages();
             }
 
@@ -774,6 +776,15 @@ namespace Fallstudie.ViewModel
         {
             get { return selectedColorFence; }
             set { selectedColorFence = value; OnChange("SelectedColorFence"); }
+        }
+
+        //SelectedGarage
+        private bool checkBoxIsSelected;
+
+        public bool CheckBoxIsSelected
+        {
+            get { return checkBoxIsSelected; }
+            set { checkBoxIsSelected = value; OnChange("CheckBoxIsSelected"); }
         }
 
 
@@ -1608,6 +1619,7 @@ namespace Fallstudie.ViewModel
         public void SQLGetCustomers()
         {
             Customers.Clear();
+            ListCustomer.Clear();
             List<Mdh_Users> model;
             using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
             {
@@ -1624,7 +1636,9 @@ namespace Fallstudie.ViewModel
             for (int i = 0; i < model.Count; i++)
             {
                 Customers.Add(new Customer(model[i].id, model[i].name, SQLCustomerCountProject(model[i].id), SQLCustomerCountHouseconfig(model[i].id)));
+                ListCustomer.Add(new Customer(model[i].id, model[i].name, SQLCustomerCountProject(model[i].id), SQLCustomerCountHouseconfig(model[i].id)));
             }
+            
         }
 
         //Attribut Gruppen werden erstellt        
@@ -2053,7 +2067,9 @@ namespace Fallstudie.ViewModel
             canvas = Pages.HKPages.GrundrissZeichnen.InkCanvasObject.GetInkCanvasObject();
             
             myPresenter = canvas.InkPresenter;
-            myPresenter.InputDeviceTypes = Windows.UI.Core.CoreInputDeviceTypes.Mouse | Windows.UI.Core.CoreInputDeviceTypes.Pen;
+            myPresenter.InputDeviceTypes = Windows.UI.Core.CoreInputDeviceTypes.Mouse 
+                | Windows.UI.Core.CoreInputDeviceTypes.Pen 
+                | Windows.UI.Core.CoreInputDeviceTypes.Touch;
             
         }
 
@@ -2194,6 +2210,7 @@ namespace Fallstudie.ViewModel
             using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
             {
                 p = (from c in con.Table<Project>()
+                     where c.status.Equals("1")
                      select c).ToList();
 
                 con.Close();
@@ -2657,7 +2674,11 @@ namespace Fallstudie.ViewModel
         public HouseSummary SelectedConfHouse
         {
             get { return selectedConfHouse; }
-            set { selectedConfHouse = value; OnChange("SelectedConfHouse"); }
+            set {
+                selectedConfHouse = value;
+                OnChange("SelectedConfHouse");
+                PDFButtonVisibility = "Visible";
+            }
         }
 
 
@@ -2668,175 +2689,249 @@ namespace Fallstudie.ViewModel
 
         public void CreatePdf()
         {
-            ButtonCreatePdf = new RelayCommand(ButtonCreatePdfMethod);
-
+            listConfHouses.Clear();
+            //ButtonCreatePdf = new RelayCommand(ButtonCreatePdfMethod);
             foreach (var item in SQLGetHouseconfig())
             {
                 ListConfHouses.Add(item);
             }
+
         }
+
 
         private async void ButtonCreatePdfMethod()
         {
-            const string company = "DreamHouse GmbH \nSchönbrunner Straße 10 / 1 \nA - 1120 Wien \noffice@DreamHouse.com";
-            //Create a new document.
-            PdfDocument doc = new PdfDocument();
+            if (SelectedConfHouse != null )
+            {
+                const string company = "DreamHouse GmbH \nSchönbrunner Straße 10 / 1 \nA - 1120 Wien \noffice@DreamHouse.com";
+                //Create a new document.
+                PdfDocument doc = new PdfDocument();
 
-            //Add a page
-            PdfPage page = doc.Pages.Add();
+                //Add a page
+                PdfPage page = doc.Pages.Add();
+
+
+                #region Header
+                //Set the font
+                PdfBrush brushHeader = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
+                PdfFont fontHeader = new PdfStandardFont(PdfFontFamily.TimesRoman, 12);
+
+                //Create a header and draw the image.
+                System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 60);
+                PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
+                SaveLogo(header);
+
+
+                header.Graphics.DrawString(company, fontHeader, brushHeader, new System.Drawing.PointF(0, 0));
+                header.Graphics.DrawLine(new PdfPen(new PdfColor(212, 0, 73), 3), new System.Drawing.PointF(0, 55), new System.Drawing.PointF(600, 55));
+                //Add the header at the top.
+                doc.Template.Top = header;
+                #endregion
+
+                //Create Pdf graphics for the page
+                PdfGraphics g = page.Graphics;
+
+
+                //Create a solid brush //Set the font
+                PdfBrush brushHeadLine = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
+                PdfFont fontHeadLine = new PdfStandardFont(PdfFontFamily.Helvetica, 16);
+                //Draw the text
+                g.DrawString("SCHNELL ZUM TRAUMHAUS\nGANZ EINFACH MIT UNSEREM HAUSKONFIGURATOR", fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+
+                //Name Haus Preis Date
+                PdfFont font1 = new PdfStandardFont(PdfFontFamily.Helvetica, 12);
+                PdfBrush brush1 = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
+                g.DrawString("Name: " + SelectedConfHouse.Customer.Name, font1, brush1, new System.Drawing.PointF(0, 45));
+                g.DrawString("Preis: " + SelectedConfHouse.Price, font1, brush1, new System.Drawing.PointF(0, 58));
+                g.DrawString("Haus: " + SelectedConfHouse.Package.Description, font1, brush1, new System.Drawing.PointF(0, 71));
+                g.DrawString("Datum: " + SelectedConfHouse.ConfDate, font1, brush1, new System.Drawing.PointF(0, 84));
+
+
+
+                #region DrawImages
+                HouseconfigFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\Houseconfig\\", CreationCollisionOption.OpenIfExists); // Create folder
+                                                                                                                                                                    //HausImage
+                string folder = HouseconfigFolder.Path;
+                string[] parts = SelectedConfHouse.Package.SourceImage.Split('\\');
+                string imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                SaveImage(page, imagePath, 400, 230, 10, 100);
+
+                //Plot
+                PdfFont font2 = new PdfStandardFont(PdfFontFamily.Helvetica, 14);
+                PdfBrush brush2 = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
+                g.DrawString("Grundstück: " + SelectedConfHouse.Plot.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 335));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.Plot.Price, font2, brush2, new System.Drawing.PointF(0, 355));
+                parts = SelectedConfHouse.Plot.SourceImage.Split('\\');
+                imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                SaveImage(page, imagePath, 400, 230, 10, 370);
+
+                //2nd Page
+                PdfPage page2 = doc.Pages.Add();
+                g = page2.Graphics;
+
+
+                //GroundPlots
+                g.DrawString("Grundrisse der Stockwerke" + SelectedConfHouse.Plot.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+
+                if (SelectedConfHouse.GroundPlots != null)
+                {
+                    int distance = 0;
+                    foreach (var Groundis in SelectedConfHouse.GroundPlots)
+                    {
+                        parts = SelectedConfHouse.Plot.SourceImage.Split('\\');
+                        imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                        SaveImage(page2, imagePath, 200, 50, distance, 65);
+                        distance += 202;
+                    }
+                }
+
+                //3rd Page
+                PdfPage page3 = doc.Pages.Add();
+                g = page3.Graphics;
+                //OutsideWALL
+                g.DrawString("Außenwand" + SelectedConfHouse.OutsideWall.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.OutsideWall.Price, font2, brush2, new System.Drawing.PointF(0, 24));
+
+                parts = SelectedConfHouse.OutsideWall.SourceImage.Split('\\');
+                imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                SaveImage(page3, imagePath, 400, 230, 10, 42);
+                g.DrawRectangle(new PdfSolidBrush(
+                    System.Drawing.Color.FromArgb(255,
+                    0,
+                    0,
+                    255)), new System.Drawing.RectangleF(420, 42, 50, 50));
+
+                //InsideWALL
+                g.DrawString("Innenwand" + SelectedConfHouse.InsideWall.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.InsideWall.Price, font2, brush2, new System.Drawing.PointF(0, 306));
+                parts = SelectedConfHouse.InsideWall.SourceImage.Split('\\');
+                imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                SaveImage(page3, imagePath, 400, 230, 10, 324);
+                g.DrawRectangle(new PdfSolidBrush(
+                    System.Drawing.Color.FromArgb(255,
+                    0,
+                    0,
+                    255)), new System.Drawing.RectangleF(420, 324, 50, 50));
+
+
+                //4th Page
+                PdfPage page4 = doc.Pages.Add();
+                g = page4.Graphics;
+                //Rooftype
+                g.DrawString("Dachtyp" + SelectedConfHouse.RoofType.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.RoofType.Price, font2, brush2, new System.Drawing.PointF(0, 24));
+                parts = SelectedConfHouse.RoofType.SourceImage.Split('\\');
+                imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                SaveImage(page4, imagePath, 400, 230, 10, 42);
+
+                //Roofmaterial
+                g.DrawString("Dachmaterial" + SelectedConfHouse.RoofMaterial.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.RoofMaterial.Price, font2, brush2, new System.Drawing.PointF(0, 306));
+                parts = SelectedConfHouse.RoofMaterial.SourceImage.Split('\\');
+                imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                SaveImage(page4, imagePath, 400, 230, 10, 324);
+
+
+                //5th Page
+                PdfPage page5 = doc.Pages.Add();
+                g = page5.Graphics;
+                //Window
+                g.DrawString("Fenster" + SelectedConfHouse.Window.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.Window.Price, font2, brush2, new System.Drawing.PointF(0, 24));
+
+                parts = SelectedConfHouse.Window.SourceImage.Split('\\');
+                imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                SaveImage(page5, imagePath, 400, 230, 10, 42);
+                g.DrawRectangle(new PdfSolidBrush(
+                    System.Drawing.Color.FromArgb(255,
+                    0,
+                    0,
+                    255)), new System.Drawing.RectangleF(420, 42, 50, 50));
+
+                //Doors
+                g.DrawString("Türen" + SelectedConfHouse.Door.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.Door.Price, font2, brush2, new System.Drawing.PointF(0, 306));
+                parts = SelectedConfHouse.Door.SourceImage.Split('\\');
+                imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                SaveImage(page5, imagePath, 400, 230, 10, 324);
+                g.DrawRectangle(new PdfSolidBrush(
+                    System.Drawing.Color.FromArgb(255,
+                    0,
+                    0,
+                    255)), new System.Drawing.RectangleF(420, 324, 50, 50));
+
+
+                //6th Page
+                PdfPage page6 = doc.Pages.Add();
+                g = page6.Graphics;
+                //Kamin
+                g.DrawString("Kamin" + SelectedConfHouse.Chimney.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.Chimney.Price, font2, brush2, new System.Drawing.PointF(0, 24));
+                parts = SelectedConfHouse.Chimney.SourceImage.Split('\\');
+                imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                SaveImage(page6, imagePath, 400, 230, 10, 42);
+
+                //Steckdosen pro Raum
+                g.DrawString("Steckdosen pro Raum: " + SelectedConfHouse.NumberOfSocket, font2, brush2, new System.Drawing.PointF(0, 324));
+
+                //Energiesystem
+                g.DrawString("Energiesystem: " + SelectedConfHouse.EnergySystem.Name, font2, brush2, new System.Drawing.PointF(0, 345));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.EnergySystem.Price, font2, brush2, new System.Drawing.PointF(0, 360));
+
+                //Heizungssystem
+                g.DrawString("Heizungssystem: " + SelectedConfHouse.HeatingSystem.Name, font2, brush2, new System.Drawing.PointF(0, 378));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.HeatingSystem.Price, font2, brush2, new System.Drawing.PointF(0, 393));
+
+
+                //7th Page
+                PdfPage page7 = doc.Pages.Add();
+                g = page7.Graphics;
+                //Pool
+                g.DrawString("Swimmingpool" + SelectedConfHouse.Pool.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.Pool.Price, font2, brush2, new System.Drawing.PointF(0, 24));
+
+                parts = SelectedConfHouse.Pool.SourceImage.Split('\\');
+                imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                SaveImage(page7, imagePath, 400, 230, 10, 42);
+                g.DrawString("Größe: " + SelectedConfHouse.Poolsize, font2, brush2, new System.Drawing.PointF(420, 42));
+
+                //Zaun
+                g.DrawString("Zaun" + SelectedConfHouse.Fence.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
+                g.DrawString("Preis: EUR " + SelectedConfHouse.Fence.Price, font2, brush2, new System.Drawing.PointF(0, 306));
+                parts = SelectedConfHouse.Fence.SourceImage.Split('\\');
+                imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                SaveImage(page7, imagePath, 400, 230, 10, 324);
+                g.DrawRectangle(new PdfSolidBrush(
+                    System.Drawing.Color.FromArgb(255,
+                    0,
+                    0,
+                    255)), new System.Drawing.RectangleF(420, 324, 50, 50));
+                #endregion
+
+                #region GRID
+
+                #endregion
+
+                MemoryStream stream = new MemoryStream();
+                await doc.SaveAsync(stream);
+                doc.Close(true);
+                Save(stream, "GettingStarted.pdf");
+
+            }
             
-
-            #region Header
-            //Set the font
-            PdfBrush brushHeader = new PdfSolidBrush(System.Drawing.Color.FromArgb(255,0, 0, 0));
-            PdfFont fontHeader = new PdfStandardFont(PdfFontFamily.TimesRoman, 12);
-
-            //Create a header and draw the image.
-            System.Drawing.RectangleF bounds = new System.Drawing.RectangleF(0, 0, doc.Pages[0].GetClientSize().Width, 60);
-            PdfPageTemplateElement header = new PdfPageTemplateElement(bounds);
-            SaveLogo(header);
-           
-
-            header.Graphics.DrawString(company, fontHeader, brushHeader, new System.Drawing.PointF(0, 0));
-            header.Graphics.DrawLine(new PdfPen(new PdfColor(212,0,73), 3), new System.Drawing.PointF(0, 55), new System.Drawing.PointF(600, 55));
-            //Add the header at the top.
-            doc.Template.Top = header;
-            #endregion
-
-            //Create Pdf graphics for the page
-            PdfGraphics g = page.Graphics;
-
-
-            //Create a solid brush //Set the font
-            PdfBrush brushHeadLine = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
-            PdfFont fontHeadLine = new PdfStandardFont(PdfFontFamily.Helvetica, 16);
-            //Draw the text
-            g.DrawString("SCHNELL ZUM TRAUMHAUS\nGANZ EINFACH MIT UNSEREM HAUSKONFIGURATOR", fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
-
-            //Name Haus Preis Date
-            PdfFont font1 = new PdfStandardFont(PdfFontFamily.Helvetica, 12);
-            PdfBrush brush1 = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
-            g.DrawString("Name: "+ SelectedConfHouse.Customer.Name, font1, brush1, new System.Drawing.PointF(0, 45));
-            g.DrawString("Preis: " + SelectedConfHouse.Price, font1, brush1, new System.Drawing.PointF(0, 58));
-            g.DrawString("Haus: " + SelectedConfHouse.Package.Description, font1, brush1, new System.Drawing.PointF(0, 71));
-            g.DrawString("Datum: " + SelectedConfHouse.ConfDate, font1, brush1, new System.Drawing.PointF(0, 84));
-            
-           
-            SaveImage(page);
-            PdfFont font2 = new PdfStandardFont(PdfFontFamily.Helvetica, 14);
-            PdfBrush brush2 = new PdfSolidBrush(System.Drawing.Color.FromArgb(255, 0, 0, 0));
-            g.DrawString("Grundstück:", font2, brush2, new System.Drawing.PointF(10, 410));
-
-            /*
-           #region GRID
-           //Create a new PdfGrid.
-
-           PdfGrid pdfGrid = new PdfGrid();
-
-           //Add three columns.
-
-           pdfGrid.Columns.Add(4);
-
-           //Add header.
-           pdfGrid.Headers.Add(1);
-           PdfGridRow pdfGridHeader = pdfGrid.Headers[0];
-           pdfGridHeader.Cells[0].Value = "Spezifikation";
-           pdfGridHeader.Cells[1].Value = "Auswahl";
-           pdfGridHeader.Cells[2].Value = "Preis [€]";
-           pdfGridHeader.Cells[3].Value = "Notitz";
-
-
-           //Add rows.
-           PdfGridRow pdfGridRow1 = pdfGrid.Rows.Add();
-           pdfGridRow1.Cells[0].Value = "Grundstück";
-           pdfGridRow1.Cells[1].Value = SelectedConfHouse.Plot.Description;
-           pdfGridRow1.Cells[2].Value = SelectedConfHouse.Plot.Price;
-
-           PdfGridRow pdfGridRow2 = pdfGrid.Rows.Add();
-           pdfGridRow2.Cells[0].Value = "Anzahl der Stockwerke";
-           pdfGridRow2.Cells[1].Value = SelectedConfHouse.numberOfFloors;
-           //pdfGridRow2.Cells[2].Value = SelectedConfHouse.;
-
-           //Add rows.
-           PdfGridRow pdfGridRow3 = pdfGrid.Rows.Add();
-           pdfGridRow3.Cells[0].Value = "Außenwand";
-           pdfGridRow3.Cells[1].Value = SelectedConfHouse.OutsideWall.Description;
-           pdfGridRow3.Cells[2].Value = SelectedConfHouse.OutsideWall.Price;
-
-           //Add rows.
-           PdfGridRow pdfGridRow4 = pdfGrid.Rows.Add();
-           pdfGridRow4.Cells[0].Value = "Außenwand Farbe";
-           pdfGridRow4.Cells[1].Style.BackgroundBrush = 
-               new PdfSolidBrush(new PdfColor(SelectedConfHouse.OutsideWallColor.R_byte, SelectedConfHouse.OutsideWallColor.G_byte, 0));
-           pdfGridRow4.Cells[2].Value = SelectedConfHouse.OutsideWall.Price;
-
-           //Create an instance of PdfGridRowStyle
-           PdfGridRowStyle pdfGridRowStyle = new PdfGridRowStyle();
-           pdfGridRowStyle.BackgroundBrush = PdfBrushes.LightGray;
-           pdfGridRowStyle.Font = new PdfStandardFont(PdfFontFamily.Courier, 10);
-           pdfGridRowStyle.TextBrush = PdfBrushes.Blue;
-           pdfGridRowStyle.TextPen = PdfPens.Black;
-           //Set the height
-           pdfGrid.Rows[0].Height = 50;
-           //Set style for the PdfGridRow.
-           pdfGrid.Rows[0].Style = pdfGridRowStyle;
-           //Draw the PdfGrid.
-           pdfGrid.Draw(page, 10, 410);
-           #endregion
-           */
-
-            /*
-            //Stream s = new FileStream("C:\\Users\\Ermin\\Dropbox\\GitHub\\Fallstudie-V1.1.1-1\\Fallstudie\\Bilder\\2Haeuser\\Haus1.png", FileMode.Open);
-
-            byte[] byteArray = Encoding.UTF8.GetBytes("C:\\Users\\Ermin\\Dropbox\\GitHub\\Fallstudie-V1.1.1-1\\Fallstudie\\Bilder\\2Haeuser\\Haus1.png");
-            //byte[] byteArray = Encoding.ASCII.GetBytes(contents);
-            MemoryStream stream1 = new MemoryStream(byteArray);
-
-            PdfImage image = new PdfBitmap(stream1);
-            g1.DrawImage(image, 60, 60);
-            */
-
-
-            MemoryStream stream = new MemoryStream();
-            await doc.SaveAsync(stream);
-            doc.Close(true);
-            Save(stream, "GettingStarted.pdf");
         }
 
-        async void SaveImage(PdfPage page)
+        async void SaveImage(PdfPage page, string path, int width, int height, float x, float y)
         {
 
-
-            var rootFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("MyAppName\\CoverPics", CreationCollisionOption.OpenIfExists);
-
-            var coverpic_file = await rootFolder.CreateFileAsync("test.png", CreationCollisionOption.FailIfExists);
-
-            HttpClient client = new HttpClient(); // Create HttpClient
-            string buffer1 = await client.GetStringAsync(selectedConfHouse.Package.SourceImage); // Download file
-            byte[] buffer = Encoding.ASCII.GetBytes(buffer1);
-            using (Stream stream = await coverpic_file.OpenStreamForWriteAsync())
-                stream.Write(buffer, 0, buffer.Length); // Save
-
-            
-
-            Stream imageStream = File.OpenRead(rootFolder.Path + "//test.png");
-            //PdfBitmap image = new PdfBitmap(imageStream);
-
-
-
-
-
-
-
-
             PdfGraphics graphics = page.Graphics;
-            //Stream imageStream = File.OpenRead("Bilder//2Haeuser//Haus1.png");
+            Stream imageStream = File.OpenRead(@path);
             //Load the image from the disk.
 
             PdfBitmap image = new PdfBitmap(imageStream);
             //Draw the image
 
-            graphics.DrawImage(image, 10, 100, 500, 300);
+            graphics.DrawImage(image, x, y, width, height);
         }
         async void SaveLogo(PdfPageTemplateElement header)
         {
@@ -2888,7 +2983,7 @@ namespace Fallstudie.ViewModel
         #endregion
 
         #region SQL
-        public int SQLCustomerCountProject(int i)
+        private int SQLCustomerCountProject(int i)
         {
             List<Project> p;
             int h;
@@ -2906,7 +3001,7 @@ namespace Fallstudie.ViewModel
             }
             return h;
         }
-        public int SQLCustomerCountHouseconfig(int i)
+        private int SQLCustomerCountHouseconfig(int i)
         {
             List<Houseconfig> p;
             int h;
@@ -2922,9 +3017,79 @@ namespace Fallstudie.ViewModel
             }
             return h;
         }
-        public DBModel.Attribute SQLGetRightAttribute(int attributGroupId, int userId)
+
+        private ColorPalette SQLGetRightAttributeColor(int attributGroupId, int userId)
         {
-            List<DBModel.Attribute> i;
+            List<ColorPalette> j;
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                j = (from b in con.Table<Houseconfig>()
+                     from d in con.Table<Houseconfig_Has_Attribute>()
+                     from e in con.Table<DBModel.Attribute>()
+                     where b.customer_user_id.Equals(userId)
+                     && e.attribute_group_id.Equals(attributGroupId)
+                     && d.houseconfig_id.Equals(b.houseconfig_id)
+                     && d.attribute_id.Equals(e.attribute_id)
+                     select new ColorPalette
+                     (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))
+                          ).ToList();
+
+                con.Close();
+            }
+            if (j.Count > 0)
+                return j[0];
+            else
+                return new ColorPalette();
+        }
+        private EHSystem SQLGetRightAttributeEHSystem(int attributGroupId, int userId)
+        {
+            List<EHSystem> y;
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                y = (from b in con.Table<Houseconfig>()
+                     from d in con.Table<Houseconfig_Has_Attribute>()
+                     from e in con.Table<DBModel.Attribute>()
+                     where b.customer_user_id.Equals(userId)
+                     && e.attribute_group_id.Equals(attributGroupId)
+                     && d.houseconfig_id.Equals(b.houseconfig_id)
+                     && d.attribute_id.Equals(e.attribute_id)
+                     select new EHSystem()
+                     {
+                         Id = e.attribute_id,
+                         Name = e.description,
+                         Price = e.price
+                     }).ToList();
+
+                con.Close();
+            }
+            if (y.Count > 0)
+                return y[0];
+            else
+                return new EHSystem();
+        }
+
+        private string SQLGetRightAttributeString(int attributGroupId, int userId)
+        {
+            List<string> x;
+            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+            {
+                x = (from b in con.Table<Houseconfig>()
+                     from d in con.Table<Houseconfig_Has_Attribute>()
+                     from e in con.Table<DBModel.Attribute>()
+                     where b.customer_user_id.Equals(userId)
+                     && e.attribute_group_id.Equals(attributGroupId)
+                     && d.houseconfig_id.Equals(b.houseconfig_id)
+                     && d.attribute_id.Equals(e.attribute_id)
+                     select e.description).ToList();
+
+                con.Close();
+            }
+            return x[0];
+        }
+
+        private ImageInherit SQLGetRightAttributeImage(int attributGroupId, int userId)
+        {
+            List<ImageInherit> i;
             using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
             {
                 i = (from b in con.Table<Houseconfig>()
@@ -2934,48 +3099,24 @@ namespace Fallstudie.ViewModel
                      && e.attribute_group_id.Equals(attributGroupId)
                      && d.houseconfig_id.Equals(b.houseconfig_id)
                      && d.attribute_id.Equals(e.attribute_id)
-                     select e).ToList();
+                     select new ImageInherit()
+                     {
+                         SourceImage = e.rootfolder,
+                         Id = e.attribute_id,
+                         Description = e.description,
+                         Price = e.price
+                     }).ToList();
 
                 con.Close();
             }
             if (i.Count > 0)
                 return i[0];
             else
-                return new DBModel.Attribute();
+                return new ImageInherit();
         }
-        public byte SQLSplitColorR(string i)
-        {
-            if(i != null)
-            {
-                string[] color = i.Split(',');
-                byte r = Byte.Parse(color[0]);
-                return r;
-            }else
-                return 255;        
-        }
-        public byte SQLSplitColorG(string i)
-        {
-            if (i != null)
-            {
-                string[] color = i.Split(',');
-                byte g = Byte.Parse(color[1]);
-                return g;
-            }
-            else
-                return 255;
-        }
-        public byte SQLSplitColorB(string i)
-        {
-            if (i != null)
-            {
-                string[] color = i.Split(',');
-                byte b = Byte.Parse(color[2]);
-                return b;
-            }
-            else
-                return 255;
-        }
-        public string SQLGetConsultantName(int id)
+
+
+        private string SQLGetConsultantName(int id)
         {
             string name;
             using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
@@ -2988,61 +3129,267 @@ namespace Fallstudie.ViewModel
             return name;
         }
         // TODO: Nochmal bearbeiten
-        public List<HouseSummary> SQLGetHouseconfig()
+        private List<HouseSummary> SQLGetHouseconfig()
         {
             List<HouseSummary> house;
-
             using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
             {
-
                 house = (from a in con.Table<Mdh_Users>()
                          from b in con.Table<Houseconfig>()
                          from f in con.Table<Ymdh_House_Package>()
                          where a.id.Equals(b.customer_user_id)
-                         && a.id.Equals(1)
+                         && a.id.Equals(selectedCustomerList.Id)
                          && b.house_package_id.Equals(f.house_package_id)
-
+                         && b.status.Equals("1")
                          select new HouseSummary
                          {
                              Id = b.houseconfig_id,
                              Price = b.price,
                              ConfDate = b.modifieddate,
-
                              Customer = new Customer(a.id, a.name, SQLCustomerCountProject(a.id), SQLCustomerCountHouseconfig(a.id)),
                              Consultant = new Consultant(b.consultant_user_id, SQLGetConsultantName(b.consultant_user_id)),
                              Package = new ImageInherit(f.rootfolder, f.house_package_id, f.description, f.price),
-                             Plot = new ImageInherit(SQLGetRightAttribute(3, a.id).rootfolder, SQLGetRightAttribute(3, a.id).attribute_id, SQLGetRightAttribute(3, a.id).description, SQLGetRightAttribute(3, a.id).price),
-                             numberOfFloors = 0,
-                             GroundPlots = new List<ImageInherit>(),
-                             OutsideWall = new ImageInherit(SQLGetRightAttribute(5, a.id).rootfolder, SQLGetRightAttribute(5, a.id).attribute_id, SQLGetRightAttribute(5, a.id).description, SQLGetRightAttribute(5, a.id).price),
-                             OutsideWallColor = new ColorPalette(SQLGetRightAttribute(902, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(902, a.id).description), SQLSplitColorG(SQLGetRightAttribute(902, a.id).description), SQLSplitColorB(SQLGetRightAttribute(902, a.id).description)),
-                             InsideWall = new ImageInherit(SQLGetRightAttribute(51, a.id).rootfolder, SQLGetRightAttribute(51, a.id).attribute_id, SQLGetRightAttribute(51, a.id).description, SQLGetRightAttribute(51, a.id).price),
-                             InsideWallColor = new ColorPalette(SQLGetRightAttribute(901, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(901, a.id).description), SQLSplitColorG(SQLGetRightAttribute(901, a.id).description), SQLSplitColorB(SQLGetRightAttribute(901, a.id).description)),
-                             RoofType = new ImageInherit(SQLGetRightAttribute(6, a.id).rootfolder, SQLGetRightAttribute(6, a.id).attribute_id, SQLGetRightAttribute(6, a.id).description, SQLGetRightAttribute(6, a.id).price),
-                             RoofMaterial = new ImageInherit(SQLGetRightAttribute(61, a.id).rootfolder, SQLGetRightAttribute(61, a.id).attribute_id, SQLGetRightAttribute(61, a.id).description, SQLGetRightAttribute(61, a.id).price),
-                             Window = new ImageInherit(SQLGetRightAttribute(7, a.id).rootfolder, SQLGetRightAttribute(7, a.id).attribute_id, SQLGetRightAttribute(7, a.id).description, SQLGetRightAttribute(7, a.id).price),
-                             WindowColor = new ColorPalette(SQLGetRightAttribute(903, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(903, a.id).description), SQLSplitColorG(SQLGetRightAttribute(903, a.id).description), SQLSplitColorB(SQLGetRightAttribute(903, a.id).description)),
-                             Door = new ImageInherit(SQLGetRightAttribute(71, a.id).rootfolder, SQLGetRightAttribute(71, a.id).attribute_id, SQLGetRightAttribute(71, a.id).description, SQLGetRightAttribute(71, a.id).price),
-                             DoorColor = new ColorPalette(SQLGetRightAttribute(904, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(904, a.id).description), SQLSplitColorG(SQLGetRightAttribute(904, a.id).description), SQLSplitColorB(SQLGetRightAttribute(904, a.id).description)),
-                             EnergySystem = new EHSystem(SQLGetRightAttribute(8, a.id).attribute_id, SQLGetRightAttribute(8, a.id).description, SQLGetRightAttribute(8, a.id).price),
-                             HeatingSystem = new EHSystem(SQLGetRightAttribute(81, a.id).attribute_id, SQLGetRightAttribute(81, a.id).description, SQLGetRightAttribute(81, a.id).price),
-                             NumberOfSocket = int.Parse(SQLGetRightAttribute(12, a.id).description),
-                             Chimney = new ImageInherit(SQLGetRightAttribute(9, a.id).rootfolder, SQLGetRightAttribute(9, a.id).attribute_id, SQLGetRightAttribute(9, a.id).description, SQLGetRightAttribute(9, a.id).price),
-                             Pool = new ImageInherit(SQLGetRightAttribute(10, a.id).rootfolder, SQLGetRightAttribute(10, a.id).attribute_id, SQLGetRightAttribute(10, a.id).description, SQLGetRightAttribute(10, a.id).price),
-                             Poolsize = SQLGetRightAttribute(11, a.id).description + " m²",
-                             Fence = new ImageInherit(SQLGetRightAttribute(101, a.id).rootfolder, SQLGetRightAttribute(101, a.id).attribute_id, SQLGetRightAttribute(101, a.id).description, SQLGetRightAttribute(101, a.id).price),
-                             FenceColor = new ColorPalette(SQLGetRightAttribute(905, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(905, a.id).description), SQLSplitColorG(SQLGetRightAttribute(905, a.id).description), SQLSplitColorB(SQLGetRightAttribute(905, a.id).description))
-
+                             Plot = (from b in con.Table<Houseconfig>()
+                                     from d in con.Table<Houseconfig_Has_Attribute>()
+                                     from e in con.Table<DBModel.Attribute>()
+                                     where b.customer_user_id.Equals(a.id)
+                                     && e.attribute_group_id.Equals(3)
+                                     && d.houseconfig_id.Equals(b.houseconfig_id)
+                                     && d.attribute_id.Equals(e.attribute_id)
+                                     select new ImageInherit()
+                                     {
+                                         SourceImage = e.rootfolder,
+                                         Id = e.attribute_id,
+                                         Description = e.description,
+                                         Price = e.price
+                                     }).FirstOrDefault(),
+                             numberOfFloors = (from h in con.Table<Housefloor>()
+                                               where h.houseconfig_id.Equals(b.houseconfig_id)
+                                               select h).Count() - 1,
+                             GroundPlots = SQLGetGroundPlots(b.houseconfig_id),
+                             OutsideWall = (from b in con.Table<Houseconfig>()
+                                            from d in con.Table<Houseconfig_Has_Attribute>()
+                                            from e in con.Table<DBModel.Attribute>()
+                                            where b.customer_user_id.Equals(a.id)
+                                            && e.attribute_group_id.Equals(5)
+                                            && d.houseconfig_id.Equals(b.houseconfig_id)
+                                            && d.attribute_id.Equals(e.attribute_id)
+                                            select new ImageInherit()
+                                            {
+                                                SourceImage = e.rootfolder,
+                                                Id = e.attribute_id,
+                                                Description = e.description,
+                                                Price = e.price
+                                            }).FirstOrDefault(),
+                             OutsideWallColor = (from b in con.Table<Houseconfig>()
+                                                 from d in con.Table<Houseconfig_Has_Attribute>()
+                                                 from e in con.Table<DBModel.Attribute>()
+                                                 where b.customer_user_id.Equals(a.id)
+                                                 && e.attribute_group_id.Equals(902)
+                                                 && d.houseconfig_id.Equals(b.houseconfig_id)
+                                                 && d.attribute_id.Equals(e.attribute_id)
+                                                 select new ColorPalette
+                                                 (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))).FirstOrDefault(),
+                             InsideWall = (from b in con.Table<Houseconfig>()
+                                           from d in con.Table<Houseconfig_Has_Attribute>()
+                                           from e in con.Table<DBModel.Attribute>()
+                                           where b.customer_user_id.Equals(a.id)
+                                           && e.attribute_group_id.Equals(51)
+                                           && d.houseconfig_id.Equals(b.houseconfig_id)
+                                           && d.attribute_id.Equals(e.attribute_id)
+                                           select new ImageInherit()
+                                           {
+                                               SourceImage = e.rootfolder,
+                                               Id = e.attribute_id,
+                                               Description = e.description,
+                                               Price = e.price
+                                           }).FirstOrDefault(),
+                             InsideWallColor = (from b in con.Table<Houseconfig>()
+                                                from d in con.Table<Houseconfig_Has_Attribute>()
+                                                from e in con.Table<DBModel.Attribute>()
+                                                where b.customer_user_id.Equals(a.id)
+                                                && e.attribute_group_id.Equals(901)
+                                                && d.houseconfig_id.Equals(b.houseconfig_id)
+                                                && d.attribute_id.Equals(e.attribute_id)
+                                                select new ColorPalette
+                                                (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))).FirstOrDefault(),
+                             RoofType = (from b in con.Table<Houseconfig>()
+                                         from d in con.Table<Houseconfig_Has_Attribute>()
+                                         from e in con.Table<DBModel.Attribute>()
+                                         where b.customer_user_id.Equals(a.id)
+                                         && e.attribute_group_id.Equals(6)
+                                         && d.houseconfig_id.Equals(b.houseconfig_id)
+                                         && d.attribute_id.Equals(e.attribute_id)
+                                         select new ImageInherit()
+                                         {
+                                             SourceImage = e.rootfolder,
+                                             Id = e.attribute_id,
+                                             Description = e.description,
+                                             Price = e.price
+                                         }).FirstOrDefault(),
+                             RoofMaterial = (from b in con.Table<Houseconfig>()
+                                             from d in con.Table<Houseconfig_Has_Attribute>()
+                                             from e in con.Table<DBModel.Attribute>()
+                                             where b.customer_user_id.Equals(a.id)
+                                             && e.attribute_group_id.Equals(61)
+                                             && d.houseconfig_id.Equals(b.houseconfig_id)
+                                             && d.attribute_id.Equals(e.attribute_id)
+                                             select new ImageInherit()
+                                             {
+                                                 SourceImage = e.rootfolder,
+                                                 Id = e.attribute_id,
+                                                 Description = e.description,
+                                                 Price = e.price
+                                             }).FirstOrDefault(),
+                             Window = (from b in con.Table<Houseconfig>()
+                                       from d in con.Table<Houseconfig_Has_Attribute>()
+                                       from e in con.Table<DBModel.Attribute>()
+                                       where b.customer_user_id.Equals(a.id)
+                                       && e.attribute_group_id.Equals(7)
+                                       && d.houseconfig_id.Equals(b.houseconfig_id)
+                                       && d.attribute_id.Equals(e.attribute_id)
+                                       select new ImageInherit()
+                                       {
+                                           SourceImage = e.rootfolder,
+                                           Id = e.attribute_id,
+                                           Description = e.description,
+                                           Price = e.price
+                                       }).FirstOrDefault(),
+                             WindowColor = (from b in con.Table<Houseconfig>()
+                                            from d in con.Table<Houseconfig_Has_Attribute>()
+                                            from e in con.Table<DBModel.Attribute>()
+                                            where b.customer_user_id.Equals(a.id)
+                                            && e.attribute_group_id.Equals(903)
+                                            && d.houseconfig_id.Equals(b.houseconfig_id)
+                                            && d.attribute_id.Equals(e.attribute_id)
+                                            select new ColorPalette
+                                            (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))).FirstOrDefault(),
+                             Door = (from b in con.Table<Houseconfig>()
+                                     from d in con.Table<Houseconfig_Has_Attribute>()
+                                     from e in con.Table<DBModel.Attribute>()
+                                     where b.customer_user_id.Equals(a.id)
+                                     && e.attribute_group_id.Equals(71)
+                                     && d.houseconfig_id.Equals(b.houseconfig_id)
+                                     && d.attribute_id.Equals(e.attribute_id)
+                                     select new ImageInherit()
+                                     {
+                                         SourceImage = e.rootfolder,
+                                         Id = e.attribute_id,
+                                         Description = e.description,
+                                         Price = e.price
+                                     }).FirstOrDefault(),
+                             DoorColor = (from b in con.Table<Houseconfig>()
+                                          from d in con.Table<Houseconfig_Has_Attribute>()
+                                          from e in con.Table<DBModel.Attribute>()
+                                          where b.customer_user_id.Equals(a.id)
+                                          && e.attribute_group_id.Equals(904)
+                                          && d.houseconfig_id.Equals(b.houseconfig_id)
+                                          && d.attribute_id.Equals(e.attribute_id)
+                                          select new ColorPalette
+                                          (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))).FirstOrDefault(),
+                             EnergySystem = (from b in con.Table<Houseconfig>()
+                                             from d in con.Table<Houseconfig_Has_Attribute>()
+                                             from e in con.Table<DBModel.Attribute>()
+                                             where b.customer_user_id.Equals(a.id)
+                                             && e.attribute_group_id.Equals(8)
+                                             && d.houseconfig_id.Equals(b.houseconfig_id)
+                                             && d.attribute_id.Equals(e.attribute_id)
+                                             select new EHSystem()
+                                             {
+                                                 Id = e.attribute_id,
+                                                 Name = e.description,
+                                                 Price = e.price
+                                             }).FirstOrDefault(),
+                             HeatingSystem = (from b in con.Table<Houseconfig>()
+                                              from d in con.Table<Houseconfig_Has_Attribute>()
+                                              from e in con.Table<DBModel.Attribute>()
+                                              where b.customer_user_id.Equals(a.id)
+                                              && e.attribute_group_id.Equals(81)
+                                              && d.houseconfig_id.Equals(b.houseconfig_id)
+                                              && d.attribute_id.Equals(e.attribute_id)
+                                              select new EHSystem()
+                                              {
+                                                  Id = e.attribute_id,
+                                                  Name = e.description,
+                                                  Price = e.price
+                                              }).FirstOrDefault(),
+                             NumberOfSocket = int.Parse((from b in con.Table<Houseconfig>()
+                                                         from d in con.Table<Houseconfig_Has_Attribute>()
+                                                         from e in con.Table<DBModel.Attribute>()
+                                                         where b.customer_user_id.Equals(a.id)
+                                                         && e.attribute_group_id.Equals(12)
+                                                         && d.houseconfig_id.Equals(b.houseconfig_id)
+                                                         && d.attribute_id.Equals(e.attribute_id)
+                                                         select e.description).FirstOrDefault()),
+                             Chimney = (from b in con.Table<Houseconfig>()
+                                        from d in con.Table<Houseconfig_Has_Attribute>()
+                                        from e in con.Table<DBModel.Attribute>()
+                                        where b.customer_user_id.Equals(a.id)
+                                        && e.attribute_group_id.Equals(9)
+                                        && d.houseconfig_id.Equals(b.houseconfig_id)
+                                        && d.attribute_id.Equals(e.attribute_id)
+                                        select new ImageInherit()
+                                        {
+                                            SourceImage = e.rootfolder,
+                                            Id = e.attribute_id,
+                                            Description = e.description,
+                                            Price = e.price
+                                        }).FirstOrDefault(),
+                             Pool = (from b in con.Table<Houseconfig>()
+                                     from d in con.Table<Houseconfig_Has_Attribute>()
+                                     from e in con.Table<DBModel.Attribute>()
+                                     where b.customer_user_id.Equals(a.id)
+                                     && e.attribute_group_id.Equals(10)
+                                     && d.houseconfig_id.Equals(b.houseconfig_id)
+                                     && d.attribute_id.Equals(e.attribute_id)
+                                     select new ImageInherit()
+                                     {
+                                         SourceImage = e.rootfolder,
+                                         Id = e.attribute_id,
+                                         Description = e.description,
+                                         Price = e.price
+                                     }).FirstOrDefault(),
+                             Poolsize = (from b in con.Table<Houseconfig>()
+                                         from d in con.Table<Houseconfig_Has_Attribute>()
+                                         from e in con.Table<DBModel.Attribute>()
+                                         where b.customer_user_id.Equals(a.id)
+                                         && e.attribute_group_id.Equals(11)
+                                         && d.houseconfig_id.Equals(b.houseconfig_id)
+                                         && d.attribute_id.Equals(e.attribute_id)
+                                         select e.description).FirstOrDefault() + " m²",
+                             Fence = (from b in con.Table<Houseconfig>()
+                                      from d in con.Table<Houseconfig_Has_Attribute>()
+                                      from e in con.Table<DBModel.Attribute>()
+                                      where b.customer_user_id.Equals(a.id)
+                                      && e.attribute_group_id.Equals(101)
+                                      && d.houseconfig_id.Equals(b.houseconfig_id)
+                                      && d.attribute_id.Equals(e.attribute_id)
+                                      select new ImageInherit()
+                                      {
+                                          SourceImage = e.rootfolder,
+                                          Id = e.attribute_id,
+                                          Description = e.description,
+                                          Price = e.price
+                                      }).FirstOrDefault(),
+                             FenceColor = (from b in con.Table<Houseconfig>()
+                                           from d in con.Table<Houseconfig_Has_Attribute>()
+                                           from e in con.Table<DBModel.Attribute>()
+                                           where b.customer_user_id.Equals(a.id)
+                                           && e.attribute_group_id.Equals(905)
+                                           && d.houseconfig_id.Equals(b.houseconfig_id)
+                                           && d.attribute_id.Equals(e.attribute_id)
+                                           select new ColorPalette
+                                           (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))).FirstOrDefault()
                          }).ToList();
 
                 con.Close();
             }
             return house;
         }
-        public HouseSummary SQLGetHouseconfig(int Pid)
+
+        private HouseSummary SQLGetHouseconfig(int Pid)
         {
             HouseSummary house;
-
             using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
             {
                 house = (from a in con.Table<Mdh_Users>()
@@ -3062,36 +3409,245 @@ namespace Fallstudie.ViewModel
                              Customer = new Customer(a.id, a.name, SQLCustomerCountProject(a.id), SQLCustomerCountHouseconfig(a.id)),
                              Consultant = new Consultant(b.consultant_user_id, SQLGetConsultantName(b.consultant_user_id)),
                              Package = new ImageInherit(f.rootfolder, f.house_package_id, f.description, f.price),
-                             Plot = new ImageInherit(SQLGetRightAttribute(3, a.id).rootfolder, SQLGetRightAttribute(3, a.id).attribute_id, SQLGetRightAttribute(3, a.id).description, SQLGetRightAttribute(3, a.id).price),
+                             Plot = (from b in con.Table<Houseconfig>()
+                                     from d in con.Table<Houseconfig_Has_Attribute>()
+                                     from e in con.Table<DBModel.Attribute>()
+                                     where b.customer_user_id.Equals(a.id)
+                                     && e.attribute_group_id.Equals(3)
+                                     && d.houseconfig_id.Equals(b.houseconfig_id)
+                                     && d.attribute_id.Equals(e.attribute_id)
+                                     select new ImageInherit()
+                                     {
+                                         SourceImage = e.rootfolder,
+                                         Id = e.attribute_id,
+                                         Description = e.description,
+                                         Price = e.price
+                                     }).FirstOrDefault(),
                              numberOfFloors = (from h in con.Table<Housefloor>()
                                                where h.houseconfig_id.Equals(b.houseconfig_id)
                                                select h).Count() - 1,
                              GroundPlots = SQLGetGroundPlots(b.houseconfig_id),
-                             OutsideWall = new ImageInherit(SQLGetRightAttribute(5, a.id).rootfolder, SQLGetRightAttribute(5, a.id).attribute_id, SQLGetRightAttribute(5, a.id).description, SQLGetRightAttribute(5, a.id).price),
-                             OutsideWallColor = new ColorPalette(SQLGetRightAttribute(902, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(902, a.id).description), SQLSplitColorG(SQLGetRightAttribute(902, a.id).description), SQLSplitColorB(SQLGetRightAttribute(902, a.id).description)),
-                             InsideWall = new ImageInherit(SQLGetRightAttribute(51, a.id).rootfolder, SQLGetRightAttribute(51, a.id).attribute_id, SQLGetRightAttribute(51, a.id).description, SQLGetRightAttribute(51, a.id).price),
-                             InsideWallColor = new ColorPalette(SQLGetRightAttribute(901, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(901, a.id).description), SQLSplitColorG(SQLGetRightAttribute(901, a.id).description), SQLSplitColorB(SQLGetRightAttribute(901, a.id).description)),
-                             RoofType = new ImageInherit(SQLGetRightAttribute(6, a.id).rootfolder, SQLGetRightAttribute(6, a.id).attribute_id, SQLGetRightAttribute(6, a.id).description, SQLGetRightAttribute(6, a.id).price),
-                             RoofMaterial = new ImageInherit(SQLGetRightAttribute(61, a.id).image, SQLGetRightAttribute(61, a.id).attribute_id, SQLGetRightAttribute(61, a.id).description, SQLGetRightAttribute(61, a.id).price),
-                             Window = new ImageInherit(SQLGetRightAttribute(7, a.id).rootfolder, SQLGetRightAttribute(7, a.id).attribute_id, SQLGetRightAttribute(7, a.id).description, SQLGetRightAttribute(7, a.id).price),
-                             WindowColor = new ColorPalette(SQLGetRightAttribute(903, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(903, a.id).description), SQLSplitColorG(SQLGetRightAttribute(903, a.id).description), SQLSplitColorB(SQLGetRightAttribute(903, a.id).description)),
-                             Door = new ImageInherit(SQLGetRightAttribute(71, a.id).rootfolder, SQLGetRightAttribute(71, a.id).attribute_id, SQLGetRightAttribute(71, a.id).description, SQLGetRightAttribute(71, a.id).price),
-                             DoorColor = new ColorPalette(SQLGetRightAttribute(904, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(904, a.id).description), SQLSplitColorG(SQLGetRightAttribute(904, a.id).description), SQLSplitColorB(SQLGetRightAttribute(904, a.id).description)),
-                             EnergySystem = new EHSystem(SQLGetRightAttribute(8, a.id).attribute_id, SQLGetRightAttribute(8, a.id).description, SQLGetRightAttribute(8, a.id).price),
-                             HeatingSystem = new EHSystem(SQLGetRightAttribute(81, a.id).attribute_id, SQLGetRightAttribute(81, a.id).description, SQLGetRightAttribute(81, a.id).price),
-                             NumberOfSocket = int.Parse(SQLGetRightAttribute(12, a.id).description),
-                             Chimney = new ImageInherit(SQLGetRightAttribute(9, a.id).rootfolder, SQLGetRightAttribute(9, a.id).attribute_id, SQLGetRightAttribute(9, a.id).description, SQLGetRightAttribute(9, a.id).price),
-                             Pool = new ImageInherit(SQLGetRightAttribute(10, a.id).rootfolder, SQLGetRightAttribute(10, a.id).attribute_id, SQLGetRightAttribute(10, a.id).description, SQLGetRightAttribute(10, a.id).price),
-                             Poolsize = SQLGetRightAttribute(11, a.id).description + " m²",
-                             Fence = new ImageInherit(SQLGetRightAttribute(101, a.id).rootfolder, SQLGetRightAttribute(101, a.id).attribute_id, SQLGetRightAttribute(101, a.id).description, SQLGetRightAttribute(101, a.id).price),
-                             FenceColor = new ColorPalette(SQLGetRightAttribute(905, a.id).attribute_id, SQLSplitColorR(SQLGetRightAttribute(905, a.id).description), SQLSplitColorG(SQLGetRightAttribute(905, a.id).description), SQLSplitColorB(SQLGetRightAttribute(905, a.id).description))
+                             OutsideWall = (from b in con.Table<Houseconfig>()
+                                            from d in con.Table<Houseconfig_Has_Attribute>()
+                                            from e in con.Table<DBModel.Attribute>()
+                                            where b.customer_user_id.Equals(a.id)
+                                            && e.attribute_group_id.Equals(5)
+                                            && d.houseconfig_id.Equals(b.houseconfig_id)
+                                            && d.attribute_id.Equals(e.attribute_id)
+                                            select new ImageInherit()
+                                            {
+                                                SourceImage = e.rootfolder,
+                                                Id = e.attribute_id,
+                                                Description = e.description,
+                                                Price = e.price
+                                            }).FirstOrDefault(),
+                             OutsideWallColor = (from b in con.Table<Houseconfig>()
+                                                 from d in con.Table<Houseconfig_Has_Attribute>()
+                                                 from e in con.Table<DBModel.Attribute>()
+                                                 where b.customer_user_id.Equals(a.id)
+                                                 && e.attribute_group_id.Equals(902)
+                                                 && d.houseconfig_id.Equals(b.houseconfig_id)
+                                                 && d.attribute_id.Equals(e.attribute_id)
+                                                 select new ColorPalette
+                                                 (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))).FirstOrDefault(),
+                             InsideWall = (from b in con.Table<Houseconfig>()
+                                           from d in con.Table<Houseconfig_Has_Attribute>()
+                                           from e in con.Table<DBModel.Attribute>()
+                                           where b.customer_user_id.Equals(a.id)
+                                           && e.attribute_group_id.Equals(51)
+                                           && d.houseconfig_id.Equals(b.houseconfig_id)
+                                           && d.attribute_id.Equals(e.attribute_id)
+                                           select new ImageInherit()
+                                           {
+                                               SourceImage = e.rootfolder,
+                                               Id = e.attribute_id,
+                                               Description = e.description,
+                                               Price = e.price
+                                           }).FirstOrDefault(),
+                             InsideWallColor = (from b in con.Table<Houseconfig>()
+                                                from d in con.Table<Houseconfig_Has_Attribute>()
+                                                from e in con.Table<DBModel.Attribute>()
+                                                where b.customer_user_id.Equals(a.id)
+                                                && e.attribute_group_id.Equals(901)
+                                                && d.houseconfig_id.Equals(b.houseconfig_id)
+                                                && d.attribute_id.Equals(e.attribute_id)
+                                                select new ColorPalette
+                                                (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))).FirstOrDefault(),
+                             RoofType = (from b in con.Table<Houseconfig>()
+                                         from d in con.Table<Houseconfig_Has_Attribute>()
+                                         from e in con.Table<DBModel.Attribute>()
+                                         where b.customer_user_id.Equals(a.id)
+                                         && e.attribute_group_id.Equals(6)
+                                         && d.houseconfig_id.Equals(b.houseconfig_id)
+                                         && d.attribute_id.Equals(e.attribute_id)
+                                         select new ImageInherit()
+                                         {
+                                             SourceImage = e.rootfolder,
+                                             Id = e.attribute_id,
+                                             Description = e.description,
+                                             Price = e.price
+                                         }).FirstOrDefault(),
+                             RoofMaterial = (from b in con.Table<Houseconfig>()
+                                             from d in con.Table<Houseconfig_Has_Attribute>()
+                                             from e in con.Table<DBModel.Attribute>()
+                                             where b.customer_user_id.Equals(a.id)
+                                             && e.attribute_group_id.Equals(61)
+                                             && d.houseconfig_id.Equals(b.houseconfig_id)
+                                             && d.attribute_id.Equals(e.attribute_id)
+                                             select new ImageInherit()
+                                             {
+                                                 SourceImage = e.rootfolder,
+                                                 Id = e.attribute_id,
+                                                 Description = e.description,
+                                                 Price = e.price
+                                             }).FirstOrDefault(),
+                             Window = (from b in con.Table<Houseconfig>()
+                                       from d in con.Table<Houseconfig_Has_Attribute>()
+                                       from e in con.Table<DBModel.Attribute>()
+                                       where b.customer_user_id.Equals(a.id)
+                                       && e.attribute_group_id.Equals(7)
+                                       && d.houseconfig_id.Equals(b.houseconfig_id)
+                                       && d.attribute_id.Equals(e.attribute_id)
+                                       select new ImageInherit()
+                                       {
+                                           SourceImage = e.rootfolder,
+                                           Id = e.attribute_id,
+                                           Description = e.description,
+                                           Price = e.price
+                                       }).FirstOrDefault(),
+                             WindowColor = (from b in con.Table<Houseconfig>()
+                                            from d in con.Table<Houseconfig_Has_Attribute>()
+                                            from e in con.Table<DBModel.Attribute>()
+                                            where b.customer_user_id.Equals(a.id)
+                                            && e.attribute_group_id.Equals(903)
+                                            && d.houseconfig_id.Equals(b.houseconfig_id)
+                                            && d.attribute_id.Equals(e.attribute_id)
+                                            select new ColorPalette
+                                            (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))).FirstOrDefault(),
+                             Door = (from b in con.Table<Houseconfig>()
+                                     from d in con.Table<Houseconfig_Has_Attribute>()
+                                     from e in con.Table<DBModel.Attribute>()
+                                     where b.customer_user_id.Equals(a.id)
+                                     && e.attribute_group_id.Equals(71)
+                                     && d.houseconfig_id.Equals(b.houseconfig_id)
+                                     && d.attribute_id.Equals(e.attribute_id)
+                                     select new ImageInherit()
+                                     {
+                                         SourceImage = e.rootfolder,
+                                         Id = e.attribute_id,
+                                         Description = e.description,
+                                         Price = e.price
+                                     }).FirstOrDefault(),
+                             DoorColor = (from b in con.Table<Houseconfig>()
+                                          from d in con.Table<Houseconfig_Has_Attribute>()
+                                          from e in con.Table<DBModel.Attribute>()
+                                          where b.customer_user_id.Equals(a.id)
+                                          && e.attribute_group_id.Equals(904)
+                                          && d.houseconfig_id.Equals(b.houseconfig_id)
+                                          && d.attribute_id.Equals(e.attribute_id)
+                                          select new ColorPalette
+                                          (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))).FirstOrDefault(),
+                             EnergySystem = (from b in con.Table<Houseconfig>()
+                                             from d in con.Table<Houseconfig_Has_Attribute>()
+                                             from e in con.Table<DBModel.Attribute>()
+                                             where b.customer_user_id.Equals(a.id)
+                                             && e.attribute_group_id.Equals(8)
+                                             && d.houseconfig_id.Equals(b.houseconfig_id)
+                                             && d.attribute_id.Equals(e.attribute_id)
+                                             select new EHSystem()
+                                             {
+                                                 Id = e.attribute_id,
+                                                 Name = e.description,
+                                                 Price = e.price
+                                             }).FirstOrDefault(),
+                             HeatingSystem = (from b in con.Table<Houseconfig>()
+                                              from d in con.Table<Houseconfig_Has_Attribute>()
+                                              from e in con.Table<DBModel.Attribute>()
+                                              where b.customer_user_id.Equals(a.id)
+                                              && e.attribute_group_id.Equals(81)
+                                              && d.houseconfig_id.Equals(b.houseconfig_id)
+                                              && d.attribute_id.Equals(e.attribute_id)
+                                              select new EHSystem()
+                                              {
+                                                  Id = e.attribute_id,
+                                                  Name = e.description,
+                                                  Price = e.price
+                                              }).FirstOrDefault(),
+                             NumberOfSocket = int.Parse((from b in con.Table<Houseconfig>()
+                                                         from d in con.Table<Houseconfig_Has_Attribute>()
+                                                         from e in con.Table<DBModel.Attribute>()
+                                                         where b.customer_user_id.Equals(a.id)
+                                                         && e.attribute_group_id.Equals(12)
+                                                         && d.houseconfig_id.Equals(b.houseconfig_id)
+                                                         && d.attribute_id.Equals(e.attribute_id)
+                                                         select e.description).FirstOrDefault()),
+                             Chimney = (from b in con.Table<Houseconfig>()
+                                        from d in con.Table<Houseconfig_Has_Attribute>()
+                                        from e in con.Table<DBModel.Attribute>()
+                                        where b.customer_user_id.Equals(a.id)
+                                        && e.attribute_group_id.Equals(9)
+                                        && d.houseconfig_id.Equals(b.houseconfig_id)
+                                        && d.attribute_id.Equals(e.attribute_id)
+                                        select new ImageInherit()
+                                        {
+                                            SourceImage = e.rootfolder,
+                                            Id = e.attribute_id,
+                                            Description = e.description,
+                                            Price = e.price
+                                        }).FirstOrDefault(),
+                             Pool = (from b in con.Table<Houseconfig>()
+                                     from d in con.Table<Houseconfig_Has_Attribute>()
+                                     from e in con.Table<DBModel.Attribute>()
+                                     where b.customer_user_id.Equals(a.id)
+                                     && e.attribute_group_id.Equals(10)
+                                     && d.houseconfig_id.Equals(b.houseconfig_id)
+                                     && d.attribute_id.Equals(e.attribute_id)
+                                     select new ImageInherit()
+                                     {
+                                         SourceImage = e.rootfolder,
+                                         Id = e.attribute_id,
+                                         Description = e.description,
+                                         Price = e.price
+                                     }).FirstOrDefault(),
+                             Poolsize = (from b in con.Table<Houseconfig>()
+                                         from d in con.Table<Houseconfig_Has_Attribute>()
+                                         from e in con.Table<DBModel.Attribute>()
+                                         where b.customer_user_id.Equals(a.id)
+                                         && e.attribute_group_id.Equals(11)
+                                         && d.houseconfig_id.Equals(b.houseconfig_id)
+                                         && d.attribute_id.Equals(e.attribute_id)
+                                         select e.description).FirstOrDefault() + " m²",
+                             Fence = (from b in con.Table<Houseconfig>()
+                                      from d in con.Table<Houseconfig_Has_Attribute>()
+                                      from e in con.Table<DBModel.Attribute>()
+                                      where b.customer_user_id.Equals(a.id)
+                                      && e.attribute_group_id.Equals(101)
+                                      && d.houseconfig_id.Equals(b.houseconfig_id)
+                                      && d.attribute_id.Equals(e.attribute_id)
+                                      select new ImageInherit()
+                                      {
+                                          SourceImage = e.rootfolder,
+                                          Id = e.attribute_id,
+                                          Description = e.description,
+                                          Price = e.price
+                                      }).FirstOrDefault(),
+                             FenceColor = (from b in con.Table<Houseconfig>()
+                                           from d in con.Table<Houseconfig_Has_Attribute>()
+                                           from e in con.Table<DBModel.Attribute>()
+                                           where b.customer_user_id.Equals(a.id)
+                                           && e.attribute_group_id.Equals(905)
+                                           && d.houseconfig_id.Equals(b.houseconfig_id)
+                                           && d.attribute_id.Equals(e.attribute_id)
+                                           select new ColorPalette
+                                           (e.attribute_id, Byte.Parse(e.description.Split(',').GetValue(0).ToString()), Byte.Parse(e.description.Split(',').GetValue(1).ToString()), Byte.Parse(e.description.Split(',').GetValue(2).ToString()))).FirstOrDefault()
                          }).Single();
 
                 con.Close();
             }
             return house;
         }
-        public List<ImageInherit> SQLGetGroundPlots(int Hid)
+
+        private List<ImageInherit> SQLGetGroundPlots(int Hid)
         {
             List<Housefloor> hfl;
             List<ImageInherit> gpl = new List<ImageInherit>();
@@ -3111,6 +3667,49 @@ namespace Fallstudie.ViewModel
             return gpl;
         }
         #endregion
+        #endregion
+
+
+        #region UseCase Cusomer
+        private ObservableCollection<Customer> listCustomer  = new ObservableCollection<Customer>();
+
+        public ObservableCollection<Customer> ListCustomer
+        {
+            get { return listCustomer; }
+            set { listCustomer = value; }
+        }
+
+        private Customer selectedCustomerList;
+
+        public Customer SelectedCustomerList
+        {
+            get { return selectedCustomerList; }
+            set {
+                selectedCustomerList = value;
+                OnChange("SelectedCustomerList");
+                CreatePdf();
+                    
+            }
+        }
+
+        private string pDFButtonVisibility = "Collapsed";
+
+        public string PDFButtonVisibility
+        {
+            get { return pDFButtonVisibility; }
+            set {
+                if (SelectedConfHouse == null)
+                {
+                    pDFButtonVisibility = "Collapsed";
+                }
+                else
+                {
+                    pDFButtonVisibility = value;
+                    OnChange("PDFButtonVisibility");
+                }
+            }
+        }
+
 
         #endregion
 

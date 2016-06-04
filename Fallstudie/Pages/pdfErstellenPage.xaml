@@ -217,7 +217,8 @@
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton Command="{Binding ButtonCreatePdf}" Icon="Document" Label="Termin erstellen"/>
+            <AppBarButton Command="{Binding LoadItemsIntoLists}" Icon="Download" Label="laod items into lists"/>
+            <AppBarButton Command="{Binding}" Icon="Document" Label="Termin erstellen"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

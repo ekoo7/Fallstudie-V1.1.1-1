@@ -33,7 +33,9 @@
                     RelativePanel.AlignRightWithPanel="True"
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="36"
-                    Content="&#xE1E0;" Command="{Binding ButtonLogout}" ToolTipService.ToolTip="Logout"/>
+                    Command="{Binding ButtonLogout}" ToolTipService.ToolTip="Logout">
+                <Image Source="Assets/icons/logout3.png" Width="36"/>
+            </Button>
             <TextBlock x:ConnectionId='13' Margin="-0.333,0,10,0"
                       Foreground="Gray"
                 Name="TextBlockUser" RelativePanel.LeftOf="ButtonLogout" FontSize="30" Text="{Binding Username}" Height="40" VerticalAlignment="Top"/>
@@ -51,11 +53,11 @@
                             <TextBlock FontSize="24" Text="Startseite" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem x:ConnectionId='4' Name="HausKonfigurator" Background="#0091FF">
+                    <ListBoxItem x:ConnectionId='4' Name="HausKonfigurator">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="White" FontSize="36" Text="&#xE913;"/>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE913;"/>
                             <!-- ohne baum E80F-->
-                            <TextBlock FontSize="24" Text="Haus Konfigurator" Foreground="White" Margin="20,0,0,0"/>
+                            <TextBlock FontSize="24" Text="Haus Konfigurator" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem x:ConnectionId='5' Name="Kunden">
@@ -78,7 +80,7 @@
                         </StackPanel>
                     </ListBoxItem>
 
-                    <ListBoxItem x:ConnectionId='8' Name="pdfErstellen">
+                    <ListBoxItem x:ConnectionId='8' Name="PDF Erstellen">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE160;"/>
                             <TextBlock FontSize="24" Text="PDF erstellen" Margin="20,0,0,0"/>
