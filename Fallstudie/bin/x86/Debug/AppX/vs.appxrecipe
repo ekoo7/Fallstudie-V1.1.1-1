@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-04T17:07:08.367</Modified>
+      <Modified>2016-06-06T11:09:23.715</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.exe">
       <PackagePath>entrypoint\Fallstudie.exe</PackagePath>
-      <Modified>2016-06-04T17:07:07.536</Modified>
+      <Modified>2016-06-06T11:09:04.911</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UAP\v0.8.0.0\ExtensionSDKs\InkToolbarControl\0.3.2\References\CommonConfiguration\neutral\Microsoft.Labs.InkToolbarControl.winmd">
       <PackagePath>Microsoft.Labs.InkToolbarControl.winmd</PackagePath>
@@ -4006,93 +4006,135 @@
       <PackagePath>ApplicationInsights.config</PackagePath>
       <Modified>2016-06-04T10:53:41.027</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\customer.png">
+      <PackagePath>Assets\icons\customer.png</PackagePath>
+      <Modified>2016-06-06T11:06:25.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\datetime.png">
+      <PackagePath>Assets\icons\datetime.png</PackagePath>
+      <Modified>2016-06-06T11:06:25.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\eraser.png">
       <PackagePath>Assets\icons\eraser.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.029</Modified>
+      <Modified>2016-06-06T11:06:25.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout.png">
       <PackagePath>Assets\icons\logout.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.029</Modified>
+      <Modified>2016-06-06T11:06:25.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout2.png">
       <PackagePath>Assets\icons\logout2.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.030</Modified>
+      <Modified>2016-06-06T11:06:25.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout3.png">
       <PackagePath>Assets\icons\logout3.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.030</Modified>
+      <Modified>2016-06-06T11:06:25.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout4.png">
       <PackagePath>Assets\icons\logout4.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.031</Modified>
+      <Modified>2016-06-06T11:06:25.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout5.png">
       <PackagePath>Assets\icons\logout5.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.032</Modified>
+      <Modified>2016-06-06T11:06:25.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\pdf1.png">
       <PackagePath>Assets\icons\pdf1.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.032</Modified>
+      <Modified>2016-06-06T11:06:25.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\pen.png">
       <PackagePath>Assets\icons\pen.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.033</Modified>
+      <Modified>2016-06-06T11:06:25.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\pen1.png">
       <PackagePath>Assets\icons\pen1.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.033</Modified>
+      <Modified>2016-06-06T11:06:25.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\pen2.png">
       <PackagePath>Assets\icons\pen2.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.034</Modified>
+      <Modified>2016-06-06T11:06:25.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\pen3.png">
       <PackagePath>Assets\icons\pen3.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.034</Modified>
+      <Modified>2016-06-06T11:06:25.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\LockScreenLogo.scale-200.png">
+      <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
+      <Modified>2016-06-06T11:06:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\SplashScreen.scale-200.png">
+      <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-06T11:06:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\Square150x150Logo.scale-200.png">
+      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-06T11:06:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\Square44x44Logo.scale-200.png">
+      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-06T11:06:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\steep1.png">
       <PackagePath>Assets\steep1.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.037</Modified>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\steep10.png">
       <PackagePath>Assets\steep10.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.039</Modified>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\steep11.png">
       <PackagePath>Assets\steep11.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.039</Modified>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\steep2.png">
       <PackagePath>Assets\steep2.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.040</Modified>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\steep3.png">
       <PackagePath>Assets\steep3.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.041</Modified>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\steep4.png">
       <PackagePath>Assets\steep4.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.042</Modified>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\steep5.png">
       <PackagePath>Assets\steep5.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.043</Modified>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\steep6.png">
       <PackagePath>Assets\steep6.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.044</Modified>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\steep7.png">
       <PackagePath>Assets\steep7.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.045</Modified>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\steep8.png">
       <PackagePath>Assets\steep8.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.045</Modified>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\steep9.png">
       <PackagePath>Assets\steep9.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.046</Modified>
+      <Modified>2016-06-06T11:06:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-06T11:06:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\Wide310x150Logo.scale-200.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-06-06T11:06:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Bilder\Logo\DreamHouse_lang.png">
       <PackagePath>Bilder\Logo\DreamHouse_lang.png</PackagePath>
@@ -4102,47 +4144,13 @@
       <PackagePath>Bilder\Logo\DreamHouse_quadr.png</PackagePath>
       <Modified>2016-06-04T10:53:41.052</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\LockScreenLogo.scale-200.png">
-      <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2016-06-04T10:53:41.034</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\SplashScreen.scale-200.png">
-      <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-04T10:53:41.035</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\Square150x150Logo.scale-200.png">
-      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-04T10:53:41.036</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\Square44x44Logo.scale-200.png">
-      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-04T10:53:41.036</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
-      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-04T10:53:41.037</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\StoreLogo.png">
-      <PackagePath>Assets\StoreLogo.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-04T10:53:41.046</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Assets\Wide310x150Logo.scale-200.png">
-      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-04T10:53:41.047</Modified>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2016-06-04T10:53:51.083</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.xr.xml">
       <PackagePath>Fallstudie.xr.xml</PackagePath>
-      <Modified>2016-06-04T14:32:23.438</Modified>
+      <Modified>2016-06-06T11:09:04.182</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -4150,11 +4158,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-06-04T15:26:18.544</Modified>
+      <Modified>2016-06-06T11:09:20.057</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\User\Dropbox\GitHubFallstudie\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\Fallstudie.exe">
       <PackagePath>Fallstudie.exe</PackagePath>
-      <Modified>2016-06-04T17:07:08.362</Modified>
+      <Modified>2016-06-06T11:09:23.706</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

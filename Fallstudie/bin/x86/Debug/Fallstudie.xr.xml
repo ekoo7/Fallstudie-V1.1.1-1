@@ -129,26 +129,27 @@
     <RootPropertyPathName Name="SelectedConfHouse" />
     <RootPropertyPathName Name="Package" />
     <RootPropertyPathName Name="Consultant" />
-    <RootPropertyPathName Name="Customer" />
     <RootPropertyPathName Name="ConfDate" />
     <RootPropertyPathName Name="Id" />
     <RootPropertyPathName Name="ListCustomer" />
     <RootPropertyPathName Name="SelectedCustomerList" />
     <RootPropertyPathName Name="PDFButtonVisibility" />
+    <RootPropertyPathName Name="ButtonEditConfigurationCustomer" />
     <RootPropertyPathName Name="ButtonCreatePdf" />
     <RootPropertyPathName Name="ProjectPezVisibility" />
-    <RootPropertyPathName Name="NoteStep7" />
-    <RootPropertyPathName Name="NoteStep5" />
     <RootPropertyPathName Name="SelectedProject" />
     <RootPropertyPathName Name="ListProjects" />
-    <RootPropertyPathName Name="State" />
+    <RootPropertyPathName Name="DaysTilComletion" />
+    <RootPropertyPathName Name="StateDescription" />
     <RootPropertyPathName Name="StateValue" />
+    <RootPropertyPathName Name="Customer" />
     <RootPropertyPathName Name="EndDate" />
     <RootPropertyPathName Name="StartDate" />
+    <RootPropertyPathName Name="ButtonCreatePdfProjects" />
     <RootPropertyPathName Name="Appointments" />
     <RootPropertyPathName Name="SelectedAppointment" />
-    <RootPropertyPathName Name="Time" />
     <RootPropertyPathName Name="DateFormat" />
+    <RootPropertyPathName Name="Time" />
     <RootPropertyPathName Name="DeleteAppointmentButton" />
     <RootPropertyPathName Name="EditAppointmentButton" />
     <RootPropertyPathName Name="AddNewAppointmentButton" />
@@ -204,6 +205,7 @@
       <RootProperty Name="Name" />
       <RootProperty Name="Padding" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Margin" />
@@ -340,6 +342,7 @@
       <RootProperty Name="Content" />
       <RootProperty Name="PrimaryCommands" />
       <RootProperty Name="Background" />
+      <RootProperty Name="Opacity" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
       <RootProperty Name="Command" />
@@ -378,6 +381,7 @@
       <RootProperty Name="SelectedItem" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="Width" />
+      <RootProperty Name="MinWidth" />
     </RootType>
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt10Aussenbereiche" />
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt2HausAuswahl" />
@@ -396,8 +400,10 @@
     <RootType FullName="Fallstudie.Pages.KundenPage" />
     <RootType FullName="Fallstudie.Pages.KundenPages.CreateCustomerPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
-      <RootProperty Name="Width" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
       <RootProperty Name="Value" />
     </RootType>
     <RootType FullName="Fallstudie.Pages.ProjektePage" />
@@ -407,11 +413,13 @@
     <RootType FullName="Fallstudie.Converter.StringFormatter" />
     <RootType FullName="Fallstudie.Pages.TerminePage" />
     <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="MinYear" />
       <RootProperty Name="Date" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TimePicker">
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Time" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="ClockIdentifier" />

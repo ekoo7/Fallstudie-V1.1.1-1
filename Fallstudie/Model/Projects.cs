@@ -10,8 +10,31 @@ namespace Fallstudie.Model
     {
         public int Id { get; set; }
         public HouseSummary House { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
+        private string startDate;
+
+        public string StartDate
+        {
+            get {
+                string[] startDateSplit = startDate.Split(' ');
+                startDate = startDateSplit[0];
+                return startDate;
+            }
+            set { startDate = value; }
+        }
+
+        private string endDate;
+
+        public string EndDate
+        {
+            get
+            {
+                string[] endDateSplit = endDate.Split(' ');
+                endDate = endDateSplit[0];
+                return endDate;
+            }
+            set { endDate = value; }
+        }
+
 
         /// <summary>
         /// Projekstauts kann 5 Werte Annhmen
@@ -39,19 +62,46 @@ namespace Fallstudie.Model
 
             }
         }
+        private string stateDescription;
+
+        public string StateDescription
+        {
+            get {
+                
+                if (DaysTilComletion >= 340) return "Projektvorbereitung";
+                if (DaysTilComletion >= 300 && DaysTilComletion < 340) return "Projektplanung";
+                if (DaysTilComletion >= 290 && DaysTilComletion < 300) return "Ausführungsvorbereitung";
+                if (DaysTilComletion >= 30 && DaysTilComletion < 290) return "Projektausführung";
+                if (DaysTilComletion > 0 && DaysTilComletion < 30) return "Projektabschluss";
+                else return "Abgeschlossen";
+            }
+            set {
+                stateDescription = value;
+            }
+        }
+
 
         //Tage bis zu Fertigstellung
-        public double DaysTilComletion
+        public int DaysTilComletion
         {
             get {
 
                 DateTime sd = DateTime.Parse(StartDate);
                 DateTime ed = DateTime.Parse(EndDate);
-
+                TimeSpan days;
                 //Tage bis zu fertigstellung
-                if (DateTime.Now > sd) return 365;
-                TimeSpan days = ed - sd;
-                double x = days.TotalDays;
+                if (DateTime.Now > sd)
+                {
+                    days = ed - DateTime.Now;
+                }
+                else
+                {
+                    days = ed - sd;
+                }
+                
+                
+                
+                int x = (int)days.TotalDays;
                 return x;
             }
         }

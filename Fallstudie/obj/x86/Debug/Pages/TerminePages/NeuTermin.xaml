@@ -8,7 +8,7 @@
     xmlns:Converter="using:Fallstudie.Converter"
     DataContext="{Binding Main, Source={StaticResource Locator}}"
     mc:Ignorable="d">
-    
+
     <Page.Resources>
         <Converter:DateTimeConverter x:Key="DateConverter"/>
         <Converter:TimeSpanConverter x:Key="TimeConverter"/>
@@ -16,33 +16,38 @@
 
     <ScrollViewer>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Neuen Termin erstellen"></TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Kunde" Margin="10"/>
-                    
-                    <ComboBox ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Name}" />
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <!--Consultant-->
-                    <TextBlock Text="Mitarbeiter" Margin="10"/>
-                    <ComboBox ItemsSource="{Binding Consultants}" SelectedItem="{Binding SelectedConsultant, Mode=TwoWay}">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Name}" />
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                
-                <StackPanel Orientation="Horizontal">
-                    <DatePicker MinYear="{Binding DateTimeNow, Mode=TwoWay, Converter={StaticResource DateConverter}}" Date="{Binding DateAppointment, Mode=TwoWay, Converter={StaticResource DateConverter}}" VerticalAlignment="Top"/>
-                    <TimePicker Time="{Binding TimeAppoitment, Mode=TwoWay}" VerticalAlignment="Top" ClockIdentifier="24HourClock"/>
-                </StackPanel>
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="271*"/>
+                <ColumnDefinition Width="50*"/>
+
+            </Grid.ColumnDefinitions>
+            <StackPanel x:ConnectionId='1' x:Name="StackPanelNewAppointment" HorizontalAlignment="Center" Orientation="Vertical" Grid.Column="1" >
+                <TextBlock FontSize="20" Text="Neuen Termin erstellen"></TextBlock>
+                <!--Kunde-->
+                <TextBlock  FontSize="18" Foreground="Gray" Text="Kunde" Margin="5 5 0 0"/>
+                <ComboBox Margin="5 0 5 0" Width="290" MinWidth="290" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <!--Consultant-->
+                <TextBlock  FontSize="18" Foreground="Gray" Text="Mirarbeiter" Margin="5 5 0 0"/>
+                <ComboBox Margin="5 0 5 0" Width="290" MinWidth="290" ItemsSource="{Binding Consultants}" SelectedItem="{Binding SelectedConsultant, Mode=TwoWay}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <TextBlock  FontSize="18" Foreground="Gray" Text="Datum" Margin="5 5 0 0"/>
+                <DatePicker HorizontalAlignment="Center" MinYear="{Binding DateTimeNow, Mode=TwoWay, Converter={StaticResource DateConverter}}" Date="{Binding DateAppointment, Mode=TwoWay, Converter={StaticResource DateConverter}}" VerticalAlignment="Top"/>
+                <TextBlock  FontSize="18" Foreground="Gray" Text="Uhrzeit" Margin="5 5 0 0"/>
+                <TimePicker  HorizontalAlignment="Center" Time="{Binding TimeAppoitment, Mode=TwoWay}" VerticalAlignment="Top" ClockIdentifier="24HourClock"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

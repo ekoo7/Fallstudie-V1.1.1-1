@@ -8,25 +8,25 @@
     xmlns:inkTools="using:Microsoft.Labs.InkToolbarControl" 
     mc:Ignorable="d">
     <ScrollViewer>
-    <Grid Background="{ThemeResource AppBarBackgroundThemeBrush}">
+        <Grid Background="{ThemeResource AppBarBackgroundThemeBrush}">
             <StackPanel Background="{ThemeResource AppBarBackgroundThemeBrush}">
-            <Border Background="#0091FF">
-                <TextBlock Text="Umriss zeichnen" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
-            </Border>
+                <Border Background="#0091FF">
+                    <TextBlock Text="Umriss zeichnen" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
+                </Border>
                 <CommandBar Background="{ThemeResource AppBarBackgroundThemeBrush}">
-                <AppBarSeparator />
-                <AppBarButton  Command="{Binding ButtonDeleteSketch}" Icon="Delete" Label="Löschen"/>
-                <AppBarButton Command="{Binding ButtonSaveSketch}" Icon="Save" Label="Speichern"/>
-                <AppBarButton  Command="{Binding ButtonCancelSketch}" Icon="Cancel" Label="Abbrechen"/>
-            </CommandBar>
-            <Border Margin="0 0 0 0" Background="White">
-                <InkCanvas x:ConnectionId='3'  x:Name="inkCanvas" Height="500">
-                    
-                </InkCanvas>
-            </Border>
+                    <AppBarSeparator />
+                    <AppBarButton  Command="{Binding ButtonDeleteSketch}" Icon="Delete" Label="Löschen"/>
+                    <AppBarButton Command="{Binding ButtonSaveSketch}" Icon="Save" Label="Speichern"/>
+                    <AppBarButton  Command="{Binding ButtonCancelSketch}" Icon="Cancel" Label="Abbrechen"/>
+                </CommandBar>
+                <Border Margin="0 0 0 0" Background="White">
+                    <InkCanvas x:ConnectionId='3'  x:Name="inkCanvas" Height="500">
+
+                    </InkCanvas>
+                </Border>
                 <inkTools:InkToolbar x:ConnectionId='2'                                      PenColor="#FFE61021"></inkTools:InkToolbar>
-        </StackPanel>
-    </Grid>
+            </StackPanel>
+        </Grid>
     </ScrollViewer>
 </Page>
 

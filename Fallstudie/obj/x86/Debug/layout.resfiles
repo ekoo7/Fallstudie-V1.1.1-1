@@ -1,5 +1,7 @@
 WinMetadata\Windows.winmd
 ApplicationInsights.config
+Assets\icons\customer.png
+Assets\icons\datetime.png
 Assets\icons\eraser.png
 Assets\icons\logout.png
 Assets\icons\logout2.png
