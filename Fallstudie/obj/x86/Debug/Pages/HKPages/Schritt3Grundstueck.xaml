@@ -28,10 +28,10 @@
                               >
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock TextAlignment="Center" Text="{Binding Description}"></TextBlock>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock FontSize="22" Foreground="Gray" Text="{Binding Description}"></TextBlock>
                                     <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
-                                    <TextBlock TextAlignment="Right" FontWeight="Medium" Text="{Binding PriceFormat}"/>
+                                    <TextBlock FontSize="22" Foreground="Gray" TextAlignment="Right" FontWeight="Medium" Text="{Binding PriceFormat}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>

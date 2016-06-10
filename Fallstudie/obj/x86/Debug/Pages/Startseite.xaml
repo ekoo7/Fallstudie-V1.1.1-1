@@ -9,8 +9,34 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <TextBlock Text="Ihr Traumhaus wird Wirklichkeit" FontSize="36"/>
-            <TextBlock Text="Der Wunsch nach eigenen vier Wänden muss kein Traum bleiben." FontSize="25"/>
+            <TextBlock Text="Ihre Termine für diesen und nächsten Monat." FontSize="25"/>
+            <StackPanel Orientation="Vertical">
+                
+                <ListView ItemsSource="{Binding UserAppointments}" 
+                          SelectedItem="{Binding SelectedUserAppointment, Mode=TwoWay}"
+                          IsItemClickEnabled="False" SelectionMode="Single"
+                          IsSynchronizedWithCurrentItem="False">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                                    <TextBlock  TextAlignment="Center" Margin="0 0 5 0" Text="{Binding Time}" FontSize="18"/>
+                                    <TextBlock  TextAlignment="Center" Margin="0 0 5 0" Text="{Binding DateFormat}" FontSize="18" />
+                                </StackPanel>
+                                <Image Source="/Assets/icons/datetime.png" Width="50"/>
+                                <StackPanel Margin="5 0 0 0" VerticalAlignment="Center" Orientation="Vertical">
+                                    <StackPanel  Orientation="Horizontal" >
+                                        <TextBlock Foreground="Gray" Text="Kunde"/>
+                                        <TextBlock Margin="34 0 0 0" Text="{Binding Customer.Name}" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </Page>

@@ -12,8 +12,9 @@
     <RootPropertyPathName Name="SelectedCustomerr" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="Customers" />
-    <RootPropertyPathName Name="NumbConfHouses" />
     <RootPropertyPathName Name="NumbProjects" />
+    <RootPropertyPathName Name="Id" />
+    <RootPropertyPathName Name="NumbConfHouses" />
     <RootPropertyPathName Name="ButtonForwardChooseCustomer" />
     <RootPropertyPathName Name="ButtonForwardChooseCustomerVisibility" />
     <RootPropertyPathName Name="ButtonCancelSketch" />
@@ -130,7 +131,6 @@
     <RootPropertyPathName Name="Package" />
     <RootPropertyPathName Name="Consultant" />
     <RootPropertyPathName Name="ConfDate" />
-    <RootPropertyPathName Name="Id" />
     <RootPropertyPathName Name="ListCustomer" />
     <RootPropertyPathName Name="SelectedCustomerList" />
     <RootPropertyPathName Name="PDFButtonVisibility" />
@@ -146,10 +146,12 @@
     <RootPropertyPathName Name="EndDate" />
     <RootPropertyPathName Name="StartDate" />
     <RootPropertyPathName Name="ButtonCreatePdfProjects" />
-    <RootPropertyPathName Name="Appointments" />
-    <RootPropertyPathName Name="SelectedAppointment" />
+    <RootPropertyPathName Name="UserAppointments" />
+    <RootPropertyPathName Name="SelectedUserAppointment" />
     <RootPropertyPathName Name="DateFormat" />
     <RootPropertyPathName Name="Time" />
+    <RootPropertyPathName Name="Appointments" />
+    <RootPropertyPathName Name="SelectedAppointment" />
     <RootPropertyPathName Name="DeleteAppointmentButton" />
     <RootPropertyPathName Name="EditAppointmentButton" />
     <RootPropertyPathName Name="AddNewAppointmentButton" />
@@ -251,6 +253,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Command" />
+      <RootProperty Name="TabIndex" />
       <RootProperty Name="Name" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="FontSize" />
@@ -324,6 +327,7 @@
       <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="Name" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="SelectedItem" />
       <RootProperty Name="IsItemClickEnabled" />
@@ -331,7 +335,6 @@
       <RootProperty Name="IsSynchronizedWithCurrentItem" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="Name" />
       <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">

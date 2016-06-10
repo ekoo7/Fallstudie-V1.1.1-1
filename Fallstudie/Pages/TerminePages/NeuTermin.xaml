@@ -16,14 +16,8 @@
 
     <ScrollViewer>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Grid.ColumnDefinitions>
 
-                <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="271*"/>
-                <ColumnDefinition Width="50*"/>
-
-            </Grid.ColumnDefinitions>
-            <StackPanel x:Name="StackPanelNewAppointment" HorizontalAlignment="Center" Orientation="Vertical" Grid.Column="1" >
+            <StackPanel x:Name="StackPanelNewAppointment" HorizontalAlignment="Center" Orientation="Vertical">
                 <TextBlock FontSize="20" Text="Neuen Termin erstellen"></TextBlock>
                 <!--Kunde-->
                 <TextBlock  FontSize="18" Foreground="Gray" Text="Kunde" Margin="5 5 0 0"/>
@@ -35,7 +29,7 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <!--Consultant-->
-                <TextBlock  FontSize="18" Foreground="Gray" Text="Mirarbeiter" Margin="5 5 0 0"/>
+                <TextBlock  FontSize="18" Foreground="Gray" Text="Mitarbeiter" Margin="5 5 0 0"/>
                 <ComboBox Margin="5 0 5 0" Width="290" MinWidth="290" ItemsSource="{Binding Consultants}" SelectedItem="{Binding SelectedConsultant, Mode=TwoWay}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>

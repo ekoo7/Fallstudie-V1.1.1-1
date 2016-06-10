@@ -20,6 +20,7 @@ using System.Net.Http;
 using System.Net.NetworkInformation;
 using Windows.System.Threading;
 using Windows.UI.Input.Inking;
+using Windows.UI.Core;
 
 namespace Fallstudie.ViewModel
 {
@@ -57,13 +58,16 @@ namespace Fallstudie.ViewModel
                 Customers.Clear();
                 ListCustomer.Clear();
                 SQLGetCustomers();
-                ProjectsMethod();
+                
+                //ProjectsMethod();
                 ManageAppointments();
-              
+                LoadUserAppointments();
+
+
                 DownloadImages();
             }
 
-            ThreadPool.RunAsync(CheckNewImages);     
+         //   ThreadPool.RunAsync(CheckNewImages);     
         }
 
         //Hier werden alle Buttons initialisiert
@@ -277,6 +281,20 @@ namespace Fallstudie.ViewModel
             set { username = value; OnChange("Username"); }
         }
 
+        private string password;
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; OnChange("Password"); }
+        }
+
+        public void HashPassword()
+        {
+            
+        }
+
+
         //TODO: Alle Listen und Variablen zurücksetzen
         private async void LogOutMethod()
         {
@@ -294,6 +312,40 @@ namespace Fallstudie.ViewModel
                 //ES MÜSSEN NOCH ALLE VARIABLEN ZURÜCKGESETZ WERDEN
             }
         }
+        #endregion
+
+        #region Startseite
+        private ObservableCollection<Appointment> userAppointments = new ObservableCollection<Appointment>();
+
+        public ObservableCollection<Appointment> UserAppointments
+        {
+            get { return userAppointments; }
+            set { userAppointments = value; }
+        }
+
+        private Appointment selectedUserAppointment;
+
+        public Appointment SelectedUserAppointment
+        {
+            get { return selectedUserAppointment; }
+            set { selectedUserAppointment = value; OnChange("SelectedUserAppointment"); }
+        }
+
+        private void LoadUserAppointments()
+        {
+            UserAppointments.Clear();
+            if (Appointments != null)
+            {
+                foreach (var item in Appointments)
+                {
+                    if (item.Consultant.Username == "hansen" 
+                        && (item.Date.Month == DateTimeNow.Month || item.Date.Month == DateTimeNow.Month+1) 
+                        && item.Date.Day >= dateTimeNow.Day)
+                        UserAppointments.Add(item); 
+                }
+            }
+        }
+
         #endregion
 
         #region UseCase HouseConfig
@@ -2432,22 +2484,22 @@ namespace Fallstudie.ViewModel
         #endregion
 
         #region Methods
-        public void ProjectsMethod()
+        public async void ProjectsMethod()
         {
 
-            
-            foreach (var item in SQLGetProject())
-            {
-                ListProjects.Add(new Projects()
+                foreach (var item in SQLGetProject())
                 {
-                    Id = item.project_id,
-                    StartDate = ConvertDateTime(DateTime.Parse(item.startdate)),
-                    EndDate = ConvertDateTime(DateTime.Parse(item.enddate)),
-                    State = item.status,
-                    Description = item.description,
-                    House = SQLGetHouseconfig(item.project_id)
-                });
-            }
+                    ListProjects.Add(new Projects()
+                    {
+                        Id = item.project_id,
+                        StartDate = ConvertDateTime(DateTime.Parse(item.startdate)),
+                        EndDate = ConvertDateTime(DateTime.Parse(item.enddate)),
+                        State = item.status,
+                        Description = item.description,
+                        House = SQLGetHouseconfig(item.project_id)
+                    });
+                }
+            
             
         }
 
@@ -2661,6 +2713,7 @@ namespace Fallstudie.ViewModel
             List<string> froms_;
             List<string> customerNamen;
             List<string> consultantNamen;
+            List<string> usernamedb;
 
             using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
             {
@@ -2703,6 +2756,19 @@ namespace Fallstudie.ViewModel
                                    orderby c.from_
                                    select a.name).ToList();
 
+                //holt die consultant usernamen
+                usernamedb =    (from a in con.Table<Mdh_Users>()
+                                   from b in con.Table<Mdh_User_Usergroup_Map>()
+                                   from c in con.Table<Ymdh_Appointment>()
+                                   from d in con.Table<Mdh_Usergroups>()
+                                   where a.id.Equals(c.consultant_user_id)
+                                   && a.id.Equals(b.user_id)
+                                   && b.group_id.Equals(d.id)
+                                   && d.title.Equals("Consultant")
+                                   && c.appointment_status_id.Equals(1)
+                                   orderby c.from_
+                                   select a.username).ToList();
+
                 con.Close();
             }
 
@@ -2717,7 +2783,7 @@ namespace Fallstudie.ViewModel
                     Date = DateTime.Parse(temp[0]),
                     Time = TimeSpan.Parse(time),
                     Customer = new Customer(model[i].user_id, customerNamen[i], 0, 0),
-                    Consultant = new Consultant() { Id = model[i].consultant_user_id, Name = consultantNamen[i] }
+                    Consultant = new Consultant() { Id = model[i].consultant_user_id, Name = consultantNamen[i], Username = usernamedb[i]}
                    
                 });
             }
@@ -2889,6 +2955,10 @@ namespace Fallstudie.ViewModel
 
                             con.Close();
                         }
+                        var dialog1 = new MessageDialog("Ihr Termin für " + dt + " wurde gespeichert!");
+                        await dialog1.ShowAsync();
+                        ButtonBackToAppointmentPageMethod();
+
                     }
                 }
             }
@@ -2911,6 +2981,7 @@ namespace Fallstudie.ViewModel
             a.Navigate(typeof(Pages.TerminePage));
             Appointments.Clear();
             LoadAppointments();
+            LoadUserAppointments();
         }
 
 
@@ -3965,6 +4036,8 @@ namespace Fallstudie.ViewModel
         }
 
         #endregion
+
+
 
         #region GeneralFunctions
         /// <summary>

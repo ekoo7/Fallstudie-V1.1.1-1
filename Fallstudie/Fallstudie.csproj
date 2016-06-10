@@ -225,6 +225,7 @@
     <Content Include="Assets\icons\pen1.png" />
     <Content Include="Assets\icons\pen2.png" />
     <Content Include="Assets\icons\pen3.png" />
+    <Content Include="Assets\icons\position.png" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />

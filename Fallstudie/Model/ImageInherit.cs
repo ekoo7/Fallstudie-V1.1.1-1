@@ -103,7 +103,8 @@ namespace Fallstudie.Model
             Image1.Name = id.ToString();
             Description = description;
             Price = price;
-        }
+        
+            }
 
         //Konstruktor für die Hauspackages
         public ImageInherit(string source, int id, string description, double price, string zip, string city, string street, string houseNo, string country)
