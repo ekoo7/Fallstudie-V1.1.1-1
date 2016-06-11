@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5b3fefa4-f096-42a2-ae2f-b297734321af" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://wi-gate.technikum-wien.at:60933/TestSendService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="530bd398-3f0f-4a67-8f5a-fdcdf08cc01b" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/TestSendService/?xsd=xsd1" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="a541c654-b6fe-4ec6-aee7-f6715c8e0ff0" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/TestSendService/?disco" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="eca026f2-8dfc-4a88-9d2a-39d46df1b21d" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/TestSendService/?xsd=xsd0" />
+    <MetadataFile FileName="TestSendService.wsdl" MetadataType="Wsdl" ID="70b10f2b-fdac-4ac3-8eed-79c1e3513a1a" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/TestSendService/?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

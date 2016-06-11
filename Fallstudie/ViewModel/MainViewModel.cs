@@ -21,12 +21,23 @@ using System.Net.NetworkInformation;
 using Windows.System.Threading;
 using Windows.UI.Input.Inking;
 using Windows.UI.Core;
+using Fallstudie.ServiceReference1;
 
 namespace Fallstudie.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
         const string COMPANY_DESC = "DreamHouse GmbH \nSchönbrunner Straße 10 / 1 \nA - 1120 Wien \noffice@DreamHouse.com";
+
+        private string testService;
+
+        public string TestService
+        {
+            get { return testService; }
+            set { testService = value; OnChange("TestService"); }
+        }
+
+        TestSendServiceClient service = new TestSendServiceClient();
         public MainViewModel()
         {
             
@@ -63,6 +74,9 @@ namespace Fallstudie.ViewModel
                 ManageAppointments();
                 LoadUserAppointments();
 
+               
+                TestService = service.DoWorkAsync().Result;
+                
 
                 DownloadImages();
             }

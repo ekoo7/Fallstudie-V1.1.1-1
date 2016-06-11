@@ -9,6 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
+            <TextBlock Text="{Binding TestService, Mode=TwoWay}"/>
             <TextBlock Text="Ihre Termine für diesen und nächsten Monat." FontSize="25"/>
             <StackPanel Orientation="Vertical">
                 

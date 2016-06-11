@@ -150,6 +150,7 @@
     <RootPropertyPathName Name="SelectedUserAppointment" />
     <RootPropertyPathName Name="DateFormat" />
     <RootPropertyPathName Name="Time" />
+    <RootPropertyPathName Name="TestService" />
     <RootPropertyPathName Name="Appointments" />
     <RootPropertyPathName Name="SelectedAppointment" />
     <RootPropertyPathName Name="DeleteAppointmentButton" />
