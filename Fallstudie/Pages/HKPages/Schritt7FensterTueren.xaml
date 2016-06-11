@@ -65,8 +65,9 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackPanel>
-                    <TextBox Margin="10" Text="{Binding NoteStep7_1, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
-
+                    <StackPanel Margin="10" Padding="10">
+                        <TextBox Text="{Binding NoteStep7_1, Mode=TwoWay}" AcceptsReturn="True" Height="100" TextWrapping="Wrap" PlaceholderText="Notiz"/>
+                    </StackPanel>
                 </StackPanel>
 
                 <!--Türen-->
@@ -114,8 +115,8 @@
                     </StackPanel>
                 </StackPanel>
 
-                <StackPanel Margin="10">
-                    <TextBox Text="{Binding NoteStep7_2, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
+                <StackPanel Margin="10" Padding="20">
+                    <TextBox Text="{Binding NoteStep7_2, Mode=TwoWay}" AcceptsReturn="True" Height="100" TextWrapping="Wrap" PlaceholderText="Notiz"/>
                 </StackPanel>
 
             </StackPanel>

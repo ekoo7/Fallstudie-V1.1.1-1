@@ -19,30 +19,33 @@
             <Button Name="MenueButton" 
                     RelativePanel.AlignLeftWithPanel="True" 
                     FontFamily="Segoe MDL2 Assets"
-                    FontSize="36"
+                    FontSize="38"
                     Content="&#xE700;"
-                    Command="{Binding MenuButtonClicked}" Click="MenueButton_Click"
+                    Command="{Binding MenuButtonClicked}" Click="MenueButton_Click" Height="38" Margin="0,0,0,10"
                     />
 
             <Button Name="BackButton"
                     RelativePanel.RightOf="MenueButton"
                     FontFamily="Segoe MDL2 Assets"
-                    FontSize="36"
-                    Content="&#xE0C4;" Click="BackButton_Click"/>
+                    FontSize="28"
+                    Content="&#xE0C4;" 
+                    Height="38" Margin="0,0,0,10"
+                    Click="BackButton_Click"/>
             <Button Name="ButtonLogout"
                     RelativePanel.AlignRightWithPanel="True"
                     FontFamily="Segoe MDL2 Assets"
-                    FontSize="36"
+                    FontSize="28"
                     Command="{Binding ButtonLogout}" ToolTipService.ToolTip="Logout">
-                <Image Source="Assets/icons/logout3.png" Width="36"/>
+                <Image Source="Assets/icons/logout3.png" Width="26"/>
             </Button>
-            <TextBlock Margin="-0.333,0,10,0"
+            <TextBlock Margin="0,5,10,0"
                       Foreground="Gray"
-                Name="TextBlockUser" RelativePanel.LeftOf="ButtonLogout" FontSize="30" Text="{Binding Username}" Height="40" VerticalAlignment="Top"/>
+                Name="TextBlockUser" RelativePanel.LeftOf="ButtonLogout" FontSize="20" 
+                       Text="{Binding Username}" Height="30" VerticalAlignment="Center"/>
 
         </RelativePanel>
 
-        <SplitView Grid.Row="1" Name= "MySplitView"  DisplayMode="CompactOverlay" OpenPaneLength="300" CompactPaneLength="56">
+        <SplitView Name= "MySplitView"  DisplayMode="CompactOverlay" OpenPaneLength="300" CompactPaneLength="56" Margin="0,38,0,0" Grid.RowSpan="2">
             <SplitView.Pane>
 
                 <ListBox Name="ListBoxMenu" SelectionMode="Single" SelectionChanged="ListBoxMenu_SelectionChanged">

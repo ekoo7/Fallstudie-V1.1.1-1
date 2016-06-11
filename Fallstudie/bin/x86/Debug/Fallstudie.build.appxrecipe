@@ -3108,6 +3108,9 @@
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Bilder\Logo\DreamHouse_lang.png">
       <PackagePath>Bilder\Logo\DreamHouse_lang.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Bilder\Logo\DreamHouse_lang1.png">
+      <PackagePath>Bilder\Logo\DreamHouse_lang1.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Bilder\Logo\DreamHouse_quadr.png">
       <PackagePath>Bilder\Logo\DreamHouse_quadr.png</PackagePath>
     </AppxPackagedFile>

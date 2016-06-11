@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-11T12:50:06.799</Modified>
+      <Modified>2016-06-11T18:24:19.317</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.exe">
       <PackagePath>entrypoint\Fallstudie.exe</PackagePath>
-      <Modified>2016-06-11T12:50:04.576</Modified>
+      <Modified>2016-06-11T18:24:17.170</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UAP\v0.8.0.0\ExtensionSDKs\InkToolbarControl\0.3.2\References\CommonConfiguration\neutral\Microsoft.Labs.InkToolbarControl.winmd">
       <PackagePath>Microsoft.Labs.InkToolbarControl.winmd</PackagePath>
@@ -4142,6 +4142,10 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Bilder\Logo\DreamHouse_lang.png">
       <PackagePath>Bilder\Logo\DreamHouse_lang.png</PackagePath>
+      <Modified>2016-06-11T17:40:36.792</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Bilder\Logo\DreamHouse_lang1.png">
+      <PackagePath>Bilder\Logo\DreamHouse_lang1.png</PackagePath>
       <Modified>2016-06-06T11:30:29.422</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Bilder\Logo\DreamHouse_quadr.png">
@@ -4154,7 +4158,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.xr.xml">
       <PackagePath>Fallstudie.xr.xml</PackagePath>
-      <Modified>2016-06-11T12:37:53.657</Modified>
+      <Modified>2016-06-11T18:24:16.160</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -4162,11 +4166,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-06-11T12:37:56.860</Modified>
+      <Modified>2016-06-11T18:24:18.646</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\Fallstudie.exe">
       <PackagePath>Fallstudie.exe</PackagePath>
-      <Modified>2016-06-11T12:50:06.791</Modified>
+      <Modified>2016-06-11T18:24:19.309</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

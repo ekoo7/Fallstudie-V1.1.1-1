@@ -58,6 +58,11 @@
     <RootPropertyPathName Name="ButtonForwardChooseOutsideArea" />
     <RootPropertyPathName Name="SelectedPlot" />
     <RootPropertyPathName Name="NoteStep3" />
+    <RootPropertyPathName Name="GroundPlotInfoVisibility" />
+    <RootPropertyPathName Name="GroundPlotZip" />
+    <RootPropertyPathName Name="GroundPlotAddress" />
+    <RootPropertyPathName Name="GroundPlotSize" />
+    <RootPropertyPathName Name="ButtonAddGroundPlotInfo" />
     <RootPropertyPathName Name="ImagesPlot" />
     <RootPropertyPathName Name="ButtonUploadPlot" />
     <RootPropertyPathName Name="SelectedFloor" />
@@ -189,12 +194,12 @@
       <RootProperty Name="Children" />
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="ColumnDefinitions" />
-      <RootMethod Name="GetRow" />
-      <RootMethod Name="SetRow" />
-      <RootMethod Name="GetColumn" />
-      <RootMethod Name="SetColumn" />
       <RootMethod Name="GetRowSpan" />
       <RootMethod Name="SetRowSpan" />
+      <RootMethod Name="GetColumn" />
+      <RootMethod Name="SetColumn" />
+      <RootMethod Name="GetRow" />
+      <RootMethod Name="SetRow" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
@@ -258,6 +263,7 @@
       <RootProperty Name="Name" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="FontSize" />
+      <RootProperty Name="Height" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
@@ -285,6 +291,7 @@
       <RootProperty Name="DisplayMode" />
       <RootProperty Name="OpenPaneLength" />
       <RootProperty Name="CompactPaneLength" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="Pane" />
       <RootProperty Name="Content" />
     </RootType>
@@ -389,6 +396,11 @@
     </RootType>
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt10Aussenbereiche" />
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt2HausAuswahl" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.ToggleButton">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Command" />
+      <RootProperty Name="Content" />
+    </RootType>
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl" />
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt4Grundriss" />
     <RootType FullName="Fallstudie.Pages.HKPages.Schritt5Wand" />

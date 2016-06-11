@@ -151,7 +151,6 @@
     <Compile Include="Model\Consultant.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\EHSystem.cs" />
-    <Compile Include="Model\Houses.cs" />
     <Compile Include="Model\HouseSummary.cs" />
     <Compile Include="Model\ImageInherit.cs" />
     <Compile Include="Model\Projects.cs" />
@@ -265,6 +264,7 @@
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Bilder\Logo\DreamHouse_lang.png" />
+    <Content Include="Bilder\Logo\DreamHouse_lang1.png" />
     <Content Include="Bilder\Logo\DreamHouse_quadr.png" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>

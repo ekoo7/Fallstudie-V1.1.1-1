@@ -43,16 +43,15 @@
                                             <Button Content="Umriss zeichnen" Command="{Binding ButtonDrawSketch}"/>
                                             <Button Margin="10 0 0 0" Content="Umriss hochladen" Command="{Binding ButtonUploadSketch}"/>
                                         </StackPanel>
-                                        
+
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackPanel>
                 </StackPanel>
-
-                <StackPanel Margin="10">
-                    <TextBox Text="{Binding NoteStep4, Mode=TwoWay}" AcceptsReturn="True" Height="100" Width="500" TextWrapping="Wrap" PlaceholderText="Notiz"/>
+                <StackPanel Padding="20" Margin="10">
+                    <TextBox Text="{Binding NoteStep4, Mode=TwoWay}" AcceptsReturn="True" Height="100" TextWrapping="Wrap" PlaceholderText="Notiz"/>
                     </StackPanel>
             </StackPanel>
         </ScrollViewer>

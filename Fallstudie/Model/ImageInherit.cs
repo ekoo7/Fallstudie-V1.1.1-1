@@ -23,8 +23,9 @@ namespace Fallstudie.Model
 
         public string PriceFormat
         {
-            get {
-                return String.Format("{0} €" , Price);
+            get
+            {
+                return String.Format("{0} €", Price);
             }
 
         }
@@ -37,6 +38,8 @@ namespace Fallstudie.Model
         public string Zip { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        public string Street { get; set; }
+        public string HouseNo { get; set; }
 
         public RelayCommand ButtonDrawSketch { get; set; }
         public RelayCommand ButtonUploadSketch { get; set; }
@@ -103,8 +106,8 @@ namespace Fallstudie.Model
             Image1.Name = id.ToString();
             Description = description;
             Price = price;
-        
-            }
+
+        }
 
         //Konstruktor für die Hauspackages
         public ImageInherit(string source, int id, string description, double price, string zip, string city, string street, string houseNo, string country)
@@ -118,7 +121,7 @@ namespace Fallstudie.Model
 
             string delimStr = ",";
             char[] delimiter = delimStr.ToCharArray();
-            string[] split = description.Split(delimiter,3);
+            string[] split = description.Split(delimiter, 3);
 
 
             Id = id;

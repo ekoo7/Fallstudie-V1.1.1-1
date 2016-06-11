@@ -75,7 +75,7 @@ namespace Fallstudie.ViewModel
                 LoadUserAppointments();
 
                
-                TestService = service.DoWorkAsync().Result;
+                //TestService = service.DoWorkAsync().Result;
                 
 
                 DownloadImages();
@@ -101,6 +101,7 @@ namespace Fallstudie.ViewModel
             ButtonSaveConfiguration = new RelayCommand(ButtonSaveConfigurationMethod);
             ButtonCreateProject = new RelayCommand(ButtonCreateProjectMethod);
             ButtonUploadPlot = new RelayCommand(ButtonUploadPlotMethod);
+            ButtonAddGroundPlotInfo = new RelayCommand(ButtonAddGroundPlotInfoMethod);
         }
 
         #region Offline Funktionalität
@@ -366,6 +367,30 @@ namespace Fallstudie.ViewModel
         #region PROPERTIES
 
         #region Variablen
+        private string groundPlotSize;
+
+        public string GroundPlotSize
+        {
+            get { return groundPlotSize; }
+            set { groundPlotSize = value; OnChange("GroundPlotSize"); }
+        }
+
+        private string groundPlotAddress;
+
+        public string GroundPlotAddress
+        {
+            get { return groundPlotAddress; }
+            set { groundPlotAddress = value; OnChange("GroundPlotAddress"); }
+        }
+        private string groundPlotZip;
+
+        public string GroundPlotZip
+        {
+            get { return groundPlotZip; }
+            set { groundPlotZip = value; OnChange("GroundPlotZip"); }
+        }
+
+
         private int newGroundPlotId0 = 0;
 
         public int NewGroundPlotId0
@@ -438,6 +463,13 @@ namespace Fallstudie.ViewModel
         {
             get { return numberOfFloorDB; }
             set { numberOfFloorDB = value; }
+        }
+        private string groundPlotInfoVisibility = "Collapsed";
+
+        public string GroundPlotInfoVisibility
+        {
+            get { return groundPlotInfoVisibility; }
+            set { groundPlotInfoVisibility = value; OnChange("GroundPlotInfoVisibility"); }
         }
 
 
@@ -899,6 +931,8 @@ namespace Fallstudie.ViewModel
         public RelayCommand ButtonCreateProject { get; set; }
         //Upload Grundstück
         public RelayCommand ButtonUploadPlot { get; set; }
+        //Grundstücksinfo Hinzufügen
+        public RelayCommand ButtonAddGroundPlotInfo {get; set;}
         #endregion
 
         #region Notizen
@@ -1011,10 +1045,10 @@ namespace Fallstudie.ViewModel
 
                 ImagesHouse.Clear();
 
-                List<Houses> models = SQLGetHouses();
+                List<ImageInherit> models = SQLGetHouses();
                 foreach (var item in models)
                 {
-                    ImagesHouse.Add(new ImageInherit(item.Source, item.PackageId, item.Description, item.Price, item.ZIP, item.City, item.Street, item.HouseNo, item.Country));
+                    ImagesHouse.Add(new ImageInherit(item.SourceImage, item.Id, item.Description, item.Price, item.Zip, item.City, item.Street, item.HouseNo, item.Country));
                 }
             }
             else
@@ -1023,11 +1057,10 @@ namespace Fallstudie.ViewModel
                 await dialog.ShowAsync();
             }
         }
-        public DBModel.Attribute SQLGetRightAttributeForHousePackage(int attributGroupId)
+        public DBModel.Attribute SQLGetRightAttributeForHousePackage(int attributGroupId, SQLiteConnection con)
         {
             DBModel.Attribute i;
-            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
-            {
+            
                 i = (from a in con.Table<Package_Not_Attribute>()
                      from b in con.Table<DBModel.Attribute>()
                      where a.house_package_id.Equals(SelectedHouse.Id)
@@ -1035,8 +1068,8 @@ namespace Fallstudie.ViewModel
                      && b.attribute_group_id.Equals(attributGroupId)
                      select b).Single();
 
-                con.Close();
-            }
+                
+            
             return i;
         }
 
@@ -1103,31 +1136,47 @@ namespace Fallstudie.ViewModel
                 }
             }
         }
+        //
+        public void ButtonAddGroundPlotInfoMethod()
+        {
+            GroundPlotInfoVisibility = GroundPlotInfoVisibility=="Visible" ? "Collapsed" : "Visible";
+        }
 
         //Hier wird weitergeleitet auf Schritt 4
         private async void ButtonForwardChoosePlotMethod()
         {
             if (SelectedPlot != null)
             {
-                GetFrame();
-                a.Navigate(typeof(Pages.HKPages.Schritt4Grundriss));
-                GetTotalPrice();
-
-                NumberFloors.Clear();
-
-                //Dropdown Stockwerke befüllen
-                NumberFloors.Add(0);
-                NumberFloors.Add(1);
-                NumberFloors.Add(2);
-
-                //Anzahl der Stockwerke vom ausgewähltem haus aus der DB
-                using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                if(SelectedPlot.Id == 0 && (GroundPlotSize == null || GroundPlotAddress == null || GroundPlotZip == null))
                 {
-                    NumberOfFloorDB = (from a in con.Table<Ymdh_House_Package>()
-                                       where a.house_package_id.Equals(SelectedHouse.Id)
-                                       select a.housefloors).Single();
-                    con.Close();
+                    var dialog = new MessageDialog("Bitte die Grundstücksinformationen eingeben.");
+                    await dialog.ShowAsync();
+                   
                 }
+                else
+                {
+                    SelectedPlot.Description += " " + GroundPlotSize + " " + GroundPlotAddress + " " + GroundPlotZip;
+                    GetFrame();
+                    a.Navigate(typeof(Pages.HKPages.Schritt4Grundriss));
+                    GetTotalPrice();
+
+                    NumberFloors.Clear();
+
+                    //Dropdown Stockwerke befüllen
+                    NumberFloors.Add(0);
+                    NumberFloors.Add(1);
+                    NumberFloors.Add(2);
+
+                    //Anzahl der Stockwerke vom ausgewähltem haus aus der DB
+                    using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                    {
+                        NumberOfFloorDB = (from a in con.Table<Ymdh_House_Package>()
+                                           where a.house_package_id.Equals(SelectedHouse.Id)
+                                           select a.housefloors).Single();
+                        con.Close();
+                    }
+                }
+                
             }
             else
             {
@@ -1761,35 +1810,42 @@ namespace Fallstudie.ViewModel
 
         private void SetPackageProperties()
         {
+            SQLiteConnection coni = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath);
             //Setzen der SelectedItems für das ausgewählte Haus
-            DBModel.Attribute i1 = SQLGetRightAttributeForHousePackage(5);
-            SelectedOutsideWall = new ImageInherit(i1.rootfolder, i1.attribute_id, i1.description, 0);
-            DBModel.Attribute i2 = SQLGetRightAttributeForHousePackage(51);
-            SelectedInsideWall = new ImageInherit(i2.rootfolder, i2.attribute_id, i2.description, 0);
-            DBModel.Attribute i3 = SQLGetRightAttributeForHousePackage(6);
-            SelectedRoofType = new ImageInherit(i3.rootfolder, i3.attribute_id, i3.description, 0);
-            DBModel.Attribute i4 = SQLGetRightAttributeForHousePackage(61);
-            SelectedRoofMaterial = new ImageInherit(i4.rootfolder, i4.attribute_id, i4.description, 0);
-            DBModel.Attribute i5 = SQLGetRightAttributeForHousePackage(7);
-            SelectedWindow = new ImageInherit(i5.rootfolder, i5.attribute_id, i5.description, 0);
-            DBModel.Attribute i6 = SQLGetRightAttributeForHousePackage(71);
-            SelectedDoor = new ImageInherit(i6.rootfolder, i6.attribute_id, i6.description, 0);
-            DBModel.Attribute i7 = SQLGetRightAttributeForHousePackage(8);
-            SelectedEnergySystem = new EHSystem(i7.attribute_id, i7.description, 0);
-            DBModel.Attribute i8 = SQLGetRightAttributeForHousePackage(81);
-            SelectedHeatingSystem = new EHSystem(i8.attribute_id, i8.description, 0);
-            DBModel.Attribute i9 = SQLGetRightAttributeForHousePackage(9);
-            SelectedChimney = new ImageInherit(i9.rootfolder, i9.attribute_id, i9.description, 0);
-            DBModel.Attribute i10 = SQLGetRightAttributeForHousePackage(10);
-            SelectedPool = new ImageInherit(i10.rootfolder, i10.attribute_id, i10.description, 0);
-            DBModel.Attribute i11 = SQLGetRightAttributeForHousePackage(101);
-            SelectedFence = new ImageInherit(i11.rootfolder, i11.attribute_id, i11.description, 0);
-
-            if (i10.description != "Kein Pool")
+            using (SQLiteConnection con = coni)
             {
-                DBModel.Attribute i12 = SQLGetRightAttributeForHousePackage(11);
-                SelectedPoolSize = new ImageInherit(i12.attribute_id, i12.description, 0);
+                DBModel.Attribute i1 = SQLGetRightAttributeForHousePackage(5, con);
+                SelectedOutsideWall = new ImageInherit(i1.rootfolder, i1.attribute_id, i1.description, 0);
+                DBModel.Attribute i2 = SQLGetRightAttributeForHousePackage(51, con);
+                SelectedInsideWall = new ImageInherit(i2.rootfolder, i2.attribute_id, i2.description, 0);
+                DBModel.Attribute i3 = SQLGetRightAttributeForHousePackage(6, con);
+                SelectedRoofType = new ImageInherit(i3.rootfolder, i3.attribute_id, i3.description, 0);
+                DBModel.Attribute i4 = SQLGetRightAttributeForHousePackage(61, con);
+                SelectedRoofMaterial = new ImageInherit(i4.rootfolder, i4.attribute_id, i4.description, 0);
+                DBModel.Attribute i5 = SQLGetRightAttributeForHousePackage(7, con);
+                SelectedWindow = new ImageInherit(i5.rootfolder, i5.attribute_id, i5.description, 0);
+                DBModel.Attribute i6 = SQLGetRightAttributeForHousePackage(71, con);
+                SelectedDoor = new ImageInherit(i6.rootfolder, i6.attribute_id, i6.description, 0);
+                DBModel.Attribute i7 = SQLGetRightAttributeForHousePackage(8, con);
+                SelectedEnergySystem = new EHSystem(i7.attribute_id, i7.description, 0);
+                DBModel.Attribute i8 = SQLGetRightAttributeForHousePackage(81, con);
+                SelectedHeatingSystem = new EHSystem(i8.attribute_id, i8.description, 0);
+                DBModel.Attribute i9 = SQLGetRightAttributeForHousePackage(9, con);
+                SelectedChimney = new ImageInherit(i9.rootfolder, i9.attribute_id, i9.description, 0);
+                DBModel.Attribute i10 = SQLGetRightAttributeForHousePackage(10, con);
+                SelectedPool = new ImageInherit(i10.rootfolder, i10.attribute_id, i10.description, 0);
+                DBModel.Attribute i11 = SQLGetRightAttributeForHousePackage(101, con);
+                SelectedFence = new ImageInherit(i11.rootfolder, i11.attribute_id, i11.description, 0);
+               
+
+
+                if (i10.description != "Kein Pool")
+                {
+                    DBModel.Attribute i12 = SQLGetRightAttributeForHousePackage(11, con);
+                    SelectedPoolSize = new ImageInherit(i12.attribute_id, i12.description, 0);
+                }
             }
+            coni.Close();
         }
         #endregion
 
@@ -2032,8 +2088,8 @@ namespace Fallstudie.ViewModel
                         sketch = "NULL",
                         modifieddate = ConvertDateTime(DateTime.Now),
                         houseconfig_id = configId.houseconfig_id,
-                        area = 0,
-                        rootfolder = FloorsGroundPlot[0].SourceImage
+                        area = 2,
+                        rootfolder = FloorsGroundPlot[2].SourceImage
                     });
                     con.Delete<Temp_Table>(NewGroundPlotId2);
                 }
@@ -2289,22 +2345,22 @@ namespace Fallstudie.ViewModel
             return models;
         }
 
-        public List<Houses> SQLGetHouses()
+        public List<ImageInherit> SQLGetHouses()
         {
-            List<Houses> house;
+            List<ImageInherit> house;
 
             using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
             {
                 house = (from a in con.Table<Ymdh_House_Package>()
                          from c in con.Table<Ymdh_Address>()
                          where a.address_id.Equals(c.mdh_address_id)
-                         select new Houses
+                         select new ImageInherit
                          {
-                             PackageId = a.house_package_id,
-                             Source = a.rootfolder,
+                             Id = a.house_package_id,
+                             SourceImage = a.rootfolder,
                              Description = a.description,
                              Price = a.price,
-                             ZIP = c.ZIP,
+                             Zip = c.ZIP,
                              City = c.City,
                              Street = c.Street,
                              HouseNo = c.houseno,
@@ -3432,10 +3488,12 @@ namespace Fallstudie.ViewModel
                 house = (from a in con.Table<Mdh_Users>()
                          from b in con.Table<Houseconfig>()
                          from f in con.Table<Ymdh_House_Package>()
+                         from c in con.Table<Ymdh_Address>()
                          where a.id.Equals(b.customer_user_id)
                          && a.id.Equals(selectedCustomerList.Id)
                          && b.house_package_id.Equals(f.house_package_id)
                          && b.status.Equals("1")
+                         && f.address_id.Equals(c.mdh_address_id)
                          select new HouseSummary
                          {
                              Id = b.houseconfig_id,
@@ -3443,7 +3501,7 @@ namespace Fallstudie.ViewModel
                              ConfDate = b.modifieddate,
                              Customer = new Customer(a.id, a.name, SQLCustomerCountProject(a.id), SQLCustomerCountHouseconfig(a.id)),
                              Consultant = new Consultant(b.consultant_user_id, SQLGetConsultantName(b.consultant_user_id)),
-                             Package = new ImageInherit(f.rootfolder, f.house_package_id, f.description, f.price),
+                             Package = new ImageInherit(f.rootfolder, f.house_package_id, f.description, f.price, c.ZIP, c.City, c.Street, c.houseno, c.country),
                              Plot = (from b in con.Table<Houseconfig>()
                                      from d in con.Table<Houseconfig_Has_Attribute>()
                                      from e in con.Table<DBModel.Attribute>()
@@ -3691,11 +3749,13 @@ namespace Fallstudie.ViewModel
                          from b in con.Table<Houseconfig>()
                          from f in con.Table<Ymdh_House_Package>()
                          from g in con.Table<Project>()
+                         from c in con.Table<Ymdh_Address>()
                          where a.id.Equals(b.customer_user_id)
                          && a.id.Equals(g.customer_user_id)
                          && b.house_package_id.Equals(f.house_package_id)
                          && g.project_id.Equals(Pid)
                          && g.houseconfig_id.Equals(b.houseconfig_id)
+                         && f.address_id.Equals(c.mdh_address_id)
                          select new HouseSummary
                          {
                              Id = b.houseconfig_id,
@@ -3703,7 +3763,7 @@ namespace Fallstudie.ViewModel
                              ConfDate = b.modifieddate,
                              Customer = new Customer(a.id, a.name, SQLCustomerCountProject(a.id), SQLCustomerCountHouseconfig(a.id)),
                              Consultant = new Consultant(b.consultant_user_id, SQLGetConsultantName(b.consultant_user_id)),
-                             Package = new ImageInherit(f.rootfolder, f.house_package_id, f.description, f.price),
+                             Package = new ImageInherit(f.rootfolder, f.house_package_id, f.description, f.price, c.ZIP, c.City, c.Street, c.houseno, c.country),
                              Plot = (from b in con.Table<Houseconfig>()
                                      from d in con.Table<Houseconfig_Has_Attribute>()
                                      from e in con.Table<DBModel.Attribute>()
