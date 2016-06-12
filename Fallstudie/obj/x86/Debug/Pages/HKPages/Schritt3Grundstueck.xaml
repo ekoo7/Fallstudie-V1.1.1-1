@@ -1,0 +1,108 @@
+﻿<Page
+    x:Class="Fallstudie.Pages.HKPages.Schritt3GrundstückAuswahl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Fallstudie.Pages.HKPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Main, Source={StaticResource Locator}}">
+    
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical" Margin="0 0 0 100">
+                <Image Source="/Assets/steep3.png" Height="50"/>
+                <Border Background="#0091FF">
+                    <TextBlock Text="Grundstückauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
+                </Border>
+                <Border Background="#45BAFF">
+                    <TextBlock Text="Wählen Sie ein Grundstück aus. Sie können auch ein eigenes Grundstück hochladen." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
+                </Border>
+                
+                <StackPanel x:ConnectionId='1' Margin="10" Name="StackSchritt3" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ListView 
+                            ItemsSource="{Binding ImagesPlot}" 
+                              SelectedItem="{Binding SelectedPlot, Mode=TwoWay}"
+                              IsItemClickEnabled="False" SelectionMode="Single"
+                              IsSynchronizedWithCurrentItem="False"
+                              Height="Auto"
+                              >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock FontSize="22" Foreground="Gray" Text="{Binding Description}"></TextBlock>
+                                    <Image Source="{Binding SourceImage}" Width="300" Height="200"/>
+                                    <TextBlock FontSize="22" Foreground="Gray" TextAlignment="Right" FontWeight="Medium" Text="{Binding PriceFormat}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+                <StackPanel Margin="0 10 0 0" HorizontalAlignment="Center" Orientation="Vertical" >
+                    <ToggleButton HorizontalAlignment="Stretch" Command="{Binding ButtonAddGroundPlotInfo}" Content="Grundstücksinformationen eingeben"/>
+                </StackPanel>
+                <StackPanel Background="#F0F0F0" Padding="20" Visibility="{Binding GroundPlotInfoVisibility, Mode=TwoWay}" Margin="10" Orientation="Vertical">
+                    <TextBlock Text="Größe"/>
+                    <TextBox Text="{Binding GroundPlotSize, Mode=TwoWay}"/>
+                    <TextBlock Text="Adresse"/>
+                    <TextBox Text="{Binding GroundPlotAddress, Mode=TwoWay}"/>
+                    <TextBlock Text="PLZ und Ort"/>
+                    <TextBox Text="{Binding GroundPlotZip, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Padding="20" Margin="10">
+                    <TextBox Text="{Binding NoteStep3, Mode=TwoWay}" AcceptsReturn="True" Height="100" TextWrapping="Wrap" PlaceholderText="Notiz"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel VerticalAlignment="Bottom" Opacity="0.85">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="{ThemeResource SystemAltHighColor}" Offset="0.5"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="White"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="7*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Haus"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedPlot.Description}"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Preis"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="18" Margin ="5 0"  Text="{Binding SelectedPlot.PriceFormat}"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18" FontWeight="Thin" HorizontalAlignment="Right" Text="Gesamtpreis"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" Margin ="5 0" Text="{Binding TotalPrice}"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Content="       2" Command="{Binding ButtonForwardChooseCustomer}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 2"/>
+            <AppBarButton Content="       4" Command="{Binding ButtonForwardChoosePlot}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 4"/>
+            <AppBarButton Content="       5" Command="{Binding ButtonForwardChooseWall}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 5"/>
+            <AppBarButton Content="       6" Command="{Binding ButtonForwardChooseRoof}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 6"/>
+            <AppBarButton Content="       7" Command="{Binding ButtonForwardChooseWindowsDoors}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 7"/>
+            <AppBarButton Content="       8" Command="{Binding ButtonForwardChooseEnergie}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 8"/>
+            <AppBarButton Content="       9" Command="{Binding ButtonForwardChooseAddition}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 9"/>
+            <AppBarButton Content="      10" Command="{Binding ButtonForwardChooseOutsideArea}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Schritt 10"/>
+            <AppBarButton Icon="Accept" Command="{Binding ButtonForwardSummary}" Visibility="{Binding ButtonIsVisible, Mode=TwoWay}" FontFamily="Arial" HorizontalAlignment="Center" Label="Übersicht"/>
+
+            <AppBarButton Command="{Binding ButtonUploadPlot}" Icon="Upload" Label="Upload Grundstück"/>
+            <AppBarButton Command="{Binding ButtonForwardChoosePlot}" Icon="Forward" Label="Weiter"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
+

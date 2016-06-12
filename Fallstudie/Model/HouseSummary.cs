@@ -52,7 +52,7 @@ namespace Fallstudie.Model
         public EHSystem HeatingSystem { get; set; }
 
         //steckdose pro Raum && Kamin
-        public int NumberOfSocket { get; set; }
+        public string NumberOfSocket { get; set; }
         public ImageInherit Chimney { get; set; }
 
 
