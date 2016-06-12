@@ -367,6 +367,7 @@ namespace Fallstudie.ViewModel
         #region PROPERTIES
 
         #region Variablen
+
         private string groundPlotSize;
 
         public string GroundPlotSize
@@ -933,6 +934,7 @@ namespace Fallstudie.ViewModel
         public RelayCommand ButtonUploadPlot { get; set; }
         //Grundstücksinfo Hinzufügen
         public RelayCommand ButtonAddGroundPlotInfo {get; set;}
+        //Löschen des Grundstückes
         #endregion
 
         #region Notizen
@@ -1029,7 +1031,6 @@ namespace Fallstudie.ViewModel
         }
         #endregion
 
-
         #endregion
 
         #region ForwardButtons
@@ -1102,6 +1103,7 @@ namespace Fallstudie.ViewModel
         //Upload Grundstück
         private async void ButtonUploadPlotMethod()
         {
+            DeleteUploadedPlotMethod();
             var picker = new FileOpenPicker();
             picker.ViewMode = PickerViewMode.Thumbnail;
             picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
@@ -1127,6 +1129,7 @@ namespace Fallstudie.ViewModel
                         NewPlotId = (con.Table<Temp_Table>().OrderByDescending(u => u.id).FirstOrDefault()).id;
                         con.Close();
                     }
+                    
                     ImagesPlot.Add(new ImageInherit(filePath, 0, fileName, 0));
                 }
                 catch (Exception)
@@ -1134,6 +1137,14 @@ namespace Fallstudie.ViewModel
                     var dialog = new MessageDialog("Bitte versuchen Sie es mit einem anderen Namen für Ihre Datei!", "Error");
                     await dialog.ShowAsync();
                 }
+            }
+        }
+        public void DeleteUploadedPlotMethod()
+        {
+            foreach (var item in ImagesPlot.ToList())
+            {
+                if(item.Id == 0)
+                    ImagesPlot.Remove(item);
             }
         }
         //
@@ -2888,7 +2899,11 @@ namespace Fallstudie.ViewModel
             //checken ob Kunde und Consultant ausgewählt wurden
             if (SelectedCustomerr != null && SelectedConsultant != null)
             {
-                string pattern = "yyyy-MM-dd HH:mm:ss";
+                string pattern = "yyyy-MM-dd HH:mm";
+
+                DateAppointment = dateAppointment.AddHours(-DateTimeNow.Hour);
+                dateAppointment = dateAppointment.AddMinutes(-DateTimeNow.Minute);
+
                 DateTime choosenAppointment = DateAppointment + TimeAppoitment;
 
                 string dt = choosenAppointment.ToString(pattern, CultureInfo.CurrentUICulture);
@@ -2962,7 +2977,11 @@ namespace Fallstudie.ViewModel
             //checken ob Kunde und Consultant ausgewählt wurden
             if (SelectedCustomerr != null && SelectedConsultant != null)
             {
-                string pattern = "yyyy-MM-dd HH:mm:ss";
+                string pattern = "yyyy-MM-dd HH:mm";
+
+                DateAppointment = dateAppointment.AddHours(-DateTimeNow.Hour);
+                dateAppointment = dateAppointment.AddMinutes(-DateTimeNow.Minute);
+
                 DateTime choosenAppointment = DateAppointment + TimeAppoitment;
 
                 string dt = choosenAppointment.ToString(pattern, CultureInfo.CurrentUICulture);
@@ -3053,7 +3072,6 @@ namespace Fallstudie.ViewModel
             LoadAppointments();
             LoadUserAppointments();
         }
-
 
 
         //Neuen Termin erstellen
@@ -3184,10 +3202,7 @@ namespace Fallstudie.ViewModel
 
                 #region DrawImages
                 HouseconfigFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\Houseconfig\\", CreationCollisionOption.OpenIfExists); // Create folder
-                                                                                                                                                                    //HausImage
-                                                                                                                                                                    //string folder = HouseconfigFolder.Path;
-                                                                                                                                                                    //string[] parts = SelectedConfHouse.Package.SourceImage.Split('\\');
-                                                                                                                                                                    //string imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
+                                                                                                                                            //string imagePath = folder + "\\" + parts[10] + "\\" + parts[11];
                 SaveImage(page, SelectedConfHouse.Package.SourceImage, 400, 230, 60, 110);
 
                 //Plot
@@ -3204,7 +3219,7 @@ namespace Fallstudie.ViewModel
 
 
                 //GroundPlots
-                g.DrawString("Grundrisse der Stockwerke", fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+                g.DrawString("Grundrisse der Stockwerke ", fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
 
                 if (SelectedConfHouse.GroundPlots != null)
                 {
@@ -3230,31 +3245,31 @@ namespace Fallstudie.ViewModel
                 PdfPage page3 = doc.Pages.Add();
                 g = page3.Graphics;
                 //OutsideWALL
-                g.DrawString("Außenwand" + SelectedConfHouse.OutsideWall.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+                g.DrawString("Außenwand: " + SelectedConfHouse.OutsideWall.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
                 g.DrawString("Preis: EUR " + SelectedConfHouse.OutsideWall.Price, font2, brush2, new System.Drawing.PointF(0, 24));
 
                 SaveImage(page3, SelectedConfHouse.OutsideWall.SourceImage, 400, 230, 10, 42);
-                if (SelectedColorOutsideWall != null)
+                if (SelectedConfHouse.OutsideWallColor != null)
                 {
                     g.DrawRectangle(new PdfSolidBrush(
                     System.Drawing.Color.FromArgb(255,
-                    SelectedColorOutsideWall.R_byte,
-                    SelectedColorOutsideWall.G_byte,
-                    SelectedColorOutsideWall.B_byte)), new System.Drawing.RectangleF(420, 42, 50, 50));
+                    selectedConfHouse.OutsideWallColor.R_byte,
+                    selectedConfHouse.OutsideWallColor.G_byte,
+                    selectedConfHouse.OutsideWallColor.B_byte)), new System.Drawing.RectangleF(420, 42, 50, 50));
                 }
 
 
                 //InsideWALL
-                g.DrawString("Innenwand" + SelectedConfHouse.InsideWall.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
+                g.DrawString("Innenwand: " + SelectedConfHouse.InsideWall.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
                 g.DrawString("Preis: EUR " + SelectedConfHouse.InsideWall.Price, font2, brush2, new System.Drawing.PointF(0, 306));
                 SaveImage(page3, SelectedConfHouse.InsideWall.SourceImage, 400, 230, 10, 324);
-                if (SelectedColorInsideWall != null)
+                if (SelectedConfHouse.InsideWallColor != null)
                 {
                     g.DrawRectangle(new PdfSolidBrush(
                     System.Drawing.Color.FromArgb(255,
-                    SelectedColorInsideWall.R_byte,
-                    SelectedColorInsideWall.G_byte,
-                    SelectedColorInsideWall.B_byte)), new System.Drawing.RectangleF(420, 324, 50, 50));
+                    SelectedConfHouse.InsideWallColor.R_byte,
+                    SelectedConfHouse.InsideWallColor.G_byte,
+                    SelectedConfHouse.InsideWallColor.B_byte)), new System.Drawing.RectangleF(420, 324, 50, 50));
                 }
 
 
@@ -3263,12 +3278,12 @@ namespace Fallstudie.ViewModel
                 PdfPage page4 = doc.Pages.Add();
                 g = page4.Graphics;
                 //Rooftype
-                g.DrawString("Dachtyp" + SelectedConfHouse.RoofType.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+                g.DrawString("Dachtyp: " + SelectedConfHouse.RoofType.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
                 g.DrawString("Preis: EUR " + SelectedConfHouse.RoofType.Price, font2, brush2, new System.Drawing.PointF(0, 24));
                 SaveImage(page4, SelectedConfHouse.RoofType.SourceImage, 400, 230, 10, 42);
 
                 //Roofmaterial
-                g.DrawString("Dachmaterial" + SelectedConfHouse.RoofMaterial.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
+                g.DrawString("Dachmaterial: " + SelectedConfHouse.RoofMaterial.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
                 g.DrawString("Preis: EUR " + SelectedConfHouse.RoofMaterial.Price, font2, brush2, new System.Drawing.PointF(0, 306));
                 SaveImage(page4, SelectedConfHouse.RoofMaterial.SourceImage, 400, 230, 10, 324);
 
@@ -3281,27 +3296,27 @@ namespace Fallstudie.ViewModel
                 g.DrawString("Preis: EUR " + SelectedConfHouse.Window.Price, font2, brush2, new System.Drawing.PointF(0, 24));
 
                 SaveImage(page5, SelectedConfHouse.Window.SourceImage, 400, 230, 10, 42);
-                if (SelectedColorWindow != null)
+                if (SelectedConfHouse.WindowColor != null)
                 {
                     g.DrawRectangle(new PdfSolidBrush(
                     System.Drawing.Color.FromArgb(255,
-                    SelectedColorWindow.R_byte,
-                    SelectedColorWindow.G_byte,
-                    SelectedColorWindow.B_byte)), new System.Drawing.RectangleF(420, 42, 50, 50));
+                    SelectedConfHouse.WindowColor.R_byte,
+                    SelectedConfHouse.WindowColor.G_byte,
+                    SelectedConfHouse.WindowColor.B_byte)), new System.Drawing.RectangleF(420, 42, 50, 50));
                 }
 
 
                 //Doors
-                g.DrawString("Türen" + SelectedConfHouse.Door.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
+                g.DrawString("Türen: " + SelectedConfHouse.Door.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
                 g.DrawString("Preis: EUR " + SelectedConfHouse.Door.Price, font2, brush2, new System.Drawing.PointF(0, 306));
                 SaveImage(page5, SelectedConfHouse.Door.SourceImage, 400, 230, 10, 324);
-                if (SelectedColorWindow != null)
+                if (SelectedConfHouse.DoorColor != null)
                 {
                     g.DrawRectangle(new PdfSolidBrush(
                     System.Drawing.Color.FromArgb(255,
-                    SelectedColorDoor.R_byte,
-                    SelectedColorDoor.G_byte,
-                    SelectedColorDoor.B_byte)), new System.Drawing.RectangleF(420, 324, 50, 50));
+                    SelectedConfHouse.DoorColor.R_byte,
+                    SelectedConfHouse.DoorColor.G_byte,
+                    SelectedConfHouse.DoorColor.B_byte)), new System.Drawing.RectangleF(420, 324, 50, 50));
                 }
 
 
@@ -3310,7 +3325,7 @@ namespace Fallstudie.ViewModel
                 PdfPage page6 = doc.Pages.Add();
                 g = page6.Graphics;
                 //Kamin
-                g.DrawString("Kamin" + SelectedConfHouse.Chimney.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+                g.DrawString("Kamin: " + SelectedConfHouse.Chimney.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
                 g.DrawString("Preis: EUR " + SelectedConfHouse.Chimney.Price, font2, brush2, new System.Drawing.PointF(0, 24));
                 SaveImage(page6, SelectedConfHouse.Chimney.SourceImage, 400, 230, 10, 42);
 
@@ -3330,23 +3345,23 @@ namespace Fallstudie.ViewModel
                 PdfPage page7 = doc.Pages.Add();
                 g = page7.Graphics;
                 //Pool
-                g.DrawString("Swimmingpool" + SelectedConfHouse.Pool.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
+                g.DrawString("Swimmingpool: " + SelectedConfHouse.Pool.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 5));
                 g.DrawString("Preis: EUR " + SelectedConfHouse.Pool.Price, font2, brush2, new System.Drawing.PointF(0, 24));
 
                 SaveImage(page7, SelectedConfHouse.Pool.SourceImage, 400, 230, 10, 42);
                 g.DrawString("Größe: " + SelectedConfHouse.Poolsize, font2, brush2, new System.Drawing.PointF(420, 42));
 
                 //Zaun
-                g.DrawString("Zaun" + SelectedConfHouse.Fence.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
+                g.DrawString("Zaun: " + SelectedConfHouse.Fence.Description, fontHeadLine, brushHeadLine, new System.Drawing.PointF(0, 287));
                 g.DrawString("Preis: EUR " + SelectedConfHouse.Fence.Price, font2, brush2, new System.Drawing.PointF(0, 306));
                 SaveImage(page7, SelectedConfHouse.Fence.SourceImage, 400, 230, 10, 324);
-                if (SelectedColorWindow != null)
+                if (SelectedConfHouse.FenceColor != null)
                 {
                     g.DrawRectangle(new PdfSolidBrush(
                     System.Drawing.Color.FromArgb(255,
-                    SelectedColorFence.R_byte,
-                    SelectedColorFence.G_byte,
-                    SelectedColorFence.B_byte)), new System.Drawing.RectangleF(420, 324, 50, 50));
+                    SelectedConfHouse.FenceColor.R_byte,
+                    SelectedConfHouse.FenceColor.G_byte,
+                    SelectedConfHouse.FenceColor.B_byte)), new System.Drawing.RectangleF(420, 324, 50, 50));
                 }
 
                 #endregion
@@ -3385,7 +3400,7 @@ namespace Fallstudie.ViewModel
         {
             Stream imageStream = File.OpenRead("Bilder\\Logo\\DreamHouse_lang.png");
             PdfBitmap image = new PdfBitmap(imageStream);
-            header.Graphics.DrawImage(image, new System.Drawing.PointF(350, 0), new System.Drawing.SizeF(150, 50));
+            header.Graphics.DrawImage(image, new System.Drawing.PointF(400, 0), new System.Drawing.SizeF(150, 50));
         }
         async void Save(Stream stream, string filename)
         {
@@ -4110,8 +4125,6 @@ namespace Fallstudie.ViewModel
         }
 
         #endregion
-
-
 
         #region GeneralFunctions
         /// <summary>

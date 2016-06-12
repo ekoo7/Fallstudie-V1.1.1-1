@@ -467,7 +467,6 @@
                     <BitmapIcon Margin="0 -10 0 -10" UriSource="ms-appx:///Assets/icons/pdf1.png"/>
                 </AppBarButton.Icon>
             </AppBarButton>
-            <AppBarButton Command="{Binding ButtonCreatePdf}" Icon="Repair" Label="Pdf erstellen"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

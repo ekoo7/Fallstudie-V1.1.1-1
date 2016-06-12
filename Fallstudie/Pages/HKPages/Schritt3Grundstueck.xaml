@@ -18,7 +18,7 @@
                 <Border Background="#45BAFF">
                     <TextBlock Text="Wählen Sie ein Grundstück aus. Sie können auch ein eigenes Grundstück hochladen." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
                 </Border>
-
+                
                 <StackPanel Margin="10" Name="StackSchritt3" Orientation="Horizontal" HorizontalAlignment="Center">
                     <ListView 
                             ItemsSource="{Binding ImagesPlot}" 
