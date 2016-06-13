@@ -19,57 +19,7 @@
                 <Border Background="#45BAFF">
                     <TextBlock Text="Wählen Sie den Kunden aus, für den Sie das Haus konfigurieren." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
                 </Border>
-                <!--
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Name" TextAlignment="Center" FontWeight="Bold" FontSize="15"/>
-                        <ListView Name="CustomerList" ItemsSource="{Binding Customers}" 
-                      SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
-                      IsItemClickEnabled="False" SelectionMode="Single"    
-                      IsSynchronizedWithCurrentItem="False" HorizontalAlignment="Stretch">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding Name}" TextAlignment="Center" FontSize="15" Margin="5 0 0 0"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Projekte" TextAlignment="Center" FontWeight="Bold" FontSize="15"/>
-                        <ListView Name="CustomerList2" ItemsSource="{Binding Customers}" 
-                      SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
-                      IsItemClickEnabled="False" SelectionMode="Single"    
-                      IsSynchronizedWithCurrentItem="False" HorizontalAlignment="Stretch">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding NumbProjects}" Margin="25 0 0 0" FontSize="15"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Konfigurierte Häuser" FontWeight="Bold" FontSize="15" Margin="15 0 0 0"/>
-                        <ListView x:Name="CustomerList3" ItemsSource="{Binding Customers}" 
-                    	SelectedItem="{Binding SelectedCustomerr, Mode=TwoWay}"
-                    	IsItemClickEnabled="False" SelectionMode="Single"    
-                    	IsSynchronizedWithCurrentItem="False" HorizontalAlignment="Stretch">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding NumbConfHouses}" Margin="80 0 0 0" FontSize="15"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-
-                </StackPanel>-->
+                
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
                     <StackPanel Orientation="Vertical">
                         <ListView x:ConnectionId='1' Name="CustomerListCustomerPage" ItemsSource="{Binding Customers}" 

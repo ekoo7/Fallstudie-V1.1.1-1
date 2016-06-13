@@ -315,7 +315,6 @@
             </CommandBar.Content>
             <AppBarButton Command="{Binding ButtonEditConfiguration}" Icon="Edit" Label="Bearbeiten"/>
             <AppBarButton Command="{Binding ButtonSaveConfiguration}" Icon="Save" Label="Speichern"/>
-            <AppBarButton Command="{Binding ButtonCreateProject}" Icon="ProtectedDocument" Label="Projekt erstellen"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

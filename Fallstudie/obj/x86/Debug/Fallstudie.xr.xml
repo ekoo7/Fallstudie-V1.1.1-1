@@ -128,7 +128,6 @@
     <RootPropertyPathName Name="InsideWallColor" />
     <RootPropertyPathName Name="OutsideWallColor" />
     <RootPropertyPathName Name="numberOfFloors" />
-    <RootPropertyPathName Name="ButtonCreateProject" />
     <RootPropertyPathName Name="ButtonSaveConfiguration" />
     <RootPropertyPathName Name="ButtonEditConfiguration" />
     <RootPropertyPathName Name="ListConfHouses" />
@@ -138,9 +137,23 @@
     <RootPropertyPathName Name="ConfDate" />
     <RootPropertyPathName Name="ListCustomer" />
     <RootPropertyPathName Name="SelectedCustomerList" />
+    <RootPropertyPathName Name="ButtonCreateNewCustomer" />
     <RootPropertyPathName Name="PDFButtonVisibility" />
     <RootPropertyPathName Name="ButtonEditConfigurationCustomer" />
     <RootPropertyPathName Name="ButtonCreatePdf" />
+    <RootPropertyPathName Name="ButtonCreateProject" />
+    <RootPropertyPathName Name="CRPhone" />
+    <RootPropertyPathName Name="CRZIP" />
+    <RootPropertyPathName Name="CRCountry" />
+    <RootPropertyPathName Name="CRCity" />
+    <RootPropertyPathName Name="CRAddress" />
+    <RootPropertyPathName Name="CREmailRepeat" />
+    <RootPropertyPathName Name="CREmail" />
+    <RootPropertyPathName Name="CRPasswordRepeat" />
+    <RootPropertyPathName Name="CRPassword" />
+    <RootPropertyPathName Name="CRUsername" />
+    <RootPropertyPathName Name="CRBirthdate" />
+    <RootPropertyPathName Name="CRName" />
     <RootPropertyPathName Name="ProjectPezVisibility" />
     <RootPropertyPathName Name="SelectedProject" />
     <RootPropertyPathName Name="ListProjects" />
@@ -154,10 +167,11 @@
     <RootPropertyPathName Name="UserAppointments" />
     <RootPropertyPathName Name="SelectedUserAppointment" />
     <RootPropertyPathName Name="DateFormat" />
-    <RootPropertyPathName Name="Time" />
+    <RootPropertyPathName Name="TimeFormat" />
     <RootPropertyPathName Name="TestService" />
     <RootPropertyPathName Name="Appointments" />
     <RootPropertyPathName Name="SelectedAppointment" />
+    <RootPropertyPathName Name="Time" />
     <RootPropertyPathName Name="DeleteAppointmentButton" />
     <RootPropertyPathName Name="EditAppointmentButton" />
     <RootPropertyPathName Name="AddNewAppointmentButton" />
@@ -264,6 +278,7 @@
       <RootProperty Name="FontFamily" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Height" />
+      <RootProperty Name="MinWidth" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">

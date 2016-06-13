@@ -8,7 +8,35 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="CreateCustomerPage"></TextBlock>
+        <ScrollViewer>
+            <StackPanel Background="#F0F0F5" Orientation="Vertical">
+                <StackPanel Margin="5" Orientation="Horizontal">
+                    <TextBlock Foreground="RoyalBlue" Margin="3" FontFamily="Segoe MDL2 Assets" Text="&#xE774;"/>
+                    <TextBlock Foreground="Red" Text="Für die User-Registrierung ist eine Internetverbindung notwendig"/>
+                </StackPanel>
+                    <StackPanel Margin="10" Background="White" Orientation="Vertical">
+                <TextBlock FontSize="25" Margin="10 5 0 0" Text="Benutzerregistrierung"/>
+                <TextBox Margin="20 5" Text="{Binding CRName}" PlaceholderText="Name"/>
+                <TextBox Margin="20 5" Text="{Binding CRBirthdate}" PlaceholderText="Geburtsdatum (Jahr-Monat-Tag)"/>
+                <TextBox Margin="20 5" Text="{Binding CRUsername}" PlaceholderText="Benutzername"/>
+                <TextBox Margin="20 5" Text="{Binding CRPassword}" PlaceholderText="Passwort"/>
+                <TextBox Margin="20 5" Text="{Binding CRPasswordRepeat}" PlaceholderText="Passwort bestätigen"/>
+                <TextBox Margin="20 5" Text="{Binding CREmail}" PlaceholderText="E-Mail Adresse"/>
+                    <TextBox Margin="20 5 20 15" Text="{Binding CREmailRepeat}" PlaceholderText="E-Mail Adresse bestätigen"/>
+            </StackPanel>
+            <StackPanel Margin="10" Background="White" Orientation="Vertical">
+                    <TextBlock FontSize="25" Margin="10 5 0 0" Text="Benutzerprofil"/>
+                    <TextBox Margin="20 5" Text="{Binding CRAddress}" PlaceholderText="Adresse 1"/>
+                    <TextBox Margin="20 5" Text="{Binding CRCity}" PlaceholderText="Ort"/>
+                    <TextBox Margin="20 5" Text="{Binding CRCountry}" PlaceholderText="Land"/>
+                    <TextBox Margin="20 5" Text="{Binding CRZIP}" PlaceholderText="PLZ"/>
+                    <TextBox Margin="20 5 20 15" Text="{Binding CRPhone}" PlaceholderText="Telefon"/>
+            </StackPanel>
+            <Button Background="#B2FF7D" Foreground="Gray" MinWidth="100" Margin="30 10" FontSize="20" HorizontalAlignment="Stretch" Content="Registrieren"/>
+
+
+        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
 

@@ -1,4 +1,5 @@
 ﻿using Fallstudie.ViewModel;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,10 @@ namespace Fallstudie.Model
         public string DateFormat
         {
             get { return Date.ToString("dd.MM.yyyy"); }
+        }
+        public string TimeFormat
+        {
+            get { return Time.ToString("hh\\:mm"); }
         }
     }
 }

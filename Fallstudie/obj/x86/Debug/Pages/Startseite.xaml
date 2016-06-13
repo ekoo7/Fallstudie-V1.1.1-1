@@ -6,11 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <ScrollViewer>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
+        <StackPanel HorizontalAlignment="Center">
             <TextBlock Text="{Binding TestService, Mode=TwoWay}"/>
-            <TextBlock Text="Ihre Termine für diesen und nächsten Monat." FontSize="25"/>
+            <TextBlock Margin="0" Foreground="Gray" Text="Ihre Termine für diesen und nächsten Monat." FontSize="25"/>
             <StackPanel Orientation="Vertical">
                 
                 <ListView ItemsSource="{Binding UserAppointments}" 
@@ -21,18 +21,19 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
+                                <Image Source="/Assets/icons/datetime.png" Width="100"/>
                                 <StackPanel VerticalAlignment="Center" Orientation="Vertical">
-                                    <TextBlock  TextAlignment="Center" Margin="0 0 5 0" Text="{Binding Time}" FontSize="18"/>
-                                    <TextBlock  TextAlignment="Center" Margin="0 0 5 0" Text="{Binding DateFormat}" FontSize="18" />
+                                        <TextBlock  TextAlignment="Center" Margin="0 0 5 0" Text="{Binding TimeFormat}" FontSize="24"/>
+                                    <TextBlock  TextAlignment="Center" Margin="0 0 5 0" Text="{Binding DateFormat}" FontSize="20" />
                                 </StackPanel>
-                                <Image Source="/Assets/icons/datetime.png" Width="50"/>
                                 <StackPanel Margin="5 0 0 0" VerticalAlignment="Center" Orientation="Vertical">
-                                    <StackPanel  Orientation="Horizontal" >
+                                    <StackPanel  Orientation="Vertical" >
                                         <TextBlock Foreground="Gray" Text="Kunde"/>
-                                        <TextBlock Margin="34 0 0 0" Text="{Binding Customer.Name}" />
+                                        <TextBlock FontWeight="Bold" Text="{Binding Customer.Name}" />
                                     </StackPanel>
+                                    </StackPanel>
+                                   
                                 </StackPanel>
-                            </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -40,5 +41,6 @@
 
         </StackPanel>
     </Grid>
+        </ScrollViewer>
 </Page>
 

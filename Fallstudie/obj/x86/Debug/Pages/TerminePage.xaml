@@ -48,55 +48,9 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackPanel>
-                    <!--<StackPanel Orientation="Vertical">
-                        <TextBlock Text="Uhrzeit" TextAlignment="Center"/>
-                        <ListView Name="CustomerList2" ItemsSource="{Binding Appointments}" 
-                          SelectedItem="{Binding SelectedAppointment, Mode=TwoWay}"
-                          IsItemClickEnabled="False" SelectionMode="Single"
-                          IsSynchronizedWithCurrentItem="False">
 
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Time}" FontWeight="Bold"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Kunde" TextAlignment="Center"/>
-                        <ListView Name="CustomerList3" ItemsSource="{Binding Appointments}" 
-                          SelectedItem="{Binding SelectedAppointment, Mode=TwoWay}"
-                          IsItemClickEnabled="False" SelectionMode="Single"
-                          IsSynchronizedWithCurrentItem="False">
-
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Customer.Name}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Mitarbeiter" TextAlignment="Center"/>
-                        <ListView Name="CustomerList4" ItemsSource="{Binding Appointments}" 
-                          SelectedItem="{Binding SelectedAppointment, Mode=TwoWay}"
-                          IsItemClickEnabled="False" SelectionMode="Single"
-                          IsSynchronizedWithCurrentItem="False">
-
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock  Margin="10 0 0 0" Text="{Binding Consultant.Name}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>-->
                 </StackPanel>
+
             </StackPanel>
         </Grid>
     </ScrollViewer>
