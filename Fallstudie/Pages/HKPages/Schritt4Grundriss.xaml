@@ -15,14 +15,10 @@
                 <Border Background="#0091FF">
                     <TextBlock Text="Grundrissauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
-                <Border Background="#45BAFF">
-                    <TextBlock Text="Wählen Sie die Anzahl der Stockwerke aus." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
-                </Border>
-                <Border Background="#45BAFF">
-                    <TextBlock Text="Sie können die Grundrisse auch selbst zeichnen." Padding="3" TextAlignment="Left" FontSize="12" Foreground="White"/>
-                </Border>
+                <TextBlock TextWrapping="Wrap" Foreground="#0091FF" Text="Wählen Sie die Anzahl der Stockwerke aus. Sie können die Grundrisse auch hochladen oder selbst zeichnen." Padding="3" TextAlignment="Left" FontSize="15" />
+               
 
-                <StackPanel Margin="10" Name="StackSchritt4" Orientation="Vertical" HorizontalAlignment="Center">
+                    <StackPanel Margin="0" Name="StackSchritt4" Orientation="Vertical" HorizontalAlignment="Center">
                     <StackPanel Padding="10" Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock FontSize="20" Text="Anzahl der Stockwerke"></TextBlock>
                         <ComboBox Margin="10 0 0 0" ItemsSource="{Binding NumberFloors}" SelectedItem="{Binding SelectedItemFloor, Mode=TwoWay}" />
@@ -36,12 +32,13 @@
                               >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Vertical">
+                                    <StackPanel Margin="0 10 0 0" Orientation="Vertical">
                                         <TextBlock Text="{Binding Description}"></TextBlock>
-                                        <Image Source="{Binding SourceImage}" Width="500" Height="350"/>
+                                        <Image Source="{Binding SourceImage}" MaxWidth="500" />
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Content="Umriss zeichnen" Command="{Binding ButtonDrawSketch}"/>
-                                            <Button Margin="10 0 0 0" Content="Umriss hochladen" Command="{Binding ButtonUploadSketch}"/>
+                                            <Button Background="#00E3B3" Foreground="Black" BorderThickness="3" Margin="0 5 0 0" FontSize="20" Content="Zeichnen" Command="{Binding ButtonDrawSketch}">
+                                            </Button>
+                                            <Button BorderBrush="#00E3B3" FontWeight="Bold" Foreground="#00E3B3" BorderThickness="3" Background="White" FontSize="20" Margin="10 5 0 0" Content="Hochladen" Command="{Binding ButtonUploadSketch}"/>
                                         </StackPanel>
 
                                     </StackPanel>

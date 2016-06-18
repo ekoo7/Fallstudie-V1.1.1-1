@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding Main, Source={StaticResource Locator}}"
+    DataContext="{Binding Main, Source={StaticResource Locator}}" 
     >
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -14,23 +14,10 @@
             <StackPanel Orientation="Vertical" Margin="0 0 0 180">
                 <Image Source="/Assets/steep5.png" Height="50"/>
                 <Border Background="#0091FF">
-                    <TextBlock Text="Wändeauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
+                    <TextBlock TextWrapping="Wrap" Text="Wändeauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
-                <Border Background="#45BAFF">
-                    <TextBlock Text="Wählen Sie die Außen -und Innenwände aus." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
-                </Border>
-                <Border Background="#45BAFF">
-                    <TextBlock Text="Sie können ebenfalls die Farbe auswählen." Padding="3" TextAlignment="Left" FontSize="12" Foreground="White"/>
-                </Border>
-                <Border>
-                    <Border.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
-                            <GradientStop Color="#FF33D5E8" Offset="0"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <TextBlock Text="Außenwand" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
-                </Border>
+                <TextBlock Foreground="#0091FF" TextWrapping="Wrap" Text="Wählen Sie die Außen -und Innenwände aus. Sie können ebenfalls die Farbe auswählen." Padding="3" TextAlignment="Left" FontSize="15"/>
+                <TextBlock TextWrapping="Wrap" Foreground="Gray" Text="AUSSENWAND" Padding="3" TextAlignment="Center" FontSize="20" />
 
                 <!--Außenwände-->
                 <StackPanel x:ConnectionId='1' Margin="10" Name="StackSchritt5_Aussenwand" Orientation="Vertical">
@@ -72,15 +59,7 @@
                     </StackPanel>
                 </StackPanel>
 
-                <Border>
-                    <Border.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
-                            <GradientStop Color="#FF33D5E8" Offset="0"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <TextBlock Text="Innenwand" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
-                </Border>
+                <TextBlock TextWrapping="Wrap" Foreground="Gray" Text="INNENWAND" Padding="3" TextAlignment="Center" FontSize="20" />
                 <!--Innenwände-->
                 <StackPanel x:ConnectionId='2' Margin="10" Name="StackSchritt5_Innenwand" Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

@@ -2,7 +2,10 @@ WinMetadata\Windows.winmd
 ApplicationInsights.config
 Assets\icons\customer.png
 Assets\icons\datetime.png
+Assets\icons\draw.png
 Assets\icons\eraser.png
+Assets\icons\info.png
+Assets\icons\info2.png
 Assets\icons\logout.png
 Assets\icons\logout2.png
 Assets\icons\logout3.png
@@ -14,6 +17,7 @@ Assets\icons\pen1.png
 Assets\icons\pen2.png
 Assets\icons\pen3.png
 Assets\icons\position.png
+Assets\icons\upload3.png
 Assets\LockScreenLogo.scale-200.png
 Assets\SplashScreen.scale-200.png
 Assets\Square150x150Logo.scale-200.png

@@ -13,23 +13,20 @@
             <StackPanel Orientation="Vertical" >
                 <Image Source="/Assets/steep11.png" Height="50"/>
                 <Border Background="#0091FF">
-                    <TextBlock Text="Auswahlüberischt" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
+                    <TextBlock TextWrapping="Wrap" Text="Auswahlüberischt" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
-                <Border Background="#45BAFF">
-                    <TextBlock Text="Hier sehen Sie Ihre ausgewählten Attribute." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
-                </Border>
-                <Border Background="#45BAFF">
-                    <TextBlock Text="Sie können das konfigurierte Haus bearbeiten, speichern oder ein Projekt erstellen." Padding="3" TextAlignment="Left" FontSize="12" Foreground="White"/>
-                </Border>
+
+                <TextBlock  TextWrapping="Wrap" Foreground="#0091FF" Text="Hier sehen Sie Ihre ausgewählten Attribute. Sie können das konfigurierte Haus bearbeiten, speichern oder ein Projekt erstellen." Padding="3" TextAlignment="Left" FontSize="15" />
+
 
             
             <StackPanel Margin="10">
-                <StackPanel Orientation="Vertical">
-                        <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedHouse.Name}"/>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Foreground="Gray" FontSize="25" TextAlignment="Center" Text="{Binding SelectedHouse.Name}"/>
                         <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedHouse.Address}"/>
                         <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedHouse.City}"/>
                         <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedHouse.PriceFormat}"/>
-                        <Image Margin="0 10 0 20" Source="{Binding SelectedHouse.SourceImage}" Width="500" Height="350"/>
+                        <Image x:ConnectionId='1' x:Name="imagePackage" Margin="0 0 0 20" Source="{Binding SelectedHouse.SourceImage}" Height="350"/>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontWeight="Thin" FontSize="30" Text="Gesamtpreis: "/>
                             <TextBlock Margin="10 0 0 0" FontSize="30" Text="{Binding TotalPrice}"/>
@@ -69,238 +66,238 @@
                             </Grid.RowDefinitions>
 
                             <!-- 1. Spalte -->
-                            <Border Grid.Column="0" Grid.Row="0">
-                                <TextBlock FontWeight="Bold" Text="Spezifikation" />
+                            <Border Background="#555555" Grid.Column="0" Grid.Row="0">
+                                <TextBlock Padding="10" FontSize="20" Foreground="LightGray" FontWeight="Bold" Text="Spezifikation" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="1">
-                                <TextBlock FontWeight="Thin" Text="Grundstück" />
+                            <Border Background="#eeeeee" Grid.Column="0" Grid.Row="1">
+                                <TextBlock Padding="5 5 0 5" FontWeight="Thin" TextWrapping="Wrap" Text="Grundstück" />
                             </Border>
                             <Border Grid.Column="0" Grid.Row="2">
-                                <TextBlock FontWeight="Thin" Text="Anzahl der Stockwerke" />
+                                <TextBlock Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Anzahl der Stockwerke" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="3">
-                                <TextBlock FontWeight="Thin" Text="Außenwand " />
+                            <Border Background="#eeeeee" Grid.Column="0" Grid.Row="3">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Außenwand " />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="4">
-                                <TextBlock FontWeight="Thin" Text="Außenwandfarbe" />
+                            <Border Background="#eeeeee" Grid.Column="0" Grid.Row="4">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Außenwandfarbe" />
                             </Border>
                             <Border Grid.Column="0" Grid.Row="5">
-                                <TextBlock FontWeight="Thin" Text="Innenwand " />
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Innenwand " />
                             </Border>
                             <Border Grid.Column="0" Grid.Row="6">
-                                <TextBlock FontWeight="Thin" Text="Innenwandfarbe" />
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Innenwandfarbe" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="7">
-                                <TextBlock FontWeight="Thin"  Text="Dachtyp" />
+                            <Border Background="#eeeeee" Grid.Column="0" Grid.Row="7">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"   TextWrapping="Wrap" Text="Dachtyp" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="8">
-                                <TextBlock FontWeight="Thin" Text="Dachmaterial" />
+                            <Border  Background="#eeeeee"  Grid.Column="0" Grid.Row="8">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Dachmaterial" />
                             </Border>
                             <Border Grid.Column="0" Grid.Row="9">
-                                <TextBlock FontWeight="Thin" Text="Fenster" />
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Fenster" />
                             </Border>
                             <Border Grid.Column="0" Grid.Row="10">
-                                <TextBlock FontWeight="Thin" Text="Fensterfarbe" />
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Fensterfarbe" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="11">
-                                <TextBlock FontWeight="Thin" Text="Tür" />
+                            <Border  Background="#eeeeee" Grid.Column="0" Grid.Row="11">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Tür" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="12">
-                                <TextBlock FontWeight="Thin" Text="Türfarbe" />
+                            <Border Background="#eeeeee"  Grid.Column="0" Grid.Row="12">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Türfarbe" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="13">
-                                <TextBlock FontWeight="Thin" Text="Energiesystem" />
+                            <Border  Grid.Column="0" Grid.Row="13">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Energiesystem" />
                             </Border>
                             <Border Grid.Column="0" Grid.Row="14">
-                                <TextBlock FontWeight="Thin" Text="Heizungsystem" />
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Heizungsystem" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="15">
-                                <TextBlock FontWeight="Thin" Text="Steckdose pro Raum" />
+                            <Border  Background="#eeeeee" Grid.Column="0" Grid.Row="15">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Steckdose pro Raum" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="16">
-                                <TextBlock FontWeight="Thin" Text="Kamin" />
+                            <Border  Background="#eeeeee"  Grid.Column="0" Grid.Row="16">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Kamin" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="17">
-                                <TextBlock FontWeight="Thin" Text="Swimmingpool" />
+                            <Border  Grid.Column="0" Grid.Row="17">
+                                <TextBlock FontWeight="Thin"  TextWrapping="Wrap" Text="Swimmingpool" />
                             </Border>
                             <Border Grid.Column="0" Grid.Row="18">
-                                <TextBlock FontWeight="Thin" Text="Swimmingpool Größe" />
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Swimmingpool Größe" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="19">
-                                <TextBlock FontWeight="Thin" Text="Zaun" />
+                            <Border  Background="#eeeeee" Grid.Column="0" Grid.Row="19">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Zaun" />
                             </Border>
-                            <Border Grid.Column="0" Grid.Row="20">
-                                <TextBlock FontWeight="Thin" Text="Zaunfarbe" />
+                            <Border  Background="#eeeeee"  Grid.Column="0" Grid.Row="20">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin" TextWrapping="Wrap"  Text="Zaunfarbe" />
                             </Border>
 
 
                             <!-- 2. Spalte -->
-                            <Border Grid.Column="1">
-                                <TextBlock FontWeight="Bold" Text="Auswahl" />
+                            <Border Background="#555555" Grid.Column="1">
+                                <TextBlock Padding="10" FontSize="20" Foreground="LightGray"  TextWrapping="Wrap" FontWeight="Bold" Text="Auswahl" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="1">
-                                <TextBlock Text="{Binding House.Plot.Description}" />
+                            <Border Background="#eeeeee" Grid.Column="1" Grid.Row="1">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding House.Plot.Description}" />
                             </Border>
                             <Border Grid.Column="1" Grid.Row="2">
-                                <TextBlock Text="{Binding House.numberOfFloors}" />
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding House.numberOfFloors}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="3">
-                                <TextBlock Text="{Binding House.OutsideWall.Description}" />
+                            <Border Background="#eeeeee" Grid.Column="1" Grid.Row="3">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding House.OutsideWall.Description}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="4">
-                                <TextBlock Text="{Binding House.OutsideWallColor.Value}" />
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="4">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding House.OutsideWallColor.Value}" />
                             </Border>
                             <Border Grid.Column="1" Grid.Row="5">
-                                <TextBlock Text="{Binding House.InsideWall.Description}" />
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding House.InsideWall.Description}" />
                             </Border>
                             <Border Grid.Column="1" Grid.Row="6">
-                                <TextBlock Text="{Binding House.InsideWallColor.Value}" />
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding House.InsideWallColor.Value}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="7">
-                                <TextBlock Text="{Binding House.RoofType.Description}" />
+                            <Border Background="#eeeeee" Grid.Column="1" Grid.Row="7">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding House.RoofType.Description}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="8">
-                                <TextBlock Text="{Binding House.RoofMaterial.Description}" />
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="8">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding House.RoofMaterial.Description}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="9">
-                                <TextBlock Text="{Binding House.Window.Description}" />
+                            <Border  Grid.Column="1" Grid.Row="9">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding House.Window.Description}" />
                             </Border>
                             <Border Grid.Column="1" Grid.Row="10">
-                                <TextBlock Text="{Binding House.WindowColor.Value}" />
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding House.WindowColor.Value}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="11">
-                                <TextBlock Text="{Binding House.Door.Description}" />
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="11">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding House.Door.Description}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="12">
-                                <TextBlock Text="{Binding House.DoorColor.Value}" />
+                            <Border  Background="#eeeeee"  Grid.Column="1" Grid.Row="12">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding House.DoorColor.Value}" />
                             </Border>
                             <Border Grid.Column="1" Grid.Row="13">
-                                <TextBlock Text="{Binding House.EnergySystem.Name}" />
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding House.EnergySystem.Name}" />
                             </Border>
                             <Border Grid.Column="1" Grid.Row="14">
-                                <TextBlock Text="{Binding House.HeatingSystem.Name}" />
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding House.HeatingSystem.Name}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="15">
-                                <TextBlock Text="{Binding House.NumberOfSocket}" />
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="15">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding House.NumberOfSocket}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="16">
-                                <TextBlock Text="{Binding House.Chimney.Description}" />
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="16">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding House.Chimney.Description}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="17">
-                                <TextBlock Text="{Binding House.Pool.Description}" />
+                            <Border  Grid.Column="1" Grid.Row="17">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding House.Pool.Description}" />
                             </Border>
                             <Border Grid.Column="1" Grid.Row="18">
-                                <TextBlock Text="{Binding House.Poolsize}" />
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding House.Poolsize}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="19">
-                                <TextBlock Text="{Binding House.Fence.Description}" />
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="19">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding House.Fence.Description}" />
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="20">
-                                <TextBlock Text="{Binding House.FenceColor.Value}" />
+                            <Border  Background="#eeeeee"  Grid.Column="1" Grid.Row="20">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding House.FenceColor.Value}" />
                             </Border>
 
                             <!-- 3. Spalte -->
-                            <Border Grid.Column="2">
-                                <TextBlock FontWeight="Bold" Text="Preis" />
+                            <Border Background="#555555" Grid.Column="2">
+                                <TextBlock Padding="10" FontSize="20" TextWrapping="Wrap"  Foreground="LightGray" FontWeight="Bold" Text="Preis" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="1">
-                                <TextBlock Text="{Binding House.Plot.Price}" />
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="1">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding House.Plot.Price}" />
                             </Border>
                             <Border Grid.Column="2" Grid.Row="2">
-                                <TextBlock Text="{Binding SelectedFloor.Price}" />
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedFloor.Price}" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="3">
-                                <TextBlock Text="{Binding House.OutsideWall.Price}" />
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="3">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding House.OutsideWall.Price}" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="4">
-                                <TextBlock Text="" />
+                            <Border   Background="#eeeeee"  Grid.Column="2" Grid.Row="4">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="5">
-                                <TextBlock Text="{Binding House.InsideWall.Price}" />
+                            <Border  Grid.Column="2" Grid.Row="5">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding House.InsideWall.Price}" />
                             </Border>
                             <Border Grid.Column="2" Grid.Row="6">
-                                <TextBlock Text="" />
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="7">
-                                <TextBlock Text="{Binding House.RoofType.Price}" />
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="7">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding House.RoofType.Price}" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="8">
-                                <TextBlock Text="{Binding House.RoofMaterial.Price}" />
+                            <Border Background="#eeeeee"  Grid.Column="2" Grid.Row="8">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding House.RoofMaterial.Price}" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="9">
-                                <TextBlock Text="{Binding House.Window.Price}" />
+                            <Border   Grid.Column="2" Grid.Row="9">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding House.Window.Price}" />
                             </Border>
                             <Border Grid.Column="2" Grid.Row="10">
-                                <TextBlock Text="" />
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="11">
-                                <TextBlock Text="{Binding House.Door.Price}" />
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="11">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding House.Door.Price}" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="12">
-                                <TextBlock Text="" />
+                            <Border  Background="#eeeeee"  Grid.Column="2" Grid.Row="12">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="13">
-                                <TextBlock Text="{Binding SelectedEnergySystem.Price}" />
+                            <Border  Grid.Column="2" Grid.Row="13">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding SelectedEnergySystem.Price}" />
                             </Border>
                             <Border Grid.Column="2" Grid.Row="14">
-                                <TextBlock Text="{Binding SelectedHeatingSystem.Price}" />
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding SelectedHeatingSystem.Price}" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="15">
-                                <TextBlock Text="" />
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="15">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="16">
-                                <TextBlock Text="{Binding House.Chimney.Price}" />
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="16">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding House.Chimney.Price}" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="17">
-                                <TextBlock Text="{Binding House.Pool.Price}" />
+                            <Border   Grid.Column="2" Grid.Row="17">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding House.Pool.Price}" />
                             </Border>
                             <Border Grid.Column="2" Grid.Row="18">
-                                <TextBlock Text="" />
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="19">
-                                <TextBlock Text="{Binding House.Fence.Price}" />
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="19">
+                                <TextBlock  Padding="5 5 0 5" Text="{Binding House.Fence.Price}" />
                             </Border>
-                            <Border Grid.Column="2" Grid.Row="20">
-                                <TextBlock Text="" />
+                            <Border  Background="#eeeeee"  Grid.Column="2" Grid.Row="20">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="" />
                             </Border>
 
                             <!-- 4. Spalte -->
-                            <Border Grid.Column="3">
-                                <TextBlock FontWeight="Bold" Text="Notiz" />
+                            <Border Background="#555555" Grid.Column="3">
+                                <TextBlock Padding="10"  TextWrapping="Wrap" FontSize="20" Foreground="LightGray" FontWeight="Bold" Text="Notiz" />
                             </Border>
-                            <Border Grid.Column="3" Grid.Row="1">
-                                <TextBlock Text="{Binding NoteStep3, Mode=TwoWay}" TextWrapping="Wrap" />
+                            <Border Background="#eeeeee" Grid.Column="3" Grid.Row="1">
+                                <TextBlock  Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding NoteStep3, Mode=TwoWay}"  />
                             </Border>
                             <Border Grid.Column="3" Grid.Row="2">
-                                <TextBlock Text="{Binding NoteStep4, Mode=TwoWay}" TextWrapping="Wrap"/>
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep4, Mode=TwoWay}" />
                             </Border>
 
-                            <Border Grid.Column="3" Grid.Row="3" Grid.RowSpan="2">
-                                <TextBlock Text="{Binding NoteStep5_1, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            <Border Background="#eeeeee" Grid.Column="3" Grid.Row="3" Grid.RowSpan="2">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep5_1, Mode=TwoWay}" VerticalAlignment="Center"/>
                             </Border>
                             <Border Grid.Column="3" Grid.Row="5" Grid.RowSpan="2">
-                                <TextBlock Text="{Binding NoteStep5_2, Mode=TwoWay}" VerticalAlignment="Center"/>
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep5_2, Mode=TwoWay}" VerticalAlignment="Center"/>
                             </Border>
-                            <Border Grid.Column="3" Grid.Row="7" Grid.RowSpan="2">
-                                <TextBlock Text="{Binding NoteStep6, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            <Border Background="#eeeeee" Grid.Column="3" Grid.Row="7" Grid.RowSpan="2">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep6, Mode=TwoWay}" VerticalAlignment="Center"/>
                             </Border>
                             <Border Grid.Column="3" Grid.Row="9" Grid.RowSpan="2">
-                                <TextBlock Text="{Binding NoteStep7_1, Mode=TwoWay}" VerticalAlignment="Center"/>
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep7_1, Mode=TwoWay}" VerticalAlignment="Center"/>
                             </Border>
-                            <Border Grid.Column="3" Grid.Row="11" Grid.RowSpan="2">
-                                <TextBlock Text="{Binding NoteStep7_2, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            <Border  Background="#eeeeee" Grid.Column="3" Grid.Row="11" Grid.RowSpan="2">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding NoteStep7_2, Mode=TwoWay}" VerticalAlignment="Center"/>
                             </Border>
                             <Border Grid.Column="3" Grid.Row="13" Grid.RowSpan="2">
-                                <TextBlock Text="{Binding NoteStep8, Mode=TwoWay}" VerticalAlignment="Center"/>
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep8, Mode=TwoWay}" VerticalAlignment="Center"/>
                             </Border>
-                            <Border Grid.Column="3" Grid.Row="15" Grid.RowSpan="2">
-                                <TextBlock Text="{Binding NoteStep9, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            <Border  Background="#eeeeee" Grid.Column="3" Grid.Row="15" Grid.RowSpan="2">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding NoteStep9, Mode=TwoWay}" VerticalAlignment="Center"/>
                             </Border>
                             <Border Grid.Column="3" Grid.Row="17" Grid.RowSpan="2">
-                                <TextBlock Text="{Binding NoteStep10_1, Mode=TwoWay}" VerticalAlignment="Center"/>
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding NoteStep10_1, Mode=TwoWay}" VerticalAlignment="Center"/>
                             </Border>
-                            <Border Grid.Column="3" Grid.Row="19" Grid.RowSpan="2">
-                                <TextBlock Text="{Binding NoteStep10_2, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            <Border  Background="#eeeeee" Grid.Column="3" Grid.Row="19" Grid.RowSpan="2">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding NoteStep10_2, Mode=TwoWay}" VerticalAlignment="Center"/>
                             </Border>
                         </Grid>
                     </StackPanel>

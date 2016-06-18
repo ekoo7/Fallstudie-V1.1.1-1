@@ -2056,7 +2056,6 @@ C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Syste
 C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\System.Xml.XDocument.dll
 C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\System.Xml.XmlDocument.dll
 C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\System.Xml.XmlSerializer.dll
-C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Fallstudie.csprojResolveAssemblyReference.cache
 C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\App.g.i.cs
 C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\App.g.cs
 C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Login.g.i.cs
@@ -2228,3 +2227,4 @@ C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\resou
 C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\resources.en.resfiles.intermediate
 C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\GalaSoft.MvvmLight.Platform.pri.xml
 C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\ProjectArchitectures.txt
+C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\Fallstudie.csprojResolveAssemblyReference.cache

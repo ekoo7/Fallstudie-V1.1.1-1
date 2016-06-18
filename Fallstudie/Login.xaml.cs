@@ -26,14 +26,26 @@ namespace Fallstudie
     public sealed partial class Login : Page
     {
         Frame a = new Frame();
+        static PasswordBox pwd;
         public Login()
         {
             this.InitializeComponent();
-           
+            pwd = PasswordBox;
         }
+            
+        public static class GetPWD
+        {
+            public static PasswordBox GetString()
+            {
+                return pwd;
+            }
+        }
+
+
 
         private async void PassportSignInButton_Click(object sender, RoutedEventArgs e)
         {
+            /*
             if(UsernameTextBox.Text == "ermin" && PasswordBox.Password == "123")
             {
                 a = StartPage.FrameObject.GetObject();
@@ -48,7 +60,7 @@ namespace Fallstudie
                 UsernameTextBox.Text = "";
                 PasswordBox.Password = "";
             }
-
+            */
         }
         private bool LoadPage()
         {

@@ -3003,6 +3003,12 @@
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\draw.png">
+      <PackagePath>Assets\icons\draw.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\info.png">
+      <PackagePath>Assets\icons\info.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\customer.png">
       <PackagePath>Assets\icons\customer.png</PackagePath>
     </AppxPackagedFile>
@@ -3011,6 +3017,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\eraser.png">
       <PackagePath>Assets\icons\eraser.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\info2.png">
+      <PackagePath>Assets\icons\info2.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout.png">
       <PackagePath>Assets\icons\logout.png</PackagePath>
@@ -3044,6 +3053,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\position.png">
       <PackagePath>Assets\icons\position.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\upload3.png">
+      <PackagePath>Assets\icons\upload3.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>

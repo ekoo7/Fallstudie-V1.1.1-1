@@ -14,14 +14,12 @@
             <StackPanel Orientation="Vertical" Margin="0 0 0 100">
                 <Image Source="/Assets/steep8.png" Height="50"/>
                 <Border Background="#0091FF">
-                    <TextBlock Text="Energie- und Heizungsystemauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
+                    <TextBlock TextWrapping="Wrap" Text="Energie- und Heizungsystemauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
-                <Border Background="#45BAFF">
-                    <TextBlock Text="Wählen Sie das Energie- und Heizungsystem aus." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
-                </Border>
+                <TextBlock TextWrapping="Wrap" Text="Wählen Sie das Energie- und Heizungsystem aus." Padding="3" TextAlignment="Left" FontSize="15" Foreground="#0091FF"/>
 
 
-                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
                     <TextBlock FontSize="20" Text="Energiesystem"></TextBlock>
                     <ComboBox Margin="10 0 0 0" ItemsSource="{Binding ListEnergySystem}" SelectedItem="{Binding SelectedEnergySystem, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>

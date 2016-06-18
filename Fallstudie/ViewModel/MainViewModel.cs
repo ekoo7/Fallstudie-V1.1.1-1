@@ -28,6 +28,8 @@ namespace Fallstudie.ViewModel
     public class MainViewModel : BaseViewModel
     {
         const string COMPANY_DESC = "DreamHouse GmbH \nSchönbrunner Straße 10 / 1 \nA - 1120 Wien \noffice@DreamHouse.com";
+        const string LOGIN_ERROR_MESSAGE = "Username oder Passwort ist falsch!";
+
         private string testService;
         public string TestService
         {
@@ -45,7 +47,8 @@ namespace Fallstudie.ViewModel
             ButtonCreatePdfProjects = new RelayCommand(ButtonCreatePdfProjectsMethod);
             ButtonEditConfigurationCustomer = new RelayCommand(ButtonEditConfigurationCustomerMethod);
             ButtonCreateNewCustomer = new RelayCommand(ButtonCreateNewCustomerMethod);
-            
+            ButtonLogin = new RelayCommand(ButtonLoginMethod);
+
 
             //Datenbank erstellen
             DbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "db.sqlite");
@@ -67,9 +70,9 @@ namespace Fallstudie.ViewModel
                 ListCustomer.Clear();
                 SQLGetCustomers();
 
-                //ProjectsMethod();
+                ProjectsMethod();
                 ManageAppointments();
-                LoadUserAppointments();
+                
 
                 //TestService = service.DoWorkAsync().Result;
 
@@ -295,6 +298,7 @@ namespace Fallstudie.ViewModel
 
         #region Login
 
+        public RelayCommand ButtonLogin { get; set; }
         public RelayCommand ButtonLogout { get; set; }
         private string username;
 
@@ -311,12 +315,57 @@ namespace Fallstudie.ViewModel
             get { return password; }
             set { password = value; OnChange("Password"); }
         }
+        private string loginErrorMessage;
 
-        public void HashPassword()
+        public string LoginErrorMessage
         {
-
+            get { return loginErrorMessage;}
+            set { loginErrorMessage = value; OnChange("LoginErrorMessage"); }
         }
 
+
+        public void ButtonLoginMethod()
+        {
+            PasswordBox pwd = Login.GetPWD.GetString();
+
+
+            List<Mdh_Users> model;
+            try
+            {
+                using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                {
+                    model = (from a in con.Table<Mdh_Users>()
+                             from b in con.Table<Mdh_User_Usergroup_Map>()
+                             from c in con.Table<Mdh_Usergroups>()
+                             where a.id.Equals(b.user_id)
+                             && b.group_id.Equals(c.id)
+                             && c.title.Equals("Consultant")
+                             select a).ToList();
+                    for (int i = 0; i < model.Count; i++)
+                    {
+                        if(model[i].username == Username && model[i].password == pwd.Password)
+                        {
+                            Username = model[i].username;
+                            UserAppointments.Clear();
+                            LoadUserAppointments();
+                            SelectedConsultant = new Consultant() { Name = model[i].name, Id = model[i].id, Username = model[i].username};
+                            a = StartPage.FrameObject.GetObject();
+                            a.Navigate(typeof(MainPage));
+                            break;
+                        }
+                        
+                    }
+                    con.Close();
+                }
+                LoginErrorMessage = LOGIN_ERROR_MESSAGE;
+            }
+            catch (Exception)
+            {
+
+            }
+            
+            
+        }
 
         //TODO: Alle Listen und Variablen zurücksetzen
         private async void LogOutMethod()
@@ -331,6 +380,7 @@ namespace Fallstudie.ViewModel
             {
                 // Launch the retrieved file
                 StartPage.FrameObject.GetObject().Navigate(typeof(Login));
+                LoginErrorMessage = "";
 
                 //ES MÜSSEN NOCH ALLE VARIABLEN ZURÜCKGESETZ WERDEN
             }
@@ -366,9 +416,8 @@ namespace Fallstudie.ViewModel
             {
                 foreach (var item in Appointments)
                 {
-                    if (item.Consultant.Username == "hansen"
-                        && (item.Date.Month == DateTimeNow.Month || item.Date.Month == DateTimeNow.Month + 1)
-                        && item.Date.Day >= dateTimeNow.Day)
+                    if (item.Consultant.Username == Username
+                        && ((item.Date.Month == DateTimeNow.Month && item.Date.Day >= dateTimeNow.Day)  || item.Date.Month == DateTimeNow.Month + 1))
                     {
                         UserAppointments.Add(item);
                         
@@ -1193,7 +1242,7 @@ namespace Fallstudie.ViewModel
                                                select a.housefloors).Single();
                             con.Close();
                         }
-                        SelectedItemFloor = NumberOfFloorDB;
+                        //SelectedItemFloor = NumberOfFloorDB;
                     }
                     catch (Exception) { }
                 }

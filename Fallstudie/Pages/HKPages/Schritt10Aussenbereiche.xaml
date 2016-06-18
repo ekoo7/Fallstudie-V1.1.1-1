@@ -14,34 +14,16 @@
             <StackPanel Orientation="Vertical" Margin="0 0 0 150">
                 <Image Source="/Assets/steep10.png" Height="50"/>
                 <Border Background="#0091FF">
-                    <TextBlock Text="Außenbereiche" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
+                    <TextBlock TextWrapping="Wrap" Text="Außenbereiche" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
-                <Border Background="#45BAFF">
-                    <TextBlock Text="Sie können hier einen Pool und einen Zaun auswählen." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
-                </Border>
-                <Border Background="#45BAFF">
-                    <TextBlock Text="Sie können ebenfalls die größe des Pools und die Farbe des Zauns auswählen." Padding="3" TextAlignment="Left" FontSize="12" Foreground="White"/>
-                </Border>
-                <Border>
-                    <Border.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
-                            <GradientStop Color="#FF33D5E8" Offset="0"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <TextBlock Text="Garage" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
-                </Border>
+                <TextBlock Text="Sie können hier einen Pool und einen Zaun auswählen. Sie können ebenfalls die größe des Pools und die Farbe des Zauns auswählen." 
+                               Padding="3" TextAlignment="Left" FontSize="15" Foreground="#0091FF"/>
+
+                <TextBlock Text="GARAGE" Padding="3" TextAlignment="Center" FontSize="20" Foreground="Gray"/>
                 <CheckBox Margin="10 0 0 0" FontSize="16" Content="Garage" IsChecked="{Binding CheckBoxIsSelected, Mode=TwoWay}" />
-                
-                <Border>
-                    <Border.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
-                            <GradientStop Color="#FF33D5E8" Offset="0"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <TextBlock Text="Swimmingpool" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
-                </Border>
+
+                    <TextBlock Text="SWIMMINGPOOL" Padding="3" TextAlignment="Center" FontSize="20" Foreground="Gray"/>
+
                 <!--Swimmingpool-->
                 <StackPanel Margin="10" Name="Schritt10_Swimmingpool" Orientation="Vertical">
 
@@ -79,15 +61,7 @@
                 </StackPanel>
 
                 <!--Zaun-->
-                <Border>
-                    <Border.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0">
-                            <GradientStop Color="#FF33D5E8" Offset="0"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <TextBlock Text="Zaun" Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
-                </Border>
+                <TextBlock Text="ZAUN" Padding="3" TextAlignment="Center" FontSize="20" Foreground="Gray"/>
                 <StackPanel Margin="10" Name="StackSchritt10_Zaun">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <ListView ItemsSource="{Binding ListFence}" 

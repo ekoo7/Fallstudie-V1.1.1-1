@@ -14,12 +14,10 @@
             <StackPanel Orientation="Vertical">
                 <Image Source="/Assets/steep1.png" Height="50"/>
                 <Border Background="#0091FF">
-                    <TextBlock Text="Kundenauswahl" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
+                    <TextBlock Text="Kundenauswahl" TextWrapping="Wrap" Padding="4" TextAlignment="Left" FontSize="25" Foreground="White"/>
                 </Border>
-                <Border Background="#45BAFF">
-                    <TextBlock Text="Wählen Sie den Kunden aus, für den Sie das Haus konfigurieren." Padding="3" TextAlignment="Left" FontSize="15" Foreground="White"/>
-                </Border>
-                
+                <TextBlock Foreground="#0091FF" TextWrapping="Wrap" Text="Wählen Sie den Kunden aus, für den Sie das Haus konfigurieren." Padding="3" TextAlignment="Left" FontSize="15"/>
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
                     <StackPanel Orientation="Vertical">
                         <ListView x:ConnectionId='1' Name="CustomerListCustomerPage" ItemsSource="{Binding Customers}" 

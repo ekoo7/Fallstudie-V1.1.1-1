@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>edd1e308-4172-4199-aeed-fd546e55591b</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\obj\x86\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>787F0DA6A373064270FBC61B6301F78D0B1B4DE175D213989B5AB266BC2FC9B7</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>E38C0867AB1E6CBF1AC78A94C01DC9D5BD47D3626CDDC355F8249785BC1C7371</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>edd1e308-4172-4199-aeed-fd546e55591b_1.0.2.0_x86__7cz6n1n3sb2rm</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>edd1e308-4172-4199-aeed-fd546e55591b_7cz6n1n3sb2rm!App</RegisteredUserModeAppID>
     <RegisteredPackageID>edd1e308-4172-4199-aeed-fd546e55591b</RegisteredPackageID>
@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-13T23:19:05.820</Modified>
+      <Modified>2016-06-16T12:23:21.678</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.exe">
       <PackagePath>entrypoint\Fallstudie.exe</PackagePath>
-      <Modified>2016-06-13T23:19:03.041</Modified>
+      <Modified>2016-06-16T12:23:17.240</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UAP\v0.8.0.0\ExtensionSDKs\InkToolbarControl\0.3.2\References\CommonConfiguration\neutral\Microsoft.Labs.InkToolbarControl.winmd">
       <PackagePath>Microsoft.Labs.InkToolbarControl.winmd</PackagePath>
@@ -4006,6 +4006,14 @@
       <PackagePath>ApplicationInsights.config</PackagePath>
       <Modified>2016-06-13T11:37:38.804</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\draw.png">
+      <PackagePath>Assets\icons\draw.png</PackagePath>
+      <Modified>2016-06-15T17:38:16.664</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\info.png">
+      <PackagePath>Assets\icons\info.png</PackagePath>
+      <Modified>2016-06-14T15:10:52.147</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\customer.png">
       <PackagePath>Assets\icons\customer.png</PackagePath>
       <Modified>2016-06-13T11:37:38.808</Modified>
@@ -4017,6 +4025,10 @@
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\eraser.png">
       <PackagePath>Assets\icons\eraser.png</PackagePath>
       <Modified>2016-06-13T11:37:38.813</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\info2.png">
+      <PackagePath>Assets\icons\info2.png</PackagePath>
+      <Modified>2016-06-14T15:14:31.827</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\logout.png">
       <PackagePath>Assets\icons\logout.png</PackagePath>
@@ -4062,6 +4074,10 @@
       <PackagePath>Assets\icons\position.png</PackagePath>
       <Modified>2016-06-13T11:37:38.831</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\icons\upload3.png">
+      <PackagePath>Assets\icons\upload3.png</PackagePath>
+      <Modified>2016-06-15T17:46:05.695</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2016-06-13T11:37:38.831</Modified>
@@ -4069,7 +4085,7 @@
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-13T11:37:38.846</Modified>
+      <Modified>2016-06-14T22:38:29.117</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
@@ -4158,7 +4174,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Fallstudie.xr.xml">
       <PackagePath>Fallstudie.xr.xml</PackagePath>
-      <Modified>2016-06-13T22:41:32.021</Modified>
+      <Modified>2016-06-15T19:17:56.432</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -4166,11 +4182,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-06-13T22:41:36.526</Modified>
+      <Modified>2016-06-16T12:23:19.887</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ermin\Desktop\GitHub\Fallstudie-V1.1.1-1\Fallstudie\bin\x86\Debug\Core\Fallstudie.exe">
       <PackagePath>Fallstudie.exe</PackagePath>
-      <Modified>2016-06-13T23:19:05.814</Modified>
+      <Modified>2016-06-16T12:23:21.676</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
