@@ -16,6 +16,25 @@ namespace Fallstudie.Model
         public Consultant Consultant { get; set; }
         public Customer Customer { get; set; }
         public string Message { get; set; }
+        private string messagePackage;
+
+        public string MessagePackage
+        {
+            
+            get {
+                if (Message != null) { 
+                    string[] splitMessage = Message.Split(' ');
+                    try
+                    {
+                        messagePackage = splitMessage[3] + ' ' + splitMessage[4];
+                    }
+                    catch (Exception) { }
+                }
+                return messagePackage;
+            }
+            set { messagePackage = value; }
+        }
+
 
         public string DateFormat
         {

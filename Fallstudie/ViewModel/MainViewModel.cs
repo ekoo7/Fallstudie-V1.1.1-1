@@ -411,7 +411,6 @@ namespace Fallstudie.ViewModel
         private void LoadUserAppointments()
         {
             
-            
             if (Appointments != null)
             {
                 foreach (var item in Appointments)

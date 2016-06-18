@@ -166,6 +166,7 @@
     <RootPropertyPathName Name="ButtonCreatePdfProjects" />
     <RootPropertyPathName Name="UserAppointments" />
     <RootPropertyPathName Name="SelectedUserAppointment" />
+    <RootPropertyPathName Name="MessagePackage" />
     <RootPropertyPathName Name="DateFormat" />
     <RootPropertyPathName Name="TimeFormat" />
     <RootPropertyPathName Name="TestService" />

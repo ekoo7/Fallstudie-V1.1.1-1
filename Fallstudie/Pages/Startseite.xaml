@@ -30,7 +30,9 @@
                                     <StackPanel  Orientation="Vertical" >
                                         <TextBlock Foreground="Gray" Text="Kunde"/>
                                         <TextBlock FontWeight="Bold" Text="{Binding Customer.Name}" />
-                                    </StackPanel>
+                                            <TextBlock Foreground="Gray" Text="Message"/>
+                                            <TextBlock TextWrapping="Wrap" FontWeight="Bold" Text="{Binding MessagePackage}" />
+                                        </StackPanel>
                                     </StackPanel>
                                    
                                 </StackPanel>

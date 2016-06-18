@@ -9,9 +9,9 @@
 
     <ScrollViewer>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-
-                <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical">
+                <TextBlock TextAlignment="Center" Text="PROJEKTE" FontSize="25" Foreground="Gray" />
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                     <ListView Name="ProjectList" ItemsSource="{Binding ListProjects}" 
                           SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
                           IsItemClickEnabled="False" SelectionMode="Single"
@@ -62,298 +62,301 @@
 
             <!-- ANZEIGEN DER SPEZIFIKATIONEN DES PROJEKTES-->
                 <StackPanel Visibility="{Binding ProjectPezVisibility}" Margin="20 0 0 0">
-                    <StackPanel Margin="10">
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedProject.Id}"/>
-                            <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedProject.House.Package.Name}"/>
-                            <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedProject.House.Package.Price}"/>
-                            <Image Margin="0 10 0 20" Source="{Binding SelectedProject.House.Package.SourceImage}" Width="500" Height="350"/>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Thin" FontSize="30" Text="Gesamtpreis: "/>
-                                <TextBlock Margin="10 0 0 0" FontSize="30" Text="{Binding SelectedProject.House.Price}"/>
-                                <TextBlock Margin="5 0 0 0" FontSize="30" Text="€"/>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel Margin="0 10 0 0">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="25*"/>
-                                    <ColumnDefinition Width="25*"/>
-                                    <ColumnDefinition Width="25*"/>
-                                    <ColumnDefinition Width="25*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                </Grid.RowDefinitions>
 
-                                <!-- 1. Spalte -->
-                                <Border Grid.Column="0" Grid.Row="0">
-                                    <TextBlock FontWeight="Bold" Text="Spezifikation" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="1">
-                                    <TextBlock FontWeight="Thin" Text="Grundstück" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="2">
-                                    <TextBlock FontWeight="Thin" Text="Anzahl der Stockwerke" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="3">
-                                    <TextBlock FontWeight="Thin" Text="Außenwand " />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="4">
-                                    <TextBlock FontWeight="Thin" Text="Außenwandfarbe" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="5">
-                                    <TextBlock FontWeight="Thin" Text="Innenwand " />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="6">
-                                    <TextBlock FontWeight="Thin" Text="Innenwandfarbe" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="7">
-                                    <TextBlock FontWeight="Thin"  Text="Dachtyp" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="8">
-                                    <TextBlock FontWeight="Thin" Text="Dachmaterial" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="9">
-                                    <TextBlock FontWeight="Thin" Text="Fenster" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="10">
-                                    <TextBlock FontWeight="Thin" Text="Fensterfarbe" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="11">
-                                    <TextBlock FontWeight="Thin" Text="Tür" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="12">
-                                    <TextBlock FontWeight="Thin" Text="Türfarbe" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="13">
-                                    <TextBlock FontWeight="Thin" Text="Energiesystem" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="14">
-                                    <TextBlock FontWeight="Thin" Text="Heizungsystem" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="15">
-                                    <TextBlock FontWeight="Thin" Text="Steckdose pro Raum" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="16">
-                                    <TextBlock FontWeight="Thin" Text="Kamin" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="17">
-                                    <TextBlock FontWeight="Thin" Text="Swimmingpool" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="18">
-                                    <TextBlock FontWeight="Thin" Text="Swimmingpool Größe" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="19">
-                                    <TextBlock FontWeight="Thin" Text="Zaun" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="20">
-                                    <TextBlock FontWeight="Thin" Text="Zaunfarbe" />
-                                </Border>
-                                <Border Grid.Column="0" Grid.Row="21">
-                                    <TextBlock FontWeight="Thin" Text="Garage" />
-                                </Border>
-
-
-                                <!-- 2. Spalte -->
-                                <Border Grid.Column="1">
-                                    <TextBlock FontWeight="Bold" Text="Auswahl" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="1">
-                                    <TextBlock Text="{Binding SelectedProject.House.Plot.Description}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="2">
-                                    <TextBlock Text="{Binding SelectedProject.House.numberOfFloors}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="3">
-                                    <TextBlock Text="{Binding SelectedProject.House.OutsideWall.Description}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="4">
-                                    <TextBlock Text="{Binding SelectedProject.House.OutsideWallColor.Value}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="5">
-                                    <TextBlock Text="{Binding SelectedProject.House.InsideWall.Description}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="6">
-                                    <TextBlock Text="{Binding SelectedProject.House.InsideWallColor.Value}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="7">
-                                    <TextBlock Text="{Binding SelectedProject.House.RoofType.Description}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="8">
-                                    <TextBlock Text="{Binding SelectedProject.House.RoofMaterial.Description}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="9">
-                                    <TextBlock Text="{Binding SelectedProject.House.Window.Description}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="10">
-                                    <TextBlock Text="{Binding SelectedProject.House.WindowColor.Value}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="11">
-                                    <TextBlock Text="{Binding SelectedProject.House.Door.Description}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="12">
-                                    <TextBlock Text="{Binding SelectedProject.House.DoorColor.Value}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="13">
-                                    <TextBlock Text="{Binding SelectedProject.House.EnergySystem.Name}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="14">
-                                    <TextBlock Text="{Binding SelectedProject.House.HeatingSystem.Name}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="15">
-                                    <TextBlock Text="{Binding SelectedProject.House.NumberOfSocket}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="16">
-                                    <TextBlock Text="{Binding SelectedProject.House.Chimney.Description}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="17">
-                                    <TextBlock Text="{Binding SelectedProject.House.Pool.Description}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="18">
-                                    <TextBlock Text="{Binding SelectedProject.House.Poolsize}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="19">
-                                    <TextBlock Text="{Binding SelectedProject.House.Fence.Description}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="20">
-                                    <TextBlock Text="{Binding SelectedProject.House.FenceColor.Value}" />
-                                </Border>
-                                <Border Grid.Column="1" Grid.Row="21">
-                                    <TextBlock Text="{Binding SelectedProject.House.Garage.Name}" />
-                                </Border>
-
-                                <!-- 3. Spalte -->
-                                <Border Grid.Column="2">
-                                    <TextBlock FontWeight="Bold" Text="Preis" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="1">
-                                    <TextBlock Text="{Binding SelectedProject.House.Plot.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="2">
-                                    <TextBlock Text="{Binding SelectedProject.SelectedFloor.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="3">
-                                    <TextBlock Text="{Binding SelectedProject.House.OutsideWall.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="4">
-                                    <TextBlock Text="" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="5">
-                                    <TextBlock Text="{Binding SelectedProject.House.InsideWall.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="6">
-                                    <TextBlock Text="" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="7">
-                                    <TextBlock Text="{Binding SelectedProject.House.RoofType.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="8">
-                                    <TextBlock Text="{Binding SelectedProject.House.RoofMaterial.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="9">
-                                    <TextBlock Text="{Binding SelectedProject.House.Window.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="10">
-                                    <TextBlock Text="" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="11">
-                                    <TextBlock Text="{Binding SelectedProject.House.Door.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="12">
-                                    <TextBlock Text="" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="13">
-                                    <TextBlock Text="{Binding SelectedProject.SelectedEnergySystem.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="14">
-                                    <TextBlock Text="{Binding SelectedProject.SelectedHeatingSystem.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="15">
-                                    <TextBlock Text="" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="16">
-                                    <TextBlock Text="{Binding SelectedProject.House.Chimney.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="17">
-                                    <TextBlock Text="{Binding SelectedProject.House.Pool.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="18">
-                                    <TextBlock Text="" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="19">
-                                    <TextBlock Text="{Binding SelectedProject.House.Fence.Price}" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="20">
-                                    <TextBlock Text="" />
-                                </Border>
-                                <Border Grid.Column="2" Grid.Row="21">
-                                    <TextBlock Text="{Binding SelectedProject.House.Garage.Price}" />
-                                </Border>
-
-                                <!-- 4. Spalte -->
-                                <Border Grid.Column="3">
-                                    <TextBlock FontWeight="Bold" Text="Notiz" />
-                                </Border>
-                                <Border Grid.Column="3" Grid.Row="1">
-                                    <TextBlock Text="{Binding NoteStep3, Mode=TwoWay}" TextWrapping="Wrap" />
-                                </Border>
-                                <Border Grid.Column="3" Grid.Row="2">
-                                    <TextBlock Text="{Binding NoteStep4, Mode=TwoWay}" TextWrapping="Wrap"/>
-                                </Border>
-
-                                <Border Grid.Column="3" Grid.Row="3" Grid.RowSpan="2">
-                                    <TextBlock Text="{Binding NoteStep5_1, Mode=TwoWay}" VerticalAlignment="Center"/>
-                                </Border>
-                                <Border Grid.Column="3" Grid.Row="5" Grid.RowSpan="2">
-                                    <TextBlock Text="{Binding NoteStep5_2, Mode=TwoWay}" VerticalAlignment="Center"/>
-                                </Border>
-                                <Border Grid.Column="3" Grid.Row="7" Grid.RowSpan="2">
-                                    <TextBlock Text="{Binding NoteStep6, Mode=TwoWay}" VerticalAlignment="Center"/>
-                                </Border>
-                                <Border Grid.Column="3" Grid.Row="9" Grid.RowSpan="2">
-                                    <TextBlock Text="{Binding NoteStep7_1, Mode=TwoWay}" VerticalAlignment="Center"/>
-                                </Border>
-                                <Border Grid.Column="3" Grid.Row="11" Grid.RowSpan="2">
-                                    <TextBlock Text="{Binding NoteStep7_2, Mode=TwoWay}" VerticalAlignment="Center"/>
-                                </Border>
-                                <Border Grid.Column="3" Grid.Row="13" Grid.RowSpan="2">
-                                    <TextBlock Text="{Binding NoteStep8, Mode=TwoWay}" VerticalAlignment="Center"/>
-                                </Border>
-                                <Border Grid.Column="3" Grid.Row="15" Grid.RowSpan="2">
-                                    <TextBlock Text="{Binding NoteStep9, Mode=TwoWay}" VerticalAlignment="Center"/>
-                                </Border>
-                                <Border Grid.Column="3" Grid.Row="17" Grid.RowSpan="2">
-                                    <TextBlock Text="{Binding NoteStep10_1, Mode=TwoWay}" VerticalAlignment="Center"/>
-                                </Border>
-                                <Border Grid.Column="3" Grid.Row="19" Grid.RowSpan="2">
-                                    <TextBlock Text="{Binding NoteStep10_2, Mode=TwoWay}" VerticalAlignment="Center"/>
-                                </Border>
-                            </Grid>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Foreground="Gray" FontSize="25" TextAlignment="Center" Text="{Binding SelectedProject.Package.Name}"/>
+                        <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedProject.House.Package.Address}"/>
+                        <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding SelectedProject.House.Package.City}"/>
+                        <Image x:Name="imagePackage" Margin="0 0 0 20" Source="{Binding SelectedProject.House.Package.SourceImage}" Height="350"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontWeight="Thin" FontSize="30" Text="Gesamtpreis: "/>
+                            <TextBlock Margin="10 0 0 0" FontSize="30" Text="{Binding SelectedProject.House.Price}"/>
+                            <TextBlock Margin="5 0 0 0" FontSize="30" Text="€"/>
                         </StackPanel>
                     </StackPanel>
-                </StackPanel>
+                    <StackPanel Margin="0 10 0 0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- 1. Spalte -->
+                            <Border Background="#555555" Grid.Column="0" Grid.Row="0">
+                                <TextBlock Padding="10" FontSize="20" Foreground="LightGray" FontWeight="Bold" Text="Spezifikation" />
+                            </Border>
+                            <Border Background="#eeeeee" Grid.Column="0" Grid.Row="1">
+                                <TextBlock Padding="5 5 0 5" FontWeight="Thin" TextWrapping="Wrap" Text="Grundstück" />
+                            </Border>
+                            <Border Grid.Column="0" Grid.Row="2">
+                                <TextBlock Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Anzahl der Stockwerke" />
+                            </Border>
+                            <Border Background="#eeeeee" Grid.Column="0" Grid.Row="3">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Außenwand " />
+                            </Border>
+                            <Border Background="#eeeeee" Grid.Column="0" Grid.Row="4">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Außenwandfarbe" />
+                            </Border>
+                            <Border Grid.Column="0" Grid.Row="5">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Innenwand " />
+                            </Border>
+                            <Border Grid.Column="0" Grid.Row="6">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Innenwandfarbe" />
+                            </Border>
+                            <Border Background="#eeeeee" Grid.Column="0" Grid.Row="7">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"   TextWrapping="Wrap" Text="Dachtyp" />
+                            </Border>
+                            <Border  Background="#eeeeee"  Grid.Column="0" Grid.Row="8">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Dachmaterial" />
+                            </Border>
+                            <Border Grid.Column="0" Grid.Row="9">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Fenster" />
+                            </Border>
+                            <Border Grid.Column="0" Grid.Row="10">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Fensterfarbe" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="0" Grid.Row="11">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Tür" />
+                            </Border>
+                            <Border Background="#eeeeee"  Grid.Column="0" Grid.Row="12">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Türfarbe" />
+                            </Border>
+                            <Border  Grid.Column="0" Grid.Row="13">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Energiesystem" />
+                            </Border>
+                            <Border Grid.Column="0" Grid.Row="14">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Heizungsystem" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="0" Grid.Row="15">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Steckdose pro Raum" />
+                            </Border>
+                            <Border  Background="#eeeeee"  Grid.Column="0" Grid.Row="16">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Kamin" />
+                            </Border>
+                            <Border  Grid.Column="0" Grid.Row="17">
+                                <TextBlock FontWeight="Thin"  TextWrapping="Wrap" Text="Swimmingpool" />
+                            </Border>
+                            <Border Grid.Column="0" Grid.Row="18">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Swimmingpool Größe" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="0" Grid.Row="19">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin"  TextWrapping="Wrap" Text="Zaun" />
+                            </Border>
+                            <Border  Background="#eeeeee"  Grid.Column="0" Grid.Row="20">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin" TextWrapping="Wrap"  Text="Zaunfarbe" />
+                            </Border>
+                            <Border  Grid.Column="0" Grid.Row="21">
+                                <TextBlock  Padding="5 5 0 5" FontWeight="Thin" TextWrapping="Wrap"  Text="Garage" />
+                            </Border>
+
+
+                            <!-- 2. Spalte -->
+                            <Border Background="#555555" Grid.Column="1">
+                                <TextBlock Padding="10" FontSize="20" Foreground="LightGray"  TextWrapping="Wrap" FontWeight="Bold" Text="Auswahl" />
+                            </Border>
+                            <Border Background="#eeeeee" Grid.Column="1" Grid.Row="1">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.Plot.Description}" />
+                            </Border>
+                            <Border Grid.Column="1" Grid.Row="2">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.numberOfFloors}" />
+                            </Border>
+                            <Border Background="#eeeeee" Grid.Column="1" Grid.Row="3">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.OutsideWall.Description}" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="4">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.OutsideWallColor.Value}" />
+                            </Border>
+                            <Border Grid.Column="1" Grid.Row="5">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding SelectedProject.House.InsideWall.Description}" />
+                            </Border>
+                            <Border Grid.Column="1" Grid.Row="6">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.InsideWallColor.Value}" />
+                            </Border>
+                            <Border Background="#eeeeee" Grid.Column="1" Grid.Row="7">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.RoofType.Description}" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="8">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding SelectedProject.House.RoofMaterial.Description}" />
+                            </Border>
+                            <Border  Grid.Column="1" Grid.Row="9">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding SelectedProject.House.Window.Description}" />
+                            </Border>
+                            <Border Grid.Column="1" Grid.Row="10">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.WindowColor.Value}" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="11">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding SelectedProject.House.Door.Description}" />
+                            </Border>
+                            <Border  Background="#eeeeee"  Grid.Column="1" Grid.Row="12">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding SelectedProject.House.DoorColor.Value}" />
+                            </Border>
+                            <Border Grid.Column="1" Grid.Row="13">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.EnergySystem.Name}" />
+                            </Border>
+                            <Border Grid.Column="1" Grid.Row="14">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.HeatingSystem.Name}" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="15">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding SelectedProject.House.NumberOfSocket}" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="16">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding SelectedProject.House.Chimney.Description}" />
+                            </Border>
+                            <Border  Grid.Column="1" Grid.Row="17">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding SelectedProject.House.Pool.Description}" />
+                            </Border>
+                            <Border Grid.Column="1" Grid.Row="18">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding SelectedProject.House.Poolsize}" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="1" Grid.Row="19">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding SelectedProject.House.Fence.Description}" />
+                            </Border>
+                            <Border  Background="#eeeeee"  Grid.Column="1" Grid.Row="20">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding SelectedProject.House.FenceColor.Value}" />
+                            </Border>
+                            <Border  Grid.Column="1" Grid.Row="21">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding SelectedProject.House.Garage.Name}" />
+                            </Border>
+
+                            <!-- 3. Spalte -->
+                            <Border Background="#555555" Grid.Column="2">
+                                <TextBlock Padding="10" FontSize="20" TextWrapping="Wrap"  Foreground="LightGray" FontWeight="Bold" Text="Preis" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="1">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.Plot.Price}" />
+                            </Border>
+                            <Border Grid.Column="2" Grid.Row="2">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.SelectedFloor.Price}" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="3">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding SelectedProject.House.OutsideWall.Price}" />
+                            </Border>
+                            <Border   Background="#eeeeee"  Grid.Column="2" Grid.Row="4">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="" />
+                            </Border>
+                            <Border  Grid.Column="2" Grid.Row="5">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding SelectedProject.House.InsideWall.Price}" />
+                            </Border>
+                            <Border Grid.Column="2" Grid.Row="6">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="7">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding SelectedProject.House.RoofType.Price}" />
+                            </Border>
+                            <Border Background="#eeeeee"  Grid.Column="2" Grid.Row="8">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding SelectedProject.House.RoofMaterial.Price}" />
+                            </Border>
+                            <Border   Grid.Column="2" Grid.Row="9">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.Window.Price}" />
+                            </Border>
+                            <Border Grid.Column="2" Grid.Row="10">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="11">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding SelectedProject.House.Door.Price}" />
+                            </Border>
+                            <Border  Background="#eeeeee"  Grid.Column="2" Grid.Row="12">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="" />
+                            </Border>
+                            <Border  Grid.Column="2" Grid.Row="13">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding SelectedProject.SelectedEnergySystem.Price}" />
+                            </Border>
+                            <Border Grid.Column="2" Grid.Row="14">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding SelectedProject.SelectedHeatingSystem.Price}" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="15">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="16">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding SelectedProject.House.Chimney.Price}" />
+                            </Border>
+                            <Border   Grid.Column="2" Grid.Row="17">
+                                <TextBlock Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding SelectedProject.House.Pool.Price}" />
+                            </Border>
+                            <Border Grid.Column="2" Grid.Row="18">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="" />
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="2" Grid.Row="19">
+                                <TextBlock  Padding="5 5 0 5" Text="{Binding SelectedProject.House.Fence.Price}" />
+                            </Border>
+                            <Border  Background="#eeeeee"  Grid.Column="2" Grid.Row="20">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="" />
+                            </Border>
+                            <Border  Grid.Column="2" Grid.Row="21">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding SelectedProject.House.Garage.Price}" />
+                            </Border>
+
+                            <!-- 4. Spalte -->
+                            <Border Background="#555555" Grid.Column="3">
+                                <TextBlock Padding="10"  TextWrapping="Wrap" FontSize="20" Foreground="LightGray" FontWeight="Bold" Text="Notiz" />
+                            </Border>
+                            <Border Background="#eeeeee" Grid.Column="3" Grid.Row="1">
+                                <TextBlock  Padding="5 5 0 5"   TextWrapping="Wrap" Text="{Binding NoteStep3, Mode=TwoWay}"  />
+                            </Border>
+                            <Border Grid.Column="3" Grid.Row="2">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep4, Mode=TwoWay}" />
+                            </Border>
+
+                            <Border Background="#eeeeee" Grid.Column="3" Grid.Row="3" Grid.RowSpan="2">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep5_1, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Grid.Column="3" Grid.Row="5" Grid.RowSpan="2">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep5_2, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Background="#eeeeee" Grid.Column="3" Grid.Row="7" Grid.RowSpan="2">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep6, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Grid.Column="3" Grid.Row="9" Grid.RowSpan="2">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep7_1, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="3" Grid.Row="11" Grid.RowSpan="2">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding NoteStep7_2, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Grid.Column="3" Grid.Row="13" Grid.RowSpan="2">
+                                <TextBlock  Padding="5 5 0 5"  TextWrapping="Wrap" Text="{Binding NoteStep8, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border  Background="#eeeeee" Grid.Column="3" Grid.Row="15" Grid.RowSpan="2">
+                                <TextBlock Padding="5 5 0 5"  TextWrapping="Wrap"  Text="{Binding NoteStep9, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Grid.Column="3" Grid.Row="17" Grid.RowSpan="2">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding NoteStep10_1, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Background="#eeeeee" Grid.Column="3" Grid.Row="19" Grid.RowSpan="2">
+                                <TextBlock  Padding="5 5 0 5" TextWrapping="Wrap"  Text="{Binding NoteStep10_2, Mode=TwoWay}" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                
+
+
+
+            </StackPanel>
             </StackPanel>
 
         </Grid>
