@@ -105,6 +105,7 @@
     <RootPropertyPathName Name="NumberSockets" />
     <RootPropertyPathName Name="SelectedSocket" />
     <RootPropertyPathName Name="House" />
+    <RootPropertyPathName Name="Garage" />
     <RootPropertyPathName Name="Fence" />
     <RootPropertyPathName Name="Pool" />
     <RootPropertyPathName Name="Chimney" />

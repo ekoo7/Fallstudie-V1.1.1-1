@@ -15,6 +15,7 @@ namespace Fallstudie.Model
         public TimeSpan Time { get; set; }
         public Consultant Consultant { get; set; }
         public Customer Customer { get; set; }
+        public string Message { get; set; }
 
         public string DateFormat
         {

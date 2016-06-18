@@ -61,6 +61,6 @@ namespace Fallstudie.Model
         public string Poolsize { get; set; }
         public ImageInherit Fence { get; set; }
         public ColorPalette FenceColor { get; set; }
-
+        public EHSystem Garage { get; set; }
     }
 }
