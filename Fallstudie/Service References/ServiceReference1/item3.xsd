@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfymdh_message">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ymdh_message" nillable="true" type="tns:ymdh_message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfymdh_message" nillable="true" type="tns:ArrayOfymdh_message" />
+  <xs:complexType name="ymdh_message">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="message_date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="message_id" type="xs:int" />
+      <xs:element minOccurs="0" name="message_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="summary" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="user_id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ymdh_message" nillable="true" type="tns:ymdh_message" />
+  <xs:complexType name="ArrayOfattribute_group">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attribute_group" nillable="true" type="tns:attribute_group" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfattribute_group" nillable="true" type="tns:ArrayOfattribute_group" />
+  <xs:complexType name="attribute_group">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="attribute" nillable="true" type="tns:ArrayOfattribute" />
+      <xs:element minOccurs="0" name="attribute_group_id" type="xs:int" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="attribute_group" nillable="true" type="tns:attribute_group" />
+  <xs:complexType name="ArrayOfattribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="attribute" nillable="true" type="tns:attribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfattribute" nillable="true" type="tns:ArrayOfattribute" />
+  <xs:complexType name="attribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="attribute_group" nillable="true" type="tns:attribute_group" />
+      <xs:element minOccurs="0" name="attribute_group_id" type="xs:int" />
+      <xs:element minOccurs="0" name="attribute_id" type="xs:int" />
+      <xs:element minOccurs="0" name="deleted" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="house_package_has_attribute" nillable="true" type="tns:ArrayOfhouse_package_has_attribute" />
+      <xs:element minOccurs="0" name="houseconfig_has_attribute" nillable="true" type="tns:ArrayOfhouseconfig_has_attribute" />
+      <xs:element minOccurs="0" name="image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="price" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ymdh_house_package" nillable="true" type="tns:ArrayOfymdh_house_package" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="attribute" nillable="true" type="tns:attribute" />
+  <xs:complexType name="ArrayOfhouse_package_has_attribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="house_package_has_attribute" nillable="true" type="tns:house_package_has_attribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfhouse_package_has_attribute" nillable="true" type="tns:ArrayOfhouse_package_has_attribute" />
+  <xs:complexType name="house_package_has_attribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="attribute" nillable="true" type="tns:attribute" />
+      <xs:element minOccurs="0" name="attribute_id" type="xs:int" />
+      <xs:element minOccurs="0" name="house_package_id" type="xs:int" />
+      <xs:element minOccurs="0" name="special" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ymdh_house_package" nillable="true" type="tns:ymdh_house_package" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="house_package_has_attribute" nillable="true" type="tns:house_package_has_attribute" />
+  <xs:complexType name="ymdh_house_package">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address_id" type="xs:int" />
+      <xs:element minOccurs="0" name="attribute" nillable="true" type="tns:ArrayOfattribute" />
+      <xs:element minOccurs="0" name="deleted" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="house_package_has_attribute" nillable="true" type="tns:ArrayOfhouse_package_has_attribute" />
+      <xs:element minOccurs="0" name="house_package_id" type="xs:int" />
+      <xs:element minOccurs="0" name="house_package_status_id" type="xs:int" />
+      <xs:element minOccurs="0" name="houseconfig" nillable="true" type="tns:ArrayOfhouseconfig" />
+      <xs:element minOccurs="0" name="housefloor_package" nillable="true" type="tns:ArrayOfhousefloor_package" />
+      <xs:element minOccurs="0" name="housefloors" type="xs:int" />
+      <xs:element minOccurs="0" name="image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="price" type="xs:int" />
+      <xs:element minOccurs="0" name="producer_id" type="xs:int" />
+      <xs:element minOccurs="0" name="ymdh_address" nillable="true" type="tns:ymdh_address" />
+      <xs:element minOccurs="0" name="ymdh_appointment" nillable="true" type="tns:ArrayOfymdh_appointment" />
+      <xs:element minOccurs="0" name="ymdh_house_package_status" nillable="true" type="tns:ymdh_house_package_status" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ymdh_house_package" nillable="true" type="tns:ymdh_house_package" />
+  <xs:complexType name="ArrayOfhouseconfig">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="houseconfig" nillable="true" type="tns:houseconfig" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfhouseconfig" nillable="true" type="tns:ArrayOfhouseconfig" />
+  <xs:complexType name="houseconfig">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="consultant_user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="customer_user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="deleted" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="house_package_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="houseconfig_has_attribute" nillable="true" type="tns:ArrayOfhouseconfig_has_attribute" />
+      <xs:element minOccurs="0" name="houseconfig_id" type="xs:int" />
+      <xs:element minOccurs="0" name="housefloor" nillable="true" type="tns:ArrayOfhousefloor" />
+      <xs:element minOccurs="0" name="mdh_users" nillable="true" type="tns:mdh_users" />
+      <xs:element minOccurs="0" name="mdh_users1" nillable="true" type="tns:mdh_users" />
+      <xs:element minOccurs="0" name="modifieddate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="price" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="price_floor" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="project" nillable="true" type="tns:ArrayOfproject" />
+      <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ymdh_house_package" nillable="true" type="tns:ymdh_house_package" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="houseconfig" nillable="true" type="tns:houseconfig" />
+  <xs:complexType name="ArrayOfhouseconfig_has_attribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="houseconfig_has_attribute" nillable="true" type="tns:houseconfig_has_attribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfhouseconfig_has_attribute" nillable="true" type="tns:ArrayOfhouseconfig_has_attribute" />
+  <xs:complexType name="houseconfig_has_attribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="attribute" nillable="true" type="tns:attribute" />
+      <xs:element minOccurs="0" name="attribute_id" type="xs:int" />
+      <xs:element minOccurs="0" name="houseconfig" nillable="true" type="tns:houseconfig" />
+      <xs:element minOccurs="0" name="houseconfig_id" type="xs:int" />
+      <xs:element minOccurs="0" name="special" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="houseconfig_has_attribute" nillable="true" type="tns:houseconfig_has_attribute" />
+  <xs:complexType name="ArrayOfhousefloor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="housefloor" nillable="true" type="tns:housefloor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfhousefloor" nillable="true" type="tns:ArrayOfhousefloor" />
+  <xs:complexType name="housefloor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="area" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="houseconfig" nillable="true" type="tns:houseconfig" />
+      <xs:element minOccurs="0" name="houseconfig_id" type="xs:int" />
+      <xs:element minOccurs="0" name="housefloor_id" type="xs:int" />
+      <xs:element minOccurs="0" name="price" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="sketch" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="housefloor" nillable="true" type="tns:housefloor" />
+  <xs:complexType name="mdh_users">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="block" type="xs:byte" />
+      <xs:element minOccurs="0" name="deleted" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="houseconfig" nillable="true" type="tns:ArrayOfhouseconfig" />
+      <xs:element minOccurs="0" name="houseconfig1" nillable="true" type="tns:ArrayOfhouseconfig" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="lastResetTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lastvisitDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="otep" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="otpKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="params" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="project" nillable="true" type="tns:ArrayOfproject" />
+      <xs:element minOccurs="0" name="registerDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="requireReset" type="xs:byte" />
+      <xs:element minOccurs="0" name="resetCount" type="xs:int" />
+      <xs:element minOccurs="0" name="sendEmail" nillable="true" type="xs:byte" />
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ymdh_appointment" nillable="true" type="tns:ArrayOfymdh_appointment" />
+      <xs:element minOccurs="0" name="ymdh_appointment1" nillable="true" type="tns:ArrayOfymdh_appointment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mdh_users" nillable="true" type="tns:mdh_users" />
+  <xs:complexType name="ArrayOfproject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="project" nillable="true" type="tns:project" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfproject" nillable="true" type="tns:ArrayOfproject" />
+  <xs:complexType name="project">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="customer_user_id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="enddate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="houseconfig" nillable="true" type="tns:houseconfig" />
+      <xs:element minOccurs="0" name="houseconfig_id" type="xs:int" />
+      <xs:element minOccurs="0" name="invoice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="mdh_users" nillable="true" type="tns:mdh_users" />
+      <xs:element minOccurs="0" name="modifieddate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="project_id" type="xs:int" />
+      <xs:element minOccurs="0" name="startdate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="project" nillable="true" type="tns:project" />
+  <xs:complexType name="ArrayOfymdh_appointment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ymdh_appointment" nillable="true" type="tns:ymdh_appointment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfymdh_appointment" nillable="true" type="tns:ArrayOfymdh_appointment" />
+  <xs:complexType name="ymdh_appointment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appointment_id" type="xs:int" />
+      <xs:element minOccurs="0" name="appointment_status_id" type="xs:int" />
+      <xs:element minOccurs="0" name="consultant_user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="from_" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="house_package_id" type="xs:int" />
+      <xs:element minOccurs="0" name="mdh_users" nillable="true" type="tns:mdh_users" />
+      <xs:element minOccurs="0" name="mdh_users1" nillable="true" type="tns:mdh_users" />
+      <xs:element minOccurs="0" name="message_id" type="xs:int" />
+      <xs:element minOccurs="0" name="user_id" type="xs:int" />
+      <xs:element minOccurs="0" name="ymdh_appointment_status" nillable="true" type="tns:ymdh_appointment_status" />
+      <xs:element minOccurs="0" name="ymdh_house_package" nillable="true" type="tns:ymdh_house_package" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ymdh_appointment" nillable="true" type="tns:ymdh_appointment" />
+  <xs:complexType name="ymdh_appointment_status">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appointment_status_id" type="xs:int" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ymdh_appointment" nillable="true" type="tns:ArrayOfymdh_appointment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ymdh_appointment_status" nillable="true" type="tns:ymdh_appointment_status" />
+  <xs:complexType name="ArrayOfhousefloor_package">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="housefloor_package" nillable="true" type="tns:housefloor_package" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfhousefloor_package" nillable="true" type="tns:ArrayOfhousefloor_package" />
+  <xs:complexType name="housefloor_package">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="area" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="house_package_id" type="xs:int" />
+      <xs:element minOccurs="0" name="housefloor_id" type="xs:int" />
+      <xs:element minOccurs="0" name="price" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="sketch" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ymdh_house_package" nillable="true" type="tns:ymdh_house_package" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="housefloor_package" nillable="true" type="tns:housefloor_package" />
+  <xs:complexType name="ymdh_address">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZIP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="address_id" type="xs:int" />
+      <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="houseno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ymdh_house_package" nillable="true" type="tns:ArrayOfymdh_house_package" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ymdh_address" nillable="true" type="tns:ymdh_address" />
+  <xs:complexType name="ArrayOfymdh_house_package">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ymdh_house_package" nillable="true" type="tns:ymdh_house_package" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfymdh_house_package" nillable="true" type="tns:ArrayOfymdh_house_package" />
+  <xs:complexType name="ymdh_house_package_status">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="house_package_status_id" type="xs:int" />
+      <xs:element minOccurs="0" name="ymdh_house_package" nillable="true" type="tns:ArrayOfymdh_house_package" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ymdh_house_package_status" nillable="true" type="tns:ymdh_house_package_status" />
+  <xs:complexType name="ArrayOfymdh_appointment_status">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ymdh_appointment_status" nillable="true" type="tns:ymdh_appointment_status" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfymdh_appointment_status" nillable="true" type="tns:ArrayOfymdh_appointment_status" />
+  <xs:complexType name="ArrayOfmdh_user_usergroup_map">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mdh_user_usergroup_map" nillable="true" type="tns:mdh_user_usergroup_map" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfmdh_user_usergroup_map" nillable="true" type="tns:ArrayOfmdh_user_usergroup_map" />
+  <xs:complexType name="mdh_user_usergroup_map">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="group_id" type="xs:long" />
+      <xs:element minOccurs="0" name="user_id" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mdh_user_usergroup_map" nillable="true" type="tns:mdh_user_usergroup_map" />
+  <xs:complexType name="ArrayOfmdh_usergroups">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mdh_usergroups" nillable="true" type="tns:mdh_usergroups" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfmdh_usergroups" nillable="true" type="tns:ArrayOfmdh_usergroups" />
+  <xs:complexType name="mdh_usergroups">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="lft" type="xs:int" />
+      <xs:element minOccurs="0" name="parent_id" type="xs:long" />
+      <xs:element minOccurs="0" name="rgt" type="xs:int" />
+      <xs:element minOccurs="0" name="title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mdh_usergroups" nillable="true" type="tns:mdh_usergroups" />
+  <xs:complexType name="ArrayOfymdh_address">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ymdh_address" nillable="true" type="tns:ymdh_address" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfymdh_address" nillable="true" type="tns:ArrayOfymdh_address" />
+  <xs:complexType name="ArrayOfymdh_house_package_status">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ymdh_house_package_status" nillable="true" type="tns:ymdh_house_package_status" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfymdh_house_package_status" nillable="true" type="tns:ArrayOfymdh_house_package_status" />
+</xs:schema>

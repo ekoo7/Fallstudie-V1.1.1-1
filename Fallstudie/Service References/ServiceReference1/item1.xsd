@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" />
+  <xs:import schemaLocation="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" />
   <xs:element name="DoWork">
     <xs:complexType>
       <xs:sequence />
@@ -10,6 +12,414 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="DoWorkResult" nillable="true" type="xs:string" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_mdh_users_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_mdh_users_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_mdh_users_dataResult" nillable="true" type="q1:ArrayOfUsers" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_message_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_message_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="Get_ymdh_message_dataResult" nillable="true" type="q2:ArrayOfymdh_message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_appointment_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_appointment_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_ymdh_appointment_dataResult" nillable="true" type="q3:ArrayOfAppointments" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_appointment_status_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_appointment_status_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_ymdh_appointment_status_dataResult" nillable="true" type="q4:ArrayOfAppointmentStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_house_package_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_house_package_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_ymdh_house_package_dataResult" nillable="true" type="q5:ArrayOfHousePackage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_attribute_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_attribute_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_attribute_dataResult" nillable="true" type="q6:ArrayOfAttributes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_attribute_group_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_attribute_group_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="Get_attribute_group_dataResult" nillable="true" type="q7:ArrayOfattribute_group" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_houseconfig_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_houseconfig_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_houseconfig_dataResult" nillable="true" type="q8:ArrayOfHouseconfig" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_houseconfig_has_attribute_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_houseconfig_has_attribute_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_houseconfig_has_attribute_dataResult" nillable="true" type="q9:ArrayOfHouseconfigHasAttribute" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_housefloor_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_housefloor_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_housefloor_dataResult" nillable="true" type="q10:ArrayOfHouseFloors" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_project_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_project_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_project_dataResult" nillable="true" type="q11:ArrayOfProjectSync" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_housefloor_package_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_housefloor_package_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_housefloor_package_dataResult" nillable="true" type="q12:ArrayOfHouseFloorPackage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_house_package_has_attribute_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_house_package_has_attribute_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_house_package_has_attribute_dataResult" nillable="true" type="q13:ArrayOfPackageAttribute" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_mdh_user_usergroup_map_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_mdh_user_usergroup_map_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_mdh_user_usergroup_map_dataResult" nillable="true" type="q14:ArrayOfUserGroupMap" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_mdh_usergroups_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_mdh_usergroups_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_mdh_usergroups_dataResult" nillable="true" type="q15:ArrayOfUserGroups" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_address_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_address_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_ymdh_address_dataResult" nillable="true" type="q16:ArrayOfAddress" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_house_package_status_data">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_ymdh_house_package_status_dataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="Get_ymdh_house_package_status_dataResult" nillable="true" type="q17:ArrayOfHousePackageStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_mdh_users">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" minOccurs="0" name="tableDataList" nillable="true" type="q18:ArrayOfUsers" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_mdh_usersResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_message">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q19:ArrayOfymdh_message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_messageResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_appointment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q20:ArrayOfymdh_appointment" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_appointmentResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_appointment_status">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q21:ArrayOfymdh_appointment_status" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_appointment_statusResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_house_package">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q22:ArrayOfymdh_house_package" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_house_packageResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_attribute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q23:ArrayOfattribute" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_attributeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_attribute_group">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q24:ArrayOfattribute_group" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_attribute_groupResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_houseconfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q25:ArrayOfhouseconfig" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_houseconfigResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_houseconfig_has_attribute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q26:ArrayOfhouseconfig_has_attribute" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_houseconfig_has_attributeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_housefloor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q27:ArrayOfhousefloor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_housefloorResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_project">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q28:ArrayOfproject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_projectResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_housefloor_package">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q29:ArrayOfhousefloor_package" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_housefloor_packageResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_house_package_has_attribute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q30:ArrayOfhouse_package_has_attribute" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_house_package_has_attributeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_mdh_user_usergroup_map">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q31:ArrayOfmdh_user_usergroup_map" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_mdh_user_usergroup_mapResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_mdh_usergroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q32:ArrayOfmdh_usergroups" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_mdh_usergroupsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_address">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q33:ArrayOfymdh_address" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_addressResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_house_package_status">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" minOccurs="0" name="tableDataList" nillable="true" type="q34:ArrayOfymdh_house_package_status" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Import_ymdh_house_package_statusResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

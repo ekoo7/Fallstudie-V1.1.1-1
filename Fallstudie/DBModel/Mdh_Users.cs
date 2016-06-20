@@ -10,7 +10,7 @@ namespace Fallstudie.DBModel
     [Table("mdh_users")]
     public class Mdh_Users
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int id { get; set; }
         public string name { get; set; }
         public string username { get; set; }

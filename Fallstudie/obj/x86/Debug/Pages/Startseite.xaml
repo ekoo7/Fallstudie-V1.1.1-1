@@ -44,5 +44,13 @@
         </StackPanel>
     </Grid>
         </ScrollViewer>
+    <Page.BottomAppBar>
+        <CommandBar Opacity="0.8" HorizontalContentAlignment="Left">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Command="{Binding ButtonSync}" Icon="Download" Label="Synchronisieren"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
 

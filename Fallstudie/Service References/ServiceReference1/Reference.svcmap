@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5b3fefa4-f096-42a2-ae2f-b297734321af" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ee9a1da3-7616-45fa-aef1-4116af3dc666" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -10,7 +10,7 @@
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
     <CollectionMappings>
-      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
     </CollectionMappings>
     <GenerateSerializableTypes>false</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
@@ -21,13 +21,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://wi-gate.technikum-wien.at:60933/TestSendService/" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="530bd398-3f0f-4a67-8f5a-fdcdf08cc01b" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/TestSendService/?xsd=xsd1" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="a541c654-b6fe-4ec6-aee7-f6715c8e0ff0" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/TestSendService/?disco" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="eca026f2-8dfc-4a88-9d2a-39d46df1b21d" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/TestSendService/?xsd=xsd0" />
-    <MetadataFile FileName="TestSendService.wsdl" MetadataType="Wsdl" ID="70b10f2b-fdac-4ac3-8eed-79c1e3513a1a" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/TestSendService/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="967239c8-2143-404f-80a8-0de0eb520e85" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?xsd=xsd1" />
+    <MetadataFile FileName="AppSynchronisationService.wsdl" MetadataType="Wsdl" ID="cceaa6f0-8027-4514-90bb-1fbf571a3f86" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="ed95155e-99df-46f5-8b58-3cd6dee27956" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?xsd=xsd0" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="3a7621ac-e3fa-40ba-a103-6537aaf26e6b" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?disco" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="5156e834-3d57-4f3d-8907-cb773093fc5d" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?xsd=xsd2" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="f604c69e-dde5-44f5-a8e2-2df4cc06b149" SourceId="1" SourceUrl="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

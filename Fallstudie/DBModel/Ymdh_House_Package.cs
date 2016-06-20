@@ -11,7 +11,7 @@ namespace Fallstudie.DBModel
     [Table("ymdh_house_package")]
     public class Ymdh_House_Package
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int house_package_id { get; set; }
         public string description { get; set; }
         public string image { get; set; }

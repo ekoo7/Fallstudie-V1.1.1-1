@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AppSynchronisationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Synchronisation_V2.synchroniseToApp.Models" />
+      <xsd:import schemaLocation="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Synchronisation_V2.DbModels" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAppSynchronisationService_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_mdh_users_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_mdh_users_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_mdh_users_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_mdh_users_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_message_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_message_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_message_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_message_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_appointment_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_appointment_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_appointment_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_appointment_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_appointment_status_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_appointment_status_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_appointment_status_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_appointment_status_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_house_package_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_house_package_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_house_package_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_house_package_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_attribute_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_attribute_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_attribute_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_attribute_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_attribute_group_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_attribute_group_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_attribute_group_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_attribute_group_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_houseconfig_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_houseconfig_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_houseconfig_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_houseconfig_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_houseconfig_has_attribute_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_houseconfig_has_attribute_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_houseconfig_has_attribute_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_houseconfig_has_attribute_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_housefloor_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_housefloor_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_housefloor_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_housefloor_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_project_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_project_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_project_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_project_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_housefloor_package_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_housefloor_package_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_housefloor_package_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_housefloor_package_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_house_package_has_attribute_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_house_package_has_attribute_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_house_package_has_attribute_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_house_package_has_attribute_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_mdh_user_usergroup_map_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_mdh_user_usergroup_map_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_mdh_user_usergroup_map_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_mdh_user_usergroup_map_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_mdh_usergroups_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_mdh_usergroups_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_mdh_usergroups_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_mdh_usergroups_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_address_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_address_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_address_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_address_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_house_package_status_data_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_house_package_status_data" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Get_ymdh_house_package_status_data_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get_ymdh_house_package_status_dataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_mdh_users_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_mdh_users" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_mdh_users_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_mdh_usersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_message_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_message" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_message_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_messageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_appointment_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_appointment" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_appointment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_appointmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_appointment_status_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_appointment_status" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_appointment_status_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_appointment_statusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_house_package_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_house_package" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_house_package_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_house_packageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_attribute_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_attribute" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_attribute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_attributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_attribute_group_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_attribute_group" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_attribute_group_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_attribute_groupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_houseconfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_houseconfig" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_houseconfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_houseconfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_houseconfig_has_attribute_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_houseconfig_has_attribute" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_houseconfig_has_attribute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_houseconfig_has_attributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_housefloor_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_housefloor" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_housefloor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_housefloorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_project_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_project" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_project_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_projectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_housefloor_package_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_housefloor_package" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_housefloor_package_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_housefloor_packageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_house_package_has_attribute_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_house_package_has_attribute" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_house_package_has_attribute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_house_package_has_attributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_mdh_user_usergroup_map_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_mdh_user_usergroup_map" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_mdh_user_usergroup_map_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_mdh_user_usergroup_mapResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_mdh_usergroups_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_mdh_usergroups" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_mdh_usergroups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_mdh_usergroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_address_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_address" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_address_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_addressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_house_package_status_InputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_house_package_status" />
+  </wsdl:message>
+  <wsdl:message name="IAppSynchronisationService_Import_ymdh_house_package_status_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Import_ymdh_house_package_statusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAppSynchronisationService">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/DoWork" message="tns:IAppSynchronisationService_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/DoWorkResponse" message="tns:IAppSynchronisationService_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_mdh_users_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_mdh_users_data" message="tns:IAppSynchronisationService_Get_mdh_users_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_mdh_users_dataResponse" message="tns:IAppSynchronisationService_Get_mdh_users_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_message_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_message_data" message="tns:IAppSynchronisationService_Get_ymdh_message_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_message_dataResponse" message="tns:IAppSynchronisationService_Get_ymdh_message_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_appointment_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_appointment_data" message="tns:IAppSynchronisationService_Get_ymdh_appointment_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_appointment_dataResponse" message="tns:IAppSynchronisationService_Get_ymdh_appointment_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_appointment_status_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_appointment_status_data" message="tns:IAppSynchronisationService_Get_ymdh_appointment_status_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_appointment_status_dataResponse" message="tns:IAppSynchronisationService_Get_ymdh_appointment_status_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_house_package_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_house_package_data" message="tns:IAppSynchronisationService_Get_ymdh_house_package_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_house_package_dataResponse" message="tns:IAppSynchronisationService_Get_ymdh_house_package_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_attribute_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_attribute_data" message="tns:IAppSynchronisationService_Get_attribute_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_attribute_dataResponse" message="tns:IAppSynchronisationService_Get_attribute_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_attribute_group_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_attribute_group_data" message="tns:IAppSynchronisationService_Get_attribute_group_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_attribute_group_dataResponse" message="tns:IAppSynchronisationService_Get_attribute_group_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_houseconfig_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_houseconfig_data" message="tns:IAppSynchronisationService_Get_houseconfig_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_houseconfig_dataResponse" message="tns:IAppSynchronisationService_Get_houseconfig_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_houseconfig_has_attribute_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_houseconfig_has_attribute_data" message="tns:IAppSynchronisationService_Get_houseconfig_has_attribute_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_houseconfig_has_attribute_dataResponse" message="tns:IAppSynchronisationService_Get_houseconfig_has_attribute_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_housefloor_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_housefloor_data" message="tns:IAppSynchronisationService_Get_housefloor_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_housefloor_dataResponse" message="tns:IAppSynchronisationService_Get_housefloor_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_project_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_project_data" message="tns:IAppSynchronisationService_Get_project_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_project_dataResponse" message="tns:IAppSynchronisationService_Get_project_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_housefloor_package_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_housefloor_package_data" message="tns:IAppSynchronisationService_Get_housefloor_package_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_housefloor_package_dataResponse" message="tns:IAppSynchronisationService_Get_housefloor_package_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_house_package_has_attribute_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_house_package_has_attribute_data" message="tns:IAppSynchronisationService_Get_house_package_has_attribute_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_house_package_has_attribute_dataResponse" message="tns:IAppSynchronisationService_Get_house_package_has_attribute_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_mdh_user_usergroup_map_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_mdh_user_usergroup_map_data" message="tns:IAppSynchronisationService_Get_mdh_user_usergroup_map_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_mdh_user_usergroup_map_dataResponse" message="tns:IAppSynchronisationService_Get_mdh_user_usergroup_map_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_mdh_usergroups_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_mdh_usergroups_data" message="tns:IAppSynchronisationService_Get_mdh_usergroups_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_mdh_usergroups_dataResponse" message="tns:IAppSynchronisationService_Get_mdh_usergroups_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_address_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_address_data" message="tns:IAppSynchronisationService_Get_ymdh_address_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_address_dataResponse" message="tns:IAppSynchronisationService_Get_ymdh_address_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_house_package_status_data">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_house_package_status_data" message="tns:IAppSynchronisationService_Get_ymdh_house_package_status_data_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Get_ymdh_house_package_status_dataResponse" message="tns:IAppSynchronisationService_Get_ymdh_house_package_status_data_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_mdh_users">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_mdh_users" message="tns:IAppSynchronisationService_Import_mdh_users_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_mdh_usersResponse" message="tns:IAppSynchronisationService_Import_mdh_users_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_message">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_message" message="tns:IAppSynchronisationService_Import_ymdh_message_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_messageResponse" message="tns:IAppSynchronisationService_Import_ymdh_message_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_appointment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_appointment" message="tns:IAppSynchronisationService_Import_ymdh_appointment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_appointmentResponse" message="tns:IAppSynchronisationService_Import_ymdh_appointment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_appointment_status">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_appointment_status" message="tns:IAppSynchronisationService_Import_ymdh_appointment_status_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_appointment_statusResponse" message="tns:IAppSynchronisationService_Import_ymdh_appointment_status_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_house_package">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_house_package" message="tns:IAppSynchronisationService_Import_ymdh_house_package_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_house_packageResponse" message="tns:IAppSynchronisationService_Import_ymdh_house_package_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_attribute">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_attribute" message="tns:IAppSynchronisationService_Import_attribute_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_attributeResponse" message="tns:IAppSynchronisationService_Import_attribute_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_attribute_group">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_attribute_group" message="tns:IAppSynchronisationService_Import_attribute_group_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_attribute_groupResponse" message="tns:IAppSynchronisationService_Import_attribute_group_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_houseconfig">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_houseconfig" message="tns:IAppSynchronisationService_Import_houseconfig_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_houseconfigResponse" message="tns:IAppSynchronisationService_Import_houseconfig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_houseconfig_has_attribute">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_houseconfig_has_attribute" message="tns:IAppSynchronisationService_Import_houseconfig_has_attribute_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_houseconfig_has_attributeResponse" message="tns:IAppSynchronisationService_Import_houseconfig_has_attribute_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_housefloor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_housefloor" message="tns:IAppSynchronisationService_Import_housefloor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_housefloorResponse" message="tns:IAppSynchronisationService_Import_housefloor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_project">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_project" message="tns:IAppSynchronisationService_Import_project_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_projectResponse" message="tns:IAppSynchronisationService_Import_project_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_housefloor_package">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_housefloor_package" message="tns:IAppSynchronisationService_Import_housefloor_package_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_housefloor_packageResponse" message="tns:IAppSynchronisationService_Import_housefloor_package_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_house_package_has_attribute">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_house_package_has_attribute" message="tns:IAppSynchronisationService_Import_house_package_has_attribute_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_house_package_has_attributeResponse" message="tns:IAppSynchronisationService_Import_house_package_has_attribute_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_mdh_user_usergroup_map">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_mdh_user_usergroup_map" message="tns:IAppSynchronisationService_Import_mdh_user_usergroup_map_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_mdh_user_usergroup_mapResponse" message="tns:IAppSynchronisationService_Import_mdh_user_usergroup_map_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_mdh_usergroups">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_mdh_usergroups" message="tns:IAppSynchronisationService_Import_mdh_usergroups_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_mdh_usergroupsResponse" message="tns:IAppSynchronisationService_Import_mdh_usergroups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_address">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_address" message="tns:IAppSynchronisationService_Import_ymdh_address_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_addressResponse" message="tns:IAppSynchronisationService_Import_ymdh_address_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_house_package_status">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_house_package_status" message="tns:IAppSynchronisationService_Import_ymdh_house_package_status_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAppSynchronisationService/Import_ymdh_house_package_statusResponse" message="tns:IAppSynchronisationService_Import_ymdh_house_package_status_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAppSynchronisationService" type="tns:IAppSynchronisationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_mdh_users_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_mdh_users_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_message_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_ymdh_message_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_appointment_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_ymdh_appointment_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_appointment_status_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_ymdh_appointment_status_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_house_package_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_ymdh_house_package_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_attribute_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_attribute_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_attribute_group_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_attribute_group_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_houseconfig_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_houseconfig_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_houseconfig_has_attribute_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_houseconfig_has_attribute_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_housefloor_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_housefloor_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_project_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_project_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_housefloor_package_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_housefloor_package_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_house_package_has_attribute_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_house_package_has_attribute_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_mdh_user_usergroup_map_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_mdh_user_usergroup_map_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_mdh_usergroups_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_mdh_usergroups_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_address_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_ymdh_address_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ymdh_house_package_status_data">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Get_ymdh_house_package_status_data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_mdh_users">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_mdh_users" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_message">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_ymdh_message" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_appointment">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_ymdh_appointment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_appointment_status">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_ymdh_appointment_status" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_house_package">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_ymdh_house_package" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_attribute">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_attribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_attribute_group">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_attribute_group" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_houseconfig">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_houseconfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_houseconfig_has_attribute">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_houseconfig_has_attribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_housefloor">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_housefloor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_project">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_project" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_housefloor_package">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_housefloor_package" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_house_package_has_attribute">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_house_package_has_attribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_mdh_user_usergroup_map">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_mdh_user_usergroup_map" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_mdh_usergroups">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_mdh_usergroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_address">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_ymdh_address" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Import_ymdh_house_package_status">
+      <soap:operation soapAction="http://tempuri.org/IAppSynchronisationService/Import_ymdh_house_package_status" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AppSynchronisationService">
+    <wsdl:port name="BasicHttpBinding_IAppSynchronisationService" binding="tns:BasicHttpBinding_IAppSynchronisationService">
+      <soap:address location="http://wi-gate.technikum-wien.at:60933/AppSynchronisationService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

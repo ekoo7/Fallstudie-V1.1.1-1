@@ -170,6 +170,7 @@
     <RootPropertyPathName Name="DateFormat" />
     <RootPropertyPathName Name="TimeFormat" />
     <RootPropertyPathName Name="TestService" />
+    <RootPropertyPathName Name="ButtonSync" />
     <RootPropertyPathName Name="Appointments" />
     <RootPropertyPathName Name="SelectedAppointment" />
     <RootPropertyPathName Name="Time" />

@@ -11,7 +11,7 @@ namespace Fallstudie.DBModel
     [Table("ymdh_message")]
     public class Ymdh_Message
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int message_id { get; set; }
         public string summary { get; set; }
         public string message { get; set; }
