@@ -61,79 +61,94 @@ namespace Fallstudie.Model
         //Konstruktor für Grundriss
         public ImageInherit(string source, int id, decimal area, RelayCommand btn, RelayCommand btn2, int floors, int floorsDB)
         {
-
-            Image1 = new Image();
-            BitmapImage1 = new BitmapImage();
-            Uri1 = new Uri(source, UriKind.Absolute);
-            BitmapImage1.UriSource = Uri1;
-            Image1.Source = BitmapImage1;
-            SourceImage = source;
-            Id = id;
-            Image1.Name = id.ToString();
-
-            if (floors > floorsDB && floors - 1 == floorsDB) Price = 1000;
-            else if (floors > floorsDB && floors - 2 == floorsDB) Price = 2000;
-            else if (floors < floorsDB && floors + 1 == floorsDB) Price = -1000;
-            else if (floors < floorsDB && floors + 2 == floorsDB) Price = -2000;
-            else Price = 0;
-
-            if (area == 0)
+            try
             {
-                Description = "Erdgeschoss";
-            }
-            else if (area == 1)
-            {
-                Description = "Stockwerk 1";
-            }
-            else if (area == 2)
-            {
-                Description = "Stockwerk 2";
-            }
+                Image1 = new Image();
+                BitmapImage1 = new BitmapImage();
+                Uri1 = new Uri(source, UriKind.Absolute);
+                BitmapImage1.UriSource = Uri1;
+                Image1.Source = BitmapImage1;
+                SourceImage = source;
+                Id = id;
+                Image1.Name = id.ToString();
 
-            ButtonDrawSketch = btn;
-            ButtonUploadSketch = btn2;
+                if (floors > floorsDB && floors - 1 == floorsDB) Price = 1000;
+                else if (floors > floorsDB && floors - 2 == floorsDB) Price = 2000;
+                else if (floors < floorsDB && floors + 1 == floorsDB) Price = -1000;
+                else if (floors < floorsDB && floors + 2 == floorsDB) Price = -2000;
+                else Price = 0;
+
+                if (area == 0)
+                {
+                    Description = "Erdgeschoss";
+                }
+                else if (area == 1)
+                {
+                    Description = "Stockwerk 1";
+                }
+                else if (area == 2)
+                {
+                    Description = "Stockwerk 2";
+                }
+
+                ButtonDrawSketch = btn;
+                ButtonUploadSketch = btn2;
+            }
+            catch (Exception)
+            {
+            }
         }
 
         public ImageInherit(string source, int id, string description, double price)
         {
-            Image1 = new Image();
-            BitmapImage1 = new BitmapImage();
-            Uri1 = new Uri(source, UriKind.Absolute);
-            BitmapImage1.UriSource = Uri1;
-            Image1.Source = BitmapImage1;
-            SourceImage = source;
-            Id = id;
-            Image1.Name = id.ToString();
-            Description = description;
-            Price = price;
-
+            try
+            {
+                Image1 = new Image();
+                BitmapImage1 = new BitmapImage();
+                Uri1 = new Uri(source, UriKind.Absolute);
+                BitmapImage1.UriSource = Uri1;
+                Image1.Source = BitmapImage1;
+                SourceImage = source;
+                Id = id;
+                Image1.Name = id.ToString();
+                Description = description;
+                Price = price;
+            }
+            catch (Exception)
+            {
+            }
         }
 
         //Konstruktor für die Hauspackages
         public ImageInherit(string source, int id, string description, double price, string zip, string city, string street, string houseNo, string country)
         {
-            Image1 = new Image();
-            BitmapImage1 = new BitmapImage();
-            Uri1 = new Uri(source, UriKind.Absolute);
-            BitmapImage1.UriSource = Uri1;
-            Image1.Source = BitmapImage1;
-            SourceImage = source;
+            try
+            {
+                Image1 = new Image();
+                BitmapImage1 = new BitmapImage();
+                Uri1 = new Uri(source, UriKind.Absolute);
+                BitmapImage1.UriSource = Uri1;
+                Image1.Source = BitmapImage1;
+                SourceImage = source;
 
-            string delimStr = ",";
-            char[] delimiter = delimStr.ToCharArray();
-            string[] split = description.Split(delimiter, 3);
+                string delimStr = ",";
+                char[] delimiter = delimStr.ToCharArray();
+                string[] split = description.Split(delimiter, 3);
 
 
-            Id = id;
-            Name = split[0];
-            Size = split[1];
-            Description = split[2];
-            Price = price;
-            Zip = zip;
-            City = city;
-            Address = street + " " + houseNo;
-            Country = country;
-
+                Id = id;
+                Name = split[0];
+                Size = split[1];
+                Description = split[2];
+                Price = price;
+                Zip = zip;
+                City = city;
+                Address = street + " " + houseNo;
+                Country = country;
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

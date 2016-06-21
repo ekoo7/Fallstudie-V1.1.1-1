@@ -196,8 +196,6 @@
     <Compile Include="DBModel\Ymdh_House_Package.cs" />
     <Compile Include="DBModel\Ymdh_House_Package_Status.cs" />
     <Compile Include="DBModel\Ymdh_Message.cs" />
-    <Compile Include="DBModel\Ymdh_Person.cs" />
-    <Compile Include="DBModel\Ymdh_Producer.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>

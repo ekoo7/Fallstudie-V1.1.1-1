@@ -54,7 +54,7 @@ namespace Fallstudie.ViewModel
                     SQLInsertAttributeGroup();
                     FirstSync();
                     ProjectsMethod();
-                    //ManageAppointments();
+                    ManageAppointments();
                 }
                 else
                     FirstConnectionWithServer();
@@ -63,9 +63,9 @@ namespace Fallstudie.ViewModel
             {
                 SQLResetTempTable();
                 ProjectsMethod();
-                //ManageAppointments();
+                ManageAppointments();
 
-                //DownloadImages();
+                DownloadImages();
             }
                ThreadPool.RunAsync(CheckNewImages);     
         }
@@ -97,6 +97,7 @@ namespace Fallstudie.ViewModel
         }
 
         #region Synchro
+
         #region Properties
         public RelayCommand ButtonSync { get; set; }
         private bool isSynched = false;
@@ -108,8 +109,9 @@ namespace Fallstudie.ViewModel
         }
 
         #endregion
+
         #region Methods
-        private async void FirstSync()
+        private void FirstSync()
         {
             try
             {
@@ -136,10 +138,8 @@ namespace Fallstudie.ViewModel
 
                 SQLSyncInsertProject(con);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                var dialog = new MessageDialog(e.ToString());
-                await dialog.ShowAsync();
             }
         }
 
@@ -147,7 +147,7 @@ namespace Fallstudie.ViewModel
         {
             try
             {
-                MessageDialog msgDialog = new MessageDialog("Sind Sie sicher, dass Sie Ihre App synchronisieren möchten?");
+                MessageDialog msgDialog = new MessageDialog("Dies kann einige Augenblicke in Anspruch nehmen. Sind Sie sicher, dass Sie Ihre App synchronisieren möchten?");
                 UICommand yesCmd = new UICommand("Ja");
                 msgDialog.Commands.Add(yesCmd);
                 UICommand noCmd = new UICommand("Nein");
@@ -156,21 +156,30 @@ namespace Fallstudie.ViewModel
                 if (cmd == yesCmd)
                 {
                     SQLSyncSendTable();
-                    if (isSynched == true)
+
+                    SQLSyncDropTable();
+                    FirstSync();
+
+                    SQLGetCustomers();
+
+                    var dialog = new MessageDialog("Daten werden geladen...");
+                    UICommand SCmd = new UICommand("Schließen");
+                    msgDialog.Commands.Add(SCmd);
+                    IUICommand cmd1 = await dialog.ShowAsync();
+                    if(cmd1 == SCmd)
                     {
-                        SQLSyncDropTable();
-                        FirstSync();
+                        var dialog1 = new MessageDialog("Ihre App wurde erfolgreich synchronisiert.");
+                        await dialog1.ShowAsync();
                     }
                 }     
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                var dialog = new MessageDialog(e.ToString());
-                await dialog.ShowAsync();
             }
         }
 
         #endregion
+
         #region SQL
         private void SQLSyncDropTable()
         {
@@ -179,7 +188,8 @@ namespace Fallstudie.ViewModel
             List<int> ListHHA = new List<int>();
             List<int> ListHF = new List<int>();
             List<int> ListP = new List<int>();
-            List<int> ListAP = new List<int>(); 
+            List<int> ListAP = new List<int>();
+            List<int> ListUGM = new List<int>();
             try
             {
                 using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
@@ -208,6 +218,10 @@ namespace Fallstudie.ViewModel
                               select x.appointment_id).ToList();
                     foreach (var item in ListAP)
                         con.Delete<Ymdh_Appointment>(item);
+                    ListUGM = (from x in con.Table<Mdh_User_Usergroup_Map>()
+                              select x.group_id).ToList();
+                    foreach (var item in ListUGM)
+                        con.Delete<Mdh_User_Usergroup_Map>(item);
                     con.Close();
                 } 
             }
@@ -218,86 +232,106 @@ namespace Fallstudie.ViewModel
 
         private async void SQLSyncInsertAttribute(SQLiteConnection con)
         {
-            List<Attributes> List = new List<Attributes>();
-            List = await service.Get_attribute_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new DBModel.Attribute
+                List<Attributes> List = new List<Attributes>();
+                List = await service.Get_attribute_dataAsync();
+                foreach (var item in List)
                 {
-                    attribute_id = item.Attribute_ID,
-                    description = item.Description,
-                    price = item.Price,
-                    image = item.Image,
-                    deleted = item.Deleted,
-                    attribute_group_id = item.Attribute_Group_ID
-                });
+                    con.InsertOrIgnore(new DBModel.Attribute
+                    {
+                        attribute_id = item.Attribute_ID,
+                        description = item.Description,
+                        price = item.Price,
+                        image = item.Image,
+                        deleted = item.Deleted,
+                        attribute_group_id = item.Attribute_Group_ID
+                    });
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertHouseconfig(SQLiteConnection con)
         {
-            List<Houseconfig1> List = new List<Houseconfig1>();
-            List = await service.Get_houseconfig_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Houseconfig
+                List<Houseconfig1> List = new List<Houseconfig1>();
+                List = await service.Get_houseconfig_dataAsync();
+                foreach (var item in List)
                 {
-                    houseconfig_id = item.Houseconfig_ID,
-                    price = item.Price,
-                    status = item.Status,
-                    price_floor = item.Price_Floor,
-                    modifieddate = ConvertDateTime((DateTime)item.Modifieddate),
-                    house_package_id = item.House_Package_ID,
-                    consultant_user_id = item.Consultant_User_ID,
-                    customer_user_id = item.Customer_User_ID,
-                });
+                    con.InsertOrReplace(new Houseconfig
+                    {
+                        houseconfig_id = item.Houseconfig_ID,
+                        price = item.Price,
+                        status = item.Status,
+                        price_floor = item.Price_Floor,
+                        modifieddate = ConvertDateTime((DateTime)item.Modifieddate),
+                        house_package_id = item.House_Package_ID,
+                        consultant_user_id = item.Consultant_User_ID,
+                        customer_user_id = item.Customer_User_ID,
+                    });
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertHouseconfigHasAttribute(SQLiteConnection con)
         {
-            List<HouseconfigHasAttribute> List = new List<HouseconfigHasAttribute>();
-            List = await service.Get_houseconfig_has_attribute_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Houseconfig_Has_Attribute
+                List<HouseconfigHasAttribute> List = new List<HouseconfigHasAttribute>();
+                List = await service.Get_houseconfig_has_attribute_dataAsync();
+                foreach (var item in List)
                 {
-                    houseconfig_id = item.houseconfig_id,
-                    attribute_id = item.attribute_id,
-                    amount = item.amount,
-                    special = item.special
-                });
+                    con.InsertOrReplace(new Houseconfig_Has_Attribute
+                    {
+                        houseconfig_id = item.houseconfig_id,
+                        attribute_id = item.attribute_id,
+                        amount = item.amount,
+                        special = item.special
+                    });
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertHousefloor(SQLiteConnection con)
         {
-            List<HouseFloors> List = new List<HouseFloors>();
-            List = await service.Get_housefloor_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Housefloor
+                List<HouseFloors> List = new List<HouseFloors>();
+                List = await service.Get_housefloor_dataAsync();
+                foreach (var item in List)
                 {
-                    housefloor_id = item.housefloor_id,
-                    price = item.price,
-                    sketch = item.sketch,
-                    houseconfig_id = item.houseconfig_id,
-                    area = item.area
-                });
+                    con.InsertOrIgnore(new Housefloor
+                    {
+                        housefloor_id = item.housefloor_id,
+                        price = item.price,
+                        sketch = item.sketch,
+                        houseconfig_id = item.houseconfig_id,
+                        area = item.area
+                    });
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertHousefloorPackage(SQLiteConnection con)
         {
-            List<HouseFloorPackage> List = new List<HouseFloorPackage>();
-            List = await service.Get_housefloor_package_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Housefloor_Package
+                List<HouseFloorPackage> List = new List<HouseFloorPackage>();
+                List = await service.Get_housefloor_package_dataAsync();
+                foreach (var item in List)
                 {
-                    housefloor_id = item.housefloor_id,
-                    price = item.price,
-                    sketch = item.sketch,
-                    house_package_id = item.house_package_id,
-                    area = item.area
-                });
+                    con.InsertOrIgnore(new Housefloor_Package
+                    {
+                        housefloor_id = item.housefloor_id,
+                        price = item.price,
+                        sketch = item.sketch,
+                        house_package_id = item.house_package_id,
+                        area = item.area
+                    });
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertUser(SQLiteConnection con)
         {
@@ -325,163 +359,220 @@ namespace Fallstudie.ViewModel
         }
         private async void SQLSyncInsertUserGroupMap(SQLiteConnection con)
         {
-            List<UserGroupMap> List = new List<UserGroupMap>();
-            List = await service.Get_mdh_user_usergroup_map_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Mdh_User_Usergroup_Map
+                List<UserGroupMap> List = new List<UserGroupMap>();
+                List = await service.Get_mdh_user_usergroup_map_dataAsync();
+                List<Mdh_User_Usergroup_Map> ListUGM = new List<Mdh_User_Usergroup_Map>();
+                bool x = false;
+                ListUGM = (from a in con.Table<Mdh_User_Usergroup_Map>()
+                           select a).ToList();
+                foreach (var item in List)
                 {
-                    user_id = (int)item.user_id,
-                    group_id = (int)item.group_id
-                });
+                    foreach (var item1 in ListUGM)
+                    {
+                        if (item.group_id == item1.group_id && item.user_id == item1.user_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrIgnore(new Mdh_User_Usergroup_Map
+                        {
+                            user_id = (int)item.user_id,
+                            group_id = (int)item.group_id
+                        });
+                    }
+                    else
+                        x = false;
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertUserGroups(SQLiteConnection con)
         {
-            List<UserGroups> List = new List<UserGroups>();
-            List = await service.Get_mdh_usergroups_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Mdh_Usergroups
+                List<UserGroups> List = new List<UserGroups>();
+                List = await service.Get_mdh_usergroups_dataAsync();
+                foreach (var item in List)
                 {
-                    id = (int)item.id,
-                    parent_id = (int)item.parent_id,
-                    lft = item.lft,
-                    rgt = item.rgt,
-                    title = item.title,
+                    con.InsertOrReplace(new Mdh_Usergroups
+                    {
+                        id = (int)item.id,
+                        parent_id = (int)item.parent_id,
+                        lft = item.lft,
+                        rgt = item.rgt,
+                        title = item.title,
 
-                });
-            }  
+                    });
+                }
+            }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertPackageAttribute(SQLiteConnection con)
         {
-            List<PackageAttribute> List = new List<PackageAttribute>();
-            List = await service.Get_house_package_has_attribute_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Package_Not_Attribute
+                List<PackageAttribute> List = new List<PackageAttribute>();
+                List = await service.Get_house_package_has_attribute_dataAsync();
+                foreach (var item in List)
                 {
-                    house_package_id = item.house_package_id,
-                    attribute_id = item.attribute_id
-                });
+                    con.InsertOrReplace(new Package_Not_Attribute
+                    {
+                        house_package_id = item.house_package_id,
+                        attribute_id = item.attribute_id
+                    });
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertProject(SQLiteConnection con)
         {
-            List<ProjectSync> List = new List<ProjectSync>();
-            List = await service.Get_project_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Project
+                List<ProjectSync> List = new List<ProjectSync>();
+                List = await service.Get_project_dataAsync();
+                foreach (var item in List)
                 {
-                    project_id = item.project_id,
-                    startdate = item.startdate,
-                    enddate = item.enddate,
-                    invoice = item.invoice,
-                    status = item.status,
-                    description = item.description,
-                    modifieddate = ConvertDateTime(item.modifieddate),
-                    houseconfig_id = item.houseconfig_id,
-                    customer_user_id = item.customer_user_id
-                });
+                    con.InsertOrReplace(new Project
+                    {
+                        project_id = item.project_id,
+                        startdate = item.startdate,
+                        enddate = item.enddate,
+                        invoice = item.invoice,
+                        status = item.status,
+                        description = item.description,
+                        modifieddate = ConvertDateTime(item.modifieddate),
+                        houseconfig_id = item.houseconfig_id,
+                        customer_user_id = item.customer_user_id
+                    });
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertAddress(SQLiteConnection con)
-        {  
-            List<Address> List = new List<Address>();
-            List = await service.Get_ymdh_address_dataAsync();
-            foreach (var item in List)
+        {
+            try
             {
-                con.InsertOrReplace(new Ymdh_Address
+                List<Address> List = new List<Address>();
+                List = await service.Get_ymdh_address_dataAsync();
+                foreach (var item in List)
                 {
-                    mdh_address_id = item.mdh_address_id,
-                    ZIP = item.ZIP,
-                    City = item.City,
-                    Street = item.Street,
-                    houseno = item.houseno,
-                    country = item.country
-                });
-            }  
+                    con.InsertOrReplace(new Ymdh_Address
+                    {
+                        mdh_address_id = item.mdh_address_id,
+                        ZIP = item.ZIP,
+                        City = item.City,
+                        Street = item.Street,
+                        houseno = item.houseno,
+                        country = item.country
+                    });
+                }
+            }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertAppointment(SQLiteConnection con)
         {
-            List<Appointments> List = new List<Appointments>();
-            List = await service.Get_ymdh_appointment_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Ymdh_Appointment
+                List<Appointments> List = new List<Appointments>();
+                List = await service.Get_ymdh_appointment_dataAsync();
+                foreach (var item in List)
                 {
-                    appointment_id = item.Appointment_ID,
-                    from_ = ConvertDateTime((DateTime)item.From),
-                    appointment_status_id = item.Appointment_Status_ID,
-                    house_package_id = item.House_Package_ID,
-                    consultant_user_id = item.Consultant_User_ID,
-                    user_id = item.User_ID,
-                    message_id = item.Message_ID
-                });
+                    con.InsertOrReplace(new Ymdh_Appointment
+                    {
+                        appointment_id = item.Appointment_ID,
+                        from_ = ConvertDateTime((DateTime)item.From),
+                        appointment_status_id = item.Appointment_Status_ID,
+                        house_package_id = item.House_Package_ID,
+                        consultant_user_id = item.Consultant_User_ID,
+                        user_id = item.User_ID,
+                        message_id = item.Message_ID
+                    });
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertAppointmentStatus(SQLiteConnection con)
         {
-            List<AppointmentStatus> List = new List<AppointmentStatus>();
-            List = await service.Get_ymdh_appointment_status_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Ymdh_Appointment_Status
+                List<AppointmentStatus> List = new List<AppointmentStatus>();
+                List = await service.Get_ymdh_appointment_status_dataAsync();
+                foreach (var item in List)
                 {
-                    appointment_status_id = item.Appointment_Status_ID,
-                    description = item.Description
-                });
+                    con.InsertOrReplace(new Ymdh_Appointment_Status
+                    {
+                        appointment_status_id = item.Appointment_Status_ID,
+                        description = item.Description
+                    });
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertHousePackage(SQLiteConnection con)
         {
-            List<HousePackage> List = new List<HousePackage>();
-            List = await service.Get_ymdh_house_package_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Ymdh_House_Package
+                List<HousePackage> List = new List<HousePackage>();
+                List = await service.Get_ymdh_house_package_dataAsync();
+                foreach (var item in List)
                 {
-                    house_package_id = item.House_Package_ID,
-                    description = item.Description,
-                    image = item.Image,
-                    price = item.Price,
-                    house_package_status = item.House_Package_Status_ID,
-                    producer_id = item.Producer_ID,
-                    address_id = item.Address_ID,
-                    housefloors = item.Housefloors
-                });
+                    con.InsertOrIgnore(new Ymdh_House_Package
+                    {
+                        house_package_id = item.House_Package_ID,
+                        description = item.Description,
+                        image = item.Image,
+                        price = item.Price,
+                        house_package_status = item.House_Package_Status_ID,
+                        producer_id = item.Producer_ID,
+                        address_id = item.Address_ID,
+                        housefloors = item.Housefloors
+                    });
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertHousePackageStatus(SQLiteConnection con)
         {
-            List<HousePackageStatus> List = new List<HousePackageStatus>();
-            List = await service.Get_ymdh_house_package_status_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Ymdh_House_Package_Status
+                List<HousePackageStatus> List = new List<HousePackageStatus>();
+                List = await service.Get_ymdh_house_package_status_dataAsync();
+                foreach (var item in List)
                 {
-                    house_package_status_id = item.House_Package_Status,
-                    description = item.Description
-                });
+                    con.InsertOrReplace(new Ymdh_House_Package_Status
+                    {
+                        house_package_status_id = item.House_Package_Status,
+                        description = item.Description
+                    });
+                }
             }
+            catch (Exception) { }
         }
         private async void SQLSyncInsertMessage(SQLiteConnection con)
         {
-            List<ymdh_message> List = new List<ymdh_message>();
-            List = await service.Get_ymdh_message_dataAsync();
-            foreach (var item in List)
+            try
             {
-                con.InsertOrReplace(new Ymdh_Message
+                List<ymdh_message> List = new List<ymdh_message>();
+                List = await service.Get_ymdh_message_dataAsync();
+                foreach (var item in List)
                 {
-                    message_id = item.message_id,
-                    summary = item.summary,
-                    message = item.message,
-                    message_date = ConvertDateTime((DateTime)item.message_date),
-                    message_type = item.message_type,
-                    user_id = item.user_id
-                });
+                    con.InsertOrReplace(new Ymdh_Message
+                    {
+                        message_id = item.message_id,
+                        summary = item.summary,
+                        message = item.message,
+                        message_date = ConvertDateTime((DateTime)item.message_date),
+                        message_type = item.message_type,
+                        user_id = item.user_id
+                    });
+                }
             }
+            catch (Exception) { }
         }
 
         private async void SQLSyncSendTable()
@@ -678,14 +769,10 @@ namespace Fallstudie.ViewModel
                     }
                     else
                         isSynched = false;
-                    var dialog = new MessageDialog("Die App wurde erfolgreich synchronisiert");
-                    await dialog.ShowAsync();
                 }  
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                var dialog = new MessageDialog(e.ToString());
-                await dialog.ShowAsync();
             }
         }
 
@@ -950,8 +1037,7 @@ namespace Fallstudie.ViewModel
                         if(model[i].username == Username && model[i].password == pwd.Password)
                         {
                             Username = model[i].username;
-                            UserAppointments.Clear();
-                            LoadUserAppointments();
+                            //UserAppointments.Clear();
                             SelectedConsultant = new Consultant() { Name = model[i].name, Id = model[i].id, Username = model[i].username};
                             a = StartPage.FrameObject.GetObject();
                             a.Navigate(typeof(MainPage));
@@ -2540,8 +2626,6 @@ namespace Fallstudie.ViewModel
                     con.CreateTable<Ymdh_House_Package>();
                     con.CreateTable<Ymdh_House_Package_Status>();
                     con.CreateTable<Ymdh_Message>();
-                    con.CreateTable<Ymdh_Person>();
-                    con.CreateTable<Ymdh_Producer>();
                     con.CreateTable<Temp_Table>();
                     con.CreateTable<Mdh_Change>();
                     con.Close();
@@ -3931,41 +4015,128 @@ namespace Fallstudie.ViewModel
         //Hier werden alle bereits festgelegten Termine angezeigt
         public void LoadAppointments()
         {
-            List<Appointment> List;
+            Appointments.Clear();
+            List<Mdh_Users> Customer;
+            List<Mdh_Users> Consultant = new List<Mdh_Users>();
+            List<Ymdh_Appointment> Appoint = new List<Ymdh_Appointment>();
+            List<Ymdh_Message> Message = new List<Ymdh_Message>();
+            List<Appointment> List = new List<Appointment>();
             try
             {
                 using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
                 {
-                    List = (from a in con.Table<Ymdh_Appointment>()
-                            from b in con.Table<Ymdh_Message>()
-                            from c in con.Table<Mdh_Users>()
-                            from d in con.Table<Mdh_User_Usergroup_Map>()
-                            from e in con.Table<Mdh_Usergroups>()
-                            where a.message_id == b.message_id
-                            && a.user_id == c.id
-                            && c.id == d.user_id
-                            && d.group_id == e.id
-                            && a.appointment_status_id == 0
-                            orderby a.from_
-                            select new Appointment()
-                            {
-                                Id = a.appointment_id,
-                                Date = DateTime.Parse(a.from_.Substring(0,10)),
-                                Time = TimeSpan.Parse(a.from_.Substring(11)),
-                                Customer = new Customer(c.id, c.name,0,0),
-                                Consultant = GetConsultantForAppointment(con, a),
-                                Message = b.message
-                            }).ToList();
 
+                    Customer = (from a in con.Table<Mdh_Users>()
+                                from b in con.Table<Mdh_User_Usergroup_Map>()
+                                from c in con.Table<Mdh_Usergroups>()
+                                where a.id.Equals(b.user_id)
+                                && b.group_id.Equals(c.id)
+                                && c.title.Equals("Customer")
+                                select a).ToList();
+
+                    Ymdh_Appointment query = new Ymdh_Appointment();
+                    string abc;
+                    List<Ymdh_Appointment> y;
+                    foreach (var item in Customer)
+                    {
+                        try
+                        {
+                            y = (from a in con.Table<Ymdh_Appointment>()
+                                 where a.user_id == item.id
+                                 && a.appointment_status_id == 0
+                                 select a).ToList();
+                            for (int i = 0; i < y.Count; i++)
+                            {
+                                try
+                                {
+                                    int x = y[i].appointment_id;
+                                    abc = (from a in con.Table<Ymdh_Appointment>()
+                                           where a.user_id == item.id
+                                           && a.appointment_status_id == 0
+                                           &&  x == a.appointment_id
+                                           select a.from_).Single();
+                                    DateTime date = DateTime.Parse(abc);
+                                    query = (from a in con.Table<Ymdh_Appointment>()
+                                             where a.user_id == item.id
+                                             && a.appointment_status_id == 0
+                                             && x == a.appointment_id
+                                             && date >= DateTime.Now
+                                             select a).Single();
+                                    Appoint.Add(query);
+                                }
+                                catch (Exception) { query = new Ymdh_Appointment(); }
+                            }
+                        }
+                        catch (Exception) { query = new Ymdh_Appointment(); }
+                        
+                    }
+
+                    Mdh_Users query1;
+                    foreach (var item in Appoint)
+                    {
+                        try
+                        {
+                            query1 = (from a in con.Table<Mdh_Users>()
+                                      where a.id == item.consultant_user_id
+                                      select a).Single();
+                        }
+                        catch (Exception) { query1 = new Mdh_Users(); }
+                        if (query1 != null)
+                            Consultant.Add(query1);
+                    }
+
+                    Ymdh_Message query2;
+                    foreach (var item in Appoint)
+                    {
+                        try
+                        {
+                            query2 = (from a in con.Table<Ymdh_Message>()
+                                      where a.message_id == item.message_id
+                                      select a).Single();
+                        }
+                        catch (Exception) { query2 = new Ymdh_Message(); }
+                        if (query2 != null)
+                            Message.Add(query2);
+                    }
+
+                    Customer.Clear();
+                    Mdh_Users query3;
+                    foreach (var item in Appoint)
+                    {
+                        try
+                        {
+                            query3 = (from a in con.Table<Mdh_Users>()
+                                      where a.id == item.user_id
+                                      select a).Single();
+                        }
+                        catch (Exception) { query3 = new Mdh_Users(); }
+                        if (query3 != null)
+                            Customer.Add(query3);
+                    }
+
+                    for (int i = 0; i < Appoint.Count; i++)
+                    {
+                        Appointments.Add(new Appointment
+                        {
+                            Id = Appoint[i].appointment_id,
+                            Date = DateTime.Parse(Appoint[i].from_),
+                            Time = TimeSpan.Parse(Appoint[i].from_.Substring(10)),
+                            Customer = new Customer(Customer[i].id, Customer[i].name, 0, 0),
+                            Consultant = new Consultant(Consultant[i].id, Consultant[i].name),
+                            Message = Message[i].message
+                        });
+                    }
                     con.Close();
                 }
-                Appointments = List;
             }
             catch (Exception)
             {
 
             }
+            UserAppointments.Clear();
+            LoadUserAppointments();
         }
+
         private Consultant GetConsultantForAppointment(SQLiteConnection con, Ymdh_Appointment Appointment)
         {
             Consultant consultant;
@@ -4078,6 +4249,7 @@ namespace Fallstudie.ViewModel
                                     appointment_status_id = 0,
                                     consultant_user_id = SelectedConsultant.Id,
                                     from_ = dt,
+                                    house_package_id = 1,
                                     user_id = SelectedCustomerr.Id
                                 });
                                 //sync change tabelle
@@ -4180,6 +4352,7 @@ namespace Fallstudie.ViewModel
                                     appointment_status_id = 0,
                                     consultant_user_id = SelectedConsultant.Id,
                                     from_ = dt,
+                                    house_package_id = 1,
                                     user_id = SelectedCustomerr.Id
                                 });
                                 int AppointmentId = (con.Table<Ymdh_Appointment>().OrderByDescending(u => u.appointment_id).FirstOrDefault()).appointment_id;

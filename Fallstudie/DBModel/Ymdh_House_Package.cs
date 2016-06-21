@@ -20,7 +20,6 @@ namespace Fallstudie.DBModel
         [ForeignKey(typeof(Ymdh_House_Package_Status)), ManyToOne]
         public int house_package_status { get; set; }
 
-        [ForeignKey(typeof(Ymdh_Producer)), ManyToOne]
         public int producer_id { get; set; }
 
         [ForeignKey(typeof(Ymdh_Address)), ManyToOne]
