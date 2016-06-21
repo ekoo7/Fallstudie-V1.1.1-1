@@ -10,7 +10,7 @@ namespace Fallstudie.DBModel
     [Table("ymdh_appointment_status")]
     public class Ymdh_Appointment_Status
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int appointment_status_id { get; set; }
         public string description { get; set; }
     }

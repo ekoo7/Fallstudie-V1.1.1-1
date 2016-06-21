@@ -11,7 +11,7 @@ namespace Fallstudie.DBModel
     [Table("project")]
     public class Project
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int project_id { get; set; }
         public string startdate { get; set; }
         public string enddate { get; set; }

@@ -11,7 +11,7 @@ namespace Fallstudie.DBModel
     [Table("attribute")]
     public class Attribute
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int attribute_id { get; set; }
         public string description { get; set; }
         public int price { get; set; }

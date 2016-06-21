@@ -64,7 +64,6 @@ namespace Fallstudie.ViewModel
                 SQLResetTempTable();
                 ProjectsMethod();
                 ManageAppointments();
-
                 DownloadImages();
             }
                ThreadPool.RunAsync(CheckNewImages);     
@@ -156,17 +155,15 @@ namespace Fallstudie.ViewModel
                 if (cmd == yesCmd)
                 {
                     SQLSyncSendTable();
-
                     SQLSyncDropTable();
                     FirstSync();
-
-                    SQLGetCustomers();
-
                     var dialog = new MessageDialog("Daten werden geladen...");
                     UICommand SCmd = new UICommand("Schließen");
                     msgDialog.Commands.Add(SCmd);
                     IUICommand cmd1 = await dialog.ShowAsync();
-                    if(cmd1 == SCmd)
+                    SQLGetCustomers();
+                    DownloadImagesAfterSync();
+                    if (cmd1 == SCmd)
                     {
                         var dialog1 = new MessageDialog("Ihre App wurde erfolgreich synchronisiert.");
                         await dialog1.ShowAsync();
@@ -178,52 +175,139 @@ namespace Fallstudie.ViewModel
             }
         }
 
+        public async void DownloadImagesAfterSync()
+        {
+            List<string> hp;
+            List<string> attribute;
+            List<string> housefloor;
+            List<List<string>> test = new List<List<string>>();
+            try
+            {
+                using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                {
+                    hp = (from a in con.Table<Ymdh_House_Package>()
+                          select a.image).ToList();
+                    attribute = (from b in con.Table<DBModel.Attribute>()
+                                 where !b.image.Equals("NULL")
+                                 || !b.image.Equals(null)
+                                 select b.image).ToList();
+                    housefloor = (from c in con.Table<Housefloor_Package>()
+                                  select c.sketch).ToList();
+                    for (int i = 0; i < hp.Count; i++)
+                    {
+                        hp[i] = "http://wi-gate.technikum-wien.at:60333/Joomla_3.3.6/images/houseconfig/2Haeuser/" + hp[i];
+                    }
+                    test.Add(hp);
+                    test.Add(attribute);
+                    test.Add(housefloor);
+                    con.Close();
+                }
+                foreach (var item1 in test)
+                {
+                    foreach (var item in item1)
+                    {
+                        try
+                        {
+                            string[] names = item.Substring(71).Split('/');
+                            var rootFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\Houseconfig\\" + names[0], CreationCollisionOption.OpenIfExists); // Create folder
+                            HouseconfigFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("DreamHouse\\Houseconfig\\", CreationCollisionOption.OpenIfExists); // Create folder
+
+                            var coverpic_file = await rootFolder.CreateFileAsync(names[1], CreationCollisionOption.ReplaceExisting); // Create file
+
+                            HttpClient client = new HttpClient(); // Create HttpClient
+                            byte[] buffer = await client.GetByteArrayAsync(item); // Download file
+                            using (Stream stream = await coverpic_file.OpenStreamForWriteAsync())
+                            {
+                                stream.Write(buffer, 0, buffer.Length); // Save
+                            }
+                            using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
+                            {
+                                if (item1 == hp)
+                                {
+                                    string a = names[1];
+                                    Ymdh_House_Package c1 = (from c in con.Table<Ymdh_House_Package>()
+                                                             where c.image == a
+                                                             select c).Single();
+                                    con.Update(new Ymdh_House_Package()
+                                    {
+                                        house_package_id = c1.house_package_id,
+                                        description = c1.description,
+                                        image = c1.image,
+                                        price = c1.price,
+                                        house_package_status = c1.house_package_status,
+                                        producer_id = c1.producer_id,
+                                        address_id = c1.address_id,
+                                        housefloors = c1.housefloors,
+                                        rootfolder = rootFolder.Path + "\\" + names[1]
+                                    });
+                                }
+                                if (item1 == attribute)
+                                {
+                                    DBModel.Attribute c1 = (from c in con.Table<DBModel.Attribute>()
+                                                            where c.image.Equals(item)
+                                                            select c).Single();
+                                    con.Update(new DBModel.Attribute()
+                                    {
+                                        attribute_id = c1.attribute_id,
+                                        description = c1.description,
+                                        price = c1.price,
+                                        image = c1.image,
+                                        deleted = c1.deleted,
+                                        modifieddate = c1.modifieddate,
+                                        attribute_group_id = c1.attribute_group_id,
+                                        rootfolder = rootFolder.Path + "\\" + names[1]
+                                    });
+                                }
+                                if (item1 == housefloor)
+                                {
+                                    Housefloor_Package c1 = (from c in con.Table<Housefloor_Package>()
+                                                             where c.sketch.Equals(item)
+                                                             select c).Single();
+                                    con.Update(new Housefloor_Package()
+                                    {
+                                        housefloor_id = c1.housefloor_id,
+                                        price = c1.price,
+                                        sketch = c1.sketch,
+                                        modifieddate = c1.modifieddate,
+                                        house_package_id = c1.house_package_id,
+                                        area = c1.area,
+                                        rootfolder = rootFolder.Path + "\\" + names[1]
+                                    });
+                                }
+                                con.Close();
+                            }
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
         #endregion
 
         #region SQL
         private void SQLSyncDropTable()
         {
-            List<int> ListA = new List<int>();
-            List<int> ListH = new List<int>();
-            List<int> ListHHA = new List<int>();
-            List<int> ListHF = new List<int>();
-            List<int> ListP = new List<int>();
-            List<int> ListAP = new List<int>();
-            List<int> ListUGM = new List<int>();
             try
             {
                 using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
                 {
-                    ListA = (from x in con.Table<DBModel.Attribute>()
-                            select x.attribute_id).ToList();
-                    foreach (var item in ListA)
-                        con.Delete<DBModel.Attribute>(item);
-                    ListH = (from x in con.Table<Houseconfig>()
-                             select x.houseconfig_id).ToList();
-                    foreach (var item in ListH)
-                        con.Delete<Houseconfig>(item);
-                    ListHHA = (from x in con.Table<Houseconfig_Has_Attribute>()
-                             select x.houseconfig_id).ToList();
-                    foreach (var item in ListHHA)
-                        con.Delete<Houseconfig_Has_Attribute>(item);
-                    ListHF = (from x in con.Table<Housefloor>()
-                             select x.housefloor_id).ToList();
-                    foreach (var item in ListHF)
-                        con.Delete<Housefloor>(item);
-                    ListP = (from x in con.Table<Project>()
-                              select x.project_id).ToList();
-                    foreach (var item in ListP)
-                        con.Delete<Project>(item);
-                    ListAP = (from x in con.Table<Ymdh_Appointment>()
-                              select x.appointment_id).ToList();
-                    foreach (var item in ListAP)
-                        con.Delete<Ymdh_Appointment>(item);
-                    ListUGM = (from x in con.Table<Mdh_User_Usergroup_Map>()
-                              select x.group_id).ToList();
-                    foreach (var item in ListUGM)
-                        con.Delete<Mdh_User_Usergroup_Map>(item);
+                    con.DeleteAll<DBModel.Attribute>();
+                    con.DeleteAll<Houseconfig>();
+                    con.DeleteAll<Houseconfig_Has_Attribute>();
+                    con.DeleteAll<Housefloor>();
+                    con.DeleteAll<Project>();
+                    con.DeleteAll<Ymdh_Appointment>();
+                    //con.DeleteAll<Mdh_User_Usergroup_Map>();
+                    con.DeleteAll<Housefloor_Package>();
+                    con.DeleteAll<Ymdh_House_Package>();
                     con.Close();
-                } 
+                }
             }
             catch (Exception)
             {
@@ -236,17 +320,34 @@ namespace Fallstudie.ViewModel
             {
                 List<Attributes> List = new List<Attributes>();
                 List = await service.Get_attribute_dataAsync();
+                List<DBModel.Attribute> List2 = new List<DBModel.Attribute>();
+                bool x = false;
+                List2 = (from a in con.Table<DBModel.Attribute>()
+                         select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrIgnore(new DBModel.Attribute
+                    foreach (var item1 in List2)
                     {
-                        attribute_id = item.Attribute_ID,
-                        description = item.Description,
-                        price = item.Price,
-                        image = item.Image,
-                        deleted = item.Deleted,
-                        attribute_group_id = item.Attribute_Group_ID
-                    });
+                        if (item.Attribute_ID == item1.attribute_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrIgnore(new DBModel.Attribute
+                        {
+                            attribute_id = item.Attribute_ID,
+                            description = item.Description,
+                            price = item.Price,
+                            image = item.Image,
+                            deleted = item.Deleted,
+                            attribute_group_id = item.Attribute_Group_ID
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -257,19 +358,36 @@ namespace Fallstudie.ViewModel
             {
                 List<Houseconfig1> List = new List<Houseconfig1>();
                 List = await service.Get_houseconfig_dataAsync();
+                List<Houseconfig> List2 = new List<Houseconfig>();
+                bool x = false;
+                List2 = (from a in con.Table<Houseconfig>()
+                         select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrReplace(new Houseconfig
+                    foreach (var item1 in List2)
                     {
-                        houseconfig_id = item.Houseconfig_ID,
-                        price = item.Price,
-                        status = item.Status,
-                        price_floor = item.Price_Floor,
-                        modifieddate = ConvertDateTime((DateTime)item.Modifieddate),
-                        house_package_id = item.House_Package_ID,
-                        consultant_user_id = item.Consultant_User_ID,
-                        customer_user_id = item.Customer_User_ID,
-                    });
+                        if (item.Houseconfig_ID == item1.houseconfig_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrReplace(new Houseconfig
+                        {
+                            houseconfig_id = item.Houseconfig_ID,
+                            price = item.Price,
+                            status = item.Status,
+                            price_floor = item.Price_Floor,
+                            modifieddate = ConvertDateTime((DateTime)item.Modifieddate),
+                            house_package_id = item.House_Package_ID,
+                            consultant_user_id = item.Consultant_User_ID,
+                            customer_user_id = item.Customer_User_ID,
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -280,15 +398,32 @@ namespace Fallstudie.ViewModel
             {
                 List<HouseconfigHasAttribute> List = new List<HouseconfigHasAttribute>();
                 List = await service.Get_houseconfig_has_attribute_dataAsync();
+                List<Houseconfig_Has_Attribute> List2 = new List<Houseconfig_Has_Attribute>();
+                bool x = false;
+                List2 = (from a in con.Table<Houseconfig_Has_Attribute>()
+                          select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrReplace(new Houseconfig_Has_Attribute
+                    foreach (var item1 in List2)
                     {
-                        houseconfig_id = item.houseconfig_id,
-                        attribute_id = item.attribute_id,
-                        amount = item.amount,
-                        special = item.special
-                    });
+                        if (item.houseconfig_id == item1.houseconfig_id && item.attribute_id == item1.attribute_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrReplace(new Houseconfig_Has_Attribute
+                        {
+                            houseconfig_id = item.houseconfig_id,
+                            attribute_id = item.attribute_id,
+                            amount = item.amount,
+                            special = item.special
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -299,16 +434,33 @@ namespace Fallstudie.ViewModel
             {
                 List<HouseFloors> List = new List<HouseFloors>();
                 List = await service.Get_housefloor_dataAsync();
+                List<Housefloor> List2 = new List<Housefloor>();
+                bool x = false;
+                List2 = (from a in con.Table<Housefloor>()
+                          select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrIgnore(new Housefloor
+                    foreach (var item1 in List2)
                     {
-                        housefloor_id = item.housefloor_id,
-                        price = item.price,
-                        sketch = item.sketch,
-                        houseconfig_id = item.houseconfig_id,
-                        area = item.area
-                    });
+                        if (item.housefloor_id == item1.housefloor_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrIgnore(new Housefloor
+                        {
+                            housefloor_id = item.housefloor_id,
+                            price = item.price,
+                            sketch = item.sketch,
+                            houseconfig_id = item.houseconfig_id,
+                            area = item.area
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -319,36 +471,70 @@ namespace Fallstudie.ViewModel
             {
                 List<HouseFloorPackage> List = new List<HouseFloorPackage>();
                 List = await service.Get_housefloor_package_dataAsync();
+                List<Housefloor_Package> List2 = new List<Housefloor_Package>();
+                bool x = false;
+                List2 = (from a in con.Table<Housefloor_Package>()
+                           select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrIgnore(new Housefloor_Package
+                    foreach (var item1 in List2)
                     {
-                        housefloor_id = item.housefloor_id,
-                        price = item.price,
-                        sketch = item.sketch,
-                        house_package_id = item.house_package_id,
-                        area = item.area
-                    });
+                        if (item.housefloor_id == item1.housefloor_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrIgnore(new Housefloor_Package
+                        {
+                            housefloor_id = item.housefloor_id,
+                            price = item.price,
+                            sketch = item.sketch,
+                            house_package_id = item.house_package_id,
+                            area = item.area
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
         }
         private async void SQLSyncInsertUser(SQLiteConnection con)
         {
-            List<Users> List = new List<Users>();
             try
             {
+                List<Users> List = new List<Users>();
                 List = await service.Get_mdh_users_dataAsync();
+                List<Mdh_Users> List2 = new List<Mdh_Users>();
+                bool x = false;
+                List2 = (from a in con.Table<Mdh_Users>()
+                         select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrReplace(new Mdh_Users
+                    foreach (var item1 in List2)
                     {
-                        id = (int)item.ID,
-                        name = item.Name,
-                        username = item.Username,
-                        email = item.Email,
-                        password = item.Password
-                    });
+                        if (item.ID == item1.id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrReplace(new Mdh_Users
+                        {
+                            id = (int)item.ID,
+                            name = item.Name,
+                            username = item.Username,
+                            email = item.Email,
+                            password = item.Password
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception e)
@@ -363,13 +549,13 @@ namespace Fallstudie.ViewModel
             {
                 List<UserGroupMap> List = new List<UserGroupMap>();
                 List = await service.Get_mdh_user_usergroup_map_dataAsync();
-                List<Mdh_User_Usergroup_Map> ListUGM = new List<Mdh_User_Usergroup_Map>();
+                List<Mdh_User_Usergroup_Map> List2 = new List<Mdh_User_Usergroup_Map>();
                 bool x = false;
-                ListUGM = (from a in con.Table<Mdh_User_Usergroup_Map>()
+                List2 = (from a in con.Table<Mdh_User_Usergroup_Map>()
                            select a).ToList();
                 foreach (var item in List)
                 {
-                    foreach (var item1 in ListUGM)
+                    foreach (var item1 in List2)
                     {
                         if (item.group_id == item1.group_id && item.user_id == item1.user_id)
                         {
@@ -397,17 +583,33 @@ namespace Fallstudie.ViewModel
             {
                 List<UserGroups> List = new List<UserGroups>();
                 List = await service.Get_mdh_usergroups_dataAsync();
+                List<Mdh_Usergroups> List2 = new List<Mdh_Usergroups>();
+                bool x = false;
+                List2 = (from a in con.Table<Mdh_Usergroups>()
+                           select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrReplace(new Mdh_Usergroups
+                    foreach (var item1 in List2)
                     {
-                        id = (int)item.id,
-                        parent_id = (int)item.parent_id,
-                        lft = item.lft,
-                        rgt = item.rgt,
-                        title = item.title,
-
-                    });
+                        if (item.id == item1.id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrReplace(new Mdh_Usergroups
+                        {
+                            id = (int)item.id,
+                            parent_id = (int)item.parent_id,
+                            lft = item.lft,
+                            rgt = item.rgt,
+                            title = item.title,
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -418,13 +620,30 @@ namespace Fallstudie.ViewModel
             {
                 List<PackageAttribute> List = new List<PackageAttribute>();
                 List = await service.Get_house_package_has_attribute_dataAsync();
+                List<Package_Not_Attribute> List2 = new List<Package_Not_Attribute>();
+                bool x = false;
+                List2 = (from a in con.Table<Package_Not_Attribute>()
+                           select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrReplace(new Package_Not_Attribute
+                    foreach (var item1 in List2)
                     {
-                        house_package_id = item.house_package_id,
-                        attribute_id = item.attribute_id
-                    });
+                        if (item.house_package_id == item1.house_package_id && item.attribute_id == item1.attribute_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrReplace(new Package_Not_Attribute
+                        {
+                            house_package_id = item.house_package_id,
+                            attribute_id = item.attribute_id
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -435,20 +654,37 @@ namespace Fallstudie.ViewModel
             {
                 List<ProjectSync> List = new List<ProjectSync>();
                 List = await service.Get_project_dataAsync();
+                List<Project> List2 = new List<Project>();
+                bool x = false;
+                List2 = (from a in con.Table<Project>()
+                           select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrReplace(new Project
+                    foreach (var item1 in List2)
                     {
-                        project_id = item.project_id,
-                        startdate = item.startdate,
-                        enddate = item.enddate,
-                        invoice = item.invoice,
-                        status = item.status,
-                        description = item.description,
-                        modifieddate = ConvertDateTime(item.modifieddate),
-                        houseconfig_id = item.houseconfig_id,
-                        customer_user_id = item.customer_user_id
-                    });
+                        if (item.project_id == item1.project_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrReplace(new Project
+                        {
+                            project_id = item.project_id,
+                            startdate = item.startdate,
+                            enddate = item.enddate,
+                            invoice = item.invoice,
+                            status = item.status,
+                            description = item.description,
+                            modifieddate = ConvertDateTime(item.modifieddate),
+                            houseconfig_id = item.houseconfig_id,
+                            customer_user_id = item.customer_user_id
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -459,17 +695,34 @@ namespace Fallstudie.ViewModel
             {
                 List<Address> List = new List<Address>();
                 List = await service.Get_ymdh_address_dataAsync();
+                List<Ymdh_Address> List2 = new List<Ymdh_Address>();
+                bool x = false;
+                List2 = (from a in con.Table<Ymdh_Address>()
+                         select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrReplace(new Ymdh_Address
+                    foreach (var item1 in List2)
                     {
-                        mdh_address_id = item.mdh_address_id,
-                        ZIP = item.ZIP,
-                        City = item.City,
-                        Street = item.Street,
-                        houseno = item.houseno,
-                        country = item.country
-                    });
+                        if (item.mdh_address_id == item1.mdh_address_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrReplace(new Ymdh_Address
+                        {
+                            mdh_address_id = item.mdh_address_id,
+                            ZIP = item.ZIP,
+                            City = item.City,
+                            Street = item.Street,
+                            houseno = item.houseno,
+                            country = item.country
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -480,18 +733,35 @@ namespace Fallstudie.ViewModel
             {
                 List<Appointments> List = new List<Appointments>();
                 List = await service.Get_ymdh_appointment_dataAsync();
+                List<Ymdh_Appointment> List2 = new List<Ymdh_Appointment>();
+                bool x = false;
+                List2 = (from a in con.Table<Ymdh_Appointment>()
+                         select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrReplace(new Ymdh_Appointment
+                    foreach (var item1 in List2)
                     {
-                        appointment_id = item.Appointment_ID,
-                        from_ = ConvertDateTime((DateTime)item.From),
-                        appointment_status_id = item.Appointment_Status_ID,
-                        house_package_id = item.House_Package_ID,
-                        consultant_user_id = item.Consultant_User_ID,
-                        user_id = item.User_ID,
-                        message_id = item.Message_ID
-                    });
+                        if (item.Appointment_ID == item1.appointment_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrReplace(new Ymdh_Appointment
+                        {
+                            appointment_id = item.Appointment_ID,
+                            from_ = ConvertDateTime((DateTime)item.From),
+                            appointment_status_id = item.Appointment_Status_ID,
+                            house_package_id = item.House_Package_ID,
+                            consultant_user_id = item.Consultant_User_ID,
+                            user_id = item.User_ID,
+                            message_id = item.Message_ID
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -502,13 +772,30 @@ namespace Fallstudie.ViewModel
             {
                 List<AppointmentStatus> List = new List<AppointmentStatus>();
                 List = await service.Get_ymdh_appointment_status_dataAsync();
+                List<Ymdh_Appointment_Status> List2 = new List<Ymdh_Appointment_Status>();
+                bool x = false;
+                List2 = (from a in con.Table<Ymdh_Appointment_Status>()
+                         select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrReplace(new Ymdh_Appointment_Status
+                    foreach (var item1 in List2)
                     {
-                        appointment_status_id = item.Appointment_Status_ID,
-                        description = item.Description
-                    });
+                        if (item.Appointment_Status_ID == item1.appointment_status_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrReplace(new Ymdh_Appointment_Status
+                        {
+                            appointment_status_id = item.Appointment_Status_ID,
+                            description = item.Description
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -519,19 +806,36 @@ namespace Fallstudie.ViewModel
             {
                 List<HousePackage> List = new List<HousePackage>();
                 List = await service.Get_ymdh_house_package_dataAsync();
+                List<Ymdh_House_Package> List2 = new List<Ymdh_House_Package>();
+                bool x = false;
+                List2 = (from a in con.Table<Ymdh_House_Package>()
+                         select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrIgnore(new Ymdh_House_Package
+                    foreach (var item1 in List2)
                     {
-                        house_package_id = item.House_Package_ID,
-                        description = item.Description,
-                        image = item.Image,
-                        price = item.Price,
-                        house_package_status = item.House_Package_Status_ID,
-                        producer_id = item.Producer_ID,
-                        address_id = item.Address_ID,
-                        housefloors = item.Housefloors
-                    });
+                        if (item.House_Package_ID == item1.house_package_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrIgnore(new Ymdh_House_Package
+                        {
+                            house_package_id = item.House_Package_ID,
+                            description = item.Description,
+                            image = item.Image,
+                            price = item.Price,
+                            house_package_status = item.House_Package_Status_ID,
+                            producer_id = item.Producer_ID,
+                            address_id = item.Address_ID,
+                            housefloors = item.Housefloors
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -542,13 +846,30 @@ namespace Fallstudie.ViewModel
             {
                 List<HousePackageStatus> List = new List<HousePackageStatus>();
                 List = await service.Get_ymdh_house_package_status_dataAsync();
+                List<Ymdh_House_Package_Status> List2 = new List<Ymdh_House_Package_Status>();
+                bool x = false;
+                List2 = (from a in con.Table<Ymdh_House_Package_Status>()
+                         select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrReplace(new Ymdh_House_Package_Status
+                    foreach (var item1 in List2)
                     {
-                        house_package_status_id = item.House_Package_Status,
-                        description = item.Description
-                    });
+                        if (item.House_Package_Status == item1.house_package_status_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrReplace(new Ymdh_House_Package_Status
+                        {
+                            house_package_status_id = item.House_Package_Status,
+                            description = item.Description
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -559,17 +880,34 @@ namespace Fallstudie.ViewModel
             {
                 List<ymdh_message> List = new List<ymdh_message>();
                 List = await service.Get_ymdh_message_dataAsync();
+                List<Ymdh_Message> List2 = new List<Ymdh_Message>();
+                bool x = false;
+                List2 = (from a in con.Table<Ymdh_Message>()
+                         select a).ToList();
                 foreach (var item in List)
                 {
-                    con.InsertOrReplace(new Ymdh_Message
+                    foreach (var item1 in List2)
                     {
-                        message_id = item.message_id,
-                        summary = item.summary,
-                        message = item.message,
-                        message_date = ConvertDateTime((DateTime)item.message_date),
-                        message_type = item.message_type,
-                        user_id = item.user_id
-                    });
+                        if (item.message_id == item1.message_id)
+                        {
+                            x = true;
+                            break;
+                        }
+                    }
+                    if (!x)
+                    {
+                        con.InsertOrReplace(new Ymdh_Message
+                        {
+                            message_id = item.message_id,
+                            summary = item.summary,
+                            message = item.message,
+                            message_date = ConvertDateTime((DateTime)item.message_date),
+                            message_type = item.message_type,
+                            user_id = item.user_id
+                        });
+                    }
+                    else
+                        x = false;
                 }
             }
             catch (Exception) { }
@@ -2486,12 +2824,11 @@ namespace Fallstudie.ViewModel
 
         //Hier wird das Haus in die Datenbank gespeichert -> Projekt erstellen
         private async void ButtonCreateProjectMethod()
-        {
-           
-            SQLCreateProject();
-            
+        {           
+            SQLCreateProject();            
             var dialog = new MessageDialog("Haus wurde als Projekt erstellt");
             await dialog.ShowAsync();
+            SQLGetCustomers();
             GetFrame();
             a.Navigate(typeof(Pages.ProjektePage));
             ListProjects.Clear();
@@ -2851,9 +3188,13 @@ namespace Fallstudie.ViewModel
             {
                 using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
                 {
+                    //Get houseconfig Id von gerade erstelltem Houseconfig
+                    configId = (con.Table<Houseconfig>().OrderByDescending(u => u.houseconfig_id).FirstOrDefault());
+                    configId.houseconfig_id += 1;
                     //houseconfig
                     con.Insert(new Houseconfig
                     {
+                        houseconfig_id = configId.houseconfig_id,
                         price = int.Parse(TotalPrice.ToString()),
                         status = "1",
                         price_floor = int.Parse(SelectedFloor.Price.ToString()),
@@ -2862,8 +3203,6 @@ namespace Fallstudie.ViewModel
                         consultant_user_id = SelectedConsultant.Id,
                         customer_user_id = SelectedCustomerr.Id
                     });
-                    //Get houseconfig Id von gerade erstelltem Houseconfig
-                    configId = (con.Table<Houseconfig>().OrderByDescending(u => u.houseconfig_id).FirstOrDefault());
                     //sync change tabelle
                     con.Insert(new Mdh_Change
                     {
@@ -2874,10 +3213,13 @@ namespace Fallstudie.ViewModel
                         synced = 0
                     });
                     //GroundPlot
+                    var NewFloorId = (con.Table<Housefloor>().OrderByDescending(u => u.housefloor_id).FirstOrDefault());
+                    NewFloorId.housefloor_id += 1;
                     if (NewGroundPlotId0 != 0)
                     {
                         con.Insert(new Housefloor
                         {
+                            housefloor_id = NewFloorId.housefloor_id,
                             price = int.Parse(SelectedFloor.Price.ToString()),
                             sketch = "NULL",
                             modifieddate = ConvertDateTime(DateTime.Now),
@@ -2891,6 +3233,7 @@ namespace Fallstudie.ViewModel
                     {
                         con.Insert(new Housefloor
                         {
+                            housefloor_id = NewFloorId.housefloor_id,
                             price = int.Parse(SelectedFloor.Price.ToString()),
                             sketch = "",//(from a in con.Table<Housefloor_Package>() where a.rootfolder.Equals(FloorsGroundPlot[0].SourceImage) select a.sketch).Single(),
                             modifieddate = ConvertDateTime(DateTime.Now),
@@ -2911,8 +3254,11 @@ namespace Fallstudie.ViewModel
                     });
                     if (NewGroundPlotId1 != 0 && SelectedItemFloor > 0)
                     {
+                        var NewFloorId1= (con.Table<Housefloor>().OrderByDescending(u => u.housefloor_id).FirstOrDefault());
+                        NewFloorId1.housefloor_id += 1;
                         con.Insert(new Housefloor
                         {
+                            housefloor_id = NewFloorId1.housefloor_id,
                             price = int.Parse(SelectedFloor.Price.ToString()),
                             sketch = "NULL",
                             modifieddate = ConvertDateTime(DateTime.Now),
@@ -2920,12 +3266,11 @@ namespace Fallstudie.ViewModel
                             area = 1,
                             rootfolder = FloorsGroundPlot[1].SourceImage
                         });
-                        Housefloor FloorId1 = (con.Table<Housefloor>().OrderByDescending(u => u.housefloor_id).FirstOrDefault());
                         //sync change tabelle
                         con.Insert(new Mdh_Change
                         {
                             ctable = "housefloor",
-                            id = FloorId1.housefloor_id,
+                            id = NewFloorId1.housefloor_id,
                             change = "insert",
                             dt = ConvertDateTime(DateTime.Now),
                             synced = 0
@@ -2934,8 +3279,11 @@ namespace Fallstudie.ViewModel
                     }
                     else if (NewGroundPlotId1 == 0 && SelectedItemFloor > 0)
                     {
+                        var NewFloorId1 = (con.Table<Housefloor>().OrderByDescending(u => u.housefloor_id).FirstOrDefault());
+                        NewFloorId1.housefloor_id += 1;
                         con.Insert(new Housefloor
                         {
+                            housefloor_id = NewFloorId1.housefloor_id,
                             price = int.Parse(SelectedFloor.Price.ToString()),
                             sketch = "",//(from a in con.Table<Housefloor_Package>() where a.rootfolder.Equals(FloorsGroundPlot[1].SourceImage) select a.sketch).Single(),
                             modifieddate = ConvertDateTime(DateTime.Now),
@@ -2943,12 +3291,11 @@ namespace Fallstudie.ViewModel
                             area = 1,
                             rootfolder = FloorsGroundPlot[1].SourceImage
                         });
-                        Housefloor FloorId1 = (con.Table<Housefloor>().OrderByDescending(u => u.housefloor_id).FirstOrDefault());
                         //sync change tabelle
                         con.Insert(new Mdh_Change
                         {
                             ctable = "housefloor",
-                            id = FloorId1.housefloor_id,
+                            id = NewFloorId1.housefloor_id,
                             change = "insert",
                             dt = ConvertDateTime(DateTime.Now),
                             synced = 0
@@ -2956,8 +3303,11 @@ namespace Fallstudie.ViewModel
                     }
                     if (NewGroundPlotId2 != 0 && SelectedItemFloor > 1)
                     {
+                        var NewFloorId2 = (con.Table<Housefloor>().OrderByDescending(u => u.housefloor_id).FirstOrDefault());
+                        NewFloorId2.housefloor_id += 1;
                         con.Insert(new Housefloor
                         {
+                            housefloor_id = NewFloorId2.housefloor_id,
                             price = int.Parse(SelectedFloor.Price.ToString()),
                             sketch = "NULL",
                             modifieddate = ConvertDateTime(DateTime.Now),
@@ -2965,12 +3315,11 @@ namespace Fallstudie.ViewModel
                             area = 2,
                             rootfolder = FloorsGroundPlot[2].SourceImage
                         });
-                        Housefloor FloorId2 = (con.Table<Housefloor>().OrderByDescending(u => u.housefloor_id).FirstOrDefault());
                         //sync change tabelle
                         con.Insert(new Mdh_Change
                         {
                             ctable = "housefloor",
-                            id = FloorId2.housefloor_id,
+                            id = NewFloorId2.housefloor_id,
                             change = "insert",
                             dt = ConvertDateTime(DateTime.Now),
                             synced = 0
@@ -2979,8 +3328,11 @@ namespace Fallstudie.ViewModel
                     }
                     else if (NewGroundPlotId2 == 0 && SelectedItemFloor > 1)
                     {
+                        var NewFloorId2 = (con.Table<Housefloor>().OrderByDescending(u => u.housefloor_id).FirstOrDefault());
+                        NewFloorId2.housefloor_id += 1;
                         con.Insert(new Housefloor
                         {
+                            housefloor_id = NewFloorId2.housefloor_id,
                             price = int.Parse(SelectedFloor.Price.ToString()),
                             sketch = "",//(from a in con.Table<Housefloor_Package>() where a.rootfolder.Equals(FloorsGroundPlot[2].SourceImage) select a.sketch).Single(),
                             modifieddate = ConvertDateTime(DateTime.Now),
@@ -2988,12 +3340,11 @@ namespace Fallstudie.ViewModel
                             area = 2,
                             rootfolder = FloorsGroundPlot[2].SourceImage
                         });
-                        Housefloor FloorId2 = (con.Table<Housefloor>().OrderByDescending(u => u.housefloor_id).FirstOrDefault());
                         //sync change tabelle
                         con.Insert(new Mdh_Change
                         {
                             ctable = "housefloor",
-                            id = FloorId2.housefloor_id,
+                            id = NewFloorId2.housefloor_id,
                             change = "insert",
                             dt = ConvertDateTime(DateTime.Now),
                             synced = 0
@@ -3002,8 +3353,11 @@ namespace Fallstudie.ViewModel
                     //Plot
                     if (SelectedPlot.Id == 0)
                     {
+                        var NewPlotId = (con.Table<DBModel.Attribute>().OrderByDescending(u => u.attribute_id).FirstOrDefault());
+                        NewPlotId.attribute_id += 1;
                         con.Insert(new DBModel.Attribute()
                         {
+                            attribute_id = NewPlotId.attribute_id,
                             description = SelectedPlot.Description,
                             price = 0,
                             image = "NULL",
@@ -3013,11 +3367,10 @@ namespace Fallstudie.ViewModel
                             rootfolder = SelectedPlot.SourceImage
                         });
                         con.Delete<Temp_Table>(NewPlotId);
-                        int AttId = (con.Table<DBModel.Attribute>().OrderByDescending(u => u.attribute_id).FirstOrDefault()).attribute_id;
                         con.Insert(new Houseconfig_Has_Attribute
                         {
                             houseconfig_id = configId.houseconfig_id,
-                            attribute_id = AttId,
+                            attribute_id = NewPlotId.attribute_id,
                             amount = 1,
                             special = NoteStep3,
                             modifieddate = ConvertDateTime(DateTime.Now)
@@ -3026,7 +3379,7 @@ namespace Fallstudie.ViewModel
                         con.Insert(new Mdh_Change
                         {
                             ctable = "attribute",
-                            id = AttId,
+                            id = NewPlotId.attribute_id,
                             change = "insert",
                             dt = ConvertDateTime(DateTime.Now)
                         });
@@ -3035,7 +3388,7 @@ namespace Fallstudie.ViewModel
                         {
                             ctable = "houseconfig_has_attribute",
                             id = configId.houseconfig_id,
-                            id2 = AttId,
+                            id2 = NewPlotId.attribute_id,
                             change = "insert",
                             dt = ConvertDateTime(DateTime.Now),
                             synced = 0
@@ -3062,7 +3415,6 @@ namespace Fallstudie.ViewModel
                             synced = 0
                         });
                     }
-                    
                     //InsideWall
                     con.Insert(new Houseconfig_Has_Attribute
                     {
@@ -3458,8 +3810,13 @@ namespace Fallstudie.ViewModel
             {
                 using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
                 {
+                    var NewProjectId = (con.Table<Project>().OrderByDescending(u => u.project_id).FirstOrDefault());
+                    if (NewProjectId == null)
+                        NewProjectId = new Project();
+                    NewProjectId.project_id += 1;
                     con.Insert(new Project
                     {
+                        project_id = NewProjectId.project_id,
                         startdate = ConvertDateTime(DateTime.Now),
                         enddate = ConvertDateTime((DateTime.Now).AddYears(1)),
                         invoice = "Rechnung",
@@ -3469,12 +3826,11 @@ namespace Fallstudie.ViewModel
                         customer_user_id = SelectedConfHouse.Customer.Id,
                         houseconfig_id = SelectedConfHouse.Id
                     });
-                    int ProjectId = (con.Table<Project>().OrderByDescending(u => u.project_id).FirstOrDefault()).project_id;
                     //sync change tabelle
                     con.Insert(new Mdh_Change
                     {
                         ctable = "project",
-                        id = ProjectId,
+                        id = NewProjectId.project_id,
                         change = "insert",
                         dt = ConvertDateTime(DateTime.Now),
                         synced = 0
@@ -4346,21 +4702,21 @@ namespace Fallstudie.ViewModel
                             using (SQLiteConnection con = new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), DbPath))
                             {
                                 var AppointId = (con.Table<Ymdh_Appointment>().OrderByDescending(u => u.appointment_id).FirstOrDefault()).appointment_id;
+                                AppointId += 1;
                                 con.Insert(new Ymdh_Appointment()
                                 {
-                                    appointment_id = AppointId + 1,
+                                    appointment_id = AppointId,
                                     appointment_status_id = 0,
                                     consultant_user_id = SelectedConsultant.Id,
                                     from_ = dt,
                                     house_package_id = 1,
                                     user_id = SelectedCustomerr.Id
                                 });
-                                int AppointmentId = (con.Table<Ymdh_Appointment>().OrderByDescending(u => u.appointment_id).FirstOrDefault()).appointment_id;
                                 //sync change tabelle
                                 con.Insert(new Mdh_Change
                                 {
                                     ctable = "ymdh_appointment",
-                                    id = AppointmentId,
+                                    id = AppointId,
                                     change = "insert",
                                     dt = ConvertDateTime(DateTime.Now),
                                     synced = 0

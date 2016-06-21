@@ -11,7 +11,7 @@ namespace Fallstudie.DBModel
     [Table("housefloor")]
     public class Housefloor
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int housefloor_id { get; set; }
         public int price { get; set; }
         public string sketch { get; set; }
