@@ -26,7 +26,8 @@ namespace Fallstudie.Model
                     string[] splitMessage = Message.Split(' ');
                     try
                     {
-                        messagePackage = splitMessage[3] + ' ' + splitMessage[4];
+                        string[] splitMessagePackage = splitMessage[4].Split(',');
+                        messagePackage = splitMessage[3] + ' ' + splitMessagePackage[0];
                     }
                     catch (Exception) { }
                 }

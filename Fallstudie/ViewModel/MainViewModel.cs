@@ -111,6 +111,7 @@ namespace Fallstudie.ViewModel
 
         #region Methods
         private void FirstSync()
+
         {
             try
             {
@@ -163,6 +164,8 @@ namespace Fallstudie.ViewModel
                     IUICommand cmd1 = await dialog.ShowAsync();
                     SQLGetCustomers();
                     DownloadImagesAfterSync();
+                    ManageAppointments();
+                    //LoadUserAppointments();
                     if (cmd1 == SCmd)
                     {
                         var dialog1 = new MessageDialog("Ihre App wurde erfolgreich synchronisiert.");
@@ -1375,7 +1378,8 @@ namespace Fallstudie.ViewModel
                         if(model[i].username == Username && model[i].password == pwd.Password)
                         {
                             Username = model[i].username;
-                            //UserAppointments.Clear();
+                            UserAppointments.Clear();
+                            LoadUserAppointments();
                             SelectedConsultant = new Consultant() { Name = model[i].name, Id = model[i].id, Username = model[i].username};
                             a = StartPage.FrameObject.GetObject();
                             a.Navigate(typeof(MainPage));
@@ -1418,7 +1422,7 @@ namespace Fallstudie.ViewModel
         public ObservableCollection<Appointment> UserAppointments
         {
             get { return userAppointments; }
-            set { userAppointments = value; }
+            set { userAppointments = value; OnChange("UserAppointments"); }
         }
 
         private Appointment selectedUserAppointment;
@@ -1439,7 +1443,7 @@ namespace Fallstudie.ViewModel
             {
                 foreach (var item in Appointments)
                 {
-                    if (item.Consultant.Username == Username
+                    if ("consultant" == Username
                         && ((item.Date.Month == DateTimeNow.Month && item.Date.Day >= dateTimeNow.Day)  || item.Date.Month == DateTimeNow.Month + 1))
                     {
                         UserAppointments.Add(item);    
@@ -3366,7 +3370,7 @@ namespace Fallstudie.ViewModel
                             attribute_group_id = 3,
                             rootfolder = SelectedPlot.SourceImage
                         });
-                        con.Delete<Temp_Table>(NewPlotId);
+                        con.Delete<Temp_Table>(NewPlotId.attribute_id);
                         con.Insert(new Houseconfig_Has_Attribute
                         {
                             houseconfig_id = configId.houseconfig_id,
